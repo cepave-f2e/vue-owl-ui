@@ -1,0 +1,9 @@
+$color: blue;
+@mixin fn ($c) {
+  color: $c;
+}
+
+
+.body {
+  @include fn(red);
+}
