@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --no-cache --coverage",
     "dev": "babel-node ./scripts/dev",
-    "lint": "eslint src",
+    "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
   "jest": {
@@ -55,6 +55,7 @@
     "piping": "^1.0.0-rc.3",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "stylelint": "^7.2.0",
     "vue-router": "^2.0.0-rc.4",
     "vue-server-renderer": "^2.0.0-rc.5",
     "webpack": "^2.1.0-beta.22",
