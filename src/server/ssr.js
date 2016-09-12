@@ -1,5 +1,5 @@
 import fs from 'fs'
-import {createBundleRenderer} from 'vue-server-renderer'
+import { createBundleRenderer } from 'vue-server-renderer'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -12,7 +12,7 @@ if (isProd) {
 
 const ssr = ()=> {
   return new Promise((resolve, reject) => {
-    if(appServerData) {
+    if (appServerData) {
       resolve(createBundleRenderer(appServerData))
     } else {
       fs.readFile(appServerPath, (err, data)=> {

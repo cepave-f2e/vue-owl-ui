@@ -4,7 +4,7 @@ import router from './router'
 module.exports = new Vue({
   router,
   render(h) {
-    const {$slots, $route} = this
+    const { $slots, $route } = this
     const View = ($route.matched[0].components.default)
 
     return (
@@ -16,7 +16,3 @@ module.exports = new Vue({
     )
   }
 })
-
-
-
-

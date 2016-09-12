@@ -1,4 +1,4 @@
-module.exports = ({appHTML})=> {
+module.exports = ({ appHTML })=> {
   return `<!doctype html>
 <script>window.__STATE= ${JSON.stringify({})}</script>
 ${appHTML}
