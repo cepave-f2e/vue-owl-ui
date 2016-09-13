@@ -1,6 +1,6 @@
-<h1 align="center">
-  vue-owl-ui
-</h1>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cepave-f2e/vue-owl-ui/dev/assets/logo.png" />
+</p>
 
 <p align="center">  
   <a href="https://travis-ci.org/cepave-f2e/vue-owl-ui" alt="Build Status">
