@@ -31,3 +31,9 @@ $ npm i --save github:cepave-f2e/vue-owl-ui
 import { Grid, Select, Tip } from 'vue-owl-ui'
 ```
 
+
+## Contributor
+
+| ![Rocky](https://avatars1.githubusercontent.com/u/890063?v=3&s=120) | ![Timmy](https://avatars0.githubusercontent.com/u/4191668?v=3&s=120) | ![Kelly ](https://avatars3.githubusercontent.com/u/5334755?v=3&s=120) |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| [Rocky Wu](https://github.com/rwu823) (Project Lead) | [Timmy Chang](https://github.com/chuanxd) | [Kelly Su](https://github.com/CApopsicle) |
