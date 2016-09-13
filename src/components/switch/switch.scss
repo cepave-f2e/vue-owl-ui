@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.switch {
+  width: 90px;
+  padding: 7px;
+  border: 3px solid #919799;
+  transition: all .3s;
+  border-radius: 25px;
+}
+._toggle {
+  width: 20px;
+  height: 20px;
+  background: #919799;
+  border-radius: 50%;
+  transition: all .3s;
+  left: 0;
+  position: relative;
+  cursor: pointer;
+  padding: 2px 12px;
+  &:hover {
+    background: #8962d9;
+  }
+}
+.switchButton {
+  display: none;
+  &:checked {
+    & + .switch{
+      border: 3px solid #8962d9;
+      label {
+        left: 46px;
+        background: #8962d9;
+      }
+    }
+  }
+}
