@@ -11,9 +11,15 @@
   },
   "jest": {
     "verbose": false,
+    "moduleNameMapper": {
+      "^.+\\.(sc?ss|svg|png|jpg|gif)$": "<rootDir>/test/mock-loader"
+    },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "\\.s?css$"
+    ],
+    "setupFiles": [
+      "./test/setup.js"
     ]
   },
   "keywords": [

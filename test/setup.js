@@ -1,11 +1,18 @@
-const babelJest = require('babel-jest')
+import Vue from 'vue'
 
-module.exports = {
-  process: (src, filename) =>{
-    if (filename.match(/\.(css|less|scss)$/)) {
-      return ''
-    }
+const {body} = document
 
-    return babelJest.process(src, filename)
-  },
+const appendJestApp = ()=> {
+  body.innerHTML = `<div id="jest-app"></div>`
+}
+
+appendJestApp()
+
+global.render = (render)=> {
+  const vm = new Vue({
+    el: '#jest-app',
+    render,
+  })
+  appendJestApp()
+  return vm.$children[0]
 }
