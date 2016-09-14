@@ -57,13 +57,6 @@ module.exports = {
     )
   },
 
-  postcss() {
-    return {
-      syntax: require('postcss-scss'),
-      plugins: [require('precss')],
-    }
-  },
-
   plugins: [
     // new ExtractTextPlugin('app.css'),
     new webpack.optimize.CommonsChunkPlugin({
