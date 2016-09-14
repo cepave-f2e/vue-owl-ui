@@ -18,7 +18,7 @@ module.exports = {
     'value-keyword-case': 'lower',
     'value-no-vendor-prefix': true,
 
-    'max-nesting-depth': 2,
+    'max-nesting-depth': 3,
     'max-empty-lines': 2,
 
     'no-duplicate-selectors': true,
