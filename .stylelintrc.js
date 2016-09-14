@@ -2,7 +2,7 @@ module.exports = {
   rules: {
     'indentation': 2,
 
-    'color-hex-case': 'upper',
+    'color-hex-case': 'lower',
     'color-hex-length': 'short',
     'color-named': 'never',
     'color-no-invalid-hex': true,
