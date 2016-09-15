@@ -30,4 +30,4 @@ devServer
     console.log(`⚡️  Webpack dev server is listening on ${c.cyan(clientConfig.hotPort)}`)
   })
 
-require('piping')({main: './src/server', hook:true})
+require('piping')({ main: './src/server', hook:true })

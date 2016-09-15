@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-const {body} = document
+const { body } = document
 
 const appendJestApp = ()=> {
   body.innerHTML = `<div id="jest-app"></div>`
