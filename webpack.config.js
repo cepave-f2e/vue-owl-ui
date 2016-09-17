@@ -9,14 +9,11 @@ const hotPort = 3032
 const loaders = {
   css: {
     test: /\.s?css$/,
-    loader: isDev ? [
+    loaders: [
       'style',
       'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
       'sass?sourceMap'
-    ].join('!') : ExtractTextPlugin.extract({
-      loader: 'css?modules&localIdentName=[hash:base64:5]!postcss',
-      fallbackLoader: 'style',
-    })
+    ]
   }
 }
 
@@ -50,12 +47,7 @@ module.exports = {
       },
     ].concat(
       isDev
-      ?
-        [loaders.css]
-      :
-        [{
-
-        }]
+        ? [loaders.css]
         : [
             {
               test: /\.s?css$/,

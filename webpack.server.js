@@ -3,7 +3,9 @@ process.env.VUE_ENV = 'server'
 import webpack from 'webpack'
 import base from './webpack.config'
 
+const serverModuleLoaders = Array.from(base.module.loaders)
 const cssLoaderIdx = base.module.loaders.indexOf(base.loaders.css)
+serverModuleLoaders.splice(cssLoaderIdx, 1)
 
 const serverConfig = {
   ...base,
@@ -15,7 +17,10 @@ const serverConfig = {
     libraryTarget: 'commonjs2',
     filename: 'app.server.js'
   },
-  externals: Object.keys(require('./package.json').dependencies).concat('vue-router'),
+  externals: [
+    ...Object.keys(require('./package.json').dependencies),
+    'vue-router',
+  ],
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -25,10 +30,10 @@ const serverConfig = {
     })
   ],
   module: {
-    loaders: base.module.loaders.filter((loader, i)=> i !== cssLoaderIdx).concat({
+    loaders: [...serverModuleLoaders, {
       ...base.loaders.css,
-      loader: base.loaders.css.loader.replace('style!', 'isomorphic-style!'),
-    })
+      loaders: ['isomorphic-style', ...base.loaders.css.loaders.slice(1)],
+    }]
   }
 }
 
