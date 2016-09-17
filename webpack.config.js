@@ -1,5 +1,7 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 const isDev = process.env.NODE_ENV !== 'production'
 const pkg = require('./package.json')
 
@@ -34,9 +36,9 @@ module.exports = {
   watch: isDev,
 
   output: {
-    path: `${__dirname}/static`,
+    path: `${__dirname}/${isDev ? 'static' : 'gh-pages'}` ,
     filename: '[name].js',
-    publicPath: `http://0.0.0.0:${hotPort}/`
+    publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
   },
 
   module: {
@@ -54,11 +56,19 @@ module.exports = {
         [{
 
         }]
+        : [
+            {
+              test: /\.s?css$/,
+              loader: ExtractTextPlugin.extract({
+                loader: 'css?modules&localIdentName=[hash:base64:5]!sass',
+                fallbackLoader: 'style',
+              })
+            }
+          ]
     )
   },
 
   plugins: [
-    // new ExtractTextPlugin('app.css'),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'lib',
       filename: 'lib.js'
@@ -74,8 +84,19 @@ module.exports = {
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NoErrorsPlugin()
         ]
-      : []
+      :
+        [
+          new ExtractTextPlugin('app.css'),
+          new HtmlWebpackPlugin({
+            title: 'Cepave - OWL UI',
+            filename: 'index.html',
+            template: './scripts/gh-pages.html',
+          }),
+          new webpack.optimize.UglifyJsPlugin({
+            compress: {
+              warnings: false
+            }
+          })
+        ]
   ),
-
-  externals: isDev ? [] : Object.keys(pkg.dependencies)
 }

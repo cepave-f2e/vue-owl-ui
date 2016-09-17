@@ -4,8 +4,10 @@
   "description": "Cepave OWL UI Components for VueJS 2.0",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node scripts/start",
     "test": "npm run lint && jest src/ --no-cache --coverage",
     "dev": "babel-node ./scripts/dev",
+    "build": "NODE_ENV=production webpack --progress",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
@@ -54,6 +56,7 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "gulp": "^3.9.1",
+    "html-webpack-plugin": "^2.22.0",
     "isomorphic-style-loader": "^1.0.0",
     "jest-cli": "^15.1.1",
     "node-sass": "^3.10.0",
