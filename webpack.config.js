@@ -2,13 +2,15 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const isDev = process.env.NODE_ENV !== 'production'
+const {NODE_ENV} = process.env
+const isDev = !NODE_ENV
+const isBuild = NODE_ENV === 'build'
 const pkg = require('./package.json')
 
 const hotPort = 3032
 const loaders = {
   css: {
-    test: /\.s?css$/,
+    test: /\.scss$/,
     loaders: [
       'style',
       'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
@@ -17,10 +19,22 @@ const loaders = {
   }
 }
 
+if (!isDev) {
+  const del = require('del')
+
+  if (isBuild) {
+    del('npm')
+  } else {
+    del('gh-pages')
+  }
+}
+
 module.exports = {
   loaders,
   hotPort,
-  entry: {
+  entry: isBuild ? {
+    'owl-ui': ['./src/components']
+  } : {
     lib: ['vue', 'vue-router', 'delegate-to'],
     app: ['./src/client'].concat(
       isDev
@@ -33,7 +47,7 @@ module.exports = {
   watch: isDev,
 
   output: {
-    path: `${__dirname}/${isDev ? 'static' : 'gh-pages'}` ,
+    path: `${__dirname}/${isDev ? 'static' : isBuild ? 'npm/dist' : 'gh-pages'}` ,
     filename: '[name].js',
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
   },
@@ -50,7 +64,7 @@ module.exports = {
         ? [loaders.css]
         : [
             {
-              test: /\.s?css$/,
+              test: /\.scss$/,
               loader: ExtractTextPlugin.extract({
                 loader: 'css?modules&localIdentName=[hash:base64:5]!sass',
                 fallbackLoader: 'style',
@@ -61,34 +75,34 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'lib',
-      filename: 'lib.js'
-    }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        NODE_ENV: JSON.stringify(NODE_ENV || 'development'),
       }
     }),
-  ].concat(
-    isDev
-      ? [
-          new webpack.HotModuleReplacementPlugin(),
-          new webpack.NoErrorsPlugin()
-        ]
-      :
-        [
-          new ExtractTextPlugin('app.css'),
-          new HtmlWebpackPlugin({
-            title: 'Cepave - OWL UI',
-            filename: 'index.html',
-            template: './scripts/gh-pages.html',
-          }),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              warnings: false
-            }
-          })
-        ]
-  ),
+
+    ...isBuild ? [] : [new webpack.optimize.CommonsChunkPlugin({
+      name: 'lib',
+      filename: 'lib.js'
+    })],
+
+    ...isDev ? [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+    ] : isBuild ? [
+      new ExtractTextPlugin('owl-ui.css'),
+    ] : [
+      new ExtractTextPlugin('app.css'),
+      new HtmlWebpackPlugin({
+        title: 'Cepave - OWL UI',
+        filename: 'index.html',
+        template: './scripts/gh-pages.html',
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      })
+    ]
+  ],
 }
