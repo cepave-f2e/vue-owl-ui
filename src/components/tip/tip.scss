@@ -1,0 +1,46 @@
+.tip2 {
+  display: inline-block;
+}
+.tip-context2 {
+  position: absolute;
+  left: -99em;
+  top: -99em;
+  white-space: nowrap;
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+  background: #000;
+  color: #EEE;
+  border-radius: 3px;
+  padding: 4px 8px;
+  z-index: 1111;
+  &:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+  }
+  &[data-pos="down"]:after {
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    border-bottom-color: #000;
+  }
+  &[data-pos="right"]:after {
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: #000;
+  }
+  &[data-pos="left"]:after {
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: #000;
+  }
+  &[data-pos="up"]:after {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: #000;
+  }
+}
