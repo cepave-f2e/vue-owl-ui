@@ -1,17 +1,34 @@
 import Vue from 'vue'
 import router from './router'
+import './app.scss'
 
 module.exports = new Vue({
   router,
+
+  mounted() {
+
+  },
+
+  data() {
+    return {
+      url: {}
+    }
+  },
+
+  computed: {
+    View() {
+      const { $route, url } = this
+
+      return ($route.matched[0].components.default)
+    }
+  },
+
   render(h) {
-    const { $slots, $route } = this
-    const View = ($route.matched[0].components.default)
+    const { $slots, View } = this
 
     return (
       <div id="app">
-        7777
         <View />
-        2222
       </div>
     )
   }

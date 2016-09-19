@@ -1,0 +1,10 @@
+@import "normalize.css/normalize.css";
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+*:after, *:before {
+  content: '';
+}
+
