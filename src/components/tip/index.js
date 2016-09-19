@@ -71,11 +71,7 @@ const Tip = {
   render(h) {
     const { pos, $slots } = this
     return (
-<<<<<<< HEAD
-      <div class={['tip2', { '-hover': show }]} data-pos={pos}>
-=======
       <div class={[s.tip2]} data-pos={pos}>
->>>>>>> 5ee7e2f... remove show
         {$slots.default}
         {$slots.context}
       </div>
@@ -105,7 +101,7 @@ Tip.Context = {
   render(h) {
     const { $slots, setWidth } = this
     return (
-      <div class="tip-context2" slot="context" style={setWidth}>
+      <div class={[s.tipContext2]} slot="context" style={setWidth}>
         {$slots.default}
       </div>
     )
