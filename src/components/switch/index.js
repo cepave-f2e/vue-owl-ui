@@ -1,7 +1,7 @@
 import s from './switch.scss'
 
 const SwitchButton = {
-  name: SwitchButton,
+  name: 'SwitchButton',
   props: {
     checked: {
       type: Boolean,
@@ -33,7 +33,7 @@ const SwitchButton = {
     },
   },
   render(h) {
-    const { handleClick,check } = this
+    const { handleClick, check } = this
     return (
       <div class={[s.wrapper]}>
         <input type="checkbox" class={[s.switchButton]} checked={check}/>
