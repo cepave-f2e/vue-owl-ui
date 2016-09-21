@@ -11,6 +11,8 @@ module.exports = {
     'import',
   ],
   rules: {
+    'comma-style': [2, 'last'],
+    'comma-spacing': ['error', {'before': false, 'after': true}],
     'no-debugger': 1,
     'no-unused-vars': 0,
     // 'comma-dangle': [2, 'always-multiline'],
