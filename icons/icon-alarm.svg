@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/24/icon-alarm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Output-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="out" transform="translate(-597.000000, -105.000000)" fill="#B8BDBF">
+            <path d="M618.12928,126 L599.87072,126 C599.11302,126 598.788053,125.485645 599.144881,124.851175 L608.353902,108.475853 C608.710729,107.841382 609.289271,107.841382 609.646054,108.475853 L618.855119,124.851175 C619.211947,125.485645 618.88698,126 618.12928,126 Z M608,114 L610,114 L610,116.46516 L609.482428,121 L608.530351,121 L608,116.46516 L608,114 Z M608,122 L610,122 L610,124 L608,124 L608,122 Z" id="path"></path>
+        </g>
+    </g>
+</svg>

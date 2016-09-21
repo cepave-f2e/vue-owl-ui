@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/18/icon-radio</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Output-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="out" transform="translate(-214.000000, -377.000000)" fill="#B8BDBF">
+            <path d="M230,386 C230,382.134007 226.865993,379 223,379 C219.134007,379 216,382.134007 216,386 C216,389.865993 219.134007,393 223,393 C226.865993,393 230,389.865993 230,386 Z M218.333333,386 C218.333333,383.422671 220.422671,381.333333 223,381.333333 C225.577329,381.333333 227.666667,383.422671 227.666667,386 C227.666667,388.577329 225.577329,390.666667 223,390.666667 C220.422671,390.666667 218.333333,388.577329 218.333333,386 Z" id="path"></path>
+        </g>
+    </g>
+</svg>
