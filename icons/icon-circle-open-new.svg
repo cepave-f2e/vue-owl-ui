@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/18/circle-open-new</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Output-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="out" transform="translate(-326.000000, -179.000000)" fill="#B8BDBF">
+            <path d="M335.999588,181 C331.581647,181 328,184.582286 328,189 C328,193.418538 331.581647,197 335.999588,197 C340.418353,197 344,193.418538 344,189 C344,184.582286 340.418353,181 335.999588,181 Z M337,184 L337,185.5 L338.5,185.5 L333.5,190.5 L334.5,191.5 L339.5,186.5 L339.5,188 L341.013672,188 L341.013672,184 L337,184 Z M339.5,192.5 L332.5,192.5 L332.5,185.473572 L336,185.473572 L336,184 L332.111111,184 C331.494444,184 331,184.5 331,185.111111 L331,192.888889 C331,193.5 331.494444,194 332.111111,194 L339.888889,194 C340.5,194 341,193.5 341,192.888889 L341,189 L339.5,189 L339.5,192.5 Z" id="path"></path>
+        </g>
+    </g>
+</svg>
