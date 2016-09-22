@@ -31,7 +31,7 @@ const Tip = {
     const _body = document.body
     const _context = $children[0].$el.cloneNode(true)
     _context.style.display = 'block'
-    _context.dataset.pos = pos
+    // _context.dataset.pos = pos
 
     $el.addEventListener(event, (ev)=> {
       _body.appendChild(_context)
