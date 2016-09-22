@@ -5,19 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {NODE_ENV} = process.env
 const isDev = !NODE_ENV
 const isBuild = NODE_ENV === 'build'
-const pkg = require('./package.json')
-
-const hotPort = 3032
-const loaders = {
-  css: {
-    test: /\.scss$/,
-    loaders: [
-      'style',
-      'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
-      'sass?sourceMap'
-    ]
-  }
-}
+const { hotPort, loaders } = require('./share')
 
 if (!isDev) {
   const del = require('del')
@@ -30,8 +18,6 @@ if (!isDev) {
 }
 
 module.exports = {
-  loaders,
-  hotPort,
   entry: isBuild ? {
     'owl-ui': ['./src/components']
   } : {
@@ -43,11 +29,11 @@ module.exports = {
     )
   },
 
-  devtool: isDev ? '#eval': '',
+  devtool: isDev ? '#eval': false,
   watch: isDev,
 
   output: {
-    path: `${__dirname}/${isDev ? 'static' : isBuild ? 'npm/dist' : 'gh-pages'}` ,
+    path: `${__dirname}/../${isDev ? 'static' : isBuild ? 'npm/dist' : 'gh-pages'}` ,
     filename: '[name].js',
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
   },

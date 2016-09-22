@@ -1,26 +1,23 @@
 process.env.VUE_ENV = 'server'
 
 import webpack from 'webpack'
-import base from './webpack.config'
-
+import base from './client'
+import { loaders } from './share'
 const serverModuleLoaders = Array.from(base.module.loaders)
-const cssLoaderIdx = base.module.loaders.indexOf(base.loaders.css)
+const cssLoaderIdx = base.module.loaders.indexOf(loaders.css)
 serverModuleLoaders.splice(cssLoaderIdx, 1)
 
 const serverConfig = {
   ...base,
   target: 'node',
-  devtool: null,
+  devtool: false,
   entry: './src/server/entry',
   output: {
     ...base.output,
     libraryTarget: 'commonjs2',
     filename: 'app.server.js'
   },
-  externals: [
-    ...Object.keys(require('./package.json').dependencies),
-    'vue-router',
-  ],
+  externals: base.entry.lib,
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -31,8 +28,8 @@ const serverConfig = {
   ],
   module: {
     loaders: [...serverModuleLoaders, {
-      ...base.loaders.css,
-      loaders: ['isomorphic-style', ...base.loaders.css.loaders.slice(1)],
+      ...loaders.css,
+      loaders: ['isomorphic-style', ...loaders.css.loaders.slice(1)],
     }]
   }
 }
