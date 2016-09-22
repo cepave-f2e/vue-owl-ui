@@ -1,18 +1,14 @@
 import Vue from 'vue'
 
 const { body } = document
+const div = document.createElement('div')
+div.id = 'jest'
 
-const appendJestApp = ()=> {
-  body.innerHTML = `<div id="jest-app"></div>`
-}
+body.appendChild(div)
 
-appendJestApp()
+window.shallow = (o = {})=> {
+  div.innerHTML = `<div id="test"></div>`
+  const vm = new Vue(o).$mount('#test')
 
-global.render = (render)=> {
-  const vm = new Vue({
-    el: '#jest-app',
-    render,
-  })
-  appendJestApp()
   return vm.$children[0]
 }
