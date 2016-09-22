@@ -20,6 +20,11 @@ const SwitchButton = {
       check: this.checked
     }
   },
+  watch: {
+    checked() {
+      this.check = this.checked
+    }
+  },
   methods: {
     handleClick () {
       const { onChange } = this
