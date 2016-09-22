@@ -4,7 +4,7 @@
 
 <p align="center">  
   <a href="https://travis-ci.org/cepave-f2e/vue-owl-ui" alt="Build Status">
-    <img src="https://img.shields.io/travis/cepave-f2e/vue-owl-ui.svg" />
+    <img src="https://img.shields.io/travis/cepave-f2e/vue-owl-ui/dev.svg" />
   </a>
   <a href="https://coveralls.io/github/cepave-f2e/vue-owl-ui" alt="Coverage">
     <img src="https://img.shields.io/coveralls/cepave-f2e/vue-owl-ui/dev.svg" />
