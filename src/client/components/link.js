@@ -1,5 +1,5 @@
-const Router = {
-  name: 'Router',
+const Link = {
+  name: 'Link',
   props: {
     to: {
       type: String,
@@ -26,5 +26,5 @@ const Router = {
   }
 }
 
-module.exports = Router
+module.exports = Link
 
