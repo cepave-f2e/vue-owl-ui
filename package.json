@@ -38,17 +38,17 @@
   "license": "MIT",
   "dependencies": {
     "delegate-to": "^0.1.2",
-    "vue": "^2.0.0-rc.6"
+    "vue": "^2.0.0-rc.8"
   },
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-eslint": "^6.1.2",
+    "babel-cli": "^6.16.0",
+    "babel-eslint": "^7.0.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.1",
     "babel-loader": "^6.2.5",
     "babel-plugin-syntax-jsx": "^6.13.0",
     "babel-plugin-transform-vue-jsx": "^3.1.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-stage-2": "^6.13.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-2": "^6.16.0",
     "chalk": "^1.1.3",
     "coveralls": "^2.11.14",
     "css-loader": "^0.25.0",
@@ -70,8 +70,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.3.1",
-    "vue-router": "^2.0.0-rc.5",
-    "vue-server-renderer": "^2.0.0-rc.6",
+    "vue-router": "^2.0.0-rc.6",
+    "vue-server-renderer": "^2.0.0-rc.8",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-middleware": "^1.8.1",
     "webpack-hot-middleware": "^2.12.2"
