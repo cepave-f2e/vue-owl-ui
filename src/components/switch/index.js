@@ -9,7 +9,7 @@ const SwitchButton = {
     },
     name: {
       type: String,
-      default: ''
+      default: 'data'
     },
     onChange: {
       type: Function,
@@ -27,7 +27,7 @@ const SwitchButton = {
   },
   methods: {
     handleClick () {
-      const { onChange } = this
+      const { onChange, name } = this
       this.check = !this.check
       const data = {
         [name]: this.check
@@ -43,7 +43,7 @@ const SwitchButton = {
       <div class={[s.wrapper]}>
         <input type="checkbox" class={[s.switchButton]} checked={check}/>
         <div class={[s.switch]}>
-          <label class={[s._toggle]} on-click={handleClick}></label>
+          <label class={[s.toggle]} on-click={handleClick}></label>
         </div>
       </div>
     )

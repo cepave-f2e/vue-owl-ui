@@ -11,14 +11,14 @@ it('default status should be checked', () => {
   expect(vm.check).toBe(true)
 })
 
-it('status and output data should be changed to `false` after one click', async() => {
+it('test props `name`, status, and output data after one clicking', async() => {
   const switchChange = (data) => {
-    expect(Object.values(data)[0]).toBe(false)
+    expect(data).toEqual({ test: false })
   }
   const vm = shallow({
     render(h) {
       return (
-        <Switch checked={true} onChange={switchChange}/>
+        <Switch name="test" checked={true} onChange={switchChange}/>
       )
     }
   })
