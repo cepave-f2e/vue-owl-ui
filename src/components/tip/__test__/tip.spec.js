@@ -17,11 +17,11 @@ it('test Tip default porps', () => {
   expect(vm.event).toBe('mouseenter')
 })
 
-it('test Tip props set `pos`=right and mouse event', async() => {
+it('test mouse event', async() => {
   const vm = shallow({
     render(h) {
       return (
-        <Tip pos="right">
+        <Tip>
           tip
           <Tip.Context>
             tipContext
@@ -30,7 +30,7 @@ it('test Tip props set `pos`=right and mouse event', async() => {
       )
     }
   })
-  expect(vm.pos).toBe('right')
+
   //when mouse enters
   const eventEnter = document.createEvent('HTMLEvents')
   eventEnter.initEvent('mouseenter', true, false)
@@ -50,6 +50,26 @@ it('test Tip props set `pos`=right and mouse event', async() => {
   vm.$el.dispatchEvent(eventLeave)
   //tipContext should disappear
   expect(document.querySelector('#tipContext2')).toBe(null)
+})
+
+it('test Tip props set `pos`=right', () => {
+  const vm = shallow({
+    render(h) {
+      return (
+        <Tip pos="right">
+          tip
+          <Tip.Context>
+            tipContext
+          </Tip.Context>
+        </Tip>
+      )
+    }
+  })
+  expect(vm.pos).toBe('right')
+
+  const eventEnter = document.createEvent('HTMLEvents')
+  eventEnter.initEvent('mouseenter', true, false)
+  vm.$el.dispatchEvent(eventEnter)
 })
 
 it('test Tip props set `pos`=left', () => {
