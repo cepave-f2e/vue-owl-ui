@@ -65,6 +65,7 @@
     "isomorphic-style-loader": "^1.0.0",
     "jest-cli": "^15.1.1",
     "mark-it-down": "^0.2.2",
+    "node-sass": "^3.10.1",
     "normalize.css": "^4.2.0",
     "piping": "^1.0.0-rc.3",
     "raw-loader": "^0.5.1",
