@@ -8,6 +8,7 @@ module.exports = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/home', component: require('./views/home') },
+    { path: '/loading', component: require('./views/loading') },
     { path: '*', redirect: '/home' },
   ],
 })
