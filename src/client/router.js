@@ -10,6 +10,7 @@ module.exports = new Router({
     { path: '/home', component: require('./views/home') },
     { path: '/loading', component: require('./views/loading') },
     { path: '/switch', component: require('./views/switch') },
+    { path: '/icons', component: require('./views/icons') },
     { path: '*', redirect: '/home' },
   ],
 })
