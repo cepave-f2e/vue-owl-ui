@@ -12,6 +12,7 @@
     "build.ui": "babel-node ./scripts/build.ui",
     "build.svg": "babel-node ./scripts/build.svg",
     "build.demo": "NODE_ENV=production npm run pack.client",
+    "postinstall": "npm run build.svg",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
