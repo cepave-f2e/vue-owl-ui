@@ -7,9 +7,10 @@
     "start": "babel-node scripts/start",
     "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest src/ --no-cache --coverage",
     "dev": "babel-node ./scripts/dev",
+    "pack.client": "webpack --progress --colors --config webpack/client",
     "build": "npm run build.ui & npm run build.demo",
-    "build.ui": "NODE_ENV=build webpack --progress --config webpack/client && babel-node ./scripts/build.ui",
-    "build.demo": "NODE_ENV=production webpack --progress --config webpack/client",
+    "build.ui": "babel-node ./scripts/build.ui",
+    "build.demo": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
