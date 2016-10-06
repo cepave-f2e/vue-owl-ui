@@ -5,7 +5,7 @@
   "main": "./dist/owl-ui",
   "scripts": {
     "start": "babel-node scripts/start",
-    "test": "npm run lint && jest src/ --no-cache --coverage",
+    "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest src/ --no-cache --coverage",
     "dev": "babel-node ./scripts/dev",
     "build": "npm run build.ui & npm run build.demo",
     "build.ui": "NODE_ENV=build webpack --progress --config webpack/client && babel-node ./scripts/build.ui",
@@ -14,10 +14,6 @@
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
   "jest": {
-    "verbose": false,
-    "moduleNameMapper": {
-      "^.+\\.(sc?ss|svg|png|jpg|gif)$": "<rootDir>/test/mock-loader"
-    },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "\\.s?css$"
@@ -47,6 +43,7 @@
     "babel-loader": "^6.2.5",
     "babel-plugin-syntax-jsx": "^6.13.0",
     "babel-plugin-transform-vue-jsx": "^3.1.0",
+    "babel-plugin-webpack-loaders": "^0.8.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-stage-2": "^6.17.0",
     "chalk": "^1.1.3",
