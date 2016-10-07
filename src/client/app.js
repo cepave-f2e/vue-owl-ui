@@ -57,6 +57,9 @@ module.exports = new Vue({
               <li>Select</li>
               <li>Checkbox</li>
               <li>Input</li>
+              <li>
+                <router-link to="/loading">Loading</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>
