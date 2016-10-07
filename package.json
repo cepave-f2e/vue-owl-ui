@@ -7,6 +7,8 @@
     "start": "babel-node scripts/start",
     "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest src/ --no-cache --coverage",
     "dev": "babel-node ./scripts/dev",
+    "dev.ssr": "babel-node ./scripts/dev.ssr",
+    "pack.client": "webpack --progress --colors --config webpack/client",
     "build": "npm run build.ui & npm run build.demo",
     "build.ui": "NODE_ENV=build webpack --progress --config webpack/client && babel-node ./scripts/build.ui",
     "build.demo": "NODE_ENV=production webpack --progress --config webpack/client",
