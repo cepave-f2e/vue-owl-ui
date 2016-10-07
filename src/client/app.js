@@ -54,6 +54,10 @@ module.exports = new Vue({
                 <router-link to="/home">Home</router-link>
               </li>
               <li>Select</li>
+              <li>
+                <router-link to="/select">Select</router-link>
+              </li>
+              <li>Checkbox</li>
               <li>Input</li>
               <li>
                 <router-link to="/icons">Icon</router-link>

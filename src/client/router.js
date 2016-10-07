@@ -9,6 +9,7 @@ module.exports = new Router({
   routes: [
     { path: '/home', component: require('./views/home') },
     { path: '/loading', component: require('./views/loading') },
+    { path: '/select', component: require('./views/select') },
     { path: '/switch', component: require('./views/switch') },
     { path: '/icons', component: require('./views/icons') },
     { path: '/tip', component: require('./views/tip') },
