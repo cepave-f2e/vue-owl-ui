@@ -1,4 +1,17 @@
 {
   "presets": ["es2015", "stage-2"],
-  "plugins": ["transform-vue-jsx"]
+  "plugins": ["transform-vue-jsx"],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "webpack-loaders",
+          {
+            "config": "./webpack/test.js",
+            "verbose": false
+          }
+        ]
+      ]
+    }
+  }
 }

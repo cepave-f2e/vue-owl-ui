@@ -12,3 +12,5 @@ window.shallow = (o = {})=> {
 
   return vm.$children[0]
 }
+
+window.$ = require('cash-dom')

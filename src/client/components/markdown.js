@@ -18,14 +18,16 @@ const Markdown = {
   },
 
   mounted() {
+    const { md, $el } = this
 
+    md.mountToTextArea($el)
   },
 
   render(h) {
-    const { src, md } = this
+    const { src } = this
 
     return (
-      <div domProps-innerHTML={md.toHTML(src)} />
+      <textarea hidden>{src}</textarea>
     )
   }
 }
