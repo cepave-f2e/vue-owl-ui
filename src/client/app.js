@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import router from './router'
 import s from './app.scss'
+import svg from 'raw!~dist/owl-ui.svg'
 
 module.exports = new Vue({
   router,
 
   mounted() {
-
+    const div = document.createElement('div')
+    div.innerHTML = svg
+    div.id = 'owl-svg-icons'
+    document.body.appendChild(div)
   },
 
   data() {
