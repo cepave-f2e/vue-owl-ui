@@ -38,6 +38,13 @@ module.exports = {
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
   },
 
+  resolve: {
+    alias: {
+      '~dist': `${__dirname}/../dist`,
+      '~com': `${__dirname}/../src/components`,
+    }
+  },
+
   module: {
     loaders: [
       {
