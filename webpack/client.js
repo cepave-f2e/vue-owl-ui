@@ -14,7 +14,7 @@ module.exports = {
   entry: isBuild || isTemp ? {
     'owl-ui': ['./src/components']
   } : {
-    lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down'],
+    lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down', 'owl-icons'],
     app: ['./src/client'].concat(
       isDev
         ? [`webpack-hot-middleware/client?path=http://0.0.0.0:${hotPort}/__webpack_hmr`]
