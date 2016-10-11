@@ -8,3 +8,4 @@ node_modules
 /gh-pages
 /dist
 /npm
+yarn.lock
