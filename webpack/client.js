@@ -33,7 +33,7 @@ module.exports = {
   watch: isDev,
 
   output: {
-    path: `${__dirname}/../${isDev ? 'static' : isBuild ? 'npm/dist' : 'gh-pages'}` ,
+    path: `${__dirname}/../${isDev ? 'dist' : isBuild ? 'npm/dist' : 'gh-pages'}`,
     filename: '[name].js',
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
   },
