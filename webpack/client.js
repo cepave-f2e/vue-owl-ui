@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const {NODE_ENV} = process.env
+const { NODE_ENV } = process.env
 const isDev = !NODE_ENV
 const isBuild = NODE_ENV === 'build'
 const { hotPort, loaders } = require('./share')
@@ -29,7 +29,7 @@ module.exports = {
     )
   },
 
-  devtool: isDev ? '#eval': false,
+  devtool: isDev ? '#eval' : false,
   watch: isDev,
 
   output: {
