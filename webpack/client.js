@@ -10,18 +10,8 @@ const isProd = NODE_ENV === 'production'
 
 const { hotPort, loaders } = require('./share')
 
-if (!isDev) {
-  const del = require('del')
-
-  if (isBuild) {
-    del('npm')
-  } else {
-    del('gh-pages')
-  }
-}
-
 module.exports = {
-  entry: isBuild ? {
+  entry: isBuild || isTemp ? {
     'owl-ui': ['./src/components']
   } : {
     lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down'],
@@ -39,6 +29,7 @@ module.exports = {
     path: `${__dirname}/../${isBuild ? 'npm/dist' : isProd ? 'gh-pages' : 'dist'}`,
     filename: '[name].js',
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
+    libraryTarget: isBuild ? 'commonjs2' : 'var',
   },
 
   resolve: {
@@ -96,7 +87,7 @@ module.exports = {
     ...isDev ? [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin()
-    ] : isBuild ? [
+    ] : isBuild || isTemp ? [
       new ExtractTextPlugin('owl-ui.css'),
     ] : [
       new ExtractTextPlugin('app.css'),
