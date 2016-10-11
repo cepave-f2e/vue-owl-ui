@@ -11,6 +11,7 @@ module.exports = new Router({
     { path: '/loading', component: require('./views/loading') },
     { path: '/switch', component: require('./views/switch') },
     { path: '/icons', component: require('./views/icons') },
+    { path: '/tip', component: require('./views/tip') },
     { path: '*', redirect: '/home' },
   ],
 })
