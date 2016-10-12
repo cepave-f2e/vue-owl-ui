@@ -1,0 +1,15 @@
+.cbGroup{
+  position: relative;
+}
+.cb{
+  display: inline-block;
+  cursor: pointer;
+  svg{
+    vertical-align: middle;
+  }
+  &:hover{
+    svg{
+      fill: #ddd;
+    }
+  }
+}
