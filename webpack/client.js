@@ -2,23 +2,16 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const {NODE_ENV} = process.env
+const { NODE_ENV } = process.env
 const isDev = !NODE_ENV
 const isBuild = NODE_ENV === 'build'
+const isTemp = NODE_ENV === 'temp'
+const isProd = NODE_ENV === 'production'
+
 const { hotPort, loaders } = require('./share')
 
-if (!isDev) {
-  const del = require('del')
-
-  if (isBuild) {
-    del('npm')
-  } else {
-    del('gh-pages')
-  }
-}
-
 module.exports = {
-  entry: isBuild ? {
+  entry: isBuild || isTemp ? {
     'owl-ui': ['./src/components']
   } : {
     lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down'],
@@ -29,13 +22,21 @@ module.exports = {
     )
   },
 
-  devtool: isDev ? '#eval': false,
+  devtool: isDev ? '#eval' : false,
   watch: isDev,
 
   output: {
-    path: `${__dirname}/../${isDev ? 'static' : isBuild ? 'npm/dist' : 'gh-pages'}` ,
+    path: `${__dirname}/../${isBuild ? 'npm/dist' : isProd ? 'gh-pages' : 'dist'}`,
     filename: '[name].js',
     publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
+    libraryTarget: isBuild ? 'commonjs2' : 'var',
+  },
+
+  resolve: {
+    alias: {
+      '~dist': `${__dirname}/../dist`,
+      '~com': `${__dirname}/../src/components`,
+    }
   },
 
   module: {
@@ -71,23 +72,25 @@ module.exports = {
       }
     }),
 
-    ...isBuild ? [] : [new webpack.optimize.CommonsChunkPlugin({
-      name: 'lib',
-      filename: 'lib.js'
-    })],
-
-    ...isDev ? [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ] : isBuild ? [
-      new ExtractTextPlugin('owl-ui.css'),
-    ] : [
-      new ExtractTextPlugin('app.css'),
+    ...isBuild || isTemp? [] : [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'lib',
+        filename: 'lib.js'
+      }),
       new HtmlWebpackPlugin({
         title: 'Cepave - OWL UI',
         filename: 'index.html',
         template: './scripts/gh-pages.html',
       }),
+    ],
+
+    ...isDev ? [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+    ] : isBuild || isTemp ? [
+      new ExtractTextPlugin('owl-ui.css'),
+    ] : [
+      new ExtractTextPlugin('app.css'),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false

@@ -3,7 +3,7 @@ import { createBundleRenderer } from 'vue-server-renderer'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const appServerPath = `${__dirname}/../../static/app.server.js`
+const appServerPath = `${__dirname}/../../dist/app.server.js`
 let appServerData
 
 if (isProd) {

@@ -16,15 +16,11 @@ module.exports = new Vue({
   },
 
   computed: {
-    View() {
-      const { $route } = this
 
-      return ($route.matched[0].components.default)
-    }
   },
 
   render(h) {
-    const { $slots, View } = this
+    const { $slots } = this
 
     return (
       <div id="app">
@@ -63,7 +59,7 @@ module.exports = new Vue({
             </ul>
           </aside>
           <div class={[s.view]}>
-            <View />
+            <router-view />
           </div>
         </div>
 
