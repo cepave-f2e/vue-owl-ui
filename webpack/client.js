@@ -72,7 +72,7 @@ module.exports = {
       }
     }),
 
-    ...isBuild || isTemp? [] : [
+    ...isBuild || isTemp ? [] : [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'lib',
         filename: 'lib.js'
