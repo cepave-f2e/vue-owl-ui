@@ -56,6 +56,9 @@ module.exports = new Vue({
               <li>
                 <router-link to="/loading">Loading</router-link>
               </li>
+              <li>
+                <router-link to="/switch">Switch</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>

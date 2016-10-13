@@ -6,20 +6,20 @@
 .switch {
   width: 90px;
   padding: 7px;
-  border: 3px solid #919799;
+  border: 3px solid #b8bdbf;
   transition: all .3s;
   border-radius: 25px;
 }
 .toggle {
   width: 20px;
   height: 20px;
-  background: #919799;
+  background: #b8bdbf;
   border-radius: 50%;
   transition: all .3s;
   left: 0;
   position: relative;
   cursor: pointer;
-  padding: 2px 12px;
+  padding: 1px 14px;
   &:hover {
     background: #8962d9;
   }
@@ -30,7 +30,7 @@
     & + .switch{
       border: 3px solid #8962d9;
       label {
-        left: 46px;
+        left: 43px;
         background: #8962d9;
       }
     }
