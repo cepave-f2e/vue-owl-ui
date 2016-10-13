@@ -75,14 +75,11 @@ it('Test Select component clicked option', () => {
   })
 
   // Mock mouse clicked event
-  const clickEvent = document.createEvent('HTMLEvents')
-  clickEvent.initEvent('click', true, false)
-
   const optionItem = vm.$el.children[1].children[1]
-  optionItem.dispatchEvent(clickEvent)
+  $(optionItem).trigger('click')
 
   // testing clicked same option
-  optionItem.dispatchEvent(clickEvent)
+  $(optionItem).trigger('click')
   expect(vm.d.selectedIdx === +optionItem.getAttribute('data-idx')).toBe(true)
 })
 
@@ -103,9 +100,7 @@ it('Test Select component blur event', () => {
   vm.opened = true
 
   // Testing blur event
-  const blurEvent = document.createEvent('HTMLEvents')
-  blurEvent.initEvent('blur', true, false)
-  vm.$el.dispatchEvent(blurEvent)
+  $(vm.$el).trigger('blur')
 
   expect(vm.opened).toBe(false)
 })
