@@ -32,9 +32,7 @@ it('test mouse event', async() => {
   })
 
   //when mouse enters
-  const eventEnter = document.createEvent('HTMLEvents')
-  eventEnter.initEvent('mouseenter', true, false)
-  vm.$el.dispatchEvent(eventEnter)
+  $(vm.$el).trigger('mouseenter')
   //tipContext should show up
   const tipContext2 = document.querySelector('#tipContext2')
   expect(getComputedStyle(tipContext2)._values.display).toBe('block')
@@ -45,9 +43,7 @@ it('test mouse event', async() => {
   })
   expect(getComputedStyle(tipContext2)._values.opacity).toBe('1')
   //when mouse leaves
-  const eventLeave = document.createEvent('HTMLEvents')
-  eventLeave.initEvent('mouseleave', true, false)
-  vm.$el.dispatchEvent(eventLeave)
+  $(vm.$el).trigger('mouseleave')
   //tipContext should disappear
   expect(document.querySelector('#tipContext2')).toBe(null)
 })
@@ -67,9 +63,7 @@ it('test Tip props set `pos`=right', () => {
   })
   expect(vm.pos).toBe('right')
 
-  const eventEnter = document.createEvent('HTMLEvents')
-  eventEnter.initEvent('mouseenter', true, false)
-  vm.$el.dispatchEvent(eventEnter)
+  $(vm.$el).trigger('mouseenter')
 })
 
 it('test Tip props set `pos`=left', () => {
@@ -87,9 +81,7 @@ it('test Tip props set `pos`=left', () => {
   })
   expect(vm.pos).toBe('left')
 
-  const eventEnter = document.createEvent('HTMLEvents')
-  eventEnter.initEvent('mouseenter', true, false)
-  vm.$el.dispatchEvent(eventEnter)
+  $(vm.$el).trigger('mouseenter')
 })
 
 it('test Tip props set `pos`=up', () => {
@@ -107,9 +99,7 @@ it('test Tip props set `pos`=up', () => {
   })
   expect(vm.pos).toBe('up')
 
-  const eventEnter = document.createEvent('HTMLEvents')
-  eventEnter.initEvent('mouseenter', true, false)
-  vm.$el.dispatchEvent(eventEnter)
+  $(vm.$el).trigger('mouseenter')
 })
 
 it('test Tip props set `pos`=down', () => {
@@ -127,7 +117,5 @@ it('test Tip props set `pos`=down', () => {
   })
   expect(vm.pos).toBe('down')
 
-  const eventEnter = document.createEvent('HTMLEvents')
-  eventEnter.initEvent('mouseenter', true, false)
-  vm.$el.dispatchEvent(eventEnter)
+  $(vm.$el).trigger('mouseenter')
 })
