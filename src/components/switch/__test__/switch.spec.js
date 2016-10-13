@@ -29,6 +29,21 @@ it('test props `name`, status, and output data after one clicking', async() => {
   expect(vm.check).toBe(false)
 })
 
+it('test the condition without `onChange`', async() => {
+  const vm = shallow({
+    render(h) {
+      return (
+        <Switch name="test" checked={true} />
+      )
+    }
+  })
+  vm.handleClick()
+  await new Promise((done) => {
+    vm.$nextTick(done)
+  })
+  expect(vm.check).toBe(false)
+})
+
 it('`check` should be changed after dynamic updates', async() => {
   let vm
   await new Promise((done) => {
