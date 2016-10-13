@@ -6,6 +6,7 @@
   "scripts": {
     "start": "babel-node scripts/start",
     "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest src/ --no-cache --coverage",
+    "test.watch": "npm run lint && BABEL_DISABLE_CACHE=1 jest src/ --no-cache --coverage --watch",
     "dev": "babel-node ./scripts/dev",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
