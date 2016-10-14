@@ -40,7 +40,7 @@
   "dependencies": {
     "delegate-to": "^0.1.2",
     "owl-icons": "github:cepave-f2e/owl-icons",
-    "vue": "^2.0.2"
+    "vue": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
@@ -79,8 +79,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.3.1",
-    "vue-router": "^2.0.0",
-    "vue-server-renderer": "^2.0.2",
+    "vue-router": "^2.0.1",
+    "vue-server-renderer": "^2.0.3",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-middleware": "^1.8.1",
     "webpack-hot-middleware": "^2.12.2"

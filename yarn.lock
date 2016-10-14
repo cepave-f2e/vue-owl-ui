@@ -1965,7 +1965,7 @@ enhanced-resolve@^2.2.0, enhanced-resolve@^2.2.2:
     object-assign "^4.0.1"
     tapable "^0.2.3"
 
-entities@^1.1.1, entities@~1.1.1:
+entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
@@ -2862,7 +2862,7 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-he@1.1.x:
+he@^1.1.0, he@1.1.x:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.0.tgz#29319d49beec13a9b1f3c4f9b2a6dde4859bb2a7"
 
@@ -4495,6 +4495,10 @@ output-file-sync@^1.1.0:
     graceful-fs "^4.1.4"
     mkdirp "^0.5.1"
     object-assign "^4.1.0"
+
+"owl-icons@github:cepave-f2e/owl-icons":
+  version "1.0.0-1476961919596"
+  resolved "https://codeload.github.com/cepave-f2e/owl-icons/tar.gz/0b195cd2948126672322e7b1d4f5cd235d593c52"
 
 pako@~0.2.0:
   version "0.2.9"
@@ -6139,20 +6143,20 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-router@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.0.0.tgz#f3dec883a89733fef5c79f27cdab67456f7891a4"
+vue-router@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.0.1.tgz#88b83cdc9497bad5b20b579e847a7e7240e221dd"
 
-vue-server-renderer@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/vue-server-renderer/-/vue-server-renderer-2.0.2.tgz#0e8c77b3f4bed21261e975884ae1887c98d5f1a1"
+vue-server-renderer@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue-server-renderer/-/vue-server-renderer-2.0.3.tgz#8a94a6707b517970336aacbb982023720fb7f53c"
   dependencies:
     de-indent "^1.0.2"
-    entities "^1.1.1"
+    he "^1.1.0"
 
-vue@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.2.tgz#ae1c01ce74a5d44d41ece96b82849c11e1d45e6d"
+vue@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.3.tgz#3f7698f83d6ad1f0e35955447901672876c63fde"
 
 walker@~1.0.5:
   version "1.0.7"
