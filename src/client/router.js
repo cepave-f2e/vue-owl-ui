@@ -12,6 +12,7 @@ module.exports = new Router({
     { path: '/switch', component: require('./views/switch') },
     { path: '/icons', component: require('./views/icons') },
     { path: '/tip', component: require('./views/tip') },
+    { path: '/checkbox', component: require('./views/checkbox') },
     { path: '*', redirect: '/home' },
   ],
 })
