@@ -17,7 +17,7 @@ it('test Tip default porps', () => {
   expect(vm.event).toBe('mouseenter')
 })
 
-it('test mouse event', async() => {
+it('test mouse hover event', async() => {
   const vm = shallow({
     render(h) {
       return (
