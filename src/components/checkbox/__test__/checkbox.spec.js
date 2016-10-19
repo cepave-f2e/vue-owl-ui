@@ -12,6 +12,8 @@ it('set <Checkbox> `checked`, and `name` props', () => {
     }
   })
 
+  expect(vm.$children[0].name).toBe('1')
+  expect(vm.$children[1].name).toBe('2')
   expect(vm.$children[0].check).toBe(true)
   expect(vm.$children[1].check).toBe(false)
 })
@@ -119,11 +121,12 @@ it('test Checkbox `checked` dynamic updates', async() => {
       }
     })
   })
+  expect(vm.$children[0].check).toBe(true)
 })
 
-it('test <Checkbox> `onChange` props', async() => {
+it('test <Checkbox> `onChange` props', () => {
   const getCheckboxData = (data) => {
-    expect(data).toEqual({ 1 : false })
+    expect(data).toEqual({ 1: false })
   }
   const vm = shallow({
     render(h) {
@@ -138,14 +141,11 @@ it('test <Checkbox> `onChange` props', async() => {
 
   //First Element is clicked
   $(vm.$children[0].$el).trigger('click')
-  await new Promise((done) => {
-    vm.$nextTick(done)
-  })
 })
 
-it('test <Checkbox.Group> `onChange` props', async() => {
+it('test <Checkbox.Group> `onChange` props', () => {
   const getCheckboxData = (data) => {
-    expect(data).toEqual({ all : false, 1 : false, 2 : true })
+    expect(data).toEqual({ all: false, 1: false, 2: true })
   }
   const vm = shallow({
     render(h) {
@@ -161,7 +161,4 @@ it('test <Checkbox.Group> `onChange` props', async() => {
 
   //First Element is clicked
   $(vm.$children[1].$el).trigger('click')
-  await new Promise((done) => {
-    vm.$nextTick(done)
-  })
 })
