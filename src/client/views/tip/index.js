@@ -9,7 +9,7 @@ const TipPage = {
 
     return (
       <div>
-        <Markdown src={require('./tip.md')}/>
+        <Markdown src={ require('./doc.md') }/>
         <Tip pos="right">
           hover me
           <Tip.Context>

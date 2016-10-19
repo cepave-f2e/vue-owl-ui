@@ -1,6 +1,6 @@
-#Tip
+# Tip
 
-##Props
+## Props
 
 ```js
 props: {
@@ -15,7 +15,7 @@ props: {
 }
 ```
 
-##Usage
+## Usage
 
 ```jsx
 <Tip pos="right">
@@ -26,4 +26,4 @@ props: {
 </Tip>
 ```
 
-##Demo
+## Demo
