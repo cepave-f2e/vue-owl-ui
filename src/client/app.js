@@ -50,6 +50,9 @@ module.exports = new Vue({
         <div class={[s.main]}>
           <aside>
             <ul>
+              <li>
+                <router-link to="/home">Home</router-link>
+              </li>
               <li>Select</li>
               <li>Checkbox</li>
               <li>Input</li>
@@ -61,6 +64,9 @@ module.exports = new Vue({
               </li>
               <li>
                 <router-link to="/tip">Tip</router-link>
+              </li>
+              <li>
+                <router-link to="/checkbox">Checkbox</router-link>
               </li>
             </ul>
           </aside>
