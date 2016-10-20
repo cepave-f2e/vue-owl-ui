@@ -13,7 +13,8 @@
     "build.ui": "babel-node ./scripts/build.ui",
     "build.demo": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
-    "coveralls": "cat coverage/lcov.info | coveralls"
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "lint-md": "remark ."
   },
   "jest": {
     "coveragePathIgnorePatterns": [
@@ -23,6 +24,9 @@
     "setupFiles": [
       "./test/setup.js"
     ]
+  },
+  "remarkConfig": {
+    "presets": ["lint-recommended"]
   },
   "keywords": [
     "design",
