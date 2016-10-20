@@ -11,7 +11,7 @@ it('default status should be checked', () => {
   expect(vm.check).toBe(true)
 })
 
-it('test props `name`, status, and output data after one clicking', async() => {
+it('test props `name`, status, and output data after one clicking', () => {
   const switchChange = (data) => {
     expect(data).toEqual({ test: false })
   }
@@ -23,13 +23,10 @@ it('test props `name`, status, and output data after one clicking', async() => {
     }
   })
   vm.handleClick()
-  await new Promise((done) => {
-    vm.$nextTick(done)
-  })
   expect(vm.check).toBe(false)
 })
 
-it('test the condition without `onChange`', async() => {
+it('test the condition without `onChange`', () => {
   const vm = shallow({
     render(h) {
       return (
@@ -38,9 +35,6 @@ it('test the condition without `onChange`', async() => {
     }
   })
   vm.handleClick()
-  await new Promise((done) => {
-    vm.$nextTick(done)
-  })
   expect(vm.check).toBe(false)
 })
 
