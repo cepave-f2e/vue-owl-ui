@@ -38,7 +38,7 @@ const Icon = {
 
     return (
       <svg width={cSize.width} height={cSize.height} domProps-innerHTML={
-        `<use xlink:href="#${typ}"></use>`
+        `<use xlink:href="#owl-icons-${typ}"></use>`
       } />
     )
   }

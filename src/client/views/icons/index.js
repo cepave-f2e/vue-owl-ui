@@ -15,6 +15,7 @@ const IconPage = {
         <Markdown src={require('./doc.md')} />
 
         { icons.map((typ)=> {
+          typ = typ.replace(/^owl-icons-/, '')
           return (
             <div class={[s.icons]}>
               <Icon typ={typ} size={30} />
