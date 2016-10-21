@@ -22,6 +22,9 @@
     ],
     "setupFiles": [
       "./test/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/components/*/index.js"
     ]
   },
   "keywords": [
