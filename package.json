@@ -13,7 +13,8 @@
     "build.ui": "babel-node ./scripts/build.ui",
     "build.demo": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
-    "coveralls": "cat coverage/lcov.info | coveralls"
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "lint-md": "remark ."
   },
   "jest": {
     "coveragePathIgnorePatterns": [
@@ -26,6 +27,9 @@
     "collectCoverageFrom": [
       "src/components/*/index.js"
     ]
+  },
+  "remarkConfig": {
+    "presets": ["lint-recommended"]
   },
   "keywords": [
     "design",
@@ -76,6 +80,9 @@
     "normalize.css": "^5.0.0",
     "piping": "^1.0.0-rc.3",
     "raw-loader": "^0.5.1",
+    "remark-cli": "^2.0.0",
+    "remark-lint": "^5.1.0",
+    "remark-preset-lint-recommended": "^1.0.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.3.1",
