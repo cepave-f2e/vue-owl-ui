@@ -40,10 +40,10 @@ const SwitchButton = {
   render(h) {
     const { handleClick, check } = this
     return (
-      <div class={[s.wrapper]}>
+      <div class={[s.wrapper]} on-click={handleClick}>
         <input type="checkbox" class={[s.switchButton]} checked={check}/>
         <div class={[s.switch]}>
-          <label class={[s.toggle]} on-click={handleClick}></label>
+          <label class={[s.toggle]}></label>
         </div>
       </div>
     )

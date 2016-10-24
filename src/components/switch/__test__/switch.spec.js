@@ -9,9 +9,10 @@ it('default status should be checked', () => {
     }
   })
   expect(vm.check).toBe(true)
+  $(vm.$el).trigger('click')
 })
 
-it('test props `name`, status, and output data after one clicking', async() => {
+it('test props `name`, status, and output data after one clicking', () => {
   const switchChange = (data) => {
     expect(data).toEqual({ test: false })
   }
@@ -22,10 +23,7 @@ it('test props `name`, status, and output data after one clicking', async() => {
       )
     }
   })
-  vm.handleClick()
-  await new Promise((done) => {
-    vm.$nextTick(done)
-  })
+  $(vm.$el).trigger('click')
   expect(vm.check).toBe(false)
 })
 
