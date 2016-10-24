@@ -9,6 +9,7 @@ it('default status should be checked', () => {
     }
   })
   expect(vm.check).toBe(true)
+  $(vm.$el).trigger('click')
 })
 
 it('test props `name`, status, and output data after one clicking', () => {
@@ -22,19 +23,7 @@ it('test props `name`, status, and output data after one clicking', () => {
       )
     }
   })
-  vm.handleClick()
-  expect(vm.check).toBe(false)
-})
-
-it('test the condition without `onChange`', () => {
-  const vm = shallow({
-    render(h) {
-      return (
-        <Switch name="test" checked={true} />
-      )
-    }
-  })
-  vm.handleClick()
+  $(vm.$el).trigger('click')
   expect(vm.check).toBe(false)
 })
 
