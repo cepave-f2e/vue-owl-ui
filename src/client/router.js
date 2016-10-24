@@ -13,6 +13,7 @@ module.exports = new Router({
     { path: '/icons', component: require('./views/icons') },
     { path: '/tip', component: require('./views/tip') },
     { path: '/checkbox', component: require('./views/checkbox') },
+    { path: '/radio', component: require('./views/radio') },
     { path: '*', redirect: '/home' },
   ],
 })

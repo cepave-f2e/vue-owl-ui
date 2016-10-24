@@ -1,0 +1,15 @@
+.radio{
+  display: inline-block;
+  cursor: pointer;
+  svg{
+    vertical-align: middle;
+  }
+  &:hover{
+    svg[data-radio] {
+      fill: #6c7173;
+    }
+  }
+}
+.raGroup{
+  position: relative;
+}
