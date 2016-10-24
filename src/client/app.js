@@ -68,6 +68,9 @@ module.exports = new Vue({
               <li>
                 <router-link to="/checkbox">Checkbox</router-link>
               </li>
+              <li>
+                <router-link to="/radio">Radio</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>
