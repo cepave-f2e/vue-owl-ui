@@ -32,6 +32,14 @@ const Input = {
     }
   },
 
+  data() {
+    return {
+      pwdStatus: true,
+      pwdFill: '#8962d9',
+      pwdInput: 'text'
+    }
+  },
+
   methods: {
     getInputValue() {
       const { name } = this
@@ -39,31 +47,35 @@ const Input = {
         [name] : this.$refs[name].value,
       }
       return data
+    },
+    handlePwdStyle(e) {
+      this.pwdStatus = !this.pwdStatus
+      this.pwdFill = (this.pwdStatus) ? '#8962d9' : '#B8bdbf'
+      this.pwdInput = (this.pwdStatus) ? 'text' : 'password'
     }
   },
 
   computed: {
     value() {
       return this.getInputValue()
-    }
+    },
   },
 
   render(h) {
-    const { status, loading, icon, name, placeholder, password, onIconClick } = this
+    const { status, loading, icon, name, placeholder, password, onIconClick, handlePwdStyle, pwdFill, pwdInput } = this
+
     return (
       <div class={[s.inputWrapper]}>
         <Loading size={10} class={[s.loadingPie]} show={loading}/>
-        <span>
-          {(icon && !loading && !password)
-            ? <Icon typ={icon[0]} fill={icon[1]} class={[s.icon]}/>
-            : ''
-          }
-        </span>
-        {password
-          ? <Icon typ="eye" fill="#8962d9" class={[s.icon]}/>
+        {(icon && !loading && !password)
+          ? <span><Icon typ={icon[0]} fill={icon[1]} class={[s.icon]}/></span>
           : ''
         }
-        <input class={[s.input, s[status]]} ref={name} placeholder={placeholder}/>
+        {password
+          ? <span on-click={handlePwdStyle}><Icon typ="eye" fill={pwdFill} class={[s.icon]}/></span>
+          : ''
+        }
+        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder}/>
       </div>
     )
   }

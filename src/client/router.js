@@ -14,6 +14,7 @@ module.exports = new Router({
     { path: '/tip', component: require('./views/tip') },
     { path: '/checkbox', component: require('./views/checkbox') },
     { path: '/radio', component: require('./views/radio') },
+    { path: '/input', component: require('./views/input') },
     { path: '*', redirect: '/home' },
   ],
 })
