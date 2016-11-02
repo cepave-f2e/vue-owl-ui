@@ -1,153 +1,208 @@
 import Select from '../'
+import s from '../select.scss'
 
-it('Test Select component default Props value', () => {
-  const mockFn = () => {}
-
+it('Test Select component default `options` props', () => {
+  const options = [
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', },
+    { value: '5d', title: '5 days', },
+  ]
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn}>
-          <Select.Option>A</Select.Option>
-        </Select>
+        <Select options={options} />
       )
     }
   })
 
-  expect(vm.isOpen).toBe(false)
-  expect(vm.isDisable).toBe(false)
-  expect(vm.name).toBe('')
-  expect(typeof vm.onChange === 'function').toBeTruthy()
+  expect(vm.value).toBe('1d')
 })
 
-it('Test Select component handleClick', async() => {
-  const mockFn = () => {}
-
+it('Test Select component if set `selected` in options', () => {
+  const options = [
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', selected: true },
+    { value: '5d', title: '5 days', },
+  ]
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn}>
-          <Select.Option>A</Select.Option>
-          <Select.Option>B</Select.Option>
-        </Select>
+        <Select options={options} />
       )
     }
   })
 
-  vm.toggleMenu()
+  expect(vm.value).toBe('3d')
+})
+
+it('Test Select component dynamic update `options`', async()=> {
+  let vm
+
   await new Promise((done) => {
-    vm.$nextTick(done)
+    vm = shallow({
+      data() {
+        return {
+          options: [
+            { value: '1d', title: '1 day', },
+            { value: '3d', title: '3 days', },
+          ]
+        }
+      },
+      mounted() {
+        this.options = [
+          ...this.options,
+          { value: '5d', title: '5 days', selected: true },
+        ]
+
+        this.$nextTick(done)
+      },
+      render(h) {
+        return (
+          <Select options={this.options} />
+        )
+      }
+    })
   })
-  expect(vm.opened).toBe(true)
+
+  expect(vm.options.length).toBe(3)
+  expect(vm.value).toBe('5d')
 })
 
-it('Test Select component set props `name`', () => {
-  const mockFn = () => {}
-
+it('Test option.render', () => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+      render(h, option) {
+        return (
+          <b>{option.title}</b>
+        )
+      }
+    },
+  ]
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName">
-          <Select.Option value="A">A</Select.Option>
-          <Select.Option value="B">B</Select.Option>
-        </Select>
+        <Select options={options} />
       )
     }
   })
 
-  expect(vm.name).toBe('selectName')
+  expect($(vm.$el).find(`.${s.optionBox} b`).length).toBe(1)
 })
 
-it('Test Select component clicked option', () => {
-  const mockFn = (data) => {
-    expect(data.value).toBe('B')
-    expect(data.idx).toBe(1)
+it('Test `optionsRender` props', () => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+    },
+  ]
+
+  const optionsRender = (h, option) => {
+    return (
+      <b>{option.title}</b>
+    )
   }
 
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName">
-          <Select.Option value="A">A</Select.Option>
-          <Select.Option value="B">B</Select.Option>
-        </Select>
+        <Select options={options} optionsRender={optionsRender} />
       )
     }
   })
 
-  // Mock mouse clicked event
-  const optionItem = vm.$el.children[1].children[1]
-  $(optionItem).trigger('click')
-
-  // testing clicked same option
-  $(optionItem).trigger('click')
-  expect(vm.d.selectedIdx === +optionItem.getAttribute('data-idx')).toBe(true)
+  expect($(vm.$el).find(`.${s.optionBox} b`).length).toBe(1)
 })
 
-it('Test Select component blur event', () => {
-  const mockFn = (data) => {}
+it('Test toggle Select', () => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+    },
+  ]
 
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName">
-          <Select.Option value="A">A</Select.Option>
-          <Select.Option value="B">B</Select.Option>
-        </Select>
+        <Select options={options}  />
       )
     }
   })
 
-  vm.opened = true
+  expect(vm.opened).toBe(false)
+  $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
+  expect(vm.opened).toBe(true)
+})
 
-  // Testing blur event
-  $(vm.$el).trigger('blur')
+it('Test toggle Select with `isDisabled` ', () => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+    },
+  ]
 
+  const vm = shallow({
+    render(h) {
+      return (
+        <Select isDisabled options={options}  />
+      )
+    }
+  })
+  expect(vm.opened).toBe(false)
+  $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
   expect(vm.opened).toBe(false)
 })
 
-it('Test Select toggle meanu event should be cancel', () => {
-  const mockFn = () => {}
+it('Test Select blur should be triggered `close`', () => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+    },
+  ]
 
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName" isDisable={true}>
-          <Select.Option value="A">A</Select.Option>
-          <Select.Option value="B">B</Select.Option>
-        </Select>
+        <Select options={options}  />
       )
     }
   })
 
-  vm.toggleMenu()
-  expect(vm.isDisable).toBe(true)
-  expect(vm.opened).toEqual(false)
+  expect(vm.opened).toBe(false)
+  $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
+  expect(vm.opened).toBe(true)
+  $(vm.$el).trigger('blur')
+  expect(vm.opened).toBe(false)
 })
 
-it('Test Select watch props value `isOpen` should be ture', async() => {
-  const mockFn = () => {}
-  let vm
+it('Test dynamic `isOpened` props', async() => {
+  const options = [
+    {
+      value: '1d',
+      title: '1 day',
+    },
+  ]
 
+  let vm
   await new Promise((done) => {
     vm = shallow({
-      props: {
-        isOpen: {
-          type: Boolean,
-          default: false
+      data() {
+        return {
+          isOpened: false
         }
       },
-
       mounted() {
-        this.isOpen = true
+        this.isOpened = true
         this.$nextTick(done)
       },
-
       render(h) {
         return (
-          <Select onChange={mockFn} name="selectName" isOpen={this.isOpen}>
-            <Select.Option value="A">A</Select.Option>
-            <Select.Option value="B">B</Select.Option>
-          </Select>
+          <Select options={options}  isOpened={this.isOpened} />
         )
       }
     })
@@ -156,54 +211,63 @@ it('Test Select watch props value `isOpen` should be ture', async() => {
   expect(vm.opened).toBe(true)
 })
 
-it('Test Select should be no slots', () => {
-  const mockFn = () => {}
+it('Test `onChange`', () => {
+  const options = [
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', },
+  ]
 
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName">
-        </Select>
+        <Select options={options}  />
       )
     }
   })
 
-  expect(vm.$slots.default).toBeUndefined()
+  const $el = $(vm.$el)
+  expect(vm.value).toBe('1d')
+  $el.find(`.${s.optionBox} [data-role="select-option"]`).eq(1).trigger('click')
+  expect(vm.value).toBe('3d')
 })
 
-it('Test Select option props should be default value', () => {
-  const mockFn = () => {}
+it('Test `onChange` if click same as last selected index', () => {
+  const options = [
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', },
+  ]
 
   const vm = shallow({
     render(h) {
       return (
-        <Select onChange={mockFn} name="selectName">
-          <Select.Option>A</Select.Option>
-          <Select.Option value="B" selected={true}>B</Select.Option>
-        </Select>
+        <Select options={options}  />
       )
     }
   })
 
-  expect(vm.$children[0].selected).toBe(false)
-  expect(vm.$children[0].value).toBe('')
-  expect(vm.$children[1].selected).toBe(true)
-  expect(vm.$children[1].value).toBe('B')
+  expect(vm.value).toBe('1d')
+  $(vm.$el).find(`.${s.optionBox} [data-role="select-option"]`).eq(0).trigger('click')
+  expect(vm.value).toBe('1d')
 })
 
-it('Test Select option should be selected', () => {
-  const mockFn = () => {}
+it('Test `onChange` props', async() => {
+  const options = [
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', },
+  ]
 
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select onChange={mockFn} name="selectName">
-          <Select.Option value="A">A</Select.Option>
-          <Select.Option value="B" selected={true}>B</Select.Option>
-        </Select>
-      )
-    }
+  const d = await new Promise((done) => {
+    const vm = shallow({
+      mounted() {
+        $(this.$el).find(`.${s.optionBox} [data-role="select-option"]`).eq(1).trigger('click')
+      },
+      render(h) {
+        return (
+          <Select options={options} onChange={done} />
+        )
+      }
+    })
   })
-  expect(vm.$slots.default[0].componentOptions.propsData.selected).toBeUndefined()
-  expect(vm.$slots.default[1].componentOptions.propsData.selected).toBe(true)
+
+  expect(d).toEqual({ value: '3d', idx: 1 })
 })

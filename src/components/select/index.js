@@ -5,12 +5,21 @@ const Select = {
   name: 'Select',
 
   props: {
-    isOpen: {
+    options: {
+      type: Array,
+      required: true,
+    },
+
+    optionsRender: {
+      type: Function
+    },
+
+    isOpened: {
       type: Boolean,
       default: false,
     },
 
-    isDisable: {
+    isDisabled: {
       type: Boolean,
       default: false,
     },
@@ -25,144 +34,129 @@ const Select = {
     },
   },
 
+  data() {
+    this._selectedIdx = 0
+
+    return {
+      opened: this.isOpened,
+      value: '',
+      title: [],
+    }
+  },
+
+  watch: {
+    isOpened(newVal) {
+      this.opened = newVal
+    },
+  },
+
   methods: {
     close() {
       this.opened = false
     },
 
     toggleMenu() {
-      if (this.isDisable) {
+      if (this.isDisabled) {
         return
       }
 
       this.opened = !this.opened
     },
 
-    _handleOnChange: delegate('[data-role="select-option"]', function(ev) {
+    _handleOnChange: delegate('[data-role="select-option"]', function (ev) {
       const { delegateTarget } = ev
-      const { $children, d, onChange } = this
-      const idx = +delegateTarget.getAttribute('data-idx')
+      const { onChange, _getTitle, options, _selectedIdx } = this
+      const idx = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
 
-      if (idx === d.selectedIdx) {
+      if (idx === _selectedIdx) {
         return
       }
 
-      this.d.title = $children[idx].$slots.default
-      this.d.value = $children[idx].value
-
-      this.d.selectedIdx = idx
+      this._selectedIdx = idx
+      this.title = _getTitle(options[idx])
+      this.value = options[idx].value
       this.opened = false
 
-      onChange({
-        value: $children[idx].value,
-        idx
-      })
-    })
-  },
+      if (onChange) {
+        onChange({
+          value: this.value,
+          idx
+        })
+      }
+    }),
 
-  watch: {
-    isOpen(newVal) {
-      this.opened = newVal
-    },
-  },
-
-  data() {
-    return {
-      opened: this.isOpen,
+    _getTitle(option) {
+      const { optionsRender } = this
+      const h = this.$createElement
+      return (
+        option.render
+          ? option.render(h, option)
+          : optionsRender
+          ? optionsRender(h, option)
+          : option.title
+      )
     }
   },
 
-
-  mounted() {
-
-  },
-
   computed: {
-    d() {
-      const { $slots } = this
-
-      if (!$slots.default) return {}
-
-      let selectedIdx = 0, selectedVNode = $slots.default[0]
-
-      $slots.default.forEach((v, idx) => {
-        if (typeof v.data.attrs === 'undefined') {
-          v.data.attrs = {}
-        }
-        v.data.attrs['data-idx'] = idx
-
-        if (v.componentOptions.propsData.selected) {
-          selectedIdx = idx
-          selectedVNode = v
-        }
-      })
-      return {
-        title: selectedVNode.componentOptions.children,
-        value: selectedVNode.componentOptions.propsData.value,
-        selectedIdx
-      }
-    },
-
     css() {
-      const { opened, isDisable } = this
+      const { opened, isDisabled } = this
       const style = {}
       style[s.selectOpen] = opened
-      style[s.disabled] = isDisable
+      style[s.disabled] = isDisabled
       return style
+    },
+
+    renderOptions() {
+      const { options, _getTitle } = this
+      const h = this.$createElement
+      let hasSelected = false
+
+      const _options = options.map((option, i) => {
+        if (option.selected) {
+          hasSelected = true
+          this._selectedIdx = i
+          this.title = _getTitle(option)
+          this.value = option.value
+        }
+
+        return (
+          <div data-role="select-option" data-idx={i}>
+            { _getTitle(option) }
+          </div>
+        )
+      })
+
+      if (!hasSelected) {
+        this.title = _getTitle(options[0])
+        this.value = options[0].value
+      }
+      return _options
     }
   },
 
   render(h) {
-    const { close, $slots, name, _handleOnChange,
-            toggleMenu, d, css } = this
+    const {
+      close, $slots, name, _handleOnChange,
+      renderOptions, css, toggleMenu, value, title,
+    } = this
 
     return (
       <div class={[s.selecter, css]} on-blur={close} tabindex="-1">
         <div class={[s.selectTitle]} on-click={toggleMenu}>
           <div class={[s.titleText]}>
-            {d.title}
+            {title}
           </div>
 
           <div class={[s.titleRight]}>
-            <div class={[s.arrow]}></div>
+            <div class={[s.arrow]}/>
           </div>
         </div>
 
         <div class={[s.optionBox, css]} on-click={_handleOnChange}>
-          {$slots.default}
+          {renderOptions}
         </div>
-        <input type="hidden" name={name} value={d.value} />
-      </div>
-    )
-  },
-}
-
-Select.Option = {
-  name: 'SelectOption',
-  props: {
-    selected: {
-      type: Boolean,
-      default: false,
-    },
-
-    value: {
-      type: String,
-      default: ''
-    }
-  },
-
-  data() {
-    return {
-
-    }
-  },
-
-  render(h) {
-    const { $slots } = this
-
-    return (
-      <div class={[]} data-role="select-option">
-        {$slots.default}
+        <input type="hidden" name={name} value={value}/>
       </div>
     )
   }

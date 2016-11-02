@@ -53,7 +53,6 @@ module.exports = new Vue({
               <li>
                 <router-link to="/home">Home</router-link>
               </li>
-              <li>Select</li>
               <li>
                 <router-link to="/select">Select</router-link>
               </li>
