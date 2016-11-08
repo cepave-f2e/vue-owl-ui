@@ -67,5 +67,11 @@ module.exports = {
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always',
     'at-rule-semicolon-newline-after': 'always',
+
+    /**
+    * curly brace
+    * @url: http://stylelint.io/user-guide/rules/#block
+    */
+    'block-opening-brace-space-before': 'always'
   }
 }
