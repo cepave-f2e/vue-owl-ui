@@ -1,51 +1,51 @@
-.inputWrapper{
+.inputWrapper {
   position: relative;
   width: 300px;
 }
-.input{
+.input {
   padding: 10px;
   width: 100%;
   height: 34px;
   font-family: 'Helvetica Neue UltraLight';
   font-size: 20px;
-  input-placeholder{
+  input-placeholder {
     color: #b8bdbf;
   }
 }
-.normal{
+.normal {
   border: 1px solid #b8bdbf;
   color: #6c7173;
-  &:focus{
+  &:focus {
     outline: none;
     border-color: #cab6f2;
     box-shadow: 0 0 0 2px rgba(#8962d9, .2), 0 1px 2px rgba(0, 0, 0, .05) inset;
   }
 }
-.success{
+.success {
   border: 1px solid #b9e617;
   color: #b9e617;
-  &:focus{
+  &:focus {
     outline: none;
     border-color: #b9e617;
     box-shadow: 0 0 0 2px rgba(#b9e617, .2), 0 1px 2px rgba(0, 0, 0, .05) inset;
   }
 }
-.error{
+.error {
   border: 1px solid #e6175c;
   color: #e6175c;
-  &:focus{
+  &:focus {
     outline: none;
     border-color: #e6175c;
     box-shadow: 0 0 0 2px rgba(#e6175c, .2), 0 1px 2px rgba(0, 0, 0, .05) inset;
   }
 }
-.loadingPie{
+.loadingPie {
   position: absolute;
   top: 7px;
   right: 15px;
   left: auto;
 }
-.icon{
+.icon {
   position: absolute;
   right: 15px;
   top: 7px;

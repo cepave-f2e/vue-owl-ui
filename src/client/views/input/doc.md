@@ -34,16 +34,16 @@ props: {
 
 ```jsx
 //get input value from this.$refs.inputRef.value
-<Input name="demo" icon={['search', '#919799']} status="normal" placeholder="type some words.." ref="inputRef"/>
+<Input name="demo" icon={['search', '#919799']} status="normal" placeholder="type some words.." ref="inputRef" />
 
 //use loading props to show loading pie
-<Input loading={true}/>
+<Input loading={true} />
 
 //use password props to switch input type
-<Input password={true}/>
+<Input password={true} />
 
 //use `x` icon to remove value when clicking on `x`
-<Input icon={['search', '#919799']} x={true}/>
+<Input icon={['search', '#919799']} x={true} />
 
 //get onClickX event by $on and $emit
 mounted() {
@@ -55,9 +55,9 @@ methods: {
   }
 }
 
-//bind `on-keypress` event on <div> rether than <Input/>
+//bind `on-keypress` event on <div> rether than <Input />
 <div on-keypress={this.handleKeyPress}>
-  <Input status="success"/>
+  <Input status="success" />
 </div>
 ```
 

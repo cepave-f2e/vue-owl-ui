@@ -67,20 +67,20 @@ const Input = {
 
     return (
       <div class={[s.inputWrapper]}>
-        <Loading size={10} class={[s.loadingPie]} show={loading}/>
+        <Loading size={10} class={[s.loadingPie]} show={loading} />
         {(icon && !loading && !password && !showX)
-          ? <Icon typ={icon[0]} fill={icon[1]} class={[s.icon]}/>
+          ? <Icon typ={icon[0]} fill={icon[1]} class={[s.icon]} />
           : ''
         }
         {password
-          ? <span on-click={handlePwdStyle}><Icon typ="eye" fill={pwdFill} class={[s.icon]}/></span>
+          ? <span on-click={handlePwdStyle}><Icon typ="eye" fill={pwdFill} class={[s.icon]} /></span>
           : ''
         }
         {showX
-          ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.icon]}/></span>
+          ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.icon]} /></span>
           : ''
         }
-        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} on-input={handleInput}/>
+        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} on-input={handleInput} />
       </div>
     )
   }

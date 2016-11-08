@@ -1,10 +1,10 @@
 import Input from '../'
 
-it('test <Input/> default props', () => {
+it('test <Input /> default props', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Input name="demo" icon={['grid-4', '#e6175c']} status="normal" placeholder="demo"/>
+        <Input name="demo" icon={['grid-4', '#e6175c']} status="normal" placeholder="demo" />
       )
     }
   })
@@ -16,11 +16,11 @@ it('test <Input/> default props', () => {
   $(vm.$children[1].$el).trigger('click')
 })
 
-it('test <Input/> get data from calling `value`', () => {
+it('test <Input /> get data from calling `value`', () => {
   const vm = shallow({
     render(h) {
       return (
-          <Input name="demo" loading={true} status="normal" ref="demo"/>
+          <Input name="demo" loading={true} status="normal" ref="demo" />
       )
     }
   })
@@ -29,11 +29,11 @@ it('test <Input/> get data from calling `value`', () => {
   expect(vm.value).toBe('cepave')
 })
 
-it('test <Input/> of password mode', () => {
+it('test <Input /> of password mode', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Input password={true}/>
+        <Input password={true} />
       )
     }
   })
@@ -49,7 +49,7 @@ it('test <Input/> of password mode', () => {
   expect(vm.pwdInput).toBe('password')
 })
 
-it('test <Input/> with a `x` icon', async() => {
+it('test <Input /> with a `x` icon', async() => {
   let vm
   await new Promise((done) => {
     vm = shallow({
