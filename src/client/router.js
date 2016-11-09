@@ -16,6 +16,7 @@ module.exports = new Router({
     { path: '/radio', component: require('./views/radio') },
     { path: '/input', component: require('./views/input') },
     { path: '/button', component: require('./views/button') },
+    { path: '/lightbox', component: require('./views/lightbox') },
     { path: '*', redirect: '/home' },
   ],
 })
