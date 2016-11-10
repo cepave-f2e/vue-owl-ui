@@ -8,10 +8,6 @@ props: {
     type: String,
     default: 'input',
   },
-  loading:{
-    type: Boolean,
-    default: false,
-  },
   icon: {
     type: Array,
   },
@@ -23,7 +19,15 @@ props: {
     type: String,
     default: ''
   },
+  loading:{
+    type: Boolean,
+    default: false,
+  },
   password: {
+    type: Boolean,
+    default: false
+  },
+  x: {
     type: Boolean,
     default: false
   }

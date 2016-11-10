@@ -47,7 +47,7 @@ const Input = {
     handleIconClick(e) {
       const { icon, name } = this
       this.value = this.$refs[name].value = ''
-      this.$parent.$emit('handleClickOnX', true)
+      this.$parent.$emit('handleClickOnX', name)
       this.showX = false
     },
     handleInput(e) {
