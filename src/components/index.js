@@ -8,5 +8,15 @@ if (process.env.NODE_ENV === 'build' && isBrowser) {
 }
 
 module.exports = {
-  Select: require('./select')
+  Button: require('./button'),
+  Checkbox: require('./checkbox'),
+  Grid: require('./grid'),
+  Icon: require('./icon'),
+  Input: require('./input'),
+  LightBox: require('./lightbox'),
+  Loading: require('./loading'),
+  Radio: require('./radio'),
+  Select: require('./select'),
+  Switch: require('./switch'),
+  Tip: require('./tip'),
 }
