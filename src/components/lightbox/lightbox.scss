@@ -1,0 +1,46 @@
+.lbWrap {
+  display: none;
+}
+
+.lb {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+  overflow: auto;
+}
+
+.view {
+  display: inline-block;
+  left: 50%;
+  top: 120px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background: #fff;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+.x {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 0 4px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #999;
+  &:after {
+    content: '×';
+  }
+  &:hover {
+    color: #000;
+  }
+}
+
+.open, .close {
+  display: inline-block;
+  cursor: pointer;
+}
