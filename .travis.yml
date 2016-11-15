@@ -3,11 +3,11 @@ language: node_js
 node_js:
   - v6
 
-before_install:
-  - npm i -g yarn
-
-install:
-  - yarn
+#before_install:
+#  - npm i -g yarn
+#
+#install:
+#  - yarn
 
 after_success:
   - npm run coveralls
