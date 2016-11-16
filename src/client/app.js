@@ -82,6 +82,9 @@ module.exports = new Vue({
               <li>
                 <router-link to="/lightbox">LightBox</router-link>
               </li>
+              <li>
+                <router-link to="/label">Label</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>

@@ -24,8 +24,7 @@ const Label = {
         style.push(s[typ])
       }
       if (status) {
-        const type = (typ === 'badge') ? '' : typ
-        style.push(s[`${status}${type}`])
+        style.push(s[`${status}${typ}`])
       }
       if (badge) {
         style.push(s.badge)

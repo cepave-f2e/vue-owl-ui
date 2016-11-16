@@ -18,6 +18,7 @@ module.exports = new Router({
     { path: '/button', component: require('./views/button') },
     { path: '/lightbox', component: require('./views/lightbox') },
     { path: '/grid', component: require('./views/grid') },
+    { path: '/label', component: require('./views/label') },
     { path: '*', redirect: '/home' },
   ],
 })
