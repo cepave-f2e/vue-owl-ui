@@ -77,7 +77,6 @@ const Grid = {
       } else {
         heads.forEach(head => head.sort = -1)
         heads[idx].sort = 1
-        debugger
         drows.sort((a, b)=> {
           a = a[sortField]
           b = b[sortField]
