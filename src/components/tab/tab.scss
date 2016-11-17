@@ -1,0 +1,21 @@
+[data-role="tab-head"] {
+  padding: 12px 36px 16px 36px;
+  cursor: pointer;
+  &[data-selected="1"] {
+    border-bottom : 2px solid #9471db;
+    cursor: default;
+  }
+}
+[data-role="tab-content"] {
+  &[data-selected="1"] {
+    display: block;
+  }
+  &[data-selected="0"] {
+    display: none;
+  }
+}
+.tHead {
+  display: flex;
+  font-size: 20px;
+  line-height: 26px;
+}
