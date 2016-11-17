@@ -15,8 +15,9 @@ const Input = {
       type: String,
       default: 'normal'
     },
-    value: {
-      type: String
+    val: {
+      type: String,
+      default: ''
     },
     placeholder: {
       type: String,
@@ -66,7 +67,7 @@ const Input = {
   },
 
   render(h) {
-    const { status, icon, name, placeholder, value, password, loading, handlePwdStyle, pwdFill, pwdInput, x, showX, handleInput, handleIconClick } = this
+    const { status, icon, name, placeholder, val, password, loading, handlePwdStyle, pwdFill, pwdInput, x, showX, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -83,7 +84,7 @@ const Input = {
           ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.icon]} /></span>
           : ''
         }
-        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} value={value} on-input={handleInput} />
+        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} />
       </div>
     )
   }
