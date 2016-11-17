@@ -1,0 +1,114 @@
+@mixin label($text-color, $back-color) {
+  background: $back-color;
+  color: $text-color;
+}
+//typ
+.label {
+  font-size: 12px;
+  font-weight: 400;
+  display: inline;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  position: relative;
+  vertical-align: middle;
+  color: #3b3f40;
+  background: #dfe4e6;
+  padding: 4px 8px;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+
+.outline {
+  background: none;
+  border: 1px solid rgba(#6b5499, .2);
+  &:hover {
+    color: rgba(#3b3f40, .65);
+  }
+}
+
+//status for label
+.primary {
+  @include label(#f2f6f7, #8962d9)
+}
+.error {
+  @include label(#f2f6f7, #e6175c)
+}
+.success {
+  @include label(#f2f6f7, #b9e617)
+}
+.warning {
+  @include label(#3b3f40, #ffd919)
+}
+.inverted {
+  @include label(#3b3f40, #f2f6f7);
+}
+
+
+//status for outline
+.primaryoutline {
+  border: 1px solid #8962d9;
+  @include label(#8962d9, transparent);
+  &:hover {
+    color: rgba(#8962d9, .65);
+  }
+}
+.erroroutline {
+  border: 1px solid #e6175c;
+  @include label(#e6175c, transparent);
+  &:hover {
+    color: rgba(#e6175c, .65);
+  }
+}
+.successoutline {
+  border: 1px solid #b9e617;
+  @include label(#b9e617, transparent);
+  &:hover {
+    color: rgba(#b9e617, .65);
+  }
+}
+.warningoutline {
+  border: 1px solid #ffd919;
+  @include label(#ffd919, transparent);
+  &:hover {
+    color: rgba(#ffd919, .65);
+  }
+}
+.invertedoutline {
+  border: 1px solid #f2f6f7;
+  @include label(#f2f6f7, transparent);
+  &:hover {
+    color: rgba(#f2f6f7, .65);
+  }
+}
+
+//status for tags
+.primarytag {
+  color: #8962d9;
+}
+.errortag {
+  color: #e6175c;
+}
+.successtag {
+  color: #b9e617;
+}
+.warningtag {
+  color: #ffd919;
+}
+.invertedtag {
+  color: #f2f6f7;
+}
+.tag {
+  padding: 0;
+  background: none;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 14px;
+}
