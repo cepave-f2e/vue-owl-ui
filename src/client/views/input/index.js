@@ -39,7 +39,7 @@ const InputPage = {
           <Input x={true} />
         </div>
         <div class={[s.pwdInputwrapper]}>
-          <Input status="success" />
+          <Input val="cepave" status="success" />
         </div>
         <div class={[s.pwdInputwrapper]}>
           <Input status="error" />
