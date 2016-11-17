@@ -21,7 +21,7 @@ const GridPage = {
             col: 'item 2'
           }
         ],
-        rowsRender(h, row) {
+        rowsRender(h, { row, index }) {
           return [
             <Grid.Col>{row[0].col}</Grid.Col>,
             <Grid.Col>{row[1].col}</Grid.Col>,

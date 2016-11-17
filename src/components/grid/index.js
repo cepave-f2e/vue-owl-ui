@@ -30,7 +30,11 @@ const Grid = {
 
   watch: {
     rows(newRows) {
-      this.heads.forEach(head => head.sort = -1)
+      this.heads.forEach(head => {
+        if (head.sort !== undefined) {
+          head.sort = -1
+        }
+      })
       this.drows = Array.from(newRows)
     }
   },
@@ -75,11 +79,16 @@ const Grid = {
         drows.reverse()
         heads[idx].sort = (sort === 1 ? 0 : 1)
       } else {
-        heads.forEach(head => head.sort = -1)
+        heads.forEach(head => {
+          if (head.sort !== undefined) {
+            head.sort = -1
+          }
+        })
         heads[idx].sort = 1
+
         drows.sort((a, b)=> {
-          a = a[sortField]
-          b = b[sortField]
+          a = a[idx].col
+          b = b[idx].col
 
           if (typeof a === 'number' && typeof b === 'number') {
             return a - b
@@ -109,11 +118,11 @@ const Grid = {
         </div>
 
         <div class={[s.gbody]}>
-          {drows.map((row)=> {
+          {drows.map((row, index)=> {
             return (
               <div data-role="row">
                 { rowsRender
-                  ? rowsRender(h, row)
+                  ? rowsRender(h, { row, index })
                   : row.map((col, i)=> {
                     return (
                       <div data-role="col" data-idx={i}>
