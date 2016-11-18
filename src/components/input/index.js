@@ -43,7 +43,7 @@ const Input = {
       pwdFill: '#b8bdbf',
       pwdInput: this.password ? 'password' : 'text',
       showX: false,
-      value: '',
+      value: this.val,
     }
   },
 
