@@ -21,7 +21,7 @@ const SelectPage = {
 
   methods: {
     selectOnChange(d) {
-      this.outputs = { ...d }
+      this.outputs = d
     }
   },
 
@@ -35,7 +35,7 @@ const SelectPage = {
           {JSON.stringify(outputs)}
           </code>
         </pre>
-        <Select {...{ props: selectProps }} onchange={selectOnChange} />
+        <Select {...{ props: selectProps }} onChange={selectOnChange} />
 
       </div>
     )
