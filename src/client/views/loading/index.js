@@ -12,7 +12,7 @@ const LoadingPage = {
       <div>
         <Markdown src={require('./loading.md')} />
         <div class={[s.exampleWrapper]}>
-          <Loading class={[s.examplePie]}/>
+          <Loading class={[s.examplePie]} />
         </div>
       </div>
     )

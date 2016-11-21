@@ -57,8 +57,8 @@ const Radio = {
       <div on-click={handleClick} class={[s.radio]}>
        {
          active
-         ? <Icon typ="radio-on" fill="#6c7173"/>
-         : <Icon typ="radio" fill="#b0b0b0" data-radio/>
+         ? <Icon typ="radio-on" fill="#6c7173" />
+         : <Icon typ="radio" fill="#b0b0b0" data-radio />
        }
         {$slots.default}
       </div>

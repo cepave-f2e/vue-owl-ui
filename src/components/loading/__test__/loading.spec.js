@@ -16,7 +16,7 @@ it('test <Loading /> props `typ` and `show`', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Loading typ="bar" show={false}/>
+        <Loading typ="bar" show={false} />
       )
     }
   })
@@ -29,7 +29,7 @@ it('test Loading Pie with props `size`', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Loading typ="pie" size="20"/>
+        <Loading typ="pie" size="20" />
       )
     }
   })
@@ -40,7 +40,7 @@ it('test Loading bar with props `size`', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Loading typ="bar" size="200x20"/>
+        <Loading typ="bar" size="200x20" />
       )
     }
   })

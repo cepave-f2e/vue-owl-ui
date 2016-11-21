@@ -41,7 +41,7 @@ const SwitchButton = {
     const { handleClick, check } = this
     return (
       <div class={[s.wrapper]} on-click={handleClick}>
-        <input type="checkbox" class={[s.switchButton]} checked={check}/>
+        <input type="checkbox" class={[s.switchButton]} checked={check} />
         <div class={[s.switch]}>
           <label class={[s.toggle]}></label>
         </div>
