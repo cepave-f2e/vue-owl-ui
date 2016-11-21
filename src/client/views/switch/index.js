@@ -21,7 +21,7 @@ const SwitchPage = {
       <div>
         <Markdown src={require('./switch.md')} />
         <div class={[s.demo]}>
-          <Switch checked={true} name="demo" onChange={getSwitchData}/>
+          <Switch checked={true} name="demo" onChange={getSwitchData} />
           <span class={[s.demoMsg]}>{this.outputName} : {this.outputValue}</span>
         </div>
       </div>

@@ -4,7 +4,7 @@ it('default status should be checked', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Switch checked={true}/>
+        <Switch checked={true} />
       )
     }
   })
@@ -19,7 +19,7 @@ it('test props `name`, status, and output data after one clicking', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Switch name="test" checked={true} onChange={switchChange}/>
+        <Switch name="test" checked={true} onChange={switchChange} />
       )
     }
   })

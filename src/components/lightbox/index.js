@@ -189,7 +189,7 @@ LightBox.View = {
     return (
       <div data-role="lb-view" class={[s.lb]} tabindex="-1" style={style} {...{ on }}>
         <div class={[s.view]} on-click={ev => ev.stopPropagation()} style={viewStyle}>
-          <span class={[s.x]} on-click={close}/>
+          <span class={[s.x]} on-click={close} />
           {$slots.default}
         </div>
       </div>

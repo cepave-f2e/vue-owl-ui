@@ -10,7 +10,7 @@ const Home = {
     return (
       <div>
         <Markdown src={require('./doc.md')} opts={{ codeTheme: 'light' }} />
-        <Select/>
+        <Select />
       </div>
     )
   }

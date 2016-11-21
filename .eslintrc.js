@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     'import',
+    'react',
   ],
   rules: {
     'comma-style': [2, 'last'],
@@ -42,5 +43,8 @@ module.exports = {
     'camelcase': ['error', { properties: 'never' }],
     'array-bracket-spacing': ['error', 'never'],
     'semi': ['error', 'never'],
+
+    // jsx
+    'react/jsx-space-before-closing': ['warn', 'always']
   }
 }
