@@ -29,13 +29,13 @@ const SelectPage = {
     const { selectProps, outputs, selectOnChange } = this
     return (
       <div>
-        <Markdown src={require('./doc.md')}/>
+        <Markdown src={require('./doc.md')} />
         <pre>
           <code>
           {JSON.stringify(outputs)}
           </code>
         </pre>
-        <Select {...{ props: selectProps }} onChange={selectOnChange}/>
+        <Select {...{ props: selectProps }} onchange={selectOnChange} />
 
       </div>
     )

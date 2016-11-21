@@ -211,7 +211,7 @@ it('Test dynamic `isOpened` props', async() => {
   expect(vm.opened).toBe(true)
 })
 
-it('Test `onChange`', () => {
+it('Test trigger `onChange`', () => {
   const options = [
     { value: '1d', title: '1 day', },
     { value: '3d', title: '3 days', },
@@ -231,7 +231,7 @@ it('Test `onChange`', () => {
   expect(vm.value).toBe('3d')
 })
 
-it('Test `onChange` if click same as last selected index', () => {
+it('Test trigger `onChange `if click same as last selected index', () => {
   const options = [
     { value: '1d', title: '1 day', },
     { value: '3d', title: '3 days', },
@@ -263,7 +263,7 @@ it('Test `onChange` props', async() => {
       },
       render(h) {
         return (
-          <Select options={options} onChange={done} />
+          <Select options={options} onchange={done} />
         )
       }
     })
