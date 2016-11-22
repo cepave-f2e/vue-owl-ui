@@ -4,14 +4,9 @@ import s from './duallistbox.scss'
 
 const DualListBoxPage = {
   name: 'DualListBoxPage',
-  data() {
-    return {
-      output: {}
-    }
-  },
   methods: {
     getDualData(data) {
-      this.output = data
+      console.log(data)
     }
   },
 
@@ -41,7 +36,7 @@ const DualListBoxPage = {
     return (
       <div>
         <Markdown src={require('./doc.md')} />
-        <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onchange={this.getDualData} />
+        <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
       </div>
     )
   }

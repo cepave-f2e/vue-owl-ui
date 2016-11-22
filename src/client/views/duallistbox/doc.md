@@ -14,9 +14,6 @@ props: {
     default: () => {
       return {}
     }
-  },
-  onchange: {
-    type: Function
   }
 }
 ```
