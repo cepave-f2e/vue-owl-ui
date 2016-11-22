@@ -1,7 +1,7 @@
 import Dual from '../'
 
-it('test dualListBox with props `data` and `onchange`', async() => {
-  const hostGroup = {
+it('test dualListBox with props `items` and `onChange`', async() => {
+  const pokemon = {
     1: 'Squirtle',
     2: 'Caterpie',
     3: 'Raichu',
@@ -15,7 +15,7 @@ it('test dualListBox with props `data` and `onchange`', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group items={hostGroup} onchange={getData} />
+          <Dual.Group items={pokemon} onChange={getData} />
         )
       }
     })
@@ -69,8 +69,32 @@ it('test dualListBox with props `data` and `onchange`', async() => {
   expect(vm.listToRemove).toEqual({})
 })
 
+it('test dualListBox with props `selectedItems` and without `items`', () => {
+  const pokemon = {
+    1: 'Squirtle',
+    2: 'Caterpie'
+  }
+  const vm = shallow({
+    render(h) {
+      return (
+        <Dual.Group selectedItems={pokemon} />
+      )
+    }
+  })
+  expect(vm.listToRemove).toEqual({
+    1: 'Squirtle',
+    2: 'Caterpie'
+  })
+  expect(vm.rightList).toEqual({
+    1: 'Squirtle',
+    2: 'Caterpie'
+  })
+  expect(vm.listToAdd).toEqual({})
+  expect(vm.leftList).toEqual({})
+})
+
 it('test search features', async() => {
-  const hostGroup = {
+  const pokemon = {
     1: 'Squirtle',
     2: 'Caterpie',
     3: 'Raichu',
@@ -84,7 +108,7 @@ it('test search features', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group items={hostGroup} onchange={getData} />
+          <Dual.Group items={pokemon} onChange={getData} />
         )
       }
     })
