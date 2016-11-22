@@ -7,9 +7,7 @@ it('test dualListBox with props `items` and `onChange`', async() => {
     3: 'Raichu',
     4: 'Pikachu',
   }
-  const getData = (data) => {
-    // console.log(data);
-  }
+  const getData = (data) => {}
   let vm
   await new Promise((done) => {
     vm = shallow({
@@ -31,7 +29,7 @@ it('test dualListBox with props `items` and `onChange`', async() => {
       3: 'Raichu',
       4: 'Pikachu',
     })
-    //click on 3: 'ctl-jx-059-063-188-146'
+    //click on 3: 'Raichu'
     $(vm.$children[3].$el).trigger('click')
     expect(vm.leftList).toEqual({
       1: 'Squirtle',
@@ -100,9 +98,7 @@ it('test search features', async() => {
     3: 'Raichu',
     4: 'Pikachu',
   }
-  const getData = (data) => {
-    // console.log(data);
-  }
+  const getData = (data) => {}
   let vm
   await new Promise((done) => {
     vm = shallow({
@@ -125,7 +121,7 @@ it('test search features', async() => {
     expect(vm.highlightLeft).toBe('chu')
     vm.$nextTick(done)
   })
-  // //click on selectAll
+  //click on selectAll
   $(vm.$children[3].$el).trigger('click')
   expect(vm.leftList).toEqual({
     1: 'Squirtle',
