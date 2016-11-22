@@ -24,6 +24,7 @@ props: {
 const labels = {
   1: 'Squirtle', 2: 'Caterpie', 3: 'Raticate', 4: 'Fearow', 5: 'Clefairy',
 }
+//use onChange as a listener to get data from $emit('change')
 <Dual.Group items={labels} class={[s.dualGroup]} onChange={this.getDualData} />
 ```
 

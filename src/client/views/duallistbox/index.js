@@ -4,9 +4,14 @@ import s from './duallistbox.scss'
 
 const DualListBoxPage = {
   name: 'DualListBoxPage',
+  data() {
+    return {
+      output: { 15: 'Meowth', 16: 'Abra', 17: 'Doduo', 18: 'Dodrio' }
+    }
+  },
   methods: {
     getDualData(data) {
-      console.log(data)
+      this.output = Object.assign({}, data)
     }
   },
 
@@ -36,6 +41,11 @@ const DualListBoxPage = {
     return (
       <div>
         <Markdown src={require('./doc.md')} />
+        <div class={[s.code]}>
+          <code>
+            {JSON.stringify(this.output)}
+          </code>
+        </div>
         <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
       </div>
     )
