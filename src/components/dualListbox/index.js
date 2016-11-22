@@ -18,9 +18,6 @@ Dual.Group = {
       default: () => {
         return {}
       }
-    },
-    onchange: {
-      type: Function
     }
   },
   data() {
@@ -53,9 +50,7 @@ Dual.Group = {
         delete this.listToRemove[list[2]]
         this.$set(this.listToAdd, list[2], list[1])
       }
-      if (this.onchange) {
-        this.onchange(this.rightList)
-      }
+      this.$emit('change', this.rightList)
     },
     handleClickOnX(data) {
       if (data === 'left') {
@@ -74,9 +69,7 @@ Dual.Group = {
       this.rightList = Object.assign({}, this.rightList, this.listToAdd)
       this.listToRemove = Object.assign({}, this.listToRemove, this.listToAdd)
       this.listToAdd = {}
-      if (this.onchange) {
-        this.onchange(this.rightList)
-      }
+      this.$emit('change', this.rightList)
     },
     handleUnselectAll() {
       const keys = Object.keys(this.listToRemove)
@@ -86,9 +79,7 @@ Dual.Group = {
       this.leftList = Object.assign({}, this.leftList, this.listToRemove)
       this.listToAdd = Object.assign({}, this.listToAdd, this.listToRemove)
       this.listToRemove = {}
-      if (this.onchange) {
-        this.onchange(this.rightList)
-      }
+      this.$emit('change', this.rightList)
     },
     handleSearchListLeft(e) {
       if (e.charCode === 13) {
@@ -96,7 +87,7 @@ Dual.Group = {
           return this.leftList[key].includes(this.$refs.searchListToAdd.value)
         })
         this.listToAdd = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.listToAdd[curVal] })
+          return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
         }, {})
         this.highlightLeft = this.$refs.searchListToAdd.value
       }
@@ -107,7 +98,7 @@ Dual.Group = {
           return this.rightList[key].includes(this.$refs.searchListToRemove.value)
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.listToRemove[curVal] })
+          return Object.assign(preVal, { [curVal]: this.rightList[curVal] })
         }, {})
         this.highlightRight = this.$refs.searchListToRemove.value
       }
