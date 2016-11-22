@@ -23,6 +23,14 @@ props: {
 ## LightBox.Open and LightBox.Close
 This is a recommend way to open or close your lightbox, the default event type is `click`.
 
+## Events
+
+### open
+Triggers when LightBox is opened.
+
+### close
+Triggers when LightBox is closed.
+
 ### Props
 ```js
 props: {

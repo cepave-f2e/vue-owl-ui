@@ -7,10 +7,7 @@ if (isBrowser && !document.querySelector(`#${lbDivID}`)) {
   lbDiv = document.createElement('div')
   lbDiv.id = lbDivID
 
-  // check jsdom env
-  if (document.body.append) {
-    document.body.append(lbDiv)
-  }
+  document.body.appendChild(lbDiv)
 }
 
 const LightBox = {
@@ -40,39 +37,42 @@ const LightBox = {
     }
   },
 
+  watch: {
+    opened(bool) {
+      if (bool) {
+        const { view } = this
+        lbDiv.appendChild(view.$el)
+        document.body.style.overflow = 'hidden'
+        this.$nextTick(() => {
+          view.$el.focus()
+        })
+      } else {
+        lbDiv.innerHTML = ''
+        document.body.style.overflow = 'visible'
+      }
+    }
+  },
+
   methods: {
     open(ev) {
       ev.preventDefault()
-      const { view } = this
 
-      view.display = 'block'
-      lbDiv.append(view.$el)
-
-      this.$nextTick(() => {
-        view.$el.focus()
-      })
-
-      document.body.style.overflow = 'hidden'
+      this.opened = true
+      this.$emit('open')
     },
 
     close(ev) {
       ev.preventDefault()
-      const { view } = this
 
-      view.display = 'none'
-      lbDiv.innerHTML = ''
-      document.body.style.overflow = 'visible'
+      this.opened = false
+      this.$emit('close')
     }
   },
 
   computed: {
     view() {
-      return this.$children.find(vm => vm.$el.dataset.role === 'lb-view')
+      return this.$children.find(vm => vm.$el.getAttribute('data-role') === 'lb-view')
     }
-  },
-
-  mounted() {
-    this.$on('LB_OPEN', this.open)
   },
 
   render(h) {
@@ -138,11 +138,6 @@ LightBox.View = {
   name: 'LightBoxView',
   props: {},
 
-  data() {
-    return {
-      display: 'none'
-    }
-  },
   computed: {
     viewStyle() {
       let { width } = this.$parent
@@ -156,12 +151,11 @@ LightBox.View = {
     },
 
     style() {
-      const { bgColor } = this.$parent
-      const { display } = this
+      const { bgColor, opened } = this.$parent
 
       return {
         backgroundColor: bgColor,
-        display
+        display: opened ? 'block' : 'none'
       }
     }
   },
