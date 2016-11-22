@@ -1,0 +1,29 @@
+{
+  "name": "vue-owl-ui",
+  "version": "0.1.4",
+  "description": "Cepave OWL UI Components for VueJS 2.0",
+  "main": "./dist/owl-ui",
+  "keywords": [
+    "design",
+    "system",
+    "vue",
+    "component",
+    "ui",
+    "owl"
+  ],
+  "author": "Cepave F2E Team",
+  "license": "MIT",
+  "dependencies": {
+    "delegate-to": "^0.1.2",
+    "owl-icons": "github:cepave-f2e/owl-icons",
+    "vue": "^2.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cepave-f2e/vue-owl-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cepave-f2e/vue-owl-ui/issues"
+  },
+  "homepage": "https://github.com/cepave-f2e/vue-owl-ui#readme"
+}
