@@ -12,7 +12,7 @@ it('test <Input /> default props', () => {
   expect(vm.icon).toEqual(['grid-4', '#e6175c'])
   expect(vm.status).toBe('normal')
   expect(vm.placeholder).toBe('demo')
-  //clicking on the icon should not empty vm.value
+  // clicking on the icon should not empty vm.value
   $(vm.$children[1].$el).trigger('click')
 })
 
@@ -39,11 +39,11 @@ it('test <Input /> of password mode', () => {
   })
   expect(vm.pwdFill).toBe('#b8bdbf')
   expect(vm.pwdInput).toBe('password')
-  //click on the icon - `eye`
+  // click on the icon - `eye`
   $(vm.$children[1].$el).trigger('click')
   expect(vm.pwdFill).toBe('#8962d9')
   expect(vm.pwdInput).toBe('text')
-  //click on the icon - `eye` again
+  // click on the icon - `eye` again
   $(vm.$children[1].$el).trigger('click')
   expect(vm.pwdFill).toBe('#b8bdbf')
   expect(vm.pwdInput).toBe('password')
@@ -66,7 +66,7 @@ it('test <Input /> with a `x` icon', async() => {
     expect(vm.showX).toBe(true)
     vm.$nextTick(done)
   })
-  //click on the icon - `x`
+  // click on the icon - `x`
   $(vm.$children[1].$el).trigger('click')
   expect(vm.value).toBe('')
 })

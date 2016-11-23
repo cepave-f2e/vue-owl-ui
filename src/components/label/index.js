@@ -5,11 +5,11 @@ const Label = {
   props: {
     typ: {
       type: String,
-      default: ''//label, outline, tag
+      default: '' // label, outline, tag
     },
     status: {
       type: String,
-      default: ''//default, primary, success, error, warning, inverted
+      default: '' // default, primary, success, error, warning, inverted
     },
     badge: {
       type: Boolean,
