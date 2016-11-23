@@ -40,6 +40,7 @@ module.exports = {
     'keyword-spacing': ['error', { before: true, after: true }],
     'space-in-parens': ['error', 'never'],
     'space-unary-ops': ['error', { words: true, nonwords: false }],
+    "spaced-comment": [1, "always"],
     'camelcase': ['error', { properties: 'never' }],
     'array-bracket-spacing': ['error', 'never'],
     'semi': ['error', 'never'],
