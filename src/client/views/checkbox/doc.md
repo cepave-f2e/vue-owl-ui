@@ -12,16 +12,6 @@ const Checkbox = {
     name: {
       type: String,
       default: ''
-    },
-    onChange: {
-      type: Function,
-    }
-  }
-}
-const Checkbox.Group = {
-  props: {
-    onChange: {
-      type: Function
     }
   }
 }
@@ -34,15 +24,19 @@ const Checkbox.Group = {
   <Checkbox name="1">Pikachu</Checkbox>
   <Checkbox name="2">Eevee</Checkbox>
 </Checkbox.Group>
-
-//Make a checkbox named `all`. It can control other checkboxes
+```
+Make a checkbox named `all`. It can control other checkboxes
+```jsx
 <Checkbox.Group>
   <Checkbox name="all" checked={true}>All</Checkbox>
   <Checkbox name="1">Pikachu</Checkbox>
   <Checkbox name="2">Eevee</Checkbox>
 </Checkbox.Group>
-
-//Define a Function to handle onChange and get Checkbox.Group data by its parameter
+```
+Use `onChange` as a listener to get data from `$emit('change')`
+It works both on `<Checkbox>` and `<Checkbox.Group>`
+```jsx
+//Define a Function to handle onChange and get Checkbox.Group data
 const getCheckboxData = (data) => {
   console.log(data)
 }

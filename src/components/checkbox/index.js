@@ -11,9 +11,6 @@ const Checkbox = {
     name: {
       type: String,
       default: ''
-    },
-    onChange: {
-      type: Function,
     }
   },
 
@@ -26,16 +23,14 @@ const Checkbox = {
   methods: {
     handleClick(e) {
       e.stopPropagation()
-      const { $parent, onChange, name } = this
+      const { $parent, name } = this
       this.check = !this.check
 
       const data = {
         [name]: this.check
       }
 
-      if (onChange) {
-        onChange(data)
-      }
+      this.$emit('change', data)
 
       $parent.$emit('handleSingleCheckboxChange', data)
     },
@@ -67,11 +62,6 @@ const Checkbox = {
 
 Checkbox.Group = {
   name: 'CheckboxGroup',
-  props: {
-    onChange: {
-      type: Function
-    }
-  },
 
   mounted() {
     const { handleChange, $children, checkedDatum } = this
@@ -119,7 +109,7 @@ Checkbox.Group = {
         ...checked
       }
 
-      const { $children, counts, onChange } = this
+      const { $children, counts } = this
       const isClickedAll = (checked.all !== undefined)
 
       if (this.$all) {
@@ -134,9 +124,7 @@ Checkbox.Group = {
         }
       }
 
-      if (onChange) {
-        onChange(checkedDatum)
-      }
+      this.$emit('change', checkedDatum)
     },
   },
 
