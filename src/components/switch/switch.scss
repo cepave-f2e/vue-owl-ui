@@ -4,35 +4,110 @@
   z-index: 1;
   cursor: pointer;
 }
-.switch {
+.specialSwitch {
+  width: 64px;
+  padding: 4px;
+  transition: all .3s;
+  border-radius: 25px;
+  background: #6b5499;
+  display: flex;
+  .labelOpen {
+    position: relative;
+    font-size: 16px;
+    line-height: 20px;
+    display: none;
+  }
+  .labelClose {
+    position: relative;
+    font-size: 16px;
+    left: -13px;
+    line-height: 20px;
+    color: #fff;
+    display: block;
+  }
+  .toggle {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all .3s;
+    top: .5px;
+    left: 37px;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.defaultSwitch {
   width: 90px;
   padding: 7px;
   border: 3px solid #b8bdbf;
   transition: all .3s;
   border-radius: 25px;
-}
-.toggle {
-  width: 20px;
-  height: 20px;
-  background: #b8bdbf;
-  border-radius: 50%;
-  transition: all .3s;
-  left: 0;
-  position: relative;
-  cursor: pointer;
-  padding: 1px 14px;
-  &:hover {
-    background: #8962d9;
+  display: flex;
+  .labelOpen {
+    position: relative;
+    line-height: 25px;
+    display: none;
+  }
+  .labelClose {
+    position: relative;
+    left: 13px;
+    line-height: 25px;
+    color: #b8bdbf;
+    display: block;
+  }
+  .toggle {
+    width: 27px;
+    height: 27px;
+    background: #b8bdbf;
+    border-radius: 50%;
+    transition: all .3s;
+    left: 0;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      background: #8962d9;
+    }
   }
 }
-.switchButton {
+
+.specialSwitchButton {
   display: none;
   &:checked {
-    & + .switch{
+    & + .specialSwitch {
+      background: #8962d9;
+      label {
+        left: 3px;
+        background: #fff;
+      }
+      .labelClose {
+        display: none;
+      }
+      .labelOpen {
+        left: 15px;
+        display: block;
+        color: #fff;
+      }
+    }
+  }
+}
+.defaultSwitchButton {
+  display: none;
+  &:checked {
+    & + .defaultSwitch {
       border: 3px solid #8962d9;
       label {
         left: 43px;
         background: #8962d9;
+      }
+      .labelClose {
+        display: none;
+      }
+      .labelOpen {
+        left: -20px;
+        display: block;
+        color: #8962d9;
       }
     }
   }
