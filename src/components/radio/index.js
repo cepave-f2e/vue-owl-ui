@@ -12,10 +12,6 @@ const Radio = {
     name: {
       type: String,
       default: ''
-    },
-
-    onChange: {
-      type: Function,
     }
   },
 
@@ -27,7 +23,7 @@ const Radio = {
   methods: {
     handleClick(e) {
       e.stopPropagation()
-      const { $parent, active, onChange, name } = this
+      const { $parent, active, name } = this
 
       $parent.$children.forEach((child) => child.active = false)
       this.active = true
@@ -35,9 +31,7 @@ const Radio = {
       const data = {
         [name]: this.active
       }
-      if (onChange) {
-        onChange(data)
-      }
+      this.$emit('change', data)
       $parent.$emit('handleSingleRadioChange', data)
     }
   },
@@ -68,11 +62,6 @@ const Radio = {
 
 Radio.Group = {
   name: 'RadioGroup',
-  props: {
-    onChange: {
-      type: Function,
-    },
-  },
 
   data() {
     return {
@@ -85,9 +74,7 @@ Radio.Group = {
       this._radioData[this._on] = false
       this._on = Object.keys(data)[0]
 
-      if (this.onChange) {
-        this.onChange({ ...this._radioData, ...data })
-      }
+      this.$emit('change', { ...this._radioData, ...data })
     },
   },
 
