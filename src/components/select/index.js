@@ -28,10 +28,6 @@ const Select = {
       type: String,
       default: ''
     },
-
-    onchange: {
-      type: Function,
-    },
   },
 
   data() {
@@ -65,7 +61,7 @@ const Select = {
 
     _handleOnChange: delegate('[data-role="select-option"]', function (ev) {
       const { delegateTarget } = ev
-      const { onchange, _getTitle, options, _selectedIdx } = this
+      const { _getTitle, options, _selectedIdx } = this
       const idx = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
 
       if (idx === _selectedIdx) {
@@ -77,12 +73,10 @@ const Select = {
       this.value = options[idx].value
       this.opened = false
 
-      if (onchange) {
-        onchange({
-          value: this.value,
-          idx
-        })
-      }
+      this.$emit('change', {
+        value: this.value,
+        idx
+      })
     }),
 
     _getTitle(option) {

@@ -263,7 +263,7 @@ it('Test `onChange` props', async() => {
       },
       render(h) {
         return (
-          <Select options={options} onchange={done} />
+          <Select options={options} onChange={done} />
         )
       }
     })

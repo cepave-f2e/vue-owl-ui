@@ -26,11 +26,7 @@ props: {
   name: {
     type: String,
     default: ''
-  },
-
-  onChange: {
-    type: Function,
-  },
+  }
 },
 ...
 ```
@@ -56,6 +52,10 @@ Set the default selected option
 
 ### options.render [Function]
 Custom render template.
+
+## Events
+### change({ value, idx })
+Gets value after changes.
 
 ## Usage
 ```jsx
