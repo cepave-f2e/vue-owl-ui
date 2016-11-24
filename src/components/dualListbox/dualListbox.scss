@@ -1,0 +1,58 @@
+.dual {
+  width: 46%;
+  border: 1px solid #b8bdbf;
+  .input {
+    margin: 12px 12px 16px 12px;
+  }
+}
+.dualWrapper {
+  display: flex;
+}
+.lists {
+  max-height: 300px;
+  min-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.listWrapper {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  &:nth-of-type(odd) {
+    background: #fafafb;
+  }
+  .list {
+    width: 90%;
+    color: #919799;
+    font-size: 16px;
+  }
+  &:hover {
+    background-color: #cab6f2;
+    .list {
+      color: #fff;
+    }
+  }
+}
+.highlight {
+  background-color: #ffd919;
+}
+.arrow {
+  display: flex;
+  flex-direction: column;
+  width: 8%;
+  padding: 0 12px;
+  span {
+    text-align: center;
+  }
+  .doubleRight {
+    margin-top: 100px;
+    cursor: pointer;
+  }
+  .doubleLeft {
+    margin-top: 80px;
+    cursor: pointer;
+  }
+}
