@@ -1,6 +1,6 @@
 import Icon from '../icon'
 import Input from '../input'
-import s from './dualListbox.scss'
+import s from './dual-list.scss'
 
 const Dual = {}
 
