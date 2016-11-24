@@ -1,6 +1,6 @@
-import Dual from '../../../components/dualListbox'
+import Dual from '../../../components/dual-list'
 import Markdown from '../../components/markdown'
-import s from './duallistbox.scss'
+import s from './dual-list.scss'
 
 const DualListBoxPage = {
   name: 'DualListBoxPage',
@@ -42,9 +42,11 @@ const DualListBoxPage = {
       <div>
         <Markdown src={require('./doc.md')} />
         <div class={[s.code]}>
-          <code>
-            {JSON.stringify(this.output)}
-          </code>
+          <pre>
+            <code>
+              {JSON.stringify(this.output, null, 2)}
+            </code>
+          </pre>
         </div>
         <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
       </div>

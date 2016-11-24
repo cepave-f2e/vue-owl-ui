@@ -89,7 +89,7 @@ module.exports = new Vue({
                 <router-link to="/label">Label</router-link>
               </li>
               <li>
-                <router-link to="/duallistbox">DualListBox</router-link>
+                <router-link to="/dual-list">DualListBox</router-link>
               </li>
             </ul>
           </aside>
