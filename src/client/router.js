@@ -20,7 +20,7 @@ module.exports = new Router({
     { path: '/lightbox', component: require('./views/lightbox') },
     { path: '/grid', component: require('./views/grid') },
     { path: '/label', component: require('./views/label') },
-    { path: '/duallistbox', component: require('./views/duallistbox') },
+    { path: '/dual-list', component: require('./views/dual-list') },
     { path: '*', redirect: '/home' },
   ],
 })
