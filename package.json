@@ -76,6 +76,7 @@
     "mark-it-down": "^0.3.0",
     "node-sass": "^3.13.0",
     "normalize.css": "^5.0.0",
+    "owl-ui-style": "github:cepave-f2e/owl-ui-style#v1.0.1",
     "piping": "^1.0.0-rc.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",

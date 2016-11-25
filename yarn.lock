@@ -4475,6 +4475,10 @@ output-file-sync@^1.1.0:
   version "1.0.0-1479027843246"
   resolved "https://codeload.github.com/cepave-f2e/owl-icons/tar.gz/8f0cfd7ec8fae56b77a50db70b59a67ffe5b336a"
 
+"owl-ui-style@github:cepave-f2e/owl-ui-style#v1.0.1":
+  version "1.0.0"
+  resolved "https://codeload.github.com/cepave-f2e/owl-ui-style/tar.gz/3f778e99993c7dd45e8dbf963e12d36c81fa0caf"
+
 pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
