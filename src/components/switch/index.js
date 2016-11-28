@@ -1,7 +1,7 @@
 import s from './switch.scss'
 
-const SwitchButton = {
-  name: 'SwitchButton',
+const Switch = {
+  name: 'Switch',
   props: {
     checked: {
       type: Boolean,
@@ -11,8 +11,9 @@ const SwitchButton = {
       type: String,
       default: 'data'
     },
-    onChange: {
-      type: Function,
+    typ: {
+      type: String,
+      default: 'default'//or 'special'
     }
   },
   data () {
@@ -27,26 +28,55 @@ const SwitchButton = {
   },
   methods: {
     handleClick () {
-      const { onChange, name } = this
+      const { name } = this
       this.check = !this.check
       const data = {
         [name]: this.check
       }
-      if (onChange) {
-        onChange(data)
-      }
+      this.$emit('change', data)
     },
   },
+  computed: {
+    style() {
+      const { typ } = this
+      const style = {
+        checkbox: [s[`${typ}SwitchButton`]],
+        div: [s[`${typ}Switch`]]
+      }
+      return style
+    }
+  },
   render(h) {
-    const { handleClick, check } = this
+    const { handleClick, check, $slots, style } = this
     return (
       <div class={[s.wrapper]} on-click={handleClick}>
-        <input type="checkbox" class={[s.switchButton]} checked={check} />
-        <div class={[s.switch]}>
+        <input type="checkbox" class={style.checkbox} checked={check} />
+        <div class={style.div}>
           <label class={[s.toggle]}></label>
+          {$slots.default}
         </div>
       </div>
     )
   }
 }
-module.exports = SwitchButton
+
+Switch.Open = {
+  name: 'SwitchOpen',
+  render(h) {
+    const { $slots } = this
+    return (
+      <span class={[s.labelOpen]}>{$slots.default}</span>
+    )
+  }
+}
+
+Switch.Close = {
+  name: 'SwitchClose',
+  render(h) {
+    const { $slots } = this
+    return (
+      <span class={[s.labelClose]}>{$slots.default}</span>
+    )
+  }
+}
+module.exports = Switch

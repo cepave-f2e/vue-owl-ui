@@ -12,23 +12,30 @@ props: {
     type: String,
     default: 'data'
   },
-  onChange: {
-    type: Function,
+  typ: {
+    type: String,
+    default: 'default'
+    //two different type: 'default' and 'special'
   }
 }
 ```
 
+##Switch.Open and Switch.Close
+This is the recommended way to put words in Switch Button
+
 ##Usage
 
+Use `onChange` as a listener to get data from `$emit('change')`
 ```jsx
-//Define a Function to handle onChange and get switch button data by its parameter
+//Define a Function to handle onChange and get switch button data
 const getSwitchData = (data) => {
   console.log(data)
 }
 
-<Switch checked={true} name="demo" onChange={getSwitchData}/>
-
-//Switch can also handle dynamic changes of `checked`
+<Switch checked={true} name="demo1" onChange={getSwitchData}/>
+```
+Switch can also handle dynamic changes of `checked`
+```jsx
 let a = true
 
 setTimeout(() => {
@@ -36,6 +43,13 @@ setTimeout(() => {
 }, 2000)
 
 <Switch checked={a}/>
+```
+Use `<Switch.Open>` and `<Switch.Close>` to put words into Switch Button
+```jsx
+<Switch checked={true} name="demo2" typ="special" onChange={getSwitchData}>
+  <Switch.Open>開</Switch.Open>
+  <Switch.Close>關</Switch.Close>
+</Switch>
 ```
 
 ##Demo
