@@ -1,0 +1,55 @@
+//@import "owl-ui-style/dist/owl-ui-style.css";
+
+.page {
+  display: flex;
+  &[data-align="center"] {
+    justify-content: center;
+  }
+
+  &[data-align="right"] {
+    justify-content: flex-end;
+  }
+
+  [data-page] {
+    cursor: pointer;
+    &:after {
+      content: attr(data-page);
+    }
+  }
+  [data-page="..."] {
+    cursor: default;
+  }
+  [data-page="prev"] {
+    &:after {
+      content: '←'
+    }
+  }
+
+  [data-page="next"] {
+    &:after {
+      content: '→'
+    }
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+  li {
+    padding: 8px 16px;
+    position: relative;
+
+    &.on, &:hover {
+      &:before {
+        position: absolute;
+        height: 2px;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        background: #8962D9;
+      }
+    }
+  }
+}
