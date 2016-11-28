@@ -1,3 +1,4 @@
+import delegate from 'delegate-to'
 import s from './button.scss'
 
 const Button = {
@@ -34,6 +35,62 @@ const Button = {
       <button type="button" class={style}>
         {$slots.default}
       </button>
+    )
+  }
+}
+
+Button.Group = {
+  name: 'ButtonGroup',
+  props: {
+    options: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      buttonOptions: this.options,
+      selectedIdx: this.options.find((option) => option.selected === true)
+    }
+  },
+  computed: {
+    renderButtons() {
+      const { buttonOptions } = this
+      const h = this.$createElement
+      const _buttonOptions = buttonOptions.map((option, i) => {
+        const dataSelected = (option.selected) ? '1' : '0'
+        if (option.selected) {
+          this.selectedIdx = i
+        }
+        return (
+          <Button status="primaryOutline" data-selected={dataSelected} data-role="button">{option.title}</Button>
+        )
+      })
+      return _buttonOptions
+    }
+  },
+  methods: {
+    _handleClickButton: delegate('[data-role="button"]', function(e) {
+      const { delegateTarget } = e
+      const { selectedIdx } = this
+      const idx = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
+      if (idx === selectedIdx) {
+        return
+      }
+      this.$emit('change', {
+        value: this.buttonOptions[idx].value,
+        idx
+      })
+      this.buttonOptions.forEach((buttonOption) => this.$set(buttonOption, 'selected', false))
+      this.$set(this.buttonOptions[idx], 'selected', true)
+    })
+  },
+  render(h) {
+    const { renderButtons, _handleClickButton } = this
+    return (
+      <div class={[s.buttonGroup]} on-click={_handleClickButton}>
+        {renderButtons}
+      </div>
     )
   }
 }
