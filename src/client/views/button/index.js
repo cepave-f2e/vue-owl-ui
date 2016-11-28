@@ -5,6 +5,24 @@ import s from './button.scss'
 
 const ButtonPage = {
   name: 'ButtonPage',
+  data() {
+    return {
+      options: [
+        { value: 'winnie', title: 'Winnie The Pooh' },
+        { value: 'piglet', title: 'Piglet' },
+        { value: 'tigger', title: 'Tigger', selected: true }
+      ],
+      buttonGroupData: {
+        value: 'tigger',
+        idx: 2
+      }
+    }
+  },
+  methods: {
+    getButtonGroupData(data) {
+      this.buttonGroupData = data
+    }
+  },
 
   render(h) {
     return (
@@ -28,6 +46,13 @@ const ButtonPage = {
         <span>Width-50% button</span>
         <div class={[s.buttonWrapper]}>
           <Button status="primary" class={[s.buttonBig]}>Submit</Button>
+        </div>
+        <span>Button Group</span>
+        <div class={[s.buttonGroupWrapper]}>
+          <Button.Group options={this.options} class={[s.buttonGroup]} onChange={this.getButtonGroupData} />
+          <code>
+            {JSON.stringify(this.buttonGroupData)}
+          </code>
         </div>
       </div>
     )
