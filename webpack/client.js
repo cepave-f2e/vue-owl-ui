@@ -42,7 +42,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js/,
+        test: /\.svg$/,
+        loader: 'url',
+      },
+      {
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel'
       },
