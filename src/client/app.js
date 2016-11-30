@@ -91,6 +91,9 @@ module.exports = new Vue({
               <li>
                 <router-link to="/dual-list">DualListBox</router-link>
               </li>
+              <li>
+                <router-link to="/tab">Tab</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>

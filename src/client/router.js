@@ -21,6 +21,7 @@ module.exports = new Router({
     { path: '/grid', component: require('./views/grid') },
     { path: '/label', component: require('./views/label') },
     { path: '/dual-list', component: require('./views/dual-list') },
+    { path: '/tab', component: require('./views/tab') },
     { path: '*', redirect: '/home' },
   ],
 })
