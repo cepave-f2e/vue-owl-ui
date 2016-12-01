@@ -42,7 +42,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.svg$/,
+        test: /\.(svg|png|jpg)$/,
         loader: 'url',
       },
       {
@@ -82,7 +82,7 @@ module.exports = {
         filename: 'lib.js'
       }),
       new HtmlWebpackPlugin({
-        title: 'Cepave - OWL UI',
+        title: 'OWL UI · Design System - Cepave F2E',
         filename: 'index.html',
         template: './scripts/gh-pages.html',
         minify: {

@@ -9,54 +9,77 @@
 }
 
 body {
-  font-family: Roboto;
+  font: 14px/1.5 Roboto;
+  color: rgb(57, 57, 57);
+  background: #fff;
+  overflow-y: scroll;
 }
 
-header {
-  text-align: center;
-  background: #590aaa;
-  padding: 20px 0;
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+footer {
+  margin-top: 40px;
+  color: #590aaa;
+  > div {
+    padding-top: 12px;
+    padding-bottom: 20px;
+    border-top: 1px solid #590aaa;
+  }
+}
+
+:global {
+  .main {
+    padding-top: 55px;
+    min-height: calc(100vh - 61px - 55px);
+  }
+  .w1120 {
+    width: 1120px;
+    margin: 0 auto;
+  }
+
+  .fbox {
+    display: flex;
+    &.-sb {
+      justify-content: space-between;
+    }
+
+    &.-around {
+      > div:nth-child(1) {
+        flex: 1;
+      }
+    }
+  }
+
+  .btn {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: .8rem;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: .2rem;
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-weight: 500;
+    transition: all .3s;
+  }
+
+  .btn:hover {
+    color: #590aaa;
+    background-color: rgba(255, 255, 255, 1);
+  }
 }
 
 .badges {
   a {
     display: inline-block;
     margin-right: 4px;
-  }
-}
-
-.h1 {
-  font-size: 40px;
-  padding: 0;
-  margin: 0;
-  color: #fff;
-}
-
-.btn {
-  cursor: pointer;
-  text-decoration: none;
-  font-size: .8rem;
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: .3rem;
-  color: rgba(255, 255, 255, .7);
-  background-color: rgba(255, 255, 255, .08);
-  border: 1px solid rgba(255, 255, 255, .2);
-}
-
-.btn:hover {
-  color: rgba(255, 255, 255, .8);
-  background-color: rgba(255, 255, 255, .2);
-  border-color: rgba(255, 255, 255, .3);
-}
-
-.main {
-  display: flex;
-  padding: 40px 0;
-  aside {
-    width: 200px;
-  }
-  .view {
-    flex: 1;
   }
 }

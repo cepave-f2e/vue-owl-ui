@@ -1,0 +1,50 @@
+header {
+  background: #590aaa;
+  padding: 4px 0;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 878787;
+  ul {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    a {
+      opacity: .7;
+      padding: 0 4px;
+      position: relative;
+      &:after {
+        transition: all .3s;
+        width: 0;
+        left: 50%;
+        transform: translateX(-50%)
+      }
+      &:hover {
+        opacity: 1;
+        &:after {
+          position: absolute;
+          bottom: -5px;
+          height: 2px;
+          width: 100%;
+          background: #fff;
+        }
+      }
+    }
+  }
+  li {
+    margin-left: 12px;
+  }
+
+  svg {
+    vertical-align: -6px;
+    margin-right: 4px;
+  }
+  h1 {
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: inherit;
+  }
+  a {
+    color: #fff;
+  }
+}

@@ -1,0 +1,21 @@
+footer {
+  li {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    width: 98px;
+  }
+
+  svg {
+    width: 24px;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+
+  a {
+    color: #590aaa;
+
+  }
+}
