@@ -9,9 +9,9 @@
     "dev": "babel-node ./scripts/dev",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
-    "build": "npm run build.ui & npm run build.demo",
+    "build": "npm run build.ui & npm run build.pages",
     "build.ui": "babel-node ./scripts/build.ui",
-    "build.demo": "NODE_ENV=production npm run pack.client",
+    "build.pages": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "publish": "babel-node ./scripts/github-publish"
