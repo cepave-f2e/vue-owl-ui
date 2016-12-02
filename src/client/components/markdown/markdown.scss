@@ -1,0 +1,25 @@
+.cp {
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .cpBoard {
+      transition: all .3s;
+      bottom: 6px;
+    }
+  }
+}
+
+.cpBoard {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  left: 0;
+  bottom: -30px;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, .5);
+  font-size: 11px;
+  align-items: center;
+  line-height: 1;
+}
