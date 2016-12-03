@@ -14,7 +14,8 @@
     "build.pages": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "publish": "babel-node ./scripts/github-publish"
+    "publish": "babel-node ./scripts/github-publish",
+    "publish.pages": "babel-node ./scripts/gh-pages-publish"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
