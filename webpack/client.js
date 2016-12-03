@@ -85,6 +85,9 @@ module.exports = {
         title: 'Cepave - OWL UI',
         filename: 'index.html',
         template: './scripts/gh-pages.html',
+        minify: {
+          collapseWhitespace: true,
+        }
       }),
     ],
 
