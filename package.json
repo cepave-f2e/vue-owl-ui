@@ -92,10 +92,7 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cepave-f2e/vue-owl-ui.git"
-  },
+  "repository": "https://github.com/cepave-f2e/vue-owl-ui.git",
   "bugs": {
     "url": "https://github.com/cepave-f2e/vue-owl-ui/issues"
   },
