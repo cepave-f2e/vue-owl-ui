@@ -1,7 +1,7 @@
 {
   "name": "vue-owl-ui",
   "version": "0.1.0",
-  "description": "Cepave OWL UI Components for VueJS 2.0",
+  "description": "OWL UI · Component Design System - Cepave F2E",
   "main": "./dist/owl-ui",
   "scripts": {
     "start": "babel-node scripts/start",
