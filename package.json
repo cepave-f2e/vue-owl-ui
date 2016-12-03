@@ -82,6 +82,7 @@
     "piping": "^1.0.0-rc.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",
+    "shelljs": "^0.7.5",
     "style-loader": "^0.13.1",
     "stylelint": "^7.6.0",
     "url-loader": "^0.5.7",
