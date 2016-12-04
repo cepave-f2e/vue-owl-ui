@@ -26,7 +26,9 @@ module.exports = new Vue({
     return (
       <div id="app" data-path={$route.path}>
         <Header />
-        <router-view class="main" />
+        <keep-alive>
+          <router-view class="main" />
+        </keep-alive>
         <Footer />
       </div>
     )
