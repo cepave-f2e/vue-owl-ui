@@ -1,6 +1,6 @@
 import Loading from '~com/loading'
 import axios from 'axios'
-import owlSrcs from './owl-src'
+import owlSrcs from './owl-src.json'
 
 const CompnentHomePage = {
   name: 'CompnentHomePage',
@@ -66,7 +66,7 @@ const CompnentHomePage = {
     return (
       <div>
         <Loading show={loading} />
-        <h1 style={{fontFamily: 'Architects Daughter'}}> OWL Daily </h1>
+        <h1 style={{ fontFamily: 'Architects Daughter' }}> OWL Daily </h1>
         <p>
           <img style={{ maxWidth: '100%' }} src={owlSrc} />
         </p>
