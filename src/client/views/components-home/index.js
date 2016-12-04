@@ -1,3 +1,7 @@
+import Loading from '~com/loading'
+import axios from 'axios'
+import owlSrcs from './owl-src'
+
 const CompnentHomePage = {
   name: 'CompnentHomePage',
   data() {
@@ -58,10 +62,14 @@ const CompnentHomePage = {
     })
   },
   render(h) {
-    const { $slots } = this
+    const { owlSrc, loading } = this
     return (
       <div>
-        Components
+        <Loading show={loading} />
+        <h1 style={{fontFamily: 'Architects Daughter'}}> OWL Daily </h1>
+        <p>
+          <img style={{ maxWidth: '100%' }} src={owlSrc} />
+        </p>
       </div>
     )
   }
