@@ -14,6 +14,9 @@ const Header = {
                 <router-link to="/">
                   <Logo fill="#fff" size={25} /> OWL UI
                 </router-link>
+                <span class={[s.ver]}>
+                  v{__pkgVer}
+                </span>
               </h1>
             </div>
 
