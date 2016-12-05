@@ -30,9 +30,8 @@ const Home = {
                   <img src="https://img.shields.io/github/stars/cepave-f2e/vue-owl-ui.svg?style=social&label=Stars ★" />
                 </a>
               </p>
-              <span class="btn">INSTALLATION</span>
-              <span class="btn">GET STARTED</span>
-              <span class="btn">COMPONENTS</span>
+
+              <router-link to="/components" class="btn">COMPONENTS</router-link>
               <span class="btn">OWL LIGHT</span>
             </div>
             <div>
