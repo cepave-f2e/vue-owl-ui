@@ -94,6 +94,9 @@ module.exports = new Vue({
               <li>
                 <router-link to="/tab">Tab</router-link>
               </li>
+              <li>
+                <router-link to="/page">Page</router-link>
+              </li>
             </ul>
           </aside>
           <div class={[s.view]}>
