@@ -94,3 +94,18 @@ button, .button {
   @include button-outline(#8962d9, #8962d9);
   fill: #8962d9;
 }
+
+.buttonGroup {
+  display: flex;
+  vertical-align: bottom;
+  button {
+    border-left-width: 0;
+    &[data-selected="1"] {
+      @include button-fill(#fff, #8962d9);
+      fill: #fff;
+    }
+  }
+  button:first-of-type {
+    border-left-width: 1px;
+  }
+}

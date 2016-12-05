@@ -4,6 +4,14 @@
     margin: 10px 10px 30px 0;
   }
 }
+.buttonGroupWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.buttonGroup {
+  margin-right: 20px;
+}
 .buttonBig {
   width: 50%;
 }
