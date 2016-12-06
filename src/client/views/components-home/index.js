@@ -19,6 +19,12 @@ const CompnentHomePage = {
       img.onload = () => {
         this.owlSrc = src
         this.loading = false
+        localStorage.__owlSrc = src
+      }
+
+      img.onerror = () => {
+        const owl = owlSrcs[Math.floor(Math.random() * owlSrcs.length)]
+        this.renderImg(owl.src)
       }
     }
   },
@@ -34,7 +40,6 @@ const CompnentHomePage = {
       renderImg(owl.src)
 
       localStorage.__owlDate = date
-      localStorage.__owlSrc = owl.src
     }
 
     return
