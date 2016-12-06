@@ -1,0 +1,74 @@
+.points {
+  background: #e9e9e9;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.point {
+  width: 33%;
+  .img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100px;
+      height: 100px;
+      fill: adjust-color(#590aaa, $lightness: 20%);
+    }
+  }
+
+  p {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+  h3 {
+    color: #590aaa;
+    text-align: center;
+    width: 90%;
+    margin: 20px auto;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dedede;
+  }
+}
+
+.mainContent {
+  h2, h3, h4, h5, h6 {
+    color: #590aaa;
+    //border-bottom: 1px solid adjust-color(#590aaa, $lightness: 50%);
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.badges {
+  img {
+    margin-right: 8px;
+  }
+}
+
+
+.des {
+  background: #590aaa;
+  color: #e9e9e9;
+  padding-bottom: 20px;
+  //padding-top: 20px;
+
+  h2 {
+    font-size: 250%;
+  }
+
+  :global {
+    .btn {
+      margin-right: 16px;
+    }
+  }
+}

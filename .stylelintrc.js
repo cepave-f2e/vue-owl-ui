@@ -46,7 +46,9 @@ module.exports = {
     'selector-no-id': true,
     'selector-no-vendor-prefix': true,
     'selector-pseudo-class-case': 'lower',
-    'selector-pseudo-class-no-unknown': true,
+    'selector-pseudo-class-no-unknown': [true, {
+      ignorePseudoClasses: ['global']
+    }],
     'selector-pseudo-class-parentheses-space-inside': 'never',
     'selector-pseudo-element-case': 'lower',
     'selector-pseudo-element-colon-notation': 'single',
@@ -72,6 +74,6 @@ module.exports = {
     * curly brace
     * @url: http://stylelint.io/user-guide/rules/#block
     */
-    'block-opening-brace-space-before': 'always'
+    'block-opening-brace-space-before': 'always',
   }
 }

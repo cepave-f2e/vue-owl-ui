@@ -1,28 +1,21 @@
-# Select 
+## INSTALLATION
 
-## Usage
+You can install quickly through `npm` or `yarn`:
 
-
-```jsx
-import { Select } from 'vue-owl-ui'
-
-render() {
-  <Select />
-}
+```sh
+npm install owl-ui --save
 ```
 
-```html
-<h1>H1</h1>
-<h2>H2</h2>
-<h3>H3</h3>
+or
+
+```sh
+yarn add owl-ui
 ```
 
-```css
-.body {
-  background: red;
-}
-```
-- [ ] item1
-- [X] item 2
 
-Hello `World`
+## GET STARTED
+Each component in `OWL UI` was named `CamelCase`, and you can find the all naming from components list.
+
+```js
+import { Button, Select, ... } from 'owl-ui'
+```

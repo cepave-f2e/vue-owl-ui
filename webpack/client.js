@@ -9,6 +9,7 @@ const isTemp = NODE_ENV === 'temp'
 const isProd = NODE_ENV === 'production'
 
 const { hotPort, loaders } = require('./share')
+const pkg = require('../package.json')
 
 module.exports = {
   entry: isBuild || isTemp ? {
@@ -42,7 +43,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.svg$/,
+        test: /\.(svg|png|jpg)$/,
         loader: 'url',
       },
       {
@@ -73,7 +74,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV || 'development'),
-      }
+      },
+      __pkgVer: `"${pkg.version}"`
     }),
 
     ...isBuild || isTemp ? [] : [
@@ -82,9 +84,12 @@ module.exports = {
         filename: 'lib.js'
       }),
       new HtmlWebpackPlugin({
-        title: 'Cepave - OWL UI',
+        title: 'OWL UI · Design System - Cepave F2E',
         filename: 'index.html',
         template: './scripts/gh-pages.html',
+        minify: {
+          collapseWhitespace: true,
+        }
       }),
     ],
 

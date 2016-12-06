@@ -1,0 +1,80 @@
+.hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: #590aaa;
+}
+
+[data-path^="/components"] {
+  .main {
+    h1 {
+      font-size: 22px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 15px;
+    }
+
+    h6 {
+      font-size: 14px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #590aaa;
+    }
+
+    pre[class*="language-"] {
+      font-size: 11px;
+    }
+  }
+}
+
+.side {
+  width: 180px;
+  dt {
+    font-size: 14px;
+  }
+  dd {
+    margin: 0;
+    font-size: 13px;
+    a {
+      padding: 8px 0;
+      text-indent: 12px;
+      display: block;
+      position: relative;
+      &:active {
+        color: #590aaa;
+      }
+      &:hover, &:global(.router-link-active) {
+        &:after {
+          @extend .hover;
+        }
+      }
+    }
+  }
+
+  border-right: 1px solid #eee;
+}
+.side, .view {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.view {
+  flex: 1;
+  padding-left: 40px;
+  padding-bottom: 20px;
+}
+
