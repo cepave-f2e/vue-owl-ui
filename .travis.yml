@@ -2,7 +2,7 @@ language: node_js
 
 node_js:
   - v6
-#  - v7
+  - v7
 
 after_success:
   - npm run coveralls
