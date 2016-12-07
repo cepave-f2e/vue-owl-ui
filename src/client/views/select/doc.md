@@ -81,7 +81,7 @@ render(h) {
 }
 ```
 
-## The value
+## The Value
 You also can get value directly thro `ref`
 
 ```jsx
@@ -91,8 +91,26 @@ mounted() {
 },
 
 render(h) {
-  <Select ref="mySelect">
-    ...
-  </Select>
+  <Select ref="mySelect" />
+}
+```
+
+## Custom Options Render
+
+```jsx
+
+data() {
+  options: [
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days', selected: true },
+    { value: '5d', title: '5 days' },
+  ]
+},
+render(h) {
+  return (
+    <Select options={this.options} optionsRender={({ option })=>(
+      <b>{options.title}</b>
+    )}/>
+  )
 }
 ```
