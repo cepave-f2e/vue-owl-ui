@@ -1,4 +1,4 @@
-import LightBox from '~com/lightbox'
+import LightBox from '~com/light-box'
 import Markdown from '../../components/markdown'
 
 const LightBoxPage = {
