@@ -4,7 +4,7 @@ it('test <Input /> default props', () => {
   const vm = shallow({
     render(h) {
       return (
-        <Input name="demo" icon={['grid-4', '#e6175c']} status="normal" placeholder="demo" />
+        <Input name="demo" icon={['grid-4', '#e6175c']} status="normal" placeholder="demo" required={true} />
       )
     }
   })
