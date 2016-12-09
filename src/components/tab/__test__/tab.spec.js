@@ -1,11 +1,11 @@
 import Tab from '../'
 
-it('test <Tab> with props `name` and `isSelected`', () => {
+it('test <Tab> with props `name` and without props `isSelected`', () => {
   const vm = shallow({
     render(h) {
       return (
         <Tab>
-          <Tab.Head slot="tabHead" name="1" isSelected={true}>Tab1</Tab.Head>
+          <Tab.Head slot="tabHead" name="1">Tab1</Tab.Head>
           <Tab.Head slot="tabHead" name="2">Tab2</Tab.Head>
           <Tab.Content slot="tabContent" name="1">
             <br />Hello, I am tab one
@@ -27,7 +27,7 @@ it('test <Tab> with props `name` and `isSelected`', () => {
   expect(vm.$children[3].isSelected).toBe(false)
 })
 
-it('click on <Tab.Head> to switch <Tab.Content>', async() => {
+it('test <Tab> with props `isSelected` and click on <Tab.Head> to switch <Tab.Content>', async() => {
   let tabData
   const getTabData = (data) => {
     tabData = data
