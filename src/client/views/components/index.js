@@ -28,7 +28,7 @@ const ComponentPage = {
                   <router-link to="/components/label">Label</router-link>
                 </dd>
                 <dd>
-                  <router-link to="/components/dual-list">DualListBox</router-link>
+                  <router-link to="/components/dual-list">DualList</router-link>
                 </dd>
                 <dd>
                   <router-link to="/components/tab">Tab</router-link>

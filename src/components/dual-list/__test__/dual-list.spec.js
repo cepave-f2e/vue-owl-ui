@@ -1,6 +1,6 @@
 import Dual from '../'
 
-it('test dualListBox with props `items` and `onChange`', async() => {
+it('test dualList with props `items` and `onChange`', async() => {
   const pokemon = {
     1: 'Squirtle',
     2: 'Caterpie',
@@ -67,7 +67,7 @@ it('test dualListBox with props `items` and `onChange`', async() => {
   expect(vm.listToRemove).toEqual({})
 })
 
-it('test dualListBox with props `selectedItems` and without `items`', () => {
+it('test dualList with props `selectedItems` and without `items`', () => {
   const pokemon = {
     1: 'Squirtle',
     2: 'Caterpie'

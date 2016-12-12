@@ -2,8 +2,8 @@ import Dual from '../../../components/dual-list'
 import Markdown from '../../components/markdown'
 import s from './dual-list.scss'
 
-const DualListBoxPage = {
-  name: 'DualListBoxPage',
+const DualListPage = {
+  name: 'DualListPage',
   data() {
     return {
       output: { 15: 'Meowth', 16: 'Abra', 17: 'Doduo', 18: 'Dodrio' }
@@ -54,4 +54,4 @@ const DualListBoxPage = {
   }
 }
 
-module.exports = DualListBoxPage
+module.exports = DualListPage
