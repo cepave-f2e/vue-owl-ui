@@ -84,7 +84,7 @@ Dual.Group = {
     handleSearchListLeft(e) {
       if (e.charCode === 13) {
         const keys = Object.keys(this.leftList).filter((key) => {
-          return this.leftList[key].includes(this.$refs.searchListToAdd.value)
+          return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
         })
         this.listToAdd = keys.reduce((preVal, curVal) => {
           return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
@@ -95,7 +95,7 @@ Dual.Group = {
     handleSearchListRight(e) {
       if (e.charCode === 13) {
         const keys = Object.keys(this.rightList).filter((key) => {
-          return this.rightList[key].includes(this.$refs.searchListToRemove.value)
+          return this.rightList[key].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
           return Object.assign(preVal, { [curVal]: this.rightList[curVal] })
@@ -109,9 +109,7 @@ Dual.Group = {
     return (
       <div class={[s.dualWrapper]}>
         <div class={[s.dual]}>
-          <div on-keypress={handleSearchListLeft}>
-            <Input name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} />
-          </div>
+          <Input nativeOn-keypress={handleSearchListLeft} name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToAdd).map((label) => {
@@ -129,9 +127,7 @@ Dual.Group = {
           </span>
         </div>
         <div class={[s.dual]}>
-          <div on-keypress={handleSearchListRight}>
-            <Input name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
-          </div>
+          <Input nativeOn-keypress={handleSearchListRight} name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToRemove).map((label) => {
@@ -171,8 +167,10 @@ Dual.List = {
       const { highlight, name } = this
       let highlightText = ''
       if (highlight) {
-        const highlightReg = new RegExp(`${highlight}`, 'g')
-        highlightText = `<span>${name}</span>`.replace(highlightReg, `<span class="${s.highlight}">${highlight}</span>`)
+        const highlightReg = new RegExp(`${highlight}`, 'gi')
+        highlightText = `<span>${name}</span>`.replace(highlightReg, (replacement) => {
+          return `<span class="${s.highlight}">${replacement}</span>`
+        })
       }
       return highlightText
     }
