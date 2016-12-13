@@ -8,34 +8,54 @@ Dual.Group = {
   name: 'DualGroup',
   props: {
     items: {
-      type: Object,
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
     },
     selectedItems: {
-      type: Object,
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
+    },
+    apiMode: {
+      type: Boolean,
+      default: false
+    },
+    leftLoading: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      listToAdd: this.items,
-      listToRemove: this.selectedItems,
+      listToAdd: {},
+      listToRemove: {},
       highlightLeft: '',
       highlightRight: '',
-      leftList: this.items,
-      rightList: this.selectedItems
+      leftList: {},
+      rightList: {}
     }
   },
   mounted() {
     const { handleChange, handleClickOnX } = this
-    this.listToAdd = Object.assign({}, this.listToAdd)
-    this.listToRemove = Object.assign({}, this.listToRemove)
+    this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
+      return Object.assign(preVal, { [idx]: curVal })
+    }, {})
+    const leftNum = this.items.length
+    this.rightList = this.listToRemove = this.selectedItems.reduce((preVal, curVal, idx) => {
+      return Object.assign(preVal, { [idx+leftNum]: curVal })
+    }, {})
     this.$on('handleSingleDualListChange', handleChange)
     this.$on('handleClickOnX', handleClickOnX)
+  },
+  watch: {
+    items() {
+      this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
+        return Object.assign(preVal, { [idx]: curVal })
+      }, {})
+    }
   },
   methods: {
     handleChange(list) {
@@ -54,8 +74,13 @@ Dual.Group = {
     },
     handleClickOnX(data) {
       if (data === 'left') {
-        this.listToAdd = this.leftList
-        this.highlightLeft = ''
+        const { apiMode } = this
+        if (apiMode) {
+          this.$emit('remove')
+        } else {
+          this.listToAdd = this.leftList
+          this.highlightLeft = ''
+        }
       } else if (data === 'right') {
         this.listToRemove = this.rightList
         this.highlightRight = ''
@@ -82,14 +107,19 @@ Dual.Group = {
       this.$emit('change', this.rightList)
     },
     handleSearchListLeft(e) {
+      const { apiMode } = this
       if (e.charCode === 13) {
-        const keys = Object.keys(this.leftList).filter((key) => {
-          return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
-        })
-        this.listToAdd = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
-        }, {})
-        this.highlightLeft = this.$refs.searchListToAdd.value
+        if (apiMode) {
+          this.$emit('inputchange', this.$refs.searchListToAdd.value)
+        } else {
+          const keys = Object.keys(this.leftList).filter((key) => {
+            return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
+          })
+          this.listToAdd = keys.reduce((preVal, curVal) => {
+            return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
+          }, {})
+          this.highlightLeft = this.$refs.searchListToAdd.value
+        }
       }
     },
     handleSearchListRight(e) {
@@ -105,11 +135,11 @@ Dual.Group = {
     }
   },
   render(h) {
-    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight } = this
+    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading } = this
     return (
       <div class={[s.dualWrapper]}>
         <div class={[s.dual]}>
-          <Input nativeOn-keypress={handleSearchListLeft} name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} />
+          <Input nativeOn-keypress={handleSearchListLeft} name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} loading={leftLoading} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToAdd).map((label) => {
