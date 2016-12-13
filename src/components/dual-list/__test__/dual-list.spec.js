@@ -1,12 +1,12 @@
 import Dual from '../'
 
 it('test dualList with props `items` and `onChange`', async() => {
-  const pokemon = {
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu',
-    4: 'Pikachu',
-  }
+  const pokemon = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Pikachu'
+  ]
   const getData = (data) => {}
   let vm
   await new Promise((done) => {
@@ -18,86 +18,88 @@ it('test dualList with props `items` and `onChange`', async() => {
       }
     })
     expect(vm.listToAdd).toEqual({
-      1: 'Squirtle',
-      2: 'Caterpie',
-      3: 'Raichu',
-      4: 'Pikachu',
+      0: 'Squirtle',
+      1: 'Caterpie',
+      2: 'Raichu',
+      3: 'Pikachu',
     })
     expect(vm.leftList).toEqual({
-      1: 'Squirtle',
-      2: 'Caterpie',
-      3: 'Raichu',
-      4: 'Pikachu',
-    })
-    //click on 3: 'Raichu'
-    $(vm.$children[3].$el).trigger('click')
-    expect(vm.leftList).toEqual({
-      1: 'Squirtle',
-      2: 'Caterpie',
-      4: 'Pikachu',
-    })
-    expect(vm.listToAdd).toEqual({
-      1: 'Squirtle',
-      2: 'Caterpie',
-      4: 'Pikachu',
-    })
-    expect(vm.rightList).toEqual({
-      3: 'Raichu'
-    })
-    expect(vm.listToRemove).toEqual({
-      3: 'Raichu'
+      0: 'Squirtle',
+      1: 'Caterpie',
+      2: 'Raichu',
+      3: 'Pikachu',
     })
     vm.$nextTick(done)
   })
-  //click on 3 again: 'Raichu'
-  $(vm.$children[7].$el).trigger('click')
+  //click on 2: 'Raichu'
+  $(vm.$children[6].$el).trigger('click')
   expect(vm.leftList).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu',
-    4: 'Pikachu',
+    0: 'Squirtle',
+    1: 'Caterpie',
+    3: 'Pikachu',
   })
   expect(vm.listToAdd).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu',
-    4: 'Pikachu',
-  })
-  expect(vm.rightList).toEqual({})
-  expect(vm.listToRemove).toEqual({})
-})
-
-it('test dualList with props `selectedItems` and without `items`', () => {
-  const pokemon = {
-    1: 'Squirtle',
-    2: 'Caterpie'
-  }
-  const vm = shallow({
-    render(h) {
-      return (
-        <Dual.Group selectedItems={pokemon} />
-      )
-    }
-  })
-  expect(vm.listToRemove).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie'
+    0: 'Squirtle',
+    1: 'Caterpie',
+    3: 'Pikachu',
   })
   expect(vm.rightList).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie'
+    2: 'Raichu'
   })
-  expect(vm.listToAdd).toEqual({})
-  expect(vm.leftList).toEqual({})
+  expect(vm.listToRemove).toEqual({
+    2: 'Raichu'
+  })
+})
+
+it('test dualList with props `selectedItems` and without `items`', async() => {
+  const pokemon = [
+    'Squirtle',
+    'Caterpie'
+  ]
+  let vm
+  await new Promise((done) => {
+    vm = shallow({
+      render(h) {
+        return (
+          <Dual.Group selectedItems={pokemon} />
+        )
+      }
+    })
+    expect(vm.listToRemove).toEqual({
+      0: 'Squirtle',
+      1: 'Caterpie'
+    })
+    expect(vm.rightList).toEqual({
+      0: 'Squirtle',
+      1: 'Caterpie'
+    })
+    expect(vm.listToAdd).toEqual({})
+    expect(vm.leftList).toEqual({})
+    vm.$nextTick(done)
+  })
+  // click on 2 again: 'Raichu'
+  $(vm.$children[5].$el).trigger('click')
+  expect(vm.listToRemove).toEqual({
+    0: 'Squirtle'
+  })
+  expect(vm.rightList).toEqual({
+    0: 'Squirtle'
+  })
+  expect(vm.listToAdd).toEqual({
+    1: 'Caterpie'
+  })
+  expect(vm.leftList).toEqual({
+    1: 'Caterpie'
+  })
 })
 
 it('test search features', async() => {
-  const pokemon = {
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu',
-    4: 'Pikachu',
-  }
+  const pokemon = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Pikachu'
+  ]
   const getData = (data) => {}
   let vm
   await new Promise((done) => {
@@ -115,33 +117,33 @@ it('test search features', async() => {
     const e = { charCode: 13 }
     vm.handleSearchListLeft(e)// $(vm.$children[0].$el).trigger('keypress', e) is not effective
     expect(vm.listToAdd).toEqual({
-      3: 'Raichu',
-      4: 'Pikachu'
+      2: 'Raichu',
+      3: 'Pikachu'
     })
     expect(vm.highlightLeft).toBe('chu')
     vm.$nextTick(done)
   })
   //click on selectAll
-  $(vm.$children[3].$el).trigger('click')
+  $(vm.$children[1].$el).trigger('click')
   expect(vm.leftList).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie'
+    0: 'Squirtle',
+    1: 'Caterpie'
   })
   expect(vm.listToAdd).toEqual({})
   expect(vm.rightList).toEqual({
-    3: 'Raichu',
-    4: 'Pikachu',
+    2: 'Raichu',
+    3: 'Pikachu',
   })
   expect(vm.listToRemove).toEqual({
-    3: 'Raichu',
-    4: 'Pikachu',
+    2: 'Raichu',
+    3: 'Pikachu',
   })
 
   //clickOnX
   vm.handleClickOnX('left')// $(vm.$children[0].$children[1].$el).trigger('click') is not effective
   expect(vm.listToAdd).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie'
+    0: 'Squirtle',
+    1: 'Caterpie'
   })
   expect(vm.highlightLeft).toBe('')
 
@@ -152,31 +154,103 @@ it('test search features', async() => {
   const e = { charCode: 13 }
   vm.handleSearchListRight(e)
   expect(vm.listToRemove).toEqual({
-    3: 'Raichu'
+    2: 'Raichu'
   })
   expect(vm.highlightRight).toBe('Rai')
 
   //click on unSelectAll
-  $(vm.$children[4].$el).trigger('click')
+  $(vm.$children[2].$el).trigger('click')
   expect(vm.rightList).toEqual({
-    4: 'Pikachu'
+    3: 'Pikachu'
   })
   expect(vm.listToRemove).toEqual({})
   expect(vm.leftList).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu'
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu'
   })
   expect(vm.listToAdd).toEqual({
-    1: 'Squirtle',
-    2: 'Caterpie',
-    3: 'Raichu'
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu'
   })
 
   //clickOnX
   vm.handleClickOnX('right')
   expect(vm.listToRemove).toEqual({
-    4: 'Pikachu'
+    3: 'Pikachu'
   })
   expect(vm.highlightRight).toBe('')
+})
+
+it('test apiMode props `items` dynamic change', async() => {
+  const getInputValue = (data) => {}
+  const removeInput = () => {}
+  let vm
+  await new Promise((done) => {
+    vm = shallow({
+      data() {
+        return {
+          pokemon: [
+            'Squirtle',
+            'Caterpie',
+            'Raichu',
+            'Pikachu',
+          ]
+        }
+      },
+      mounted() {
+        this.pokemon = [
+          'Squirtle',
+          'Caterpie'
+        ]
+        this.$nextTick(done)
+      },
+      render(h) {
+        return (
+          <Dual.Group apiMode items={this.pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
+        )
+      }
+    })
+  })
+  expect(vm.listToAdd).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie'
+  })
+  expect(vm.leftList).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie'
+  })
+})
+
+it('test apiMode `<Input />` event', async() => {
+  let vm
+  const pokemon = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Pikachu',
+  ]
+  const getInputValue = (data) => {
+    expect(data).toBe('chu')
+  }
+  const removeInput = () => {}
+  await new Promise((done) => {
+    vm = shallow({
+      render(h) {
+        return (
+          <Dual.Group apiMode items={pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
+        )
+      }
+    })
+    //search leftList
+    vm.$refs.searchListToAdd.value = 'chu'
+    $(vm.$refs.searchListToAdd.$el).val('chu')
+
+    const e = { charCode: 13 }
+    vm.handleSearchListLeft(e)
+    vm.$nextTick(done)
+  })
+  //clickOnX
+  vm.handleClickOnX('left')
 })
