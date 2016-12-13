@@ -4,43 +4,48 @@ import s from './dual-list.scss'
 
 const DualListPage = {
   name: 'DualListPage',
+
   data() {
     return {
-      output: { 15: 'Meowth', 16: 'Abra', 17: 'Doduo', 18: 'Dodrio' }
-    }
-  },
-  methods: {
-    getDualData(data) {
-      this.output = Object.assign({}, data)
+      output: { 14: 'Meowth', 15: 'Abra', 16: 'Doduo', 17: 'Dodrio' },
+      labels : [
+        'Squirtle',
+        'Caterpie',
+        'Raticate',
+        'Fearow',
+        'Clefairy',
+        'Venonat',
+        'Psyduck',
+        'Eevee',
+        'Mew',
+        'Pikachu',
+        'Golduck',
+        'Vulpix',
+        'Mewtwo',
+        'Raichu'
+      ],
+      selectedLabel: [
+        'Meowth',
+        'Abra',
+        'Doduo',
+        'Dodrio'
+      ]
     }
   },
 
+  methods: {
+    getDualData(data) {
+      this.output = Object.assign({}, data)
+    },
+    getInputValue(data) {},
+    removeInput() {}
+  },
+
   render(h) {
-    const labels = {
-      1: 'Squirtle',
-      2: 'Caterpie',
-      3: 'Raticate',
-      4: 'Fearow',
-      5: 'Clefairy',
-      6: 'Venonat',
-      7: 'Psyduck',
-      8: 'Eevee',
-      9: 'Mew',
-      10: 'Pikachu',
-      11: 'Golduck',
-      12: 'Vulpix',
-      13: 'Mewtwo',
-      14: 'Raichu'
-    }
-    const selectedLabel = {
-      15: 'Meowth',
-      16: 'Abra',
-      17: 'Doduo',
-      18: 'Dodrio'
-    }
     return (
       <div>
         <Markdown src={require('./doc.md')} />
+        <Dual.Group apiMode items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} onInputchange={this.getInputValue} onRemove={this.removeInput} />
         <div class={[s.code]}>
           <pre>
             <code>
@@ -48,7 +53,6 @@ const DualListPage = {
             </code>
           </pre>
         </div>
-        <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
       </div>
     )
   }

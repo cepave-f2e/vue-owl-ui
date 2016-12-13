@@ -29,5 +29,12 @@ Use `onChange `as a listener to get data from `$emit('change')`
 ```jsx
 <Dual.Group items={labels} class={[s.dualGroup]} onChange={this.getDualData} />
 ```
+API mode `<Dual />`:
+- additional props `apiMode` and `leftLoading`  
+- get left input box value by listener `onInputchange`
+- get remove input value event by listener `onRemove`
+```jsx
+<Dual.Group apiMode onChange={this.getInputValue} onRemove={this.removeInput} leftLoading={true} />
+```
 
 ## Demo
