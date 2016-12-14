@@ -33,26 +33,39 @@ props: {
   x: {
     type: Boolean,
     default: false
+  },
+  required: {
+    type: Boolean,
+    default: false
   }
 }
 ```
 
 ## Usage
 
+get input value from `this.$refs.inputRef.value`
 ```jsx
-//get input value from this.$refs.inputRef.value
 <Input name="demo" icon={['search', '#919799']} status="normal" placeholder="type some words.." ref="inputRef" />
-
-//use loading props to show loading pie
+```
+use `loading` props to show loading pie
+```jsx
 <Input loading={true} />
-
-//use password props to switch input type
+```
+use `password` props to switch input type
+```jsx
 <Input password={true} />
-
-//use `x` icon to remove value when clicking on `x`
+```
+use props `x` and `x` icon to remove value when clicking on `x`
+```jsx
 <Input icon={['search', '#919799']} x={true} />
+```
+use `required` props to add `*` beside `<Input>`
+```jsx
+<Input required={true} />
+```
 
-//get onClickX event by $on and $emit
+get `onClickX` event by `$on` and `$emit`
+```jsx
 mounted() {
   this.$on('handleClickOnX', this.handleClickOnX)
 },
@@ -61,11 +74,11 @@ methods: {
     console.log(data)
   }
 }
+```
 
-//bind `on-keypress` event on <div> rether than <Input />
-<div on-keypress={this.handleKeyPress}>
-  <Input status="success" />
-</div>
+Use `nativeOn-keypress={this.handleClick}` to bind keypress event
+```jsx
+<Input status="success" nativeOn-keypress={this.handleKeyPress} />
 ```
 
 ## Demo

@@ -44,6 +44,9 @@ const InputPage = {
         <div class={[s.pwdInputwrapper]}>
           <Input status="error" />
         </div>
+        <div class={[s.pwdInputwrapper]}>
+          <Input required={true} />
+        </div>
       </div>
     )
   }

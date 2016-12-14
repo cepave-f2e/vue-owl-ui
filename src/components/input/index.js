@@ -34,6 +34,10 @@ const Input = {
     x: {
       type: Boolean,
       default: false
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -67,7 +71,7 @@ const Input = {
   },
 
   render(h) {
-    const { status, icon, name, placeholder, val, password, loading, handlePwdStyle, pwdFill, pwdInput, x, showX, handleInput, handleIconClick } = this
+    const { status, icon, name, placeholder, val, password, loading, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -82,6 +86,10 @@ const Input = {
         }
         {showX
           ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.icon]} /></span>
+          : ''
+        }
+        {required
+          ? <span class={[s.mustFill]}>*</span>
           : ''
         }
         <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} />
