@@ -2,10 +2,8 @@ import Icon from '../icon'
 import Input from '../input'
 import s from './dual-list.scss'
 
-const Dual = {}
-
-Dual.Group = {
-  name: 'DualGroup',
+const DualList = {
+  name: 'DualList',
   props: {
     items: {
       type: Array,
@@ -40,20 +38,25 @@ Dual.Group = {
   },
   mounted() {
     const { handleChange, handleClickOnX } = this
-    this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
-      return Object.assign(preVal, { [idx]: curVal })
+    const items = this.items.reduce((preVal, curVal, idx) => {
+      return { ...preVal, [idx]: curVal }
     }, {})
+    this.listToAdd = { ...items }
+    this.leftList = { ...items }
+
     const leftNum = this.items.length
-    this.rightList = this.listToRemove = this.selectedItems.reduce((preVal, curVal, idx) => {
-      return Object.assign(preVal, { [idx+leftNum]: curVal })
+    const selectedItems = this.selectedItems.reduce((preVal, curVal, idx) => {
+      return { ...preVal, [idx+leftNum]: curVal }
     }, {})
+    this.rightList = { ...selectedItems }
+    this.listToRemove = { ...selectedItems }
     this.$on('handleSingleDualListChange', handleChange)
     this.$on('handleClickOnX', handleClickOnX)
   },
   watch: {
     items() {
       this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
-        return Object.assign(preVal, { [idx]: curVal })
+        return { ...preVal, [idx]: curVal }
       }, {})
     }
   },
@@ -91,8 +94,8 @@ Dual.Group = {
       keys.map((key) => {
         delete this.leftList[key]
       })
-      this.rightList = Object.assign({}, this.rightList, this.listToAdd)
-      this.listToRemove = Object.assign({}, this.listToRemove, this.listToAdd)
+      this.rightList = { ...this.rightList, ...this.listToAdd }
+      this.listToRemove = { ...this.listToRemove, ...this.listToAdd }
       this.listToAdd = {}
       this.$emit('change', this.rightList)
     },
@@ -101,8 +104,8 @@ Dual.Group = {
       keys.map((key) => {
         delete this.rightList[key]
       })
-      this.leftList = Object.assign({}, this.leftList, this.listToRemove)
-      this.listToAdd = Object.assign({}, this.listToAdd, this.listToRemove)
+      this.leftList = { ...this.leftList, ...this.listToRemove }
+      this.listToAdd = { ...this.listToAdd, ...this.listToRemove }
       this.listToRemove = {}
       this.$emit('change', this.rightList)
     },
@@ -116,7 +119,7 @@ Dual.Group = {
             return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
           })
           this.listToAdd = keys.reduce((preVal, curVal) => {
-            return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
+            return { ...preVal, [curVal]: this.leftList[curVal] }
           }, {})
           this.highlightLeft = this.$refs.searchListToAdd.value
         }
@@ -128,7 +131,7 @@ Dual.Group = {
           return this.rightList[key].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.rightList[curVal] })
+          return { ...preVal, [curVal]: this.rightList[curVal] }
         }, {})
         this.highlightRight = this.$refs.searchListToRemove.value
       }
@@ -143,25 +146,21 @@ Dual.Group = {
           <div class={[s.lists]}>
             {
               Object.keys(this.listToAdd).map((label) => {
-                return <Dual.List id={label} name={this.listToAdd[label]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
+                return <List id={label} name={this.listToAdd[label]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
               })
             }
           </div>
         </div>
         <div class={[s.arrow]}>
-          <span on-click={handleSelectAll}>
-            <Icon class={[s.doubleRight]} typ="double-right" size={20} fill="#b8bdbf" />
-          </span>
-          <span on-click={handleUnselectAll}>
-            <Icon class={[s.doubleLeft]} typ="double-left" size={20} fill="#b8bdbf" />
-          </span>
+          <Icon nativeOn-click={handleSelectAll} class={[s.doubleRight]} typ="double-right" size={20} fill="#b8bdbf" />
+          <Icon nativeOn-click={handleUnselectAll} class={[s.doubleLeft]} typ="double-left" size={20} fill="#b8bdbf" />
         </div>
         <div class={[s.dual]}>
           <Input nativeOn-keypress={handleSearchListRight} name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToRemove).map((label) => {
-                return <Dual.List id={label} name={this.listToRemove[label]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
+                return <List id={label} name={this.listToRemove[label]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
               })
             }
           </div>
@@ -171,8 +170,8 @@ Dual.Group = {
   }
 }
 
-Dual.List = {
-  name: 'DualList',
+const List = {
+  name: 'List',
   props: {
     highlight: {
       type: String,
@@ -198,7 +197,7 @@ Dual.List = {
       let highlightText = ''
       if (highlight) {
         const highlightReg = new RegExp(`${highlight}`, 'gi')
-        highlightText = `<span>${name}</span>`.replace(highlightReg, (replacement) => {
+        highlightText = `${name}`.replace(highlightReg, (replacement) => {
           return `<span class="${s.highlight}">${replacement}</span>`
         })
       }
@@ -229,4 +228,4 @@ Dual.List = {
   }
 }
 
-module.exports = Dual
+module.exports = DualList

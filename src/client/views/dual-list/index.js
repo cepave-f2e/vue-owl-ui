@@ -1,4 +1,4 @@
-import Dual from '../../../components/dual-list'
+import DualList from '../../../components/dual-list'
 import Markdown from '../../components/markdown'
 import s from './dual-list.scss'
 
@@ -8,7 +8,7 @@ const DualListPage = {
   data() {
     return {
       output: { 14: 'Meowth', 15: 'Abra', 16: 'Doduo', 17: 'Dodrio' },
-      labels : [
+      labels: [
         'Squirtle',
         'Caterpie',
         'Raticate',
@@ -45,7 +45,7 @@ const DualListPage = {
     return (
       <div>
         <Markdown src={require('./doc.md')} />
-        <Dual.Group apiMode items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} onInputchange={this.getInputValue} onRemove={this.removeInput} />
+        <DualList items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
         <div class={[s.code]}>
           <pre>
             <code>

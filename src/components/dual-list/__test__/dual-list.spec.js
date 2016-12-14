@@ -1,4 +1,4 @@
-import Dual from '../'
+import DualList from '../'
 
 it('test dualList with props `items` and `onChange`', async() => {
   const pokemon = [
@@ -13,7 +13,7 @@ it('test dualList with props `items` and `onChange`', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group items={pokemon} onChange={getData} />
+          <DualList items={pokemon} onChange={getData} />
         )
       }
     })
@@ -61,7 +61,7 @@ it('test dualList with props `selectedItems` and without `items`', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group selectedItems={pokemon} />
+          <DualList selectedItems={pokemon} />
         )
       }
     })
@@ -106,7 +106,7 @@ it('test search features', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group items={pokemon} onChange={getData} />
+          <DualList items={pokemon} onChange={getData} />
         )
       }
     })
@@ -208,7 +208,7 @@ it('test apiMode props `items` dynamic change', async() => {
       },
       render(h) {
         return (
-          <Dual.Group apiMode items={this.pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
+          <DualList apiMode items={this.pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
         )
       }
     })
@@ -239,7 +239,7 @@ it('test apiMode `<Input />` event', async() => {
     vm = shallow({
       render(h) {
         return (
-          <Dual.Group apiMode items={pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
+          <DualList apiMode items={pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} />
         )
       }
     })
