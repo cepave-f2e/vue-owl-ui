@@ -62,31 +62,29 @@ const Select = {
     _handleOnChange: delegate('[data-role="select-option"]', function (ev) {
       const { delegateTarget } = ev
       const { _getTitle, options, _selectedIdx } = this
-      const idx = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
+      const index = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
 
-      if (idx === _selectedIdx) {
+      if (index === _selectedIdx) {
         return
       }
 
-      this._selectedIdx = idx
-      this.title = _getTitle(options[idx])
-      this.value = options[idx].value
+      this._selectedIdx = index
+      this.title = _getTitle({ option: options[index] })
+      this.value = options[index].value
       this.opened = false
 
       this.$emit('change', {
         value: this.value,
-        idx
+        index
       })
     }),
 
-    _getTitle(option) {
+    _getTitle({ option, index }) {
       const { optionsRender } = this
-      const h = this.$createElement
+
       return (
-        option.render
-          ? option.render(h, option)
-          : optionsRender
-          ? optionsRender(h, option)
+        optionsRender
+          ? optionsRender({ option, index })
           : option.title
       )
     }
@@ -106,23 +104,23 @@ const Select = {
       const h = this.$createElement
       let hasSelected = false
 
-      const _options = options.map((option, i) => {
+      const _options = options.map((option, index) => {
         if (option.selected) {
           hasSelected = true
-          this._selectedIdx = i
-          this.title = _getTitle(option)
+          this._selectedIdx = index
+          this.title = _getTitle({ option })
           this.value = option.value
         }
 
         return (
-          <div data-role="select-option" data-idx={i}>
-            { _getTitle(option) }
+          <div data-role="select-option" data-idx={index}>
+            { _getTitle({ option, index }) }
           </div>
         )
       })
 
       if (!hasSelected) {
-        this.title = _getTitle(options[0])
+        this.title = _getTitle({ option: options[0] })
         this.value = options[0].value
       }
       return _options
@@ -131,7 +129,7 @@ const Select = {
 
   render(h) {
     const {
-      close, $slots, name, _handleOnChange,
+      close, name, _handleOnChange,
       renderOptions, css, toggleMenu, value, title,
     } = this
 

@@ -7,12 +7,8 @@ it('Test Select component default `options` props', () => {
     { value: '3d', title: '3 days', },
     { value: '5d', title: '5 days', },
   ]
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options} />
-      )
-    }
+  const vm = mount(Select, {
+    options
   })
 
   expect(vm.value).toBe('1d')
@@ -24,71 +20,30 @@ it('Test Select component if set `selected` in options', () => {
     { value: '3d', title: '3 days', selected: true },
     { value: '5d', title: '5 days', },
   ]
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options} />
-      )
-    }
+  const vm = mount(Select, {
+    options
   })
 
   expect(vm.value).toBe('3d')
 })
 
-it('Test Select component dynamic update `options`', async()=> {
-  let vm
-
-  await new Promise((done) => {
-    vm = shallow({
-      data() {
-        return {
-          options: [
-            { value: '1d', title: '1 day', },
-            { value: '3d', title: '3 days', },
-          ]
-        }
-      },
-      mounted() {
-        this.options = [
-          ...this.options,
-          { value: '5d', title: '5 days', selected: true },
-        ]
-
-        this.$nextTick(done)
-      },
-      render(h) {
-        return (
-          <Select options={this.options} />
-        )
-      }
-    })
-  })
-
-  expect(vm.options.length).toBe(3)
-  expect(vm.value).toBe('5d')
-})
-
-it('Test option.render', () => {
+it('Test Select component dynamic update `options`', (done) => {
   const options = [
-    {
-      value: '1d',
-      title: '1 day',
-      render(h, option) {
-        return (
-          <b>{option.title}</b>
-        )
-      }
-    },
+    { value: '1d', title: '1 day', },
+    { value: '3d', title: '3 days', },
   ]
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options} />
-      )
-    }
-  })
+  const vm = mount(Select, { options })
 
-  expect($(vm.$el).find(`.${s.optionBox} b`).length).toBe(1)
+  vm.options = [
+    ...vm.options,
+    { value: '5d', title: '5 days', selected: true },
+  ]
+
+  vm.$nextTick(() => {
+    expect(vm.options.length).toBe(3)
+    expect(vm.value).toBe('5d')
+    done()
+  })
 })
 
 it('Test `optionsRender` props', () => {
@@ -99,16 +54,12 @@ it('Test `optionsRender` props', () => {
     },
   ]
 
-  const optionsRender = (h, option) => {
-    return (
-      <b>{option.title}</b>
-    )
-  }
-
   const vm = shallow({
     render(h) {
       return (
-        <Select options={options} optionsRender={optionsRender} />
+        <Select options={options} optionsRender={({ option }) => (
+          <b>{option.title}</b>
+        )} />
       )
     }
   })
@@ -124,13 +75,7 @@ it('Test toggle Select', () => {
     },
   ]
 
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options}  />
-      )
-    }
-  })
+  const vm = mount(Select, { options })
 
   expect(vm.opened).toBe(false)
   $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
@@ -145,13 +90,7 @@ it('Test toggle Select with `isDisabled` ', () => {
     },
   ]
 
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select isDisabled options={options}  />
-      )
-    }
-  })
+  const vm = mount(Select, { options, isDisabled: true })
   expect(vm.opened).toBe(false)
   $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
   expect(vm.opened).toBe(false)
@@ -165,13 +104,7 @@ it('Test Select blur should be triggered `close`', () => {
     },
   ]
 
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options}  />
-      )
-    }
-  })
+  const vm = mount(Select, { options })
 
   expect(vm.opened).toBe(false)
   $(vm.$el).find(`.${s.selectTitle}`).trigger('click')
@@ -180,7 +113,7 @@ it('Test Select blur should be triggered `close`', () => {
   expect(vm.opened).toBe(false)
 })
 
-it('Test dynamic `isOpened` props', async() => {
+it('Test dynamic `isOpened` props', (done) => {
   const options = [
     {
       value: '1d',
@@ -188,27 +121,17 @@ it('Test dynamic `isOpened` props', async() => {
     },
   ]
 
-  let vm
-  await new Promise((done) => {
-    vm = shallow({
-      data() {
-        return {
-          isOpened: false
-        }
-      },
-      mounted() {
-        this.isOpened = true
-        this.$nextTick(done)
-      },
-      render(h) {
-        return (
-          <Select options={options}  isOpened={this.isOpened} />
-        )
-      }
-    })
+  const vm = mount(Select, {
+    isOpened: false,
+    options
   })
 
-  expect(vm.opened).toBe(true)
+  vm.isOpened = true
+
+  vm.$nextTick(() => {
+    expect(vm.opened).toBe(true)
+    done()
+  })
 })
 
 it('Test trigger `onChange`', () => {
@@ -216,15 +139,9 @@ it('Test trigger `onChange`', () => {
     { value: '1d', title: '1 day', },
     { value: '3d', title: '3 days', },
   ]
-
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options}  />
-      )
-    }
+  const vm = mount(Select, {
+    options
   })
-
   const $el = $(vm.$el)
   expect(vm.value).toBe('1d')
   $el.find(`.${s.optionBox} [data-role="select-option"]`).eq(1).trigger('click')
@@ -237,12 +154,8 @@ it('Test trigger `onChange `if click same as last selected index', () => {
     { value: '3d', title: '3 days', },
   ]
 
-  const vm = shallow({
-    render(h) {
-      return (
-        <Select options={options}  />
-      )
-    }
+  const vm = mount(Select, {
+    options
   })
 
   expect(vm.value).toBe('1d')
@@ -257,17 +170,14 @@ it('Test `onChange` props', async() => {
   ]
 
   const d = await new Promise((done) => {
-    const vm = shallow({
-      mounted() {
-        $(this.$el).find(`.${s.optionBox} [data-role="select-option"]`).eq(1).trigger('click')
-      },
-      render(h) {
-        return (
-          <Select options={options} onChange={done} />
-        )
-      }
+    const vm = mount(Select, {
+      options,
     })
+
+    vm.$on('change', done)
+
+    $(vm.$el).find(`.${s.optionBox} [data-role="select-option"]`).eq(1).trigger('click')
   })
 
-  expect(d).toEqual({ value: '3d', idx: 1 })
+  expect(d).toEqual({ value: '3d', index: 1 })
 })
