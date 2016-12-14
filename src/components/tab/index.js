@@ -13,7 +13,11 @@ const Tab = {
 
   mounted() {//find selected
     const { $slots } = this
-    const selectedChild = $slots.tabHead.find((slot) => slot.child.isSelected)
+    let selectedChild = $slots.tabHead.find((slot) => slot.child.isSelected)
+    if (!selectedChild) {
+      selectedChild = $slots.tabHead[0]
+      $slots.tabHead[0].child.selected = '1'
+    }
     this.selectedIdx = $slots.tabHead.indexOf(selectedChild)
     this.selectedName = selectedChild.child.name
     this.switchContent()
