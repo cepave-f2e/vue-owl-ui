@@ -20,7 +20,7 @@ const replaceExportsJS = exportsJS
 fs.writeFileSync('src/components/index.js', replaceExportsJS)
 
 exec('NODE_ENV=temp npm run pack.client')
-exec('NODE_ENV=build npm run pack.client')
+exec('NODE_ENV=build npm run pack.client -- --display-modules')
 rm(['npm/dist/*.css'])
 
 gu.src('npm/dist/*.js', { base: 'npm' })
