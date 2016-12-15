@@ -93,7 +93,7 @@ it('test dualList with props `selectedItems` and without `items`', async() => {
   })
 })
 
-it('test search features', async() => {
+it('test search feature', async() => {
   const pokemon = [
     'Squirtle',
     'Caterpie',
@@ -253,4 +253,72 @@ it('test apiMode `<Input />` event', async() => {
   })
   //clickOnX
   vm.handleClickOnX('left')
+})
+
+it('test selectAll feature', async() => {
+  let vm
+  const pokemon = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Pikachu',
+  ]
+  await new Promise((done) => {
+    vm = shallow({
+      render(h) {
+        return (
+          <DualList items={pokemon} />
+        )
+      }
+    })
+    //selectAll
+    $(vm.$children[1].$el).trigger('click')
+    vm.$nextTick(done)
+  })
+  expect(vm.listToRemove).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu',
+    3: 'Pikachu'
+  })
+  expect(vm.rightList).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu',
+    3: 'Pikachu'
+  })
+})
+
+it('test unSelectAll feature', async() => {
+  let vm
+  const pokemon = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Pikachu',
+  ]
+  await new Promise((done) => {
+    vm = shallow({
+      render(h) {
+        return (
+          <DualList selectedItems={pokemon} />
+        )
+      }
+    })
+    //unSelectAll
+    $(vm.$children[2].$el).trigger('click')
+    vm.$nextTick(done)
+  })
+  expect(vm.listToAdd).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu',
+    3: 'Pikachu'
+  })
+  expect(vm.leftList).toEqual({
+    0: 'Squirtle',
+    1: 'Caterpie',
+    2: 'Raichu',
+    3: 'Pikachu'
+  })
 })
