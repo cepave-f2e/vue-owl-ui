@@ -107,4 +107,6 @@ module.exports = {
       })
     ]
   ],
+
+  externals: isDev ? [] : Object.keys(pkg.dependencies),
 }
