@@ -183,6 +183,49 @@ it('test search feature', async() => {
   expect(vm.highlightRight).toBe('')
 })
 
+it('test search feature with props `caseInsensitive`', () => {
+  const pokemonLeft = [
+    'Squirtle',
+    'Caterpie',
+    'Raichu',
+    'Raticate'
+  ]
+  const pokemonRight = [
+    'Pikachu',
+    'Vulpix',
+    'Dodrio'
+  ]
+  const vm = shallow({
+    render(h) {
+      return (
+        <DualList items={pokemonLeft} selectedItems={pokemonRight} caseInsensitive />
+      )
+    }
+  })
+  //search leftList
+  vm.$refs.searchListToAdd.value = 'ca'
+  $(vm.$refs.searchListToAdd.$el).val('ca')
+
+  const e = { charCode: 13 }
+  vm.handleSearchListLeft(e)// $(vm.$children[0].$el).trigger('keypress', e) is not effective
+  expect(vm.listToAdd).toEqual({
+    1: 'Caterpie',
+    3: 'Raticate'
+  })
+  expect(vm.highlightLeft).toBe('ca')
+  //search rightList
+  vm.$refs.searchListToRemove.value = 'pi'
+  $(vm.$refs.searchListToRemove.$el).val('pi')
+
+  const f = { charCode: 13 }
+  vm.handleSearchListRight(f)
+  expect(vm.listToRemove).toEqual({
+    4: 'Pikachu',
+    5: 'Vulpix'
+  })
+  expect(vm.highlightRight).toBe('pi')
+})
+
 it('test apiMode props `items` dynamic change', async() => {
   const getInputValue = (data) => {}
   const removeInput = () => {}
