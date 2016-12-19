@@ -17,6 +17,10 @@ const DualList = {
         return []
       }
     },
+    caseInsensitive: {
+      type: Boolean,
+      default: false
+    },
     apiMode: {
       type: Boolean,
       default: false
@@ -110,14 +114,19 @@ const DualList = {
       this.$emit('change', this.rightList)
     },
     handleSearchListLeft(e) {
-      const { apiMode } = this
+      const { apiMode, caseInsensitive } = this
       if (e.charCode === 13) {
         if (apiMode) {
           this.$emit('inputchange', this.$refs.searchListToAdd.value)
         } else {
-          const keys = Object.keys(this.leftList).filter((key) => {
+          const keys = (caseInsensitive)
+          ? Object.keys(this.leftList).filter((key) => {
             return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
           })
+          : Object.keys(this.leftList).filter((key) => {
+            return this.leftList[key].includes(this.$refs.searchListToAdd.value)
+          })
+
           this.listToAdd = keys.reduce((preVal, curVal) => {
             return { ...preVal, [curVal]: this.leftList[curVal] }
           }, {})
@@ -127,8 +136,13 @@ const DualList = {
     },
     handleSearchListRight(e) {
       if (e.charCode === 13) {
-        const keys = Object.keys(this.rightList).filter((key) => {
+        const { caseInsensitive } = this
+        const keys = (caseInsensitive)
+        ? Object.keys(this.rightList).filter((key) => {
           return this.rightList[key].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
+        })
+        : Object.keys(this.rightList).filter((key) => {
+          return this.rightList[key].includes(this.$refs.searchListToRemove.value)
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
           return { ...preVal, [curVal]: this.rightList[curVal] }
