@@ -14,6 +14,18 @@ props: {
     default: () => {
       return {}
     }
+  },
+  caseInsensitive: {
+    type: Boolean,
+    default: false
+  },
+  apiMode: {
+    type: Boolean,
+    default: false
+  },
+  leftLoading: {
+    type: Boolean,
+    default: false
   }
 }
 ```
@@ -27,7 +39,11 @@ const labels = {
 ```
 Use `onChange `as a listener to get data from `$emit('change')`
 ```jsx
-<DualList items={labels} class={[s.dualGroup]} onChange={this.getDualData} />
+<DualList items={labels} onChange={this.getDualData} />
+```
+Use `caseInsensitive` props to determine whether the search feature is case insensitive
+```jsx
+<DualList items={labels} caseInsensitive />
 ```
 API mode `<Dual />`:
 - additional props `apiMode` and `leftLoading`  
