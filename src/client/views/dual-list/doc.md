@@ -4,16 +4,21 @@
 ```js
 props: {
   items: { //list on the left
-    type: Object,
+    type: Array,
     default: () => {
-      return {}
+      return []
     }
   },
   selectedItems: { //list on the right
-    type: Object,
+    type: Array,
     default: () => {
-      return {}
+      return []
     }
+  },
+  displayKey: {
+    type: String,
+    default: '',
+    required: true
   },
   caseInsensitive: {
     type: Boolean,
@@ -31,11 +36,14 @@ props: {
 ```
 
 ## Usage
-
+The props -- `items` and `selectedItems` must be `Array Object`.  
+Give `displayKey` to determine what should be display in a single list
 ```jsx
-const labels = {
-  1: 'Squirtle', 2: 'Caterpie', 3: 'Raticate', 4: 'Fearow', 5: 'Clefairy',
-}
+const labels = [
+  { name: 'Squirtle', id: '1' }, { name: 'Caterpie', id: '2' },
+  { name: 'Raticate', id: '3' }, { name: 'Fearow', id: '4' }
+]
+<DualList items={labels} selectedItems={selectedLabel} displayKey="name" caseInsensitive />
 ```
 Use `onChange `as a listener to get data from `$emit('change')`
 ```jsx

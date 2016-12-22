@@ -7,28 +7,20 @@ const DualListPage = {
 
   data() {
     return {
-      output: { 14: 'Meowth', 15: 'Abra', 16: 'Doduo', 17: 'Dodrio' },
+      output: {
+        10: { name: 'Meowth', id: '20' }, 11: { name: 'Abra', id: '21' },
+        12: { name: 'Doduo', id: '22' }, 13: { name: 'Dodrio', id: '23' }
+      },
       labels: [
-        'Squirtle',
-        'Caterpie',
-        'Raticate',
-        'Fearow',
-        'Clefairy',
-        'Venonat',
-        'Psyduck',
-        'Eevee',
-        'Mew',
-        'Pikachu',
-        'Golduck',
-        'Vulpix',
-        'Mewtwo',
-        'Raichu'
+        { name: 'Squirtle', id: '1' }, { name: 'Caterpie', id: '2' },
+        { name: 'Raticate', id: '3' }, { name: 'Fearow', id: '4' },
+        { name: 'Clefairy', id: '5' }, { name: 'Venonat', id: '6' },
+        { name: 'Psyduck', id: '7' }, { name: 'Pikachu', id: '8' },
+        { name: 'Vulpix', id: '9' }, { name: 'Raichu', id: '10' }
       ],
       selectedLabel: [
-        'Meowth',
-        'Abra',
-        'Doduo',
-        'Dodrio'
+        { name: 'Meowth', id: '20' }, { name: 'Abra', id: '21' },
+        { name: 'Doduo', id: '22' }, { name: 'Dodrio', id: '23' }
       ]
     }
   },
@@ -45,7 +37,7 @@ const DualListPage = {
     return (
       <div>
         <Markdown src={require('./doc.md')} />
-        <DualList items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
+        <DualList items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} displayKey="name" caseInsensitive />
         <div class={[s.code]}>
           <pre>
             <code>
