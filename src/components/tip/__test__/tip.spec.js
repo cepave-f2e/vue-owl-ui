@@ -31,9 +31,9 @@ it('test mouse hover event', async() => {
     }
   })
 
-  //when mouse enters
+  // when mouse enters
   $(vm.$el).trigger('mouseenter')
-  //tipContext should show up
+  // tipContext should show up
   const tipContext2 = document.querySelector('#tipContext2')
   expect(getComputedStyle(tipContext2)._values.display).toBe('block')
   await new Promise((done) => {
@@ -42,9 +42,9 @@ it('test mouse hover event', async() => {
     }, 50)
   })
   expect(getComputedStyle(tipContext2)._values.opacity).toBe('1')
-  //when mouse leaves
+  // when mouse leaves
   $(vm.$el).trigger('mouseleave')
-  //tipContext should disappear
+  // tipContext should disappear
   expect(document.querySelector('#tipContext2')).toBe(null)
 })
 
