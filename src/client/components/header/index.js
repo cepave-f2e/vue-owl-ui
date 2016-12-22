@@ -1,5 +1,6 @@
 import s from './header.scss'
 import Logo from '../logo'
+import Link from '../../components/link'
 
 const Header = {
   name: 'Header',
@@ -11,9 +12,9 @@ const Header = {
           <div class="fbox -around">
             <div>
               <h1>
-                <router-link to="/">
+                <Link to="/">
                   <Logo fill="#fff" size={25} /> OWL UI
-                </router-link>
+                </Link>
                 <span class={[s.ver]}>
                   v{__pkgVer}
                 </span>
@@ -22,14 +23,14 @@ const Header = {
 
             <ul>
               <li>
-                <router-link to="/">
+                <Link to="/">
                   Docs
-                </router-link>
+                </Link>
               </li>
               <li>
-                <router-link to="/components">
+                <Link to="/components">
                   Components
-                </router-link>
+                </Link>
               </li>
               <li>
                 <a href="//github.com/cepave-f2e/vue-owl-ui" target="_blank">
