@@ -108,5 +108,5 @@ module.exports = {
     ]
   ],
 
-  externals: isDev ? [] : Object.keys(pkg.dependencies),
+  externals: isDev || isProd ? [] : Object.keys(pkg.dependencies),
 }
