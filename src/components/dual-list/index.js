@@ -17,6 +17,11 @@ const DualList = {
         return []
       }
     },
+    displayKey: {
+      type: String,
+      default: '',
+      required: true
+    },
     caseInsensitive: {
       type: Boolean,
       default: false
@@ -67,15 +72,17 @@ const DualList = {
   methods: {
     handleChange(list) {
       if (list[0] === 'add') {
+        const shiftItem = this.leftList[list[2]]
         delete this.leftList[list[2]]
-        this.$set(this.rightList, list[2], list[1])
+        this.rightList = { ...this.rightList, [list[2]]: shiftItem }
         delete this.listToAdd[list[2]]
-        this.$set(this.listToRemove, list[2], list[1])
+        this.listToRemove = { ...this.listToRemove, [list[2]]: shiftItem }
       } else if (list[0] === 'remove') {
+        const shiftItem = this.rightList[list[2]]
         delete this.rightList[list[2]]
-        this.$set(this.leftList, list[2], list[1])
+        this.leftList = { ...this.leftList, [list[2]]: shiftItem }
         delete this.listToRemove[list[2]]
-        this.$set(this.listToAdd, list[2], list[1])
+        this.listToAdd = { ...this.listToAdd, [list[2]]: shiftItem }
       }
       this.$emit('change', this.rightList)
     },
@@ -114,17 +121,17 @@ const DualList = {
       this.$emit('change', this.rightList)
     },
     handleSearchListLeft(e) {
-      const { apiMode, caseInsensitive } = this
+      const { apiMode, caseInsensitive, displayKey } = this
       if (e.charCode === 13) {
         if (apiMode) {
           this.$emit('inputchange', this.$refs.searchListToAdd.value)
         } else {
           const keys = (caseInsensitive)
           ? Object.keys(this.leftList).filter((key) => {
-            return this.leftList[key].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
+            return this.leftList[key][displayKey].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
           })
           : Object.keys(this.leftList).filter((key) => {
-            return this.leftList[key].includes(this.$refs.searchListToAdd.value)
+            return this.leftList[key][displayKey].includes(this.$refs.searchListToAdd.value)
           })
 
           this.listToAdd = keys.reduce((preVal, curVal) => {
@@ -136,13 +143,13 @@ const DualList = {
     },
     handleSearchListRight(e) {
       if (e.charCode === 13) {
-        const { caseInsensitive } = this
+        const { caseInsensitive, displayKey } = this
         const keys = (caseInsensitive)
         ? Object.keys(this.rightList).filter((key) => {
-          return this.rightList[key].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
+          return this.rightList[key][displayKey].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
         })
         : Object.keys(this.rightList).filter((key) => {
-          return this.rightList[key].includes(this.$refs.searchListToRemove.value)
+          return this.rightList[key][displayKey].includes(this.$refs.searchListToRemove.value)
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
           return { ...preVal, [curVal]: this.rightList[curVal] }
@@ -152,7 +159,7 @@ const DualList = {
     }
   },
   render(h) {
-    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading } = this
+    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading, displayKey } = this
     return (
       <div class={[s.dualWrapper]}>
         <div class={[s.dual]}>
@@ -160,7 +167,7 @@ const DualList = {
           <div class={[s.lists]}>
             {
               Object.keys(this.listToAdd).map((label) => {
-                return <List id={label} name={this.listToAdd[label]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
+                return <List id={label} name={this.listToAdd[label][displayKey]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
               })
             }
           </div>
@@ -174,7 +181,7 @@ const DualList = {
           <div class={[s.lists]}>
             {
               Object.keys(this.listToRemove).map((label) => {
-                return <List id={label} name={this.listToRemove[label]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
+                return <List id={label} name={this.listToRemove[label][displayKey]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
               })
             }
           </div>
