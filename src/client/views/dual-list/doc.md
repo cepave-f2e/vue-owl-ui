@@ -17,7 +17,6 @@ props: {
   },
   displayKey: {
     type: String,
-    default: '',
     required: true
   },
   caseInsensitive: {
