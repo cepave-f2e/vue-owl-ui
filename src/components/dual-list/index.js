@@ -2,60 +2,99 @@ import Icon from '../icon'
 import Input from '../input'
 import s from './dual-list.scss'
 
-const Dual = {}
-
-Dual.Group = {
-  name: 'DualGroup',
+const DualList = {
+  name: 'DualList',
   props: {
     items: {
-      type: Object,
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
     },
     selectedItems: {
-      type: Object,
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
+    },
+    displayKey: {
+      type: String,
+      default: '',
+      required: true
+    },
+    caseInsensitive: {
+      type: Boolean,
+      default: false
+    },
+    apiMode: {
+      type: Boolean,
+      default: false
+    },
+    leftLoading: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      listToAdd: this.items,
-      listToRemove: this.selectedItems,
+      listToAdd: {},
+      listToRemove: {},
       highlightLeft: '',
       highlightRight: '',
-      leftList: this.items,
-      rightList: this.selectedItems
+      leftList: {},
+      rightList: {}
     }
   },
   mounted() {
     const { handleChange, handleClickOnX } = this
-    this.listToAdd = Object.assign({}, this.listToAdd)
-    this.listToRemove = Object.assign({}, this.listToRemove)
+    const items = this.items.reduce((preVal, curVal, idx) => {
+      return { ...preVal, [idx]: curVal }
+    }, {})
+    this.listToAdd = { ...items }
+    this.leftList = { ...items }
+
+    const leftNum = this.items.length
+    const selectedItems = this.selectedItems.reduce((preVal, curVal, idx) => {
+      return { ...preVal, [idx+leftNum]: curVal }
+    }, {})
+    this.rightList = { ...selectedItems }
+    this.listToRemove = { ...selectedItems }
     this.$on('handleSingleDualListChange', handleChange)
     this.$on('handleClickOnX', handleClickOnX)
+  },
+  watch: {
+    items() {
+      this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
+        return { ...preVal, [idx]: curVal }
+      }, {})
+    }
   },
   methods: {
     handleChange(list) {
       if (list[0] === 'add') {
+        const shiftItem = this.leftList[list[2]]
         delete this.leftList[list[2]]
-        this.$set(this.rightList, list[2], list[1])
+        this.rightList = { ...this.rightList, [list[2]]: shiftItem }
         delete this.listToAdd[list[2]]
-        this.$set(this.listToRemove, list[2], list[1])
+        this.listToRemove = { ...this.listToRemove, [list[2]]: shiftItem }
       } else if (list[0] === 'remove') {
+        const shiftItem = this.rightList[list[2]]
         delete this.rightList[list[2]]
-        this.$set(this.leftList, list[2], list[1])
+        this.leftList = { ...this.leftList, [list[2]]: shiftItem }
         delete this.listToRemove[list[2]]
-        this.$set(this.listToAdd, list[2], list[1])
+        this.listToAdd = { ...this.listToAdd, [list[2]]: shiftItem }
       }
       this.$emit('change', this.rightList)
     },
     handleClickOnX(data) {
       if (data === 'left') {
-        this.listToAdd = this.leftList
-        this.highlightLeft = ''
+        const { apiMode } = this
+        if (apiMode) {
+          this.$emit('remove')
+        } else {
+          this.listToAdd = this.leftList
+          this.highlightLeft = ''
+        }
       } else if (data === 'right') {
         this.listToRemove = this.rightList
         this.highlightRight = ''
@@ -66,8 +105,8 @@ Dual.Group = {
       keys.map((key) => {
         delete this.leftList[key]
       })
-      this.rightList = Object.assign({}, this.rightList, this.listToAdd)
-      this.listToRemove = Object.assign({}, this.listToRemove, this.listToAdd)
+      this.rightList = { ...this.rightList, ...this.listToAdd }
+      this.listToRemove = { ...this.listToRemove, ...this.listToAdd }
       this.listToAdd = {}
       this.$emit('change', this.rightList)
     },
@@ -76,66 +115,73 @@ Dual.Group = {
       keys.map((key) => {
         delete this.rightList[key]
       })
-      this.leftList = Object.assign({}, this.leftList, this.listToRemove)
-      this.listToAdd = Object.assign({}, this.listToAdd, this.listToRemove)
+      this.leftList = { ...this.leftList, ...this.listToRemove }
+      this.listToAdd = { ...this.listToAdd, ...this.listToRemove }
       this.listToRemove = {}
       this.$emit('change', this.rightList)
     },
     handleSearchListLeft(e) {
+      const { apiMode, caseInsensitive, displayKey } = this
       if (e.charCode === 13) {
-        const keys = Object.keys(this.leftList).filter((key) => {
-          return this.leftList[key].includes(this.$refs.searchListToAdd.value)
-        })
-        this.listToAdd = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.leftList[curVal] })
-        }, {})
-        this.highlightLeft = this.$refs.searchListToAdd.value
+        if (apiMode) {
+          this.$emit('inputchange', this.$refs.searchListToAdd.value)
+        } else {
+          const keys = (caseInsensitive)
+          ? Object.keys(this.leftList).filter((key) => {
+            return this.leftList[key][displayKey].toLowerCase().includes(this.$refs.searchListToAdd.value.toLowerCase())
+          })
+          : Object.keys(this.leftList).filter((key) => {
+            return this.leftList[key][displayKey].includes(this.$refs.searchListToAdd.value)
+          })
+
+          this.listToAdd = keys.reduce((preVal, curVal) => {
+            return { ...preVal, [curVal]: this.leftList[curVal] }
+          }, {})
+          this.highlightLeft = this.$refs.searchListToAdd.value
+        }
       }
     },
     handleSearchListRight(e) {
       if (e.charCode === 13) {
-        const keys = Object.keys(this.rightList).filter((key) => {
-          return this.rightList[key].includes(this.$refs.searchListToRemove.value)
+        const { caseInsensitive, displayKey } = this
+        const keys = (caseInsensitive)
+        ? Object.keys(this.rightList).filter((key) => {
+          return this.rightList[key][displayKey].toLowerCase().includes(this.$refs.searchListToRemove.value.toLowerCase())
+        })
+        : Object.keys(this.rightList).filter((key) => {
+          return this.rightList[key][displayKey].includes(this.$refs.searchListToRemove.value)
         })
         this.listToRemove = keys.reduce((preVal, curVal) => {
-          return Object.assign(preVal, { [curVal]: this.rightList[curVal] })
+          return { ...preVal, [curVal]: this.rightList[curVal] }
         }, {})
         this.highlightRight = this.$refs.searchListToRemove.value
       }
     }
   },
   render(h) {
-    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight } = this
+    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading, displayKey } = this
     return (
       <div class={[s.dualWrapper]}>
         <div class={[s.dual]}>
-          <div on-keypress={handleSearchListLeft}>
-            <Input name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} />
-          </div>
+          <Input nativeOn-keypress={handleSearchListLeft} name="left" class={[s.input]} ref="searchListToAdd" icon={['search', '#919799']} x={true} loading={leftLoading} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToAdd).map((label) => {
-                return <Dual.List id={label} name={this.listToAdd[label]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
+                return <List id={label} name={this.listToAdd[label][displayKey]} highlight={highlightLeft} icon={['circle-add', '#b9e617']} />
               })
             }
           </div>
         </div>
         <div class={[s.arrow]}>
-          <span on-click={handleSelectAll}>
-            <Icon class={[s.doubleRight]} typ="double-right" size={20} fill="#b8bdbf" />
-          </span>
-          <span on-click={handleUnselectAll}>
-            <Icon class={[s.doubleLeft]} typ="double-left" size={20} fill="#b8bdbf" />
-          </span>
+          <Icon nativeOn-click={handleSelectAll} class={[s.doubleRight]} typ="double-right" size={20} fill="#b8bdbf" />
+          <Icon nativeOn-click={handleUnselectAll} class={[s.doubleLeft]} typ="double-left" size={20} fill="#b8bdbf" />
         </div>
         <div class={[s.dual]}>
-          <div on-keypress={handleSearchListRight}>
-            <Input name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
-          </div>
+          <Input nativeOn-keypress={handleSearchListRight} name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToRemove).map((label) => {
-                return <Dual.List id={label} name={this.listToRemove[label]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
+                return <List id={label} name={this.listToRemove[label][displayKey]} highlight={highlightRight} icon={['circle-minus', '#e6175c']} />
               })
             }
           </div>
@@ -145,8 +191,8 @@ Dual.Group = {
   }
 }
 
-Dual.List = {
-  name: 'DualList',
+const List = {
+  name: 'List',
   props: {
     highlight: {
       type: String,
@@ -171,8 +217,10 @@ Dual.List = {
       const { highlight, name } = this
       let highlightText = ''
       if (highlight) {
-        const highlightReg = new RegExp(`${highlight}`, 'g')
-        highlightText = `<span>${name}</span>`.replace(highlightReg, `<span class="${s.highlight}">${highlight}</span>`)
+        const highlightReg = new RegExp(`${highlight}`, 'gi')
+        highlightText = `${name}`.replace(highlightReg, (replacement) => {
+          return `<span class="${s.highlight}">${replacement}</span>`
+        })
       }
       return highlightText
     }
@@ -201,4 +249,4 @@ Dual.List = {
   }
 }
 
-module.exports = Dual
+module.exports = DualList

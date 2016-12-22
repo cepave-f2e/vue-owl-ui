@@ -1,46 +1,43 @@
-import Dual from '../../../components/dual-list'
+import DualList from '../../../components/dual-list'
 import Markdown from '../../components/markdown'
 import s from './dual-list.scss'
 
-const DualListBoxPage = {
-  name: 'DualListBoxPage',
+const DualListPage = {
+  name: 'DualListPage',
+
   data() {
     return {
-      output: { 15: 'Meowth', 16: 'Abra', 17: 'Doduo', 18: 'Dodrio' }
-    }
-  },
-  methods: {
-    getDualData(data) {
-      this.output = Object.assign({}, data)
+      output: {
+        10: { name: 'Meowth', id: '20' }, 11: { name: 'Abra', id: '21' },
+        12: { name: 'Doduo', id: '22' }, 13: { name: 'Dodrio', id: '23' }
+      },
+      labels: [
+        { name: 'Squirtle', id: '1' }, { name: 'Caterpie', id: '2' },
+        { name: 'Raticate', id: '3' }, { name: 'Fearow', id: '4' },
+        { name: 'Clefairy', id: '5' }, { name: 'Venonat', id: '6' },
+        { name: 'Psyduck', id: '7' }, { name: 'Pikachu', id: '8' },
+        { name: 'Vulpix', id: '9' }, { name: 'Raichu', id: '10' }
+      ],
+      selectedLabel: [
+        { name: 'Meowth', id: '20' }, { name: 'Abra', id: '21' },
+        { name: 'Doduo', id: '22' }, { name: 'Dodrio', id: '23' }
+      ]
     }
   },
 
+  methods: {
+    getDualData(data) {
+      this.output = Object.assign({}, data)
+    },
+    getInputValue(data) {},
+    removeInput() {}
+  },
+
   render(h) {
-    const labels = {
-      1: 'Squirtle',
-      2: 'Caterpie',
-      3: 'Raticate',
-      4: 'Fearow',
-      5: 'Clefairy',
-      6: 'Venonat',
-      7: 'Psyduck',
-      8: 'Eevee',
-      9: 'Mew',
-      10: 'Pikachu',
-      11: 'Golduck',
-      12: 'Vulpix',
-      13: 'Mewtwo',
-      14: 'Raichu'
-    }
-    const selectedLabel = {
-      15: 'Meowth',
-      16: 'Abra',
-      17: 'Doduo',
-      18: 'Dodrio'
-    }
     return (
       <div>
         <Markdown src={require('./doc.md')} />
+        <DualList items={this.labels} selectedItems={this.selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} displayKey="name" caseInsensitive />
         <div class={[s.code]}>
           <pre>
             <code>
@@ -48,10 +45,9 @@ const DualListBoxPage = {
             </code>
           </pre>
         </div>
-        <Dual.Group items={labels} selectedItems={selectedLabel} class={[s.dualGroup]} onChange={this.getDualData} />
       </div>
     )
   }
 }
 
-module.exports = DualListBoxPage
+module.exports = DualListPage
