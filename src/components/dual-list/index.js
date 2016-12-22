@@ -19,7 +19,6 @@ const DualList = {
     },
     displayKey: {
       type: String,
-      default: '',
       required: true
     },
     caseInsensitive: {
