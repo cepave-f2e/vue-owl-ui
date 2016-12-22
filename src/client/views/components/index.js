@@ -1,4 +1,5 @@
 import Markdown from '../../components/markdown'
+import Link from '../../components/link'
 import s from './components.scss'
 
 const ComponentPage = {
@@ -13,47 +14,47 @@ const ComponentPage = {
               <dl>
                 <dt>General</dt>
                 <dd>
-                  <router-link to="/components/icons">Icon</router-link>
+                  <Link to="/components/icons">Icon</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/loading">Loading</router-link>
+                  <Link to="/components/loading">Loading</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/tip">Tip</router-link>
+                  <Link to="/components/tip">Tip</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/lightbox">LightBox</router-link>
+                  <Link to="/components/lightbox">LightBox</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/label">Label</router-link>
+                  <Link to="/components/label">Label</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/dual-list">DualList</router-link>
+                  <Link to="/components/dual-list">DualListBox</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/tab">Tab</router-link>
+                  <Link to="/components/tab">Tab</Link>
                 </dd>
               </dl>
 
               <dl>
                 <dt> Form </dt>
                 <dd>
-                  <router-link to="/components/select">Select</router-link>
+                  <Link to="/components/select">Select</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/checkbox">Checkbox</router-link>
+                  <Link to="/components/checkbox">Checkbox</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/switch">Switch</router-link>
+                  <Link to="/components/switch">Switch</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/radio">Radio</router-link>
+                  <Link to="/components/radio">Radio</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/button">Button</router-link>
+                  <Link to="/components/button">Button</Link>
                 </dd>
                 <dd>
-                  <router-link to="/components/input">Input</router-link>
+                  <Link to="/components/input">Input</Link>
                 </dd>
               </dl>
             </div>

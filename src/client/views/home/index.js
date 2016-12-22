@@ -1,6 +1,7 @@
 import s from './home.scss'
 import Logo from '../../components/logo'
 import Markdown from '../../components/markdown'
+import Link from '../../components/link'
 
 const Home = {
   name: 'Home',
@@ -31,7 +32,7 @@ const Home = {
                 </a>
               </p>
 
-              <router-link to="/components" class="btn">COMPONENTS</router-link>
+              <Link to="/components" class="btn">COMPONENTS</Link>
               <span class="btn">OWL LIGHT</span>
             </div>
             <div>
