@@ -63,9 +63,11 @@ const DualList = {
   },
   watch: {
     items() {
-      this.leftList = this.listToAdd = this.items.reduce((preVal, curVal, idx) => {
+      const items = this.items.reduce((preVal, curVal, idx) => {
         return { ...preVal, [idx]: curVal }
       }, {})
+      this.listToAdd = { ...items }
+      this.leftList = { ...items }
     }
   },
   methods: {
