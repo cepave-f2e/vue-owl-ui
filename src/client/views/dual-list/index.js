@@ -33,6 +33,16 @@ const DualListPage = {
     removeInput() {}
   },
 
+  mounted() {
+    window.setTimeout(() => {
+      this.labels = [
+        { name: 'Squirtle', id: '1' }, { name: 'Caterpie', id: '2' },
+        { name: 'Raticate', id: '3' }, { name: 'Fearow', id: '4' },
+        { name: 'Clefairy', id: '5' }, { name: 'Venonat', id: '6' },
+      ]
+    }, 6000)
+  },
+
   render(h) {
     return (
       <div>
