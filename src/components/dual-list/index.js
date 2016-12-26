@@ -68,6 +68,14 @@ const DualList = {
       }, {})
       this.listToAdd = { ...items }
       this.leftList = { ...items }
+    },
+    selectedItems() {
+      const leftNum = this.items.length
+      const selectedItems = this.selectedItems.reduce((preVal, curVal, idx) => {
+        return { ...preVal, [idx+leftNum]: curVal }
+      }, {})
+      this.listToRemove = { ...selectedItems }
+      this.rightList = { ...selectedItems }
     }
   },
   methods: {
