@@ -57,7 +57,7 @@ API mode `<Dual />`:
 - get left input box value by listener `onInputchange`
 - get remove input value event by listener `onRemove`
 ```jsx
-<DualList apiMode onChange={this.getInputValue} onRemove={this.removeInput} leftLoading={true} />
+<DualList apiMode onInputchange={this.getInputValue} onRemove={this.removeInput} leftLoading={true} />
 ```
 
 ## Demo
