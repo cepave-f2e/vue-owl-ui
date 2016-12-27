@@ -67,3 +67,11 @@ it('Test dynamic set `toPage`', (done) => {
     done()
   })
 })
+
+it('Test if total pages < limit', () => {
+  const vm = mount(Page, {
+    limit: 10, total: 5,
+  })
+
+  expect($(vm.$el).find('li[data-role="page"]').length).toBe(1)
+})

@@ -34,6 +34,9 @@ const ComponentPage = {
                 <dd>
                   <Link to="/components/tab">Tab</Link>
                 </dd>
+                <dd>
+                  <Link to="/components/page">Page</Link>
+                </dd>
               </dl>
 
               <dl>
