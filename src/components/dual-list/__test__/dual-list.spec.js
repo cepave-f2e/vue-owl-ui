@@ -218,7 +218,7 @@ it('test search feature with props `caseInsensitive`', () => {
   expect(vm.highlightRight).toBe('pi')
 })
 
-it('test apiMode props `items` dynamic change', async() => {
+it('test apiMode props `items` and `selectedItems` dynamic change', async() => {
   const getInputValue = (data) => {}
   const removeInput = () => {}
   let vm
@@ -231,6 +231,10 @@ it('test apiMode props `items` dynamic change', async() => {
             { name: 'Caterpie', id: '2' },
             { name: 'Raichu', id: '3' },
             { name: 'Pikachu', id: '4' },
+          ],
+          selectedPokemon: [
+            { name: 'Vulpix', id: '11' },
+            { name: 'Dodrio', id: '12' }
           ]
         }
       },
@@ -239,11 +243,14 @@ it('test apiMode props `items` dynamic change', async() => {
           { name: 'Squirtle', id: '1' },
           { name: 'Caterpie', id: '2' }
         ]
+        this.selectedPokemon = [
+          { name: 'Vulpix', id: '11' }
+        ]
         this.$nextTick(done)
       },
       render(h) {
         return (
-          <DualList apiMode items={this.pokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} displayKey="name" />
+          <DualList apiMode items={this.pokemon} selectedItems={this.selectedPokemon} onInputchange={getInputValue} onRemove={removeInput} leftLoading={true} displayKey="name" />
         )
       }
     })
@@ -255,6 +262,12 @@ it('test apiMode props `items` dynamic change', async() => {
   expect(vm.leftList).toEqual({
     0: { name: 'Squirtle', id: '1' },
     1: { name: 'Caterpie', id: '2' }
+  })
+  expect(vm.listToRemove).toEqual({
+    2: { name: 'Vulpix', id: '11' }
+  })
+  expect(vm.rightList).toEqual({
+    2: { name: 'Vulpix', id: '11' }
   })
 })
 
