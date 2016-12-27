@@ -27,7 +27,9 @@
   .list {
     width: 90%;
     color: #919799;
-    font-size: 16px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &:hover {
     background-color: #cab6f2;

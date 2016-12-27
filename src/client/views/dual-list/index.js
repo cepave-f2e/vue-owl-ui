@@ -8,7 +8,7 @@ const DualListPage = {
   data() {
     return {
       output: {
-        10: { name: 'Meowth', id: '20' }, 11: { name: 'Abra', id: '21' },
+        10: { name: 'Hippopotmonstrosesquipadaliophobiahipo', id: '20' }, 11: { name: 'Abra', id: '21' },
         12: { name: 'Doduo', id: '22' }, 13: { name: 'Dodrio', id: '23' }
       },
       labels: [
@@ -19,7 +19,7 @@ const DualListPage = {
         { name: 'Vulpix', id: '9' }, { name: 'Raichu', id: '10' }
       ],
       selectedLabel: [
-        { name: 'Meowth', id: '20' }, { name: 'Abra', id: '21' },
+        { name: 'Hippopotmonstrosesquipadaliophobiahipo', id: '20' }, { name: 'Abra', id: '21' },
         { name: 'Doduo', id: '22' }, { name: 'Dodrio', id: '23' }
       ]
     }
@@ -30,7 +30,6 @@ const DualListPage = {
       this.output = Object.assign({}, data)
     },
     getInputValue(data) {},
-    removeInput() {}
   },
 
   mounted() {

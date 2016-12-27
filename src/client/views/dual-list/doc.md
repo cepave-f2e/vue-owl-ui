@@ -54,10 +54,10 @@ Use `caseInsensitive` props to determine whether the search feature is case inse
 ```
 API mode `<Dual />`:
 - additional props `apiMode` and `leftLoading`  
-- get left input box value by listener `onInputchange`
+- get left input box value by listener `onInputChange`
 - get remove input value event by listener `onRemove`
 ```jsx
-<DualList apiMode onInputchange={this.getInputValue} onRemove={this.removeInput} leftLoading={true} />
+<DualList apiMode onInputChange={this.getInputValue} onRemove={this.removeInput} leftLoading={true} />
 ```
 
 ## Demo

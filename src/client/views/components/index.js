@@ -29,7 +29,7 @@ const ComponentPage = {
                   <Link to="/components/label">Label</Link>
                 </dd>
                 <dd>
-                  <Link to="/components/dual-list">DualListBox</Link>
+                  <Link to="/components/dual-list">DualList</Link>
                 </dd>
                 <dd>
                   <Link to="/components/tab">Tab</Link>

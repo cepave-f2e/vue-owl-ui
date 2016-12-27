@@ -249,8 +249,8 @@ const List = {
     return (
       <div class={[s.listWrapper]} on-click={handleClick}>
         {highlight
-          ? <span class={[s.list]} domProps-innerHTML={highlightText}></span>
-          : <span class={[s.list]} domProps-innerHTML={name}></span>
+          ? <span class={[s.list]} domProps-innerHTML={highlightText} title={name}></span>
+          : <span class={[s.list]} domProps-innerHTML={name} title={name}></span>
         }
         <Icon class={[s.icon]} typ={icon[0]} size={18} fill={icon[1]} />
       </div>
