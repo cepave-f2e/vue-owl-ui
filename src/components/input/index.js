@@ -61,7 +61,7 @@ const Input = {
     handleInput(e) {
       const { name, x } = this
       this.value = this.$refs[name].value
-      this.showX = (x && this.value) ? true : false
+      this.showX = (x && this.value && !this.loading) ? true : false
     },
     handlePwdStyle(e) {
       this.pwdStatus = !this.pwdStatus
