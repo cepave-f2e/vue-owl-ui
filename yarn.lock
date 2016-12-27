@@ -6170,16 +6170,16 @@ vue-router@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.1.1.tgz#10c31bbdcb6da92bd3e0223fa12345e73018625a"
 
-vue-server-renderer@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/vue-server-renderer/-/vue-server-renderer-2.1.6.tgz#92069a368e1a72116ce69b2cfb15406d5336edfa"
+vue-server-renderer@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/vue-server-renderer/-/vue-server-renderer-2.1.7.tgz#e3e17af044094209061282b57d27b14e0e6f39f1"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
 
-vue@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.6.tgz#2fc0024c07479ac6bc7d34a2cd5ef9ca5e90b143"
+vue@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.7.tgz#747880cb70a50c66cb8791aacfee7a6dab7fc842"
 
 walker@~1.0.5:
   version "1.0.7"
