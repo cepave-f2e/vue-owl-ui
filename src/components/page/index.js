@@ -63,7 +63,7 @@ const Page = {
       }
 
       this.$emit('page', {
-        page
+        page: this.page,
       })
     })
   },
