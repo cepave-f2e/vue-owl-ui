@@ -88,18 +88,8 @@ const Page = {
       const { page, $createElement, totalPages, pageData } = this
       const pagesVNodes = [], h = $createElement
 
-      let start = page - pageData.mid
-      let end = page + pageData.mid
-
-      if (start < 1) {
-        start = 1
-        end = start + pageData.range
-      }
-
-      if (end > totalPages) {
-        end = totalPages
-        start = end - pageData.range
-      }
+      const start = Math.max(1, page - pageData.mid)
+      const end = Math.min(page + pageData.mid, totalPages)
 
       const hasStartSpread = start > 1
       const hasEndSpread = end <= totalPages - 1
@@ -109,7 +99,7 @@ const Page = {
           [s.on]: (i === page)
         }
         pagesVNodes.push(
-          <li data-page={i} class={[css]} />
+          <li data-page={i} class={[css]} data-role="page" />
         )
       }
 
