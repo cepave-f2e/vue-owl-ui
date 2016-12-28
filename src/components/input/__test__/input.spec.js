@@ -70,3 +70,26 @@ it('test <Input /> with a `x` icon', async() => {
   $(vm.$children[1].$el).trigger('click')
   expect(vm.value).toBe('')
 })
+
+it('test <Input /> props val dynamic update', async() => {
+  let vm
+  await new Promise((done) => {
+    vm = shallow({
+      data() {
+        return {
+          test: 'cepave'
+        }
+      },
+      mounted() {
+        this.test = 'owl'
+        this.$nextTick(done)
+      },
+      render(h) {
+        return (
+          <Input name="demo" ref="demo" val={this.test} />
+        )
+      }
+    })
+  })
+  expect(vm.$refs.demo.value).toBe('owl')
+})
