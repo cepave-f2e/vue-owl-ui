@@ -51,6 +51,12 @@ const Input = {
     }
   },
 
+  watch: {
+    val() {
+      this.value = this.val
+    }
+  },
+
   methods: {
     handleIconClick(e) {
       const { icon, name } = this
