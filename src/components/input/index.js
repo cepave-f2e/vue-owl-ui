@@ -51,6 +51,12 @@ const Input = {
     }
   },
 
+  watch: {
+    val() {
+      this.value = this.val
+    }
+  },
+
   methods: {
     handleIconClick(e) {
       const { icon, name } = this
@@ -81,11 +87,11 @@ const Input = {
           : ''
         }
         {password
-          ? <span on-click={handlePwdStyle}><Icon typ="eye" fill={pwdFill} class={[s.icon]} /></span>
+          ? <span on-click={handlePwdStyle}><Icon typ="eye" fill={pwdFill} class={[s.specialIcon]} /></span>
           : ''
         }
         {showX
-          ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.icon]} /></span>
+          ? <span on-click={handleIconClick}><Icon typ="x" fill={pwdFill} class={[s.specialIcon]} /></span>
           : ''
         }
         {required
