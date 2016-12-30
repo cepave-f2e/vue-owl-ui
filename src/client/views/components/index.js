@@ -12,6 +12,12 @@ const ComponentPage = {
           <aside class={[s.side]}>
             <div id="sticky-menu">
               <dl>
+                <dt>Layout</dt>
+                <dd>
+                  <Link to="/components/flex">Flex (Grid System)</Link>
+                </dd>
+              </dl>
+              <dl>
                 <dt>General</dt>
                 <dd>
                   <Link to="/components/icons">Icon</Link>

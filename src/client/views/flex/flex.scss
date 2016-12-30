@@ -1,0 +1,33 @@
+.p {
+  margin: 0;
+  padding: 0;
+  background: lighten(#590aaa, 50%);
+  text-align: center;
+  color: #fff;
+  padding: 4px;
+}
+
+.boxs > div{
+  margin-bottom: 20px;
+}
+
+.midContent {
+  height: 80px;
+  border: 1px solid #ccc;
+}
+
+.social {
+  border: 1px solid #ccc;
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+}
+
+.avatar {
+  width: 76px;
+  height: 76px;
+  background: #ccc;
+  text-align: center;
+}
