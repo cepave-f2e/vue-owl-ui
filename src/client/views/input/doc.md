@@ -16,7 +16,8 @@ props: {
     default: 'normal'
   },
   val: {
-    type: String
+    type: [String, Number],
+    default: ''
   },
   placeholder: {
     type: String,
