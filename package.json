@@ -5,7 +5,7 @@
   "main": "./dist/owl-ui",
   "scripts": {
     "start": "babel-node scripts/start",
-    "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest --coverage",
+    "test": "npm run lint && BABEL_DISABLE_CACHE=1 NODE_ENV=production jest --coverage",
     "dev": "babel-node ./scripts/dev",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
@@ -45,7 +45,7 @@
   "dependencies": {
     "delegate-to": "^0.1.2",
     "owl-icons": "github:cepave-f2e/owl-icons",
-    "vue": "^2.1.7"
+    "vue": "^2.1.8"
   },
   "devDependencies": {
     "axios": "^0.15.3",
@@ -76,7 +76,7 @@
     "gulp-uglify": "^2.0.0",
     "html-webpack-plugin": "^2.24.1",
     "isomorphic-style-loader": "^1.1.0",
-    "jest-cli": "^18.0.0",
+    "jest-cli": "^18.1.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.escape": "^4.0.1",
     "mark-it-down": "^0.3.0",
@@ -90,7 +90,7 @@
     "stylelint": "^7.7.0",
     "url-loader": "^0.5.7",
     "vue-router": "^2.1.1",
-    "vue-server-renderer": "^2.1.7",
+    "vue-server-renderer": "^2.1.8",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.14.0"
