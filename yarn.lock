@@ -1835,9 +1835,9 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
-delegate-to@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/delegate-to/-/delegate-to-0.1.2.tgz#c7eaaf87bdac2b4a6c34679310b2504cd1255376"
+delegate-to@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/delegate-to/-/delegate-to-0.1.4.tgz#43b9c418a3a51fa6bcd909849cd2ee8555333f89"
 
 delegate@^3.1.0:
   version "3.1.0"
@@ -2980,9 +2980,9 @@ html-tags@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-1.1.1.tgz#869f43859f12d9bdc3892419e494a628aa1b204e"
 
-html-webpack-plugin@^2.24.1:
-  version "2.24.1"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.24.1.tgz#7f45fc678f66eac2d433f22336b4399da023b57e"
+html-webpack-plugin@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.25.0.tgz#945c860c9bf413d725a09f773d09cfeca72e8f8a"
   dependencies:
     bluebird "^3.4.6"
     html-minifier "^3.1.0"
@@ -4200,7 +4200,7 @@ ms@0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
 
-multimatch@^2.0.0, multimatch@^2.1.0:
+multimatch@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/multimatch/-/multimatch-2.1.0.tgz#9c7906a22fb4c02919e2f5f75161b4cdbd4b2a2b"
   dependencies:
@@ -5759,9 +5759,9 @@ stylehacks@^2.3.0:
     text-table "^0.2.0"
     write-file-stdout "0.0.2"
 
-stylelint@^7.7.0:
-  version "7.7.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.7.0.tgz#bf222c2a202c0b02d7834ad321fe0883d33cfde0"
+stylelint@^7.7.1:
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.7.1.tgz#af30b6677e307d38b0ad64b70e719c1752973c67"
   dependencies:
     autoprefixer "^6.0.0"
     balanced-match "^0.4.0"
@@ -5779,7 +5779,7 @@ stylelint@^7.7.0:
     lodash "^4.0.0"
     log-symbols "^1.0.2"
     meow "^3.3.0"
-    multimatch "^2.1.0"
+    micromatch "^2.3.11"
     normalize-selector "^0.2.0"
     postcss "^5.0.20"
     postcss-less "^0.14.0"
