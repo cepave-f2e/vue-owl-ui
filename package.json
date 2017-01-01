@@ -5,7 +5,7 @@
   "main": "./dist/owl-ui",
   "scripts": {
     "start": "babel-node scripts/start",
-    "test": "npm run lint && BABEL_DISABLE_CACHE=1 NODE_ENV=production jest --coverage",
+    "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest --coverage",
     "dev": "babel-node ./scripts/dev",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",

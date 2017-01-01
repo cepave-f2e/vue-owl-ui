@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.min'
 
 window.shallow = (o = {})=> {
   const vm = new Vue(o).$mount()
