@@ -26,6 +26,7 @@ module.exports = new Router({
         { path: 'dual-list', component: require('./views/dual-list') },
         { path: 'tab', component: require('./views/tab') },
         { path: 'page', component: require('./views/page') },
+        { path: 'flex', component: require('./views/flex') },
       ]
     },
     { path: '*', redirect: '/home' },

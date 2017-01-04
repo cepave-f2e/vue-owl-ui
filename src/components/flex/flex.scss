@@ -1,0 +1,23 @@
+.flex {
+  display: flex;
+  > div {
+    &:last-child {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.flexMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.flexSplit {
+  display: flex;
+  justify-content: space-between;
+  &:after, &:before {
+    content: none;
+  }
+}
