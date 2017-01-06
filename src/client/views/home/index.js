@@ -17,11 +17,11 @@ const Home = {
               </h2>
               <p>OWL UI is a Component Design System base on VueJS 2, used by Cepave to run in monitoring system of OWL Light.</p>
               <p class={[s.badges]}>
-                <a href="//travis-ci.org/cepave-f2e/vue-owl-ui" alt="Build Status">
-                  <img src="//img.shields.io/travis/cepave-f2e/vue-owl-ui/dev.svg" />
+                <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status">
+                  <img src="https://circleci.com/gh/cepave-f2e/vue-owl-ui.svg?style=svg" />
                 </a>
-                <a href="//coveralls.io/github/cepave-f2e/vue-owl-ui" alt="Coverage">
-                  <img src="//img.shields.io/coveralls/cepave-f2e/vue-owl-ui/dev.svg" />
+                <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage">
+                  <img src="https://img.shields.io/codecov/c/github/cepave-f2e/vue-owl-ui/dev.svg" />
                 </a>
                 <a href="//www.bithound.io/github/cepave-f2e/vue-owl-ui" alt="BitHound">
                   <img src="//www.bithound.io/github/cepave-f2e/vue-owl-ui/badges/score.svg" />
