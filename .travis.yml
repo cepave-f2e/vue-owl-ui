@@ -9,3 +9,7 @@ after_success:
 
 notifications:
   slack: cepave:K1xumXOvdSZVBZDEYYa6DjMi
+
+branches:
+  only:
+  - /^deploy-.*$/
