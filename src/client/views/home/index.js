@@ -17,13 +17,13 @@ const Home = {
               </h2>
               <p>OWL UI is a Component Design System base on VueJS 2, used by Cepave to run in monitoring system of OWL Light.</p>
               <p class={[s.badges]}>
-                <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status">
-                  <img src="https://circleci.com/gh/cepave-f2e/vue-owl-ui.svg?style=svg" />
+                <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status" target="_blank">
+                  <img src="https://img.shields.io/circleci/project/github/cepave-f2e/vue-owl-ui/dev.svg" />
                 </a>
-                <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage">
+                <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage" target="_blank">
                   <img src="https://img.shields.io/codecov/c/github/cepave-f2e/vue-owl-ui/dev.svg" />
                 </a>
-                <a href="//www.bithound.io/github/cepave-f2e/vue-owl-ui" alt="BitHound">
+                <a href="//www.bithound.io/github/cepave-f2e/vue-owl-ui" alt="BitHound" target="_blank">
                   <img src="//www.bithound.io/github/cepave-f2e/vue-owl-ui/badges/score.svg" />
                 </a>
                 <img src="//img.shields.io/github/license/cepave-f2e/vue-owl-ui.svg" />

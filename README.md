@@ -3,13 +3,13 @@
 </p>
 
 <p align="center">  
-  <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status">
-    <img src="https://circleci.com/gh/cepave-f2e/vue-owl-ui.svg?style=svg" />
+  <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status" target="_blank">
+    <img src="https://img.shields.io/circleci/project/github/cepave-f2e/vue-owl-ui/dev.svg" />
   </a>
-  <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage">
+  <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage" target="_blank">
     <img src="https://img.shields.io/codecov/c/github/cepave-f2e/vue-owl-ui/dev.svg" />
   </a>
-  <a href="https://www.bithound.io/github/cepave-f2e/vue-owl-ui" alt="BitHound">
+  <a href="https://www.bithound.io/github/cepave-f2e/vue-owl-ui" alt="BitHound" target="_blank">
     <img src="https://www.bithound.io/github/cepave-f2e/vue-owl-ui/badges/score.svg" />
   </a>
   <img src="https://img.shields.io/github/license/cepave-f2e/vue-owl-ui.svg" />  
