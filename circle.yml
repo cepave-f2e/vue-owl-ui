@@ -4,8 +4,8 @@ machine:
 
 test:
   override:
-    - npm test
-    - npm run build
+    - node scripts/parallel-test:
+        parallel: true
   post:
     - npm run codecov
 
