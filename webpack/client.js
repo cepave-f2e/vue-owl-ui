@@ -16,11 +16,13 @@ module.exports = {
     'owl-ui': ['./src/components']
   } : {
     lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down', 'owl-icons'],
-    app: ['./src/client'].concat(
-      isDev
-        ? [`webpack-hot-middleware/client?path=http://0.0.0.0:${hotPort}/__webpack_hmr`]
-        : []
-    )
+    app: [
+      './src/client',
+    ]
+  },
+
+  performance: {
+    hints: isProd ? 'warning' : false,
   },
 
   devtool: isDev ? '#eval' : false,
@@ -29,7 +31,7 @@ module.exports = {
   output: {
     path: `${__dirname}/../${isBuild ? 'npm/dist' : isProd ? 'gh-pages' : 'dist'}`,
     filename: '[name].js',
-    publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
+    // publicPath: isDev ? `http://0.0.0.0:${hotPort}/` : undefined,
     libraryTarget: isBuild ? 'commonjs2' : 'var',
   },
 
@@ -44,30 +46,27 @@ module.exports = {
     loaders: [
       {
         test: /\.(svg|png|jpg)$/,
-        loader: 'url',
+        loader: 'url-loader',
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       {
         test: /\.md$/,
-        loader: 'raw'
+        loader: 'raw-loader'
       },
-    ].concat(
-      isDev
-        ? [loaders.css]
-        : [
-            {
-              test: /\.scss$/,
-              loader: ExtractTextPlugin.extract({
-                loader: 'css?modules&localIdentName=[hash:base64:5]!sass',
-                fallbackLoader: 'style',
-              })
-            }
-          ]
-    )
+      ...isDev ? [loaders.css] : [
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract({
+            loader: 'css-loader?modules&localIdentName=[hash:base64:5]!sass-loader',
+            fallbackLoader: 'style-loader',
+          })
+        }
+      ]
+    ]
   },
 
   plugins: [
@@ -78,7 +77,7 @@ module.exports = {
       __pkgVer: `'${pkg.version}'`,
     }),
 
-    ...isBuild || isTemp ? [] : [
+    ...isDev || isProd ? [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'lib',
         filename: 'lib.js'
@@ -91,21 +90,16 @@ module.exports = {
           collapseWhitespace: true,
         }
       }),
-    ],
 
-    ...isDev ? [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ] : isBuild || isTemp ? [
-      new ExtractTextPlugin('owl-ui.css'),
+      ...isProd ? [new ExtractTextPlugin('app.css')] : []
     ] : [
-      new ExtractTextPlugin('app.css'),
+      new ExtractTextPlugin('owl-ui.css'),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         }
       })
-    ]
+    ],
   ],
 
   externals: isDev || isProd ? [] : Object.keys(pkg.dependencies),
