@@ -4,9 +4,9 @@ module.exports = {
     css: {
       test: /\.scss$/,
       loaders: [
-        'style',
-        'css?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
-        'sass?sourceMap'
+        'style-loader',
+        'css-loader?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
+        'sass-loader?sourceMap'
       ]
     }
   }
