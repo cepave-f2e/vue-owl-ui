@@ -1,8 +1,25 @@
 machine:
   node:
-    version: v6
     version: v7
 
 test:
+  override:
+    - npm run build
+    - npm test
   post:
-    - bash <(curl -s https://codecov.io/bash)
+    - npm run codecov
+
+deployment:
+  release:
+    branch: master
+    commands:
+      - git config --global user.email "auto_deploy@circleci.com"
+      - git config --global user.name "CircleCI"
+      - npm run build
+      - npm run deploy
+
+general:
+  branches:
+    ignore:
+      - gh-pages
+      - /^\d+\.\d+\.\d\+/

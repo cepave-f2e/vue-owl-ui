@@ -6,6 +6,7 @@
   "scripts": {
     "start": "babel-node scripts/start",
     "test": "npm run lint && BABEL_DISABLE_CACHE=1 jest --coverage",
+    "codecov": "curl -s https://codecov.io/bash | bash",
     "dev": "babel-node ./scripts/dev",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
@@ -13,6 +14,7 @@
     "build.ui": "babel-node ./scripts/build.ui",
     "build.pages": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src & stylelint src/**/*.scss --syntax scss",
+    "deploy": "npm run publish & npm run publish.pages && babel-node ./scripts/gh-tags",
     "publish": "babel-node ./scripts/github-publish",
     "publish.pages": "babel-node ./scripts/gh-pages-publish"
   },
