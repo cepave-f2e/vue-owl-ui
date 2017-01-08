@@ -15,7 +15,7 @@ const Home = {
             <div>
               <h2>Component Design System
               </h2>
-              <p>OWL UI is a Component Design System base on VueJS 2, used by Cepave to run in monitoring system of OWL Light.</p>
+              <p>OWL UI is a Component Design System based on VueJS 2, used by Cepave to run in monitoring system of OWL Light.</p>
               <p class={[s.badges]}>
                 <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status" target="_blank">
                   <img src="https://img.shields.io/circleci/project/github/cepave-f2e/vue-owl-ui/dev.svg" />
@@ -33,7 +33,7 @@ const Home = {
               </p>
 
               <Link to="/components" class="btn">COMPONENTS</Link>
-              <span class="btn">OWL LIGHT</span>
+              <a class="btn" href="//github.com/cepave-f2e/owl-light" target="_blank">OWL LIGHT</a>
             </div>
             <div>
               <Logo size={150} fill="#fff" style={{ marginTop: '32px' }} />
