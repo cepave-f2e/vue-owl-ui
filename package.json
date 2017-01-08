@@ -15,7 +15,7 @@
     "build.pages": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src && stylelint src/**/*.scss --syntax scss",
     "deploy": "npm run publish & npm run publish.pages && babel-node ./scripts/gh-tags",
-    "publish": "cd npm && npm publish",
+    "publish": "npm publish ./npm --access=public",
     "publish.pages": "babel-node ./scripts/gh-pages-publish"
   },
   "jest": {
