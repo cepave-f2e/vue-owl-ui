@@ -10,11 +10,11 @@
     "dev": "webpack-dev-server --hot --inline --config webpack/client --port 3032",
     "dev.ssr": "babel-node ./scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
-    "build": "npm run build.ui & npm run build.pages",
+    "build": "npm run build.ui && npm run build.pages",
     "build.ui": "babel-node ./scripts/build.ui",
     "build.pages": "NODE_ENV=production npm run pack.client",
     "lint": "eslint src && stylelint src/**/*.scss --syntax scss",
-    "deploy": "npm run publish & npm run publish.pages && babel-node ./scripts/gh-tags",
+    "deploy": "npm run publish && npm run publish.pages && babel-node ./scripts/gh-tags",
     "publish": "npm publish ./npm --access=public",
     "publish.pages": "babel-node ./scripts/gh-pages-publish"
   },
