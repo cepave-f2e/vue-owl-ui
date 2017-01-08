@@ -3,19 +3,19 @@
 You can install quickly through `npm` or `yarn`:
 
 ```sh
-npm install owl-ui --save
+npm install @cepave/owl-ui --save
 ```
 
 or
 
 ```sh
-yarn add owl-ui
+yarn add @cepave/owl-ui
 ```
 
 
 ## GET STARTED
-Each component in `OWL UI` was named `CamelCase`, and you can find the all naming from components list.
+Each component in `OWL UI` was named `CamelCase`, and you can find the all naming from [component](/#/components) lists.
 
 ```js
-import { Button, Select, ... } from 'owl-ui'
+import { Button, Select, ... } from '@cepave/owl-ui'
 ```
