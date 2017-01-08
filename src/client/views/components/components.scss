@@ -55,9 +55,7 @@
       text-indent: 12px;
       display: block;
       position: relative;
-      &:active {
-        color: #590aaa;
-      }
+      color: #590aaa;
       &:hover, &:global(.router-link-active) {
         &:after {
           @extend .hover;
