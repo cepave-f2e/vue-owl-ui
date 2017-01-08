@@ -16,21 +16,13 @@
 </p>
 
 
-## OWL UI Components
-OWL UI is a Vue 2.0 **Component Design System**, it works in Cepave's monitoring system OWL.
+## OWL UI
+OWL UI is a **Component Design System** based on VueJS 2, used by Cepave to run in monitoring system of [OWL Light](https://github.com/cepave-f2e/owl-light).
 
-## Install
 
-```sh
-$ npm i --save github:cepave-f2e/vue-owl-ui
-```
+## Install and Usage
 
-## Usage
-
-```js
-import { Grid, Select, Tip } from 'vue-owl-ui'
-```
-
+Follow the [documentation](https://cepave-f2e.github.io/vue-owl-ui).
 
 ## Contributor
 
