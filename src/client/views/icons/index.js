@@ -2,7 +2,7 @@ import Icon from '~com/icon'
 import Markdown from '../../components/markdown'
 import s from './icon.scss'
 
-const icons = require('owl-icons').match(/symbol id="([^"]*)/g).map((id)=> {
+const icons = require('@cepave/owl-icons').match(/symbol id="([^"]*)/g).map((id)=> {
   return id.match(/symbol id="([^"]*)/)[1]
 })
 

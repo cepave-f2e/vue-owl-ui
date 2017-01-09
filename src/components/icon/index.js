@@ -1,4 +1,4 @@
-import 'owl-icons'
+import '@cepave/owl-icons'
 
 const Icon = {
   name: 'Icon',

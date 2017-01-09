@@ -15,7 +15,7 @@ module.exports = {
   entry: isBuild || isTemp ? {
     'owl-ui': ['./src/components']
   } : {
-    lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down', 'owl-icons'],
+    lib: ['vue', 'vue-router', 'delegate-to', 'mark-it-down', '@cepave/owl-icons'],
     app: [
       './src/client',
     ]
