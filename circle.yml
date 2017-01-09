@@ -4,7 +4,7 @@ machine:
 
 test:
   override:
-    - node scripts/parallel-test:
+    - case $CIRCLE_NODE_INDEX in 0) npm run lint ;; 1) npm test ;; 2) npm run build ;; esac:
         parallel: true
   post:
     - npm run codecov
