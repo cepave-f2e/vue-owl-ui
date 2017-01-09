@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@cepave/owl-icons@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@cepave/owl-icons/-/owl-icons-1.0.1.tgz#237c1ae6a11c4082543e8f904b1c1c142997a131"
+
 JSONStream@^0.8.4:
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-0.8.4.tgz#91657dfe6ff857483066132b4618b62e8f4887bd"
@@ -4589,10 +4593,6 @@ output-file-sync@^1.1.0:
     graceful-fs "^4.1.4"
     mkdirp "^0.5.1"
     object-assign "^4.1.0"
-
-"owl-icons@github:cepave-f2e/owl-icons":
-  version "1.0.0-1479027843246"
-  resolved "https://codeload.github.com/cepave-f2e/owl-icons/tar.gz/8f0cfd7ec8fae56b77a50db70b59a67ffe5b336a"
 
 pako@~0.2.0:
   version "0.2.9"

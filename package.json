@@ -44,8 +44,8 @@
   "author": "Cepave F2E Team",
   "license": "MIT",
   "dependencies": {
+    "@cepave/owl-icons": "^1.0.1",
     "delegate-to": "^0.1.4",
-    "owl-icons": "github:cepave-f2e/owl-icons",
     "vue": "^2.1.8"
   },
   "devDependencies": {
