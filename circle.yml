@@ -4,9 +4,10 @@ machine:
 
 test:
   override:
-    - case $CIRCLE_NODE_INDEX in 0) npm run lint ;; 1) npm test ;; 2) npm run build ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) npm run lint ;; 1) npm run build ;; esac:
         parallel: true
   post:
+    - npm test
     - npm run codecov
 
 deployment:
