@@ -1,5 +1,4 @@
-import pkg, { repository, version } from '../package.json'
-
+const { repository, version } = require('../package.json')
 const { GH_TOKEN } = process.env
 const tokenRepo = repository.replace(/(github.com)/, `${GH_TOKEN}@$1`)
 

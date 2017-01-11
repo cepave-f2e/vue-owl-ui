@@ -1,5 +1,5 @@
-import { ver, repo } from './deploy'
-import 'shelljs/global'
+const { ver, repo } = require('./deploy')
+require('shelljs/global')
 
 cd('gh-pages')
 
