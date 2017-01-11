@@ -10,7 +10,9 @@ const cmds = [
 
 if (cmds[CIRCLE_NODE_INDEX]) {
   console.log(cmds[CIRCLE_NODE_INDEX])
-  if (exec(cmds[CIRCLE_NODE_INDEX]).code !== 0) {
+  const run = exec(cmds[CIRCLE_NODE_INDEX])
+
+  if (run.code) {
     exit(1)
   }
 }
