@@ -1,19 +1,17 @@
-$_colorPrimary: rgba(137,98,217,.2);
-$_colorPrimary2 : hsl(260,67.5,69.8);
 
 @keyframes loadingpie {
   @each $num, $direction in (0%, top), (25%, right), (50%, bottom), (100%, left) {
     #{$num}{
-      border-color: $_colorPrimary;
-      border-#{$direction}-color: $_colorPrimary2;
+      border-color: var(--OWL-UI-COLOR-PRIMARY-Light);
+      border-#{$direction}-color: var(--OWL-UI-COLOR-PRIMARY);
     }
   }
 }
 
 @keyframes loadingbar {
   50%{
-    border-left: 90px solid $_colorPrimary;
-    border-right: 0 solid $_colorPrimary;
+    border-left: 90px solid var(--OWL-UI-COLOR-PRIMARY-Light);
+    border-right: 0 solid var(--OWL-UI-COLOR-PRIMARY-Light);
   }
 }
 
@@ -23,20 +21,21 @@ $_colorPrimary2 : hsl(260,67.5,69.8);
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .loadingpie{
-  border: 20px solid $_colorPrimary;
-  border-top-color: $_colorPrimary2;
-  box-shadow: 0 0 0 1px $_colorPrimary;
+  border: 20px solid var(--OWL-UI-COLOR-PRIMARY-Light);
+  border-top-color: var(--OWL-UI-COLOR-PRIMARY);
+  box-shadow: 0 0 0 1px var(--OWL-UI-COLOR-PRIMARY-Light);
   border-radius: 50%;
   animation: loadingpie infinite .8s linear;
 }
 
 .loadingbar{
-  background: $_colorPrimary;
-  border-right: 90px solid $_colorPrimary2;
-  border-left: 0 solid $_colorPrimary2;
-  box-shadow: 0 0 0 1px $_colorPrimary;
+  background: var(--OWL-UI-COLOR-PRIMARY-Light);
+  border-right: 90px solid var(--OWL-UI-COLOR-PRIMARY);
+  border-left: 0 solid var(--OWL-UI-COLOR-PRIMARY);
+  box-shadow: 0 0 0 1px var(--OWL-UI-COLOR-PRIMARY-Light);
   animation: loadingbar infinite 1.5s linear;
 }

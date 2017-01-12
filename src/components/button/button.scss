@@ -1,15 +1,11 @@
+@import "../global.scss";
+
 @mixin button-fill($text-color, $back-color) {
   color: $text-color;
   background-color: $back-color;
 }
 
-@mixin button-outline($text-color, $back-color) {
-  color: $back-color;
-  border-color: $back-color;
-  background-color: transparent;
-}
-
-button, .button {
+.button {
   display: flex;
   justify-content: center;
   line-height: 18px;
@@ -23,88 +19,60 @@ button, .button {
   @include button-fill(#000, #eee);
   text-decoration: none;
   cursor: pointer;
-  fill: #000;
-  &:hover {
-    @include button-fill(rgba(0, 0, 0, .6), #fff);
-    fill: rgba(0, 0, 0, .6);
-    outline: none;
-    text-decoration: none;
-    box-shadow: inset 0 0 0 30px rgba(0, 0, 0, .1);
-  }
-  &:focus {
-    outline: none;
+  &:not(.disabled) {
+    &:hover {
+      outline: none;
+      text-decoration: none;
+      box-shadow: inset 0 0 0 30px rgba(0, 0, 0, .1);
+    }
+    &:focus {
+      outline: none;
+    }
   }
 }
 
 .disabled {
   cursor: default;
-  font-style: 400;
   opacity: .4;
-  &:hover {
-    @include button-fill(#000, #eee);
-    fill: #000;
-    box-shadow: none;
-  }
 }
 
 .outline {
   background: none;
   font-weight: 400;
   color: rgba(0,0,0,.2);
-  fill: rgba(0,0,0,.2);
   border: 1px solid rgba(0,0,0,.2);
   &:focus, &:hover {
     @include button-fill(rgba(0, 0, 0, .6), #eee);
-    fill: rgba(0, 0, 0, .6);
     box-shadow: none;
   }
 }
 
 .primary {
-  @include button-fill(#fff, #8962d9);
-  fill: #fff;
-  &:focus, &:hover {
-    @include button-fill(#fff, #6b5499);
-    fill: #fff;
-  }
-}
-.primary.disabled {
-  @include button-fill(#fff, #8962d9);
-  fill: #fff;
-}
-.primary.disabled:hover {
-  @include button-fill(#fff, #8962d9);
-  fill: #fff;
+  @include button-fill(#fff, var(--OWL-UI-COLOR-PRIMARY));
 }
 
 .primaryOutline {
-  @include button-outline(#8962d9, #8962d9);
-  fill: #8962d9;
   &:focus, &:hover {
-    @include button-fill(#fff, #8962d9);
-    fill: #fff;
+    @include button-fill(#fff, var(--OWL-UI-COLOR-PRIMARY));
   }
 }
-.primaryOutline.disabled {
-  @include button-outline(#8962d9, #8962d9);
-  fill: #8962d9;
-}
-.priprimaryOutlinemary.disabled:hover {
-  @include button-outline(#8962d9, #8962d9);
-  fill: #8962d9;
+
+.primaryOutline.disabled, .primaryOutline {
+  color: var(--OWL-UI-COLOR-PRIMARY);
+  border-color: var(--OWL-UI-COLOR-PRIMARY);
+  background-color: transparent;
 }
 
 .buttonGroup {
   display: flex;
   vertical-align: bottom;
-  button {
+  .button {
     border-left-width: 0;
     &[data-selected="1"] {
-      @include button-fill(#fff, #8962d9);
-      fill: #fff;
+      @include button-fill(#fff, var(--OWL-UI-COLOR-PRIMARY));
     }
-  }
-  button:first-of-type {
-    border-left-width: 1px;
+    &:first-of-type {
+      border-left-width: 1px;
+    }
   }
 }

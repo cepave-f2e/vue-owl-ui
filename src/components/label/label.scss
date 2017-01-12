@@ -32,7 +32,7 @@
 
 //status for label
 .primary {
-  @include label(#f2f6f7, #8962d9)
+  @include label(#f2f6f7, var(--OWL-UI-COLOR-PRIMARY))
 }
 .error {
   @include label(#f2f6f7, #e6175c)
@@ -50,10 +50,10 @@
 
 //status for outline
 .primaryoutline {
-  border: 1px solid #8962d9;
-  @include label(#8962d9, transparent);
+  border: 1px solid var(--OWL-UI-COLOR-PRIMARY);
+  @include label(var(--OWL-UI-COLOR-PRIMARY), transparent);
   &:hover {
-    color: rgba(#8962d9, .65);
+    color: var(--OWL-UI-COLOR-PRIMARY-Light)
   }
 }
 .erroroutline {
@@ -87,7 +87,7 @@
 
 //status for tags
 .primarytag {
-  color: #8962d9;
+  color: var(--OWL-UI-COLOR-PRIMARY);
 }
 .errortag {
   color: #e6175c;
