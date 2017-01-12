@@ -33,7 +33,7 @@
     white-space: nowrap;
   }
   &:hover {
-    background-color: #cab6f2;
+    background-color: var(--OWL-UI-COLOR-PRIMARY-Light);
     .list {
       color: #fff;
     }

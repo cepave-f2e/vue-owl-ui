@@ -32,7 +32,7 @@ const Button = {
     const { status, style, fill, $slots } = this
 
     return (
-      <button type="button" class={style}>
+      <button type="button" class={style} data-color="red">
         {$slots.default}
       </button>
     )

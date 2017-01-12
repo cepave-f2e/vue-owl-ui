@@ -9,7 +9,7 @@
   padding: 4px;
   transition: all .3s;
   border-radius: 25px;
-  background: #6b5499;
+  background: var(--OWL-UI-COLOR-PRIMARY-DARK);
   display: flex;
   .labelOpen {
     position: relative;
@@ -67,7 +67,7 @@
     position: relative;
     cursor: pointer;
     &:hover {
-      background: #8962d9;
+      background: var(--OWL-UI-COLOR-PRIMARY);
     }
   }
 }
@@ -76,7 +76,7 @@
   display: none;
   &:checked {
     & + .specialSwitch {
-      background: #8962d9;
+      background: var(--OWL-UI-COLOR-PRIMARY);
       label {
         left: 3px;
         background: #fff;
@@ -96,10 +96,10 @@
   display: none;
   &:checked {
     & + .defaultSwitch {
-      border: 3px solid #8962d9;
+      border: 3px solid var(--OWL-UI-COLOR-PRIMARY);
       label {
         left: 43px;
-        background: #8962d9;
+        background: var(--OWL-UI-COLOR-PRIMARY);
       }
       .labelClose {
         display: none;
@@ -107,7 +107,7 @@
       .labelOpen {
         left: -20px;
         display: block;
-        color: #8962d9;
+        color: var(--OWL-UI-COLOR-PRIMARY);
       }
     }
   }
