@@ -94,11 +94,12 @@ module.exports = {
       ...isProd ? [new ExtractTextPlugin('app.css')] : []
     ] : [
       new ExtractTextPlugin('owl-ui.css'),
-      new webpack.optimize.UglifyJsPlugin({
+
+      ...isProd ? [new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         }
-      })
+      })] : []
     ],
   ],
 
