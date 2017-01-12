@@ -8,6 +8,10 @@ test:
         parallel: true
 
 deployment:
+  development:
+    branch: ci
+    commands:
+      - node scripts/gh-clean-pr
   release:
     branch: master
     commands:
