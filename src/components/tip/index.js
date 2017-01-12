@@ -24,15 +24,19 @@ const Tip = {
       type: String,
       default: 'mouseenter'
     },
+
+    delay: {
+      type: Number,
+      default: 50
+    }
   },
 
   mounted() {
-    const { event, $el, pos, $children } = this
+    const { event, $el, pos, $children, delay } = this
     const _body = document.body
     const _context = $children[0].$el.cloneNode(true)
     _context.style.display = 'block'
     _context.setAttribute('id', 'tipContext2')
-    _context.setAttribute('pos', pos)
 
     $el.addEventListener(event, (ev)=> {
       _body.appendChild(_context)
@@ -57,10 +61,9 @@ const Tip = {
         _context.style.top = `${top + oHeight / 2 - cHeight / 2}px`
       }
 
-      setTimeout(()=> {
-        _context.style.transition = 'all .4s'
+      setTimeout(() => {
         _context.style.opacity = 1
-      }, 50)
+      }, delay)
     }, false)
 
     $el.addEventListener('mouseleave', (ev)=> {
@@ -72,9 +75,8 @@ const Tip = {
   render(h) {
     const { pos, $slots } = this
     return (
-      <div class={[s.tip2]} data-pos={pos}>
+      <div class={[s.tip]} data-pos={pos}>
         {$slots.default}
-        {$slots.context}
       </div>
     )
   },
@@ -100,9 +102,9 @@ Tip.Context = {
   },
 
   render(h) {
-    const { $slots, setWidth } = this
+    const { $slots, setWidth, $parent } = this
     return (
-      <div class={[s.tipContext2]} slot="context" style={setWidth}>
+      <div class={[s.tipContext]} style={setWidth} data-pos={$parent.pos}>
         {$slots.default}
       </div>
     )

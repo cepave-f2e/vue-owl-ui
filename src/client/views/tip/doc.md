@@ -12,6 +12,10 @@ props: {
     type: String,
     default: 'mouseenter'
   },
+  delay: {
+    type: Number,
+    default: 50
+  }
 }
 ```
 

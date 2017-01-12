@@ -1,7 +1,8 @@
-.tip2 {
+.tip {
   display: inline-block;
 }
-.tipContext2 {
+.tipContext {
+  transition: opacity .4s;
   position: absolute;
   left: -99em;
   top: -99em;
