@@ -2,3 +2,4 @@ const { CIRCLE_PR_REPONAME, CI_PULL_REQUEST, CI_PULL_REQUESTS } = process.env
 
 
 console.log({ CI_PULL_REQUEST, CI_PULL_REQUESTS, CIRCLE_PR_REPONAME })
+console.log(1)
