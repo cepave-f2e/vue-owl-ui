@@ -11,8 +11,13 @@ const LoadingPage = {
     return (
       <div>
         <Markdown src={require('./loading.md')} />
+        <h2>typ="pie"</h2>
         <div class={[s.exampleWrapper]}>
-          <Loading class={[s.examplePie]} />
+          <Loading />
+        </div>
+        <h2>typ="bar"</h2>
+        <div class={[s.exampleWrapper]}>
+          <Loading typ="bar"  />
         </div>
       </div>
     )
