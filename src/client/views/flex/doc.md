@@ -37,7 +37,14 @@ props: {
   },
   size: {
     type: [Number, String],
-  }
+  },
+  width: {
+    type: [Number, String],
+  },
+  mid: {
+    type: Boolean,
+    default: false,
+  },
 },
 ```
 

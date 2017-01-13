@@ -52,7 +52,11 @@ Flex.Col = {
     },
     width: {
       type: [Number, String],
-    }
+    },
+    mid: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -75,12 +79,18 @@ Flex.Col = {
 
       return styleObj
     },
+
+    classes() {
+      return {
+        [s.flexMid]: this.mid,
+      }
+    }
   },
 
   render(h) {
     const { $slots, classes, style } = this
     return (
-      <div style={style}>
+      <div style={style} class={classes}>
         { $slots.default }
       </div>
     )
