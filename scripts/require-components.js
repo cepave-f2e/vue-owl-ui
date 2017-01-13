@@ -2,6 +2,7 @@ import glob from 'glob'
 import path from 'path'
 import camelCase from 'lodash.camelcase'
 import fs from 'fs'
+import alias from './require-components-alias'
 
 const components = {}
 
@@ -15,6 +16,10 @@ glob.sync('src/components/*').forEach((file) => {
     return m.toUpperCase()
   })
   components[ComName] = `require('./${basename}')`
+})
+
+Object.keys(alias).forEach((name) => {
+  components[name] = components[alias[name]]
 })
 
 module.exports = components

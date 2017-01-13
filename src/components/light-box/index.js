@@ -55,14 +55,18 @@ const LightBox = {
 
   methods: {
     open(ev) {
-      ev.preventDefault()
+      if (ev) {
+        ev.preventDefault()
+      }
 
       this.opened = true
       this.$emit('open')
     },
 
     close(ev) {
-      ev.preventDefault()
+      if (ev) {
+        ev.preventDefault()
+      }
 
       this.opened = false
       this.$emit('close')

@@ -1,4 +1,4 @@
-# LightBox
+# LightBox (alias: Modal)
 
 ## Props
 
