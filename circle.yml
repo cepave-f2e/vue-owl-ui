@@ -8,7 +8,7 @@ test:
         parallel: true
 
 deployment:
-  devlopment:
+  stage:
     branch: dev
     commands:
       - node scripts/gh-clean-pr
