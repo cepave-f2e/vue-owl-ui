@@ -10,4 +10,4 @@ if (process.env.NODE_ENV === 'build' && isBrowser) {
 // exports by automation
 module.exports
 
-module.exports.config = require('./confg')
+module.exports.config = require('./config')
