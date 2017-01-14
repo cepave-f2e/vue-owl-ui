@@ -29,7 +29,7 @@ if (TRAVIS_MATRIX === 'test') {
 if (TRAVIS_BRANCH === 'master') {
   if (TRAVIS_MATRIX === 'build.ui') {
     // Publish to NPM
-    exec(`echo -e "cepave\n${NPM_PASSWD}\nrwu@cepave.com" | npm login`)
+    exec(`echo -e "cepave\n$NPM_PASSWD\nrwu@cepave.com" | npm login`)
     exec(`npm publish ./npm --access=public`).code && exit(1)
 
     // Add GH Tag
