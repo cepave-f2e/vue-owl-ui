@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+  - v7
+
+env:
+  global:
+  matrix:
+    - TRAVIS_MATRIX=test
+    - TRAVIS_MATRIX=lint
+    - TRAVIS_MATRIX=build.ui
+    - TRAVIS_MATRIX=build.pages
+
+script:
+  - npm run $TRAVIS_MATRIX
+
+after_success:
+  - node scripts/deploy
+
+notifications:
+  slack:
+    rooms:
+      - cepave:1RK4JxUldnoQMznnBIqbY5hy#notify-owl-ui
