@@ -6,8 +6,8 @@
   <a href="https://www.npmjs.org/package/@cepave/owl-ui" target="_blank">
     <img src="https://img.shields.io/npm/v/@cepave/owl-ui.svg?label=version" />
   </a>
-  <a href="https://circleci.com/gh/cepave-f2e/vue-owl-ui" alt="Build Status" target="_blank">
-    <img src="https://img.shields.io/circleci/project/github/cepave-f2e/vue-owl-ui/dev.svg" />
+  <a href="https://travis-ci.org/cepave-f2e/vue-owl-ui" alt="Build Status" target="_blank">
+    <img src="https://img.shields.io/travis/cepave-f2e/vue-owl-ui/dev.svg" />
   </a>
   <a href="https://codecov.io/gh/cepave-f2e/vue-owl-ui" alt="Coverage" target="_blank">
     <img src="https://img.shields.io/codecov/c/github/cepave-f2e/vue-owl-ui/dev.svg" />
