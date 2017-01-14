@@ -21,3 +21,7 @@ notifications:
   slack:
     rooms:
       - cepave:1RK4JxUldnoQMznnBIqbY5hy#notify-owl-ui
+
+branches:
+  except:
+    - /^v?\d+\.\d+\.\d+/
