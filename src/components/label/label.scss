@@ -9,14 +9,11 @@
   display: inline;
   line-height: 18px;
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
   border: 1px solid transparent;
   position: relative;
   vertical-align: middle;
-  color: #3b3f40;
-  background: #dfe4e6;
   padding: 4px 8px;
   letter-spacing: .01em;
   cursor: pointer;
@@ -31,24 +28,34 @@
 }
 
 //status for label
-.primary {
+.defaultlabel {
+  @include label(#3b3f40, #dfe4e6)
+}
+.primarylabel {
   @include label(#f2f6f7, var(--OWL-UI-COLOR-PRIMARY))
 }
-.error {
+.errorlabel {
   @include label(#f2f6f7, #e6175c)
 }
-.success {
+.successlabel {
   @include label(#f2f6f7, #b9e617)
 }
-.warning {
+.warninglabel {
   @include label(#3b3f40, #ffd919)
 }
-.inverted {
+.invertedlabel {
   @include label(#3b3f40, #f2f6f7);
 }
 
 
 //status for outline
+.defaultoutline {
+  border: 1px solid rgba(#6b5499, .2);
+  @include label(#3b3f40, transparent);
+  &:hover {
+    color: rgba(#3b3f40, .65);
+  }
+}
 .primaryoutline {
   border: 1px solid var(--OWL-UI-COLOR-PRIMARY);
   @include label(var(--OWL-UI-COLOR-PRIMARY), transparent);
@@ -86,6 +93,9 @@
 }
 
 //status for tags
+.defaulttag {
+  color: #3b3f40;
+}
 .primarytag {
   color: var(--OWL-UI-COLOR-PRIMARY);
 }
@@ -111,4 +121,80 @@
 .badge {
   padding: 4px 10px;
   border-radius: 14px;
+}
+
+.x {
+  display: flex;
+  align-items: center;
+}
+
+.iconx {
+  margin-left: 4px;
+}
+
+//color for x
+.defaultlabelx {
+  fill: #3b3f40;
+}
+.primarylabelx {
+  fill: #f2f6f7;
+}
+.errorlabelx {
+  fill: #f2f6f7;
+}
+.successlabelx {
+  fill: #f2f6f7;
+}
+.warninglabelx {
+  fill: #3b3f40;
+}
+.invertedlabelx {
+  fill: #3b3f40;
+}
+
+.defaultoutlinex {
+  fill: #3b3f40;
+}
+.primaryoutlinex {
+  fill: var(--OWL-UI-COLOR-PRIMARY);
+}
+.erroroutlinex {
+  fill: #e6175c;
+}
+.successoutlinex {
+  fill: #b9e617;
+}
+.warningoutlinex {
+  fill: #ffd919;
+}
+.invertedoutlinex {
+  fill: #f2f6f7;
+}
+
+.defaulttagx {
+  fill: #3b3f40;
+}
+.primarytagx {
+  fill: var(--OWL-UI-COLOR-PRIMARY);
+}
+.errortagx {
+  fill: #e6175c;
+}
+.successtagx {
+  fill: #b9e617;
+}
+.warningtagx {
+  fill: #ffd919;
+}
+.invertedtagx {
+  fill: #f2f6f7;
+}
+
+.labelGroup {
+  display: flex;
+  vertical-align: center;
+}
+
+.labelInGroup {
+  margin-right: 5px;
 }
