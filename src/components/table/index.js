@@ -23,11 +23,35 @@ const Table = {
 
   },
 
+  computed: {
+    headWidths() {
+      const { heads } = this
+      const colNum = heads.length
+      let fullAssignWidth = true
+      heads.forEach((val, idx) => {
+        if (!val.width) {
+          fullAssignWidth = false
+          return
+        }
+      })
+      if (!fullAssignWidth) {
+        const width = 100 / colNum
+        const heads = this.heads.reduce((preVal, curVal, idx) => {
+          preVal.push({ ...curVal, width: `${width}%` })
+          return preVal
+        }, [])
+        return heads
+      } else {
+        return this.heads
+      }
+    }
+  },
+
   methods: {
     renderElements(row) {
       const h = this.$createElement
-      const { heads } = this
-      return heads.map((head) => {
+      const { headWidths } = this
+      return headWidths.map((head) => {
         return (
           <td style={`width:${head.width}`}>{row[head.col]}</td>
         )
@@ -36,13 +60,13 @@ const Table = {
   },
 
   render(h) {
-    const { heads, rows, feet, typ, renderElements } = this
+    const { rows, feet, typ, renderElements, headWidths } = this
     return (
       <table class={[s[typ]]}>
         <thead>
           <tr>
             {
-              heads.map((head) => {
+              headWidths.map((head) => {
                 const colName = head.col.replace(/\_/g, ' ')
                 return (
                   <th style={`width:${head.width}`}>{colName}</th>
