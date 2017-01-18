@@ -52,3 +52,20 @@ it('test <Table> with props `typ` and `feet`', () => {
   })
   expect($(vm.$el).find(`[colSpan]`).length).toBe(2)
 })
+
+it('test <Table> without assign heads.width', () => {
+  const vm = mount(Table, {
+    heads: [
+      { col: 'pokemon' },
+      { col: 'chinese_name' },
+    ],
+    rows: [
+      { pokemon: 'Bulbasaur', chinese_name: '妙蛙種子' },
+      { pokemon: 'Charmander', chinese_name: '小火龍' },
+      { pokemon: 'Squirtle', chinese_name: '傑尼龜' },
+    ]
+  })
+  $(vm.$el).find('td').each((val) => {
+    expect(val.style._values.width).toBe('50%')
+  })
+})
