@@ -1,0 +1,89 @@
+$pd: 12px;
+$height: 34px;
+
+.selecter {
+  width: 100%;
+  cursor: pointer;
+}
+
+.searchField {
+  padding: 5px;
+  width: 100%;
+  font-size: 14px;
+  min-height: 40px;
+  border: 1px solid #b8bdbf;
+  color: #6c7173;
+  &:focus, &:active {
+    outline: none;
+    cursor: text;
+    border-color: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05) inset;
+  }
+}
+
+.labelg {
+  display: inline;
+}
+
+.invisibleInput {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: inline;
+}
+
+.optionBox {
+  display: none;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.2);
+  border-top-style: none;
+  max-height: 280px;
+  overflow-y: scroll;
+  .option {
+    position: relative;
+    padding: 6px $pd;
+    color: #a0a0a0;
+    white-space: nowrap;
+    &:hover:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #b8bdbf; // $palette.primaryLight
+    }
+    &:focus:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #b8bdbf; // $palette.primaryLight
+    }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background: #b8bdbf; // $palette.primaryLight
+      color: #f2f6f7; // $palette.grayLightest
+    }
+  }
+  .selected {
+    position: relative;
+    color: var(--OWL-UI-COLOR-PRIMARY);
+    &:after {
+      content: "\2713";
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+  }
+}
+
+.selectOpen {
+  .optionBox {
+    display: block;
+  }
+}
