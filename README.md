@@ -29,6 +29,7 @@ Follow the [documentation](https://cepave-f2e.github.io/vue-owl-ui).
 
 ## Contributors
 
-| ![Rocky](https://avatars1.githubusercontent.com/u/890063?v=3&s=120) | ![Timmy](https://avatars0.githubusercontent.com/u/4191668?v=3&s=120) | ![Kelly ](https://avatars3.githubusercontent.com/u/5334755?v=3&s=120) |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [Rocky Wu](https://github.com/rwu823) (Project Lead) | [Timmy Chang](https://github.com/chuanxd) | [Kelly Su](https://github.com/CApopsicle) |
+| ![Rocky](https://avatars1.githubusercontent.com/u/890063?v=3&s=120) | ![Timmy](https://avatars0.githubusercontent.com/u/4191668?v=3&s=120) | ![Kelly ](https://avatars3.githubusercontent.com/u/5334755?v=3&s=120) | ![Birdie](https://avatars3.githubusercontent.com/u/20331393?v=3&s=120) |
+| :--------------------------------------: | :--------------------------------------: | :--------------------------------------: | :--------------------------------------: |
+| [Rocky Wu](https://github.com/rwu823) (Project Lead) | [Timmy Chang](https://github.com/chuanxd) | [Kelly Su](https://github.com/CApopsicle) | [Birdie Chen](https://github.com/birdie28) |
+
