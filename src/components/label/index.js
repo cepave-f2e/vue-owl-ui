@@ -36,12 +36,7 @@ const Label = {
       return style
     }
   },
-  methods: {
-    handleCloseLabel (e) {
-      // console.log(this.$el);
-      // this.$el.parentNode.removeChild(this.$el)
-    }
-  },
+
   render(h) {
     const { $slots, style, x, handleCloseLabel } = this
     return (
@@ -49,7 +44,7 @@ const Label = {
         {$slots.default}
         {
           (x)
-          ? <Icon typ="x" size={12} class={[s.iconx]} nativeOn-click={handleCloseLabel} />
+          ? <Icon typ="x" size={12} class={[s.iconx]} />
           : ''
         }
       </div>
