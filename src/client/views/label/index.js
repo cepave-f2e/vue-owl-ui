@@ -4,10 +4,22 @@ import s from './label.scss'
 
 const LabelPage = {
   name: 'LabelPage',
-
+  data() {
+    return {
+      testData: [
+        { value: 'winnie', title: 'Winnie The Pooh' },
+        { value: 'piglet', title: 'Piglet' },
+        { value: 'tigger', title: 'Tigger' },
+      ]
+    }
+  },
+  methods: {
+    handleLabelGroup(data) {
+      this.testData = data
+    }
+  },
   render(h) {
     const { $slots } = this
-
     return (
       <div>
         <Markdown src={require('./doc.md')} />
@@ -66,6 +78,23 @@ const LabelPage = {
             <Label badge={true} typ="outline" status="inverted">5</Label>
           </span>
         </div>
+        Closable Label
+        <div class={[s.closableTagGroup]}>
+          <Label x badge class={[s.closableTag]} status="success">hello</Label>
+          <Label x badge class={[s.closableTag]} status="primary" typ="outline">This</Label>
+          <Label x class={[s.closableTag]} status="default">is</Label>
+          <Label x badge class={[s.closableTag]} status="error" typ="outline">Closable</Label>
+          <Label x class={[s.closableTag]} status="default" typ="outline">Tag</Label>
+        </div>
+        Label Group
+        <div class={[s.labelGroup]}>
+          <Label.Group options={this.testData} x={true} badge={true} typ="outline" onChange={this.handleLabelGroup} />
+        </div>
+        <pre>
+          <code>
+            {JSON.stringify(this.testData, null, 2)}
+          </code>
+        </pre>
       </div>
     )
   }

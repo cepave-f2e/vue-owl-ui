@@ -9,3 +9,15 @@
   width: 100px;
   text-align: center;
 }
+.closableTagGroup {
+  width: 100%;
+  display: flex;
+  .closableTag {
+    margin: 20px;
+  }
+}
+.labelGroup {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+}
