@@ -1,4 +1,4 @@
-import Flex from './'
+import Flex from '../'
 
 it('test size=2 and size=auto', () => {
   const vm = shallow({

@@ -14,7 +14,7 @@ yarn add @cepave/owl-ui
 
 
 ## GET STARTED
-Each component in `OWL UI` was named `CamelCase`, and you can find the all naming from [component](/#/components) lists.
+Each component in `OWL UI` was named `CamelCase`, and you can find the all naming from components lists.
 
 ```js
 import { Button, Select, ... } from '@cepave/owl-ui'
