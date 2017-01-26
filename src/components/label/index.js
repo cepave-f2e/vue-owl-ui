@@ -40,14 +40,14 @@ const Label = {
   render(h) {
     const { $slots, style, x, handleCloseLabel } = this
     return (
-      <div class={style}>
+      <span class={style}>
         {$slots.default}
         {
           (x)
           ? <Icon typ="x" size={12} class={[s.iconx]} />
           : ''
         }
-      </div>
+      </span>
     )
   }
 }
