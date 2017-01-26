@@ -124,12 +124,12 @@
 }
 
 .x {
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 
 .iconx {
   margin-left: 4px;
+  vertical-align: -2px;
 }
 
 //color for x
@@ -191,10 +191,9 @@
 }
 
 .labelGroup {
-  display: flex;
-  vertical-align: center;
+  display: inline
 }
 
 .labelInGroup {
-  margin-right: 5px;
+  margin: 3px;
 }
