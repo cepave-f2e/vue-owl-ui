@@ -85,8 +85,8 @@
     "url-loader": "^0.5.7",
     "vue-router": "^2.1.1",
     "vue-server-renderer": "^2.1.8",
-    "webpack": "2.2.0",
-    "webpack-dev-server": "2.2.0"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.2.1"
   },
   "repository": "https://github.com/cepave-f2e/vue-owl-ui.git",
   "bugs": {
