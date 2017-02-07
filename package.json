@@ -5,31 +5,12 @@
   "main": "./dist/owl-ui",
   "scripts": {
     "lint": "eslint src && stylelint src/**/*.scss --syntax scss",
-    "test": "jest --coverage",
+    "test": "jest --coverage --config jest.config.json",
     "dev": "webpack-dev-server --hot --inline --config webpack/client --port 3032",
     "dev.ssr": "babel-node scripts/dev.ssr",
     "pack.client": "webpack --progress --colors --config webpack/client",
     "build.ui": "babel-node scripts/build.ui",
     "build.pages": "NODE_ENV=production npm run pack.client"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "test/mock-loader.js",
-      "\\.(s?css)$": "identity-obj-proxy"
-    },
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "\\.s?css$"
-    ],
-    "setupFiles": [
-      "./test/setup.js"
-    ],
-    "collectCoverageFrom": [
-      "src/components/*/index.js"
-    ],
-    "testPathDirs": [
-      "src/"
-    ]
   },
   "keywords": [
     "design",
