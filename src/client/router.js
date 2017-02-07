@@ -30,6 +30,7 @@ module.exports = new Router({
         { path: 'page', component: require('./views/page') },
         { path: 'flex', component: require('./views/flex') },
         { path: 'multi-select', component: require('./views/multi-select') },
+        { path: 'date-picker', component: require('./views/date-picker') },
       ]
     },
     { path: '*', redirect: '/home' },

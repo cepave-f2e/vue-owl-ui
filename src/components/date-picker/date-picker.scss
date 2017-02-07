@@ -1,0 +1,95 @@
+.cal {
+  fill: var(--OWL-UI-COLOR-PRIMARY);
+}
+
+.picker {
+
+}
+
+.colorfulWeekend {
+
+}
+
+.calTable {
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  td {
+    text-align: center;
+  }
+
+  th {
+    font-weight: 300;
+    width: 44px;
+    color: #888;
+  }
+}
+
+.calBox {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 12px;
+
+}
+
+.calTop {
+  padding: 0 8px;
+  font-size: 20px;
+  margin-bottom: 12px;
+  strong {
+    margin-left: 8px;
+    color: var(--OWL-UI-COLOR-PRIMARY)
+  }
+}
+
+.date {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  &:hover {
+    background: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+  }
+}
+
+.dateNull {
+  visibility: hidden;
+}
+
+.dateIgnore {
+  opacity: .2;
+  cursor: no-drop;
+  &:hover {
+    background: none;
+  }
+}
+
+.today {
+  color: #fff;
+  background: var(--OWL-UI-COLOR-PRIMARY);
+  &:hover {
+    background: none;
+  }
+}
+
+.calPrev, .calNext {
+  cursor: pointer;
+  padding: 0 4px;
+  color: #808080;
+  &:hover {
+    color: #000;
+  }
+  &[ignore] {
+    opacity: .2;
+    cursor: no-drop;
+  }
+}
+
+.calNext {
+  margin-left: 16px;
+}
+
