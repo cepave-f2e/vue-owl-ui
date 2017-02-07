@@ -77,6 +77,9 @@ const ComponentPage = {
                 <dd>
                   <Link to="/components/input">Input</Link>
                 </dd>
+                <dd>
+                  <Link to="/components/date-picker">DatePicker</Link>
+                </dd>
               </dl>
             </div>
           </aside>
