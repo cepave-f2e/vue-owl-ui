@@ -4,18 +4,5 @@
      "browsers": ["last 2 versions"],
     }
   }], "stage-2"],
-  "plugins": ["transform-vue-jsx"],
-  "env": {
-    "test": {
-      "plugins": [
-        [
-          "webpack-loaders",
-          {
-            "config": "./webpack/test.js",
-            "verbose": false
-          }
-        ]
-      ]
-    }
-  }
+  "plugins": ["transform-vue-jsx"]
 }
