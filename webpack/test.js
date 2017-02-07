@@ -6,7 +6,7 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       loaders.css,
     ],
   },
