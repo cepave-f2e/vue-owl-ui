@@ -7,9 +7,9 @@ const LabelPage = {
   data() {
     return {
       testData: [
-        { value: 'winnie', title: 'Winnie The Pooh' },
-        { value: 'piglet', title: 'Piglet' },
-        { value: 'tigger', title: 'Tigger' },
+        { value: 'winnie', id: 1 },
+        { value: 'piglet', id: 2 },
+        { value: 'tigger', id: 3 },
       ]
     }
   },
@@ -86,9 +86,16 @@ const LabelPage = {
           <Label x badge class={[s.closableTag]} status="error" typ="outline">Closable</Label>
           <Label x class={[s.closableTag]} status="default" typ="outline">Tag</Label>
         </div>
-        Label Group
+        Label Group (Piglet is focused)
         <div class={[s.labelGroup]}>
-          <Label.Group options={this.testData} x={true} badge={true} typ="outline" onChange={this.handleLabelGroup} />
+          <Label.Group  displayKey="value" 
+                        options={this.testData} 
+                        x={true} 
+                        badge={true} 
+                        typ="outline" 
+                        onChange={this.handleLabelGroup} 
+                        focused={1}
+          />
         </div>
         <pre>
           <code>
