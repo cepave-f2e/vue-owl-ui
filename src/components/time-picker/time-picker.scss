@@ -1,0 +1,39 @@
+.timebox {
+  width: 90px;
+  height: 150px;
+  overflow: auto;
+  box-shadow: 0 2px 6px #ccc;
+  li {
+    padding: 2px;
+    padding-left: 8px;
+    cursor: pointer;
+    &:hover {
+      background: #e4e8f1;
+    }
+  }
+}
+
+.clock {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+}
+
+.timepicker {
+  outline: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  width: 90px;
+  height: 34px;
+  position: relative;
+
+  &:focus {
+    outline-color: var(--OWL-UI-COLOR-PRIMARY);
+    .timebox {
+      display: block;
+    }
+  }
+}
