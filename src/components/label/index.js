@@ -58,6 +58,14 @@ Label.Group = {
       type: Array,
       required: true
     },
+    focused: {
+      type: Number,
+      default: -1
+    },
+    displayKey: {
+      type: String,
+      required: true
+    },
     typ: {
       type: String,
       default: 'label'//label, outline, tag
@@ -73,21 +81,25 @@ Label.Group = {
     x: {
       type: Boolean,
       default: false
-    }
+    },
   },
   data() {
     return {
       labelData: this.options,
+      focusedLabel: this.focused
     }
   },
   watch: {
-    options() {
-      this.labelData = this.options
+    options(newVal) {
+      this.labelData = newVal
+    },
+    focused(newVal) {
+      this.focusedLabel = newVal
     }
   },
   computed: {
     renderLabels() {
-      const { labelData, x } = this
+      const { labelData, x, displayKey } = this
       const h = this.$createElement
       const props = {
         typ: this.typ,
@@ -96,11 +108,27 @@ Label.Group = {
         x: this.x
       }
       const _labels = this.labelData.map((label, idx) => {
+        const style = {
+          [s.labelInGroup]: true
+        }
+        style[s.focused] = (this.focusedLabel > -1 && this.focusedLabel === idx && this.hasFocusedStyle) ? true : false
+        
         return (
-          <Label { ...{ props } } data-role="labelg" data-val={label.value} data-id={idx} class={[s.labelInGroup]}>{label.title}</Label>
+          <Label { ...{ props } } 
+                  data-role="labelg" 
+                  data-val={label[displayKey]} 
+                  data-id={idx} 
+                  class={style}
+          >
+            {label[displayKey]}
+          </Label>
         )
       })
       return _labels
+    },
+    hasFocusedStyle() {
+      const { typ, status } = this
+      return (status === 'default' && typ === 'outline') ? true : false
     }
   },
   methods: {
