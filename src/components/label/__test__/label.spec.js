@@ -70,12 +70,12 @@ it('test <Label.Group> when clicking on <Label>', async() => {
   let vm
   const handleLabelGroup = (data) => {
     expect(data).toEqual([
-      { value: 'tigger', title: 'Tigger' }
+      { value: 'tigger', id: 2 }
     ])
   }
   const handleRemove = (data) => {
     expect(data).toEqual([
-      { value: 'piglet', title: 'Piglet' }
+      { value: 'piglet', id: 1 }
     ])
   }
   await new Promise((done) => {
@@ -83,14 +83,14 @@ it('test <Label.Group> when clicking on <Label>', async() => {
       data() {
         return {
           test: [
-            { value: 'piglet', title: 'Piglet' },
-            { value: 'tigger', title: 'Tigger' }
+            { value: 'piglet', id: 1 },
+            { value: 'tigger', id: 2 }
           ]
         }
       },
       render(h) {
         return (
-          <Label.Group x={true} badge={true} options={this.test} onChange={handleLabelGroup} onRemove={handleRemove} />
+          <Label.Group displayKey="value" x={true} badge={true} options={this.test} onChange={handleLabelGroup} onRemove={handleRemove} />
         )
       }
     })
@@ -107,25 +107,28 @@ it('test <Label.Group> dynamic update', async() => {
       data() {
         return {
           test: [
-            { value: 'piglet', title: 'Piglet' },
-            { value: 'tigger', title: 'Tigger' }
-          ]
+            { value: 'piglet', id: 1 },
+            { value: 'tigger', id: 2 }
+          ],
+          focusedId: 0
         }
       },
       mounted() {
         this.test = [
-          { value: 'tigger', title: 'Tigger' }
-        ]
+          { value: 'tigger', id: 2 }
+        ],
+        this.focusedId = 1
         this.$nextTick(done)
       },
       render(h) {
         return (
-          <Label.Group x={true} badge={true} options={this.test} />
+          <Label.Group displayKey="value" x={true} badge={true} options={this.test} focused={this.focusedId} />
         )
       }
     })
   })
   expect(vm.labelData).toEqual([
-    { value: 'tigger', title: 'Tigger' }
+    { value: 'tigger', id: 2 }
   ])
+  expect(vm.focusedLabel).toBe(1)
 })
