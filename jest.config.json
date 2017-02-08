@@ -11,7 +11,7 @@
     "./test/setup.js"
   ],
   "collectCoverageFrom": [
-    "src/components/*/index.js"
+    "src/components/*/*.js"
   ],
   "testPathDirs": [
     "src/"
