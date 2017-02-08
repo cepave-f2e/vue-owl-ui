@@ -3,7 +3,7 @@ module.exports = {
   loaders: {
     css: {
       test: /\.scss$/,
-      loaders: [
+      use: [
         'style-loader',
         'css-loader?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
         'sass-loader?sourceMap'

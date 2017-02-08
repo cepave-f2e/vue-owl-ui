@@ -27,9 +27,9 @@ const serverConfig = {
     })
   ],
   module: {
-    loaders: [...serverModuleLoaders, {
+    rules: [...serverModuleLoaders, {
       ...loaders.css,
-      loaders: ['isomorphic-style', ...loaders.css.loaders.slice(1)],
+      use: ['isomorphic-style', ...loaders.css.use.slice(1)],
     }]
   }
 }

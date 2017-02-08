@@ -43,30 +43,30 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(svg|png|jpg)$/,
-        loader: 'url-loader',
+        use: ['url-loader']
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: ['babel-loader']
       },
       {
         test: /\.md$/,
-        loader: 'raw-loader'
+        use: ['raw-loader']
       },
-      ...isDev ? [loaders.css] : [
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            loader: 'css-loader?modules&localIdentName=[hash:base64:5]!sass-loader',
-            fallbackLoader: 'style-loader',
-          })
-        }
-      ]
-    ]
+      ...isDev ? [loaders.css] : [{
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader?modules&localIdentName=[hash:base64:5]',
+            'sass-loader'
+          ],
+          fallback: 'style-loader',
+        })
+      }]
+    ],
   },
 
   plugins: [
