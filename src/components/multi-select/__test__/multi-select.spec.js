@@ -1,7 +1,7 @@
 import MultiSelect from '../'
 
 
-it('test <MultiSelect /> with props `options` and `selectedIdx`', () => {
+it('test <MultiSelect /> with props `options`, `selectedIdx`, `displayKey`, and `isDisabled`', () => {
   const selectedItems = [0, 1]
   const pokemon = [
     { value: 'Piglet', id: 23 },
@@ -11,7 +11,7 @@ it('test <MultiSelect /> with props `options` and `selectedIdx`', () => {
   const vm = shallow({
     render(h) {
       return (
-        <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+        <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} isDisabled />
       )
     }
   })
@@ -20,9 +20,12 @@ it('test <MultiSelect /> with props `options` and `selectedIdx`', () => {
     { value: 'Piglet', id: 23 },
     { value: 'Winnie the Pooh', id: 26 },
   ])
+  $(vm.$el.children[0]).trigger('click')
+  expect(vm.disable).toBe(true)
+  expect(vm.opened).toBe(false)
 })
 
-it('test <MultiSelect /> dynamic change props `selectedIdx` and `isOpened`', async() => {
+it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisabled` and `loading`', async() => {
   let vm
   const pokemon = [
     { value: 'Piglet', id: 23 },
@@ -34,17 +37,26 @@ it('test <MultiSelect /> dynamic change props `selectedIdx` and `isOpened`', asy
       data() {
         return {
           selectedItems: [0, 1],
-          open: false
+          open: false,
+          disable: true,
+          loading: true,
         }
       },
       mounted() {
         this.selectedItems = [2]
         this.open = true
+        this.disable = false
+        this.loading = false
         this.$nextTick(done)
       },
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={this.selectedItems} options={pokemon} isOpened={this.open} />
+          <MultiSelect displayKey="value" 
+                       selectedIdx={this.selectedItems} 
+                       options={pokemon} 
+                       isOpened={this.open} 
+                       isDisabled={this.disable}
+                       loading={this.loading} />
         )
       }
     })
@@ -54,6 +66,8 @@ it('test <MultiSelect /> dynamic change props `selectedIdx` and `isOpened`', asy
     { value: 'pikachu', id: 24 }
   ])
   expect(vm.opened).toBe(true)
+  expect(vm.disable).toBe(false)
+  expect(vm.loading).toBe(false)
 })
 
 it('test <MultiSelect /> search feature', async() => {
@@ -62,7 +76,7 @@ it('test <MultiSelect /> search feature', async() => {
   const pokemon = [
     { value: 'Piglet', id: 23 },
     { value: 'Winnie the Pooh', id: 26 },
-    { title: 'Raticate', value: 'raticate', id: 18 },
+    { value: 'raticate', id: 18 },
   ]
   await new Promise((done) => {
     vm = shallow({
@@ -81,6 +95,33 @@ it('test <MultiSelect /> search feature', async() => {
     vm.$nextTick(done)
   })
   expect(vm.displayIdx).toEqual([2])
+})
+
+it('test <MultiSelect /> case insensitive search', async() => {
+  let vm
+  const selectedItems = [0, 1]
+  const pokemon = [
+    { value: 'Caterpie', id: 23 },
+    { value: 'raticate', id: 26 },
+    { value: 'Raticate', id: 18 },
+  ]
+  await new Promise((done) => {
+    vm = shallow({
+      render(h) {
+        return (
+          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} caseInsensitive />
+        )
+      }
+    })
+    //toggleMenu
+    $(vm.$el.children[0]).trigger('click')
+    //input
+    $(vm.$el.children[0].children[1]).val('ra')
+    //trigger keydown ENTER
+    vm.handleInput()
+    vm.$nextTick(done)
+  })
+  expect(vm.displayIdx).toEqual([1, 2])
 })
 
 it('test <MultiSelect /> select and unselect feature', async() => {
