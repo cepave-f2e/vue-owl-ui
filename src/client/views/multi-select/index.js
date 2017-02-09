@@ -10,10 +10,10 @@ const MultiSelectPage = {
       options: [
         { value: 'vulpix', id: 23 },
         { value: 'caterpie', id: 26 },
-        { value: 'pikachu', id: 24 },
+        { value: 'Pikachu', id: 24 },
         { value: 'charmander', id: 25 },
         { value: 'bulbasaur', id: 20 },
-        { value: 'squirtle', id: 19 },
+        { value: 'Squirtle', id: 19 },
         { value: 'raticate', id: 18 },
         { value: 'fearow', id: 17 },
         { value: 'psyduck', id: 16 },
@@ -43,6 +43,8 @@ const MultiSelectPage = {
                          options={this.options} 
                          onChange={this.getMultiSelectData}
                          displayKey="value" 
+                         caseInsensitive
+                         loading
             />
           </div>
           <div class={[s.code]}>
