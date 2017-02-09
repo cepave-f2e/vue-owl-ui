@@ -87,3 +87,27 @@ $height: 34px;
     display: block;
   }
 }
+
+.disabled {
+  opacity: .5;
+  background-color: #dfe4e6; // $palette.grayLighter
+  cursor: no-drop;
+}
+
+.disabledLabelg {
+  display: inline;
+  pointer-events: none;
+}
+
+.loadingOption {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  padding: 6px 12px;
+}
+
+.loading {
+  position: absolute;
+  right: 0;
+  left: auto;
+}

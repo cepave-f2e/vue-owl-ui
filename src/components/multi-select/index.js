@@ -1,6 +1,7 @@
 import delegate from 'delegate-to'
 import s from './multi-select.scss'
 import Label from '../label'
+import Loading from '../loading'
 
 const MultiSelect = {
   props: {
@@ -8,28 +9,49 @@ const MultiSelect = {
       type: Array,
       required: true
     },
+
     selectedIdx: {
       type: Array,
       required: true
     },
+
     displayKey: {
       type: String,
       required: true
     },
+
     isOpened: {
       type: Boolean,
       default: false,
     },
-    // isDisabled: {
+
+    isDisabled: {
+      type: Boolean,
+      default: false
+    },
+
+    caseInsensitive: {
+      type: Boolean,
+      default: false
+    },
+
+    // apiMode: {
     //   type: Boolean,
     //   default: false
-    // }
+    // },
+
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {
     return {
       labels: [], //displayed options
       opened: this.isOpened,
+      disable: this.isDisabled,
+      loadingPie: this.loading,
       displayIdx: [],
       optionsHovered: false,
       labelRemoved: false,
@@ -63,6 +85,12 @@ const MultiSelect = {
     },
     isOpened(newVal) {
       this.opened = newVal
+    },
+    isDisabled(newVal) {
+      this.disable = newVal
+    },
+    loading(newVal) {
+      this.loadingPie = newVal
     }
   },
 
@@ -91,11 +119,18 @@ const MultiSelect = {
       return _options
     },
 
+    renderLoading() {
+      const { style } = this
+      const h = this.$createElement
+      const _loadingOption = <div class={[s.loadingOption]}><Loading typ="pie" size={10} class={[s.loading]} />loading...</div>
+      return _loadingOption
+    },
+
     css() {
-      const { opened, isDisabled } = this
+      const { opened, disable } = this
       const style = {}
       style[s.selectOpen] = opened
-      style[s.disabled] = isDisabled
+      style[s.disabled] = disable
       return style
     },
 
@@ -126,24 +161,42 @@ const MultiSelect = {
 
     toggleMenu(ev) {
       ev.stopPropagation()
+      if (this.disable) {
+        return
+      }
       if (this.labelRemoved) { //if toggleMenu is triggered by removing label
         this.labelRemoved = false
         return
       }
+
       this.opened = !this.opened
+
       if (this.opened) {
         this.$refs.searchField.focus()
       }
     },
 
     handleInput(e) {
-      const { displayKey } = this
-      const searchResult = this.options.reduce((preVal, newVal, idx) => {
+      const { displayKey, caseInsensitive } = this
+
+      // if (this.apiMode) {
+      //   this.$emit('inputChange', this.$refs.searchField.value)
+      // }
+
+      const searchResult = (caseInsensitive)
+      ? this.options.reduce((preVal, newVal, idx) => {
+        if (newVal[displayKey].toLowerCase().includes(this.$refs.searchField.value.toLowerCase())) {
+          preVal.push(idx)
+        }
+        return preVal
+      }, [])
+      : this.options.reduce((preVal, newVal, idx) => {
         if (newVal[displayKey].includes(this.$refs.searchField.value)) {
           preVal.push(idx)
         }
         return preVal
       }, [])
+
       this.displayIdx = searchResult
       this.inputWidth = (this.$refs.searchField.value.length) ? (this.$refs.searchField.value.length) : 1
       this.opened = true
@@ -247,7 +300,7 @@ const MultiSelect = {
   render(h) {
     const { css, close, toggleMenu, renderOptions, _handleMouseOver, handleMouseEnter, 
             _handleOnChange, _handleKeyEvent, handleLabelRemove, handleInputKeyDown,
-            labels, inputWidth } = this
+            labels, inputWidth, disable } = this
     return (
       <div class={[s.selecter, css]}>
         <div class={[s.searchField]} onClick={toggleMenu}>
@@ -256,13 +309,14 @@ const MultiSelect = {
                        typ="outline" 
                        options={labels} 
                        onRemove={handleLabelRemove} 
-                       class={[s.labelg]} />
+                       class={(disable) ? [s.disabledLabelg] : [s.labelg]} />
           <input class={[s.invisibleInput]}
                  size={inputWidth}
                  ref="searchField"
                  onInput={this.handleInput}
                  onBlur={close}
                  on-keydown={this.handleInputKeyDown}
+                 disabled={disable}
           >
           </input>
         </div>
@@ -273,6 +327,11 @@ const MultiSelect = {
               on-mouseleave={handleMouseEnter}
               on-mouseover={_handleMouseOver}
         >
+          {
+            (this.loadingPie) 
+            ? this.renderLoading 
+            : ''
+          }
           {renderOptions}
         </div>
       </div>
