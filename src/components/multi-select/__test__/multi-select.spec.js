@@ -175,7 +175,7 @@ it('test <MultiSelect /> mouse event', async() => {
 
 it('test <MultiSelect /> keyboard event', async() => {
   let vm
-  const selectedItems = [0, 1]
+  const selectedItems = [1]
   const pokemon = [
     { value: 'Piglet', id: 23 },
     { title: 'Raticate', value: 'raticate', id: 18 },
@@ -197,17 +197,42 @@ it('test <MultiSelect /> keyboard event', async() => {
   const key13 = new window.KeyboardEvent('keydown', { keyCode: 13, which: 13 })
 
   await new Promise((done) => {
-    $(vm.$el.children[0].children[1]).trigger('keydown')
     vm.$el.children[0].children[1].dispatchEvent(key40)
     vm.$nextTick(done)
   })
 
   expect(vm.optionsHovered).toBe(true)
   expect(vm.focusedIdx).toBe(0)
-  // $(vm.$el.children[1].children[0]).trigger('keydown')
-  vm.$el.children[1].children[0].dispatchEvent(key40)
 
-  //not finished
+  await new Promise((done) => {
+    vm.$el.children[0].children[1].dispatchEvent(key40)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.optionsHovered).toBe(true)
+  expect(vm.focusedIdx).toBe(1)
+
+  await new Promise((done) => { //unselect
+    vm.$el.children[0].children[1].dispatchEvent(key13)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.selectedIdx).toEqual([])
+
+  await new Promise((done) => {
+    vm.$el.children[0].children[1].dispatchEvent(key38)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.optionsHovered).toBe(true)
+  expect(vm.focusedIdx).toBe(0)
+
+  await new Promise((done) => { //select
+    vm.$el.children[0].children[1].dispatchEvent(key13)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.selectedIdx).toEqual([0])
 })
 
 it('test <MultiSelect /> delete Label feature', async() => {
