@@ -53,7 +53,29 @@ $height: 34px;
       height: 100%;
       background: #b8bdbf; // $palette.primaryLight
     }
-    &:focus:before {
+    // &:focus:before {
+    //   content: '';
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   width: 4px;
+    //   height: 100%;
+    //   background: #b8bdbf; // $palette.primaryLight
+    // }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background: #b8bdbf; // $palette.primaryLight
+      color: #f2f6f7; // $palette.grayLightest
+    }
+  }
+  .focused {
+    position: relative;
+    padding: 6px $pd;
+    color: #a0a0a0;
+    white-space: nowrap;
+    &:before {
       content: '';
       position: absolute;
       left: 0;
@@ -61,13 +83,6 @@ $height: 34px;
       width: 4px;
       height: 100%;
       background: #b8bdbf; // $palette.primaryLight
-    }
-    &:focus {
-      outline: none;
-    }
-    &:active {
-      background: #b8bdbf; // $palette.primaryLight
-      color: #f2f6f7; // $palette.grayLightest
     }
   }
   .selected {
