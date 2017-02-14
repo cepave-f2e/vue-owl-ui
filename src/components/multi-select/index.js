@@ -54,6 +54,7 @@ const MultiSelect = {
       loadingPie: this.loading,
       displayIdx: [],
       optionsHovered: false,
+      disablePointer: false,
       inputWidth: 1,
       focusedIdx: -1,
     }
@@ -63,23 +64,17 @@ const MultiSelect = {
     this.displayIdx = [...Array(this.options.length)].map((v, i) => {
       return i
     })
-    this.labels = this.options.reduce((preVal, curVal, idx) => {
-      const isSelected = this.selectedIdx.indexOf(idx)
-      if (isSelected >= 0) {
-        preVal.push(this.options[idx])
-      }
-      return preVal
+    this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
+      preVal.push(this.options[curVal])
+      return preVal        
     }, [])
   },
 
   watch: {
     selectedIdx(newVal) {
-      this.labels = this.options.reduce((preVal, curVal, idx) => {
-        const isSelected = newVal.indexOf(idx)
-        if (isSelected >= 0) {
-          preVal.push(this.options[idx])
-        }
-        return preVal
+      this.labels = newVal.reduce((preVal, curVal, idx) => {
+        preVal.push(this.options[curVal])
+        return preVal        
       }, [])
     },
     isOpened(newVal) {
@@ -95,19 +90,19 @@ const MultiSelect = {
 
   computed: {
     renderOptions() {
-      const { options, displayIdx, selectedIdx, displayKey } = this
+      const { options, displayIdx, selectedIdx, displayKey, disablePointer } = this
       const h = this.$createElement
 
       const _options = options.reduce((preVal, newVal, idx) => {
-        const style = [s.option]
+        const style = {}
+        style[s.option] = true
         const toDisplay = displayIdx.indexOf(idx)
         const isSelected = selectedIdx.indexOf(idx)
-        if (isSelected >= 0) {
-          style.push(s.selected)
-        }
-        if (idx === this.focusedIdx) {
-          style.push(s.focused)
-        }
+
+        style[s.selected] = (isSelected >= 0) ? true : false
+        style[s.focused] = (idx === this.focusedIdx) ? true: false
+        style[s.disablePointer] = (disablePointer) ? true : false
+
         if (toDisplay >= 0) {
           preVal.push(
             <div tabIndex="0" data-role="select-option" data-idx={idx} class={style}>
@@ -154,7 +149,6 @@ const MultiSelect = {
     },
 
     handleMouseEnter(e) {
-      // handle focus -> true losefocus -> false
       if (e.type === 'mouseenter') {
         this.optionsHovered = true
       } else if (e.type === 'mouseleave') {
@@ -184,13 +178,13 @@ const MultiSelect = {
 
       const searchResult = (caseInsensitive)
       ? this.options.reduce((preVal, newVal, idx) => {
-        if (newVal[displayKey].toLowerCase().includes(this.$refs.searchField.value.toLowerCase())) {
+        if (newVal[displayKey].toLowerCase().includes(this.$refs.searchField.value.trim().toLowerCase())) {
           preVal.push(idx)
         }
         return preVal
       }, [])
       : this.options.reduce((preVal, newVal, idx) => {
-        if (newVal[displayKey].includes(this.$refs.searchField.value)) {
+        if (newVal[displayKey].includes(this.$refs.searchField.value.trim())) {
           preVal.push(idx)
         }
         return preVal
@@ -203,6 +197,7 @@ const MultiSelect = {
 
     handleInputKeyDown(e) {
       this.optionsHovered = true
+      this.disablePointer = true
 
       if (e.keyCode === 38) {//arrowUp
         this.focusAdjacentOption(this.focusedIdx, 'pre')
@@ -218,7 +213,6 @@ const MultiSelect = {
           this.selectedIdx.push(this.focusedIdx)
           this.outputResult()
         }
-        this.selectedIdx = this.selectedIdx.sort()
       }
     },
 
@@ -235,21 +229,23 @@ const MultiSelect = {
         this.selectedIdx.push(+changedId)
         this.outputResult()
       }
-      this.selectedIdx = this.selectedIdx.sort()
+
       this.$refs.searchField.focus()
     }),
 
     _handleMouseOver: delegate('[data-role="select-option"]', function(ev) {
       const { delegateTarget } = ev
+      const hoveredId = delegateTarget.getAttribute('data-idx')
       if (ev.type === 'mouseover') {
         this.optionsHovered = true
       }
 
-      // const hoveredId = delegateTarget.getAttribute('data-idx')
-      // this.focusedIdx = hoveredId
-      // delegateTarget.focus()
-      // this.$refs.searchField.focus()
+      this.focusedIdx = +hoveredId
     }),
+
+    handleMouseMove(ev) {
+      this.disablePointer = false
+    },
 
     handleLabelRemove(data) { //unselect
       const idxToRemove = this.options.indexOf(data)
@@ -279,17 +275,21 @@ const MultiSelect = {
         }
       }
 
+      const currentTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${curDataIdx}"]`)
       const focusTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${targetDataIdx}"]`)
+      
       focusTarget.focus()
-      this.focusedIdx = targetDataIdx
       this.$refs.searchField.focus()
+
+      this.focusedIdx = targetDataIdx
+      this.optionsHovered = false
     },
 
   },
 
 
   render(h) {
-    const { css, close, toggleMenu, renderOptions, _handleMouseOver, handleMouseEnter, 
+    const { css, close, toggleMenu, renderOptions, _handleMouseOver, handleMouseEnter, handleMouseMove,
             _handleOnChange, handleLabelRemove, handleInputKeyDown,
             labels, inputWidth, disable } = this
     return (
@@ -316,6 +316,7 @@ const MultiSelect = {
               on-mouseenter={handleMouseEnter}
               on-mouseleave={handleMouseEnter}
               on-mouseover={_handleMouseOver}
+              on-mousemove={handleMouseMove}
         >
           {
             (this.loadingPie) 
