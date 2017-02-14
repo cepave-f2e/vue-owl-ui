@@ -201,7 +201,7 @@ it('test <MultiSelect /> keyboard event', async() => {
     vm.$nextTick(done)
   })
 
-  expect(vm.optionsHovered).toBe(true)
+  expect(vm.optionsHovered).toBe(false)
   expect(vm.focusedIdx).toBe(0)
 
   await new Promise((done) => {
@@ -209,7 +209,7 @@ it('test <MultiSelect /> keyboard event', async() => {
     vm.$nextTick(done)
   })
 
-  expect(vm.optionsHovered).toBe(true)
+  expect(vm.optionsHovered).toBe(false)
   expect(vm.focusedIdx).toBe(1)
 
   await new Promise((done) => { //unselect
@@ -224,7 +224,7 @@ it('test <MultiSelect /> keyboard event', async() => {
     vm.$nextTick(done)
   })
 
-  expect(vm.optionsHovered).toBe(true)
+  expect(vm.optionsHovered).toBe(false)
   expect(vm.focusedIdx).toBe(0)
 
   await new Promise((done) => { //select
@@ -233,6 +233,9 @@ it('test <MultiSelect /> keyboard event', async() => {
   })
 
   expect(vm.selectedIdx).toEqual([0])
+
+  $(vm.$el.children[1]).trigger('mousemove')
+  expect(vm.disablePointer).toBe(false)
 })
 
 it('test <MultiSelect /> delete Label feature', async() => {
