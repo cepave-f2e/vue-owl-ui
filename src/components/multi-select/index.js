@@ -48,7 +48,7 @@ const MultiSelect = {
 
   data() {
     return {
-      labels: [], //displayed options
+      labels: [],
       opened: this.isOpened,
       disable: this.isDisabled,
       loadingPie: this.loading,
@@ -57,6 +57,7 @@ const MultiSelect = {
       disablePointer: false,
       inputWidth: 1,
       focusedIdx: -1,
+      focusedLabelIdx: -1,
     }
   },
 
@@ -146,6 +147,7 @@ const MultiSelect = {
       const { optionsHovered } = this
       this.opened = (this.optionsHovered) ? true : false
       this.focusedIdx = -1
+      this.focusedLabelIdx = -1
     },
 
     handleMouseEnter(e) {
@@ -212,6 +214,15 @@ const MultiSelect = {
         } else { //select
           this.selectedIdx.push(this.focusedIdx)
           this.outputResult()
+        }
+      } else if (e.keyCode === 8 && this.$refs.searchField.value.length <= 0) { //backspace delete
+        const selectedArrLen = this.selectedIdx.length
+
+        if (this.focusedLabelIdx === -1) { //empty input and focus on last label
+          this.focusedLabelIdx = selectedArrLen - 1
+        } else if (this.focusedLabelIdx > -1) {//delete the focused label
+          this.selectedIdx.pop()
+          this.focusedLabelIdx = -1
         }
       }
     },
@@ -300,7 +311,9 @@ const MultiSelect = {
                        typ="outline" 
                        options={labels} 
                        onRemove={handleLabelRemove} 
-                       class={(disable) ? [s.disabledLabelg] : [s.labelg]} />
+                       class={(disable) ? [s.disabledLabelg] : [s.labelg]} 
+                       focused={this.focusedLabelIdx}
+          />
           <input class={[s.invisibleInput]}
                  size={inputWidth}
                  ref="searchField"
