@@ -43,6 +43,11 @@ const MultiSelect = {
     loading: {
       type: Boolean,
       default: false
+    },
+
+    loadingMsg: {
+      type: String,
+      default: 'loading...'
     }
   },
 
@@ -95,18 +100,19 @@ const MultiSelect = {
       const h = this.$createElement
 
       const _options = options.reduce((preVal, newVal, idx) => {
-        const style = {}
-        style[s.option] = true
         const toDisplay = displayIdx.indexOf(idx)
         const isSelected = selectedIdx.indexOf(idx)
 
-        style[s.selected] = (isSelected >= 0) ? true : false
-        style[s.focused] = (idx === this.focusedIdx) ? true: false
-        style[s.disablePointer] = (disablePointer) ? true : false
+        const classes = {
+          [s.option]: true,
+          [s.selected]: (isSelected >= 0),
+          [s.focused]: (idx === this.focusedIdx),
+          [s.disablePointer]: disablePointer
+        }
 
         if (toDisplay >= 0) {
           preVal.push(
-            <div tabIndex="0" data-role="select-option" data-idx={idx} class={style}>
+            <div tabIndex="0" data-role="select-option" data-idx={idx} class={classes}>
               {newVal[displayKey]}
             </div>
           )
@@ -118,17 +124,18 @@ const MultiSelect = {
     },
 
     renderLoading() {
-      const { style } = this
+      const { style, loadingMsg } = this
       const h = this.$createElement
-      const _loadingOption = <div class={[s.loadingOption]}><Loading typ="pie" size={10} class={[s.loading]} />loading...</div>
+      const _loadingOption = <div class={[s.loadingOption]}><Loading typ="pie" size={10} class={[s.loading]} />{loadingMsg}</div>
       return _loadingOption
     },
 
     css() {
       const { opened, disable } = this
-      const style = {}
-      style[s.selectOpen] = opened
-      style[s.disabled] = disable
+      const style = {
+        [s.selectOpen]: opened,
+        [s.disabled]: disable
+      }
       return style
     },
 
