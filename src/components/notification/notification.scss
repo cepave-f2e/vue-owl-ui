@@ -1,0 +1,70 @@
+.notification {
+  width: 330px;
+  height: auto;
+  position: relative;
+  z-index: 99999;
+  overflow: auto;
+  background: #fff;
+  color: #6C7173;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.04);
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  // border: 1px solid #8962D9; #76C35C
+}
+
+.fadeIn {
+  animation: appear 1 .3s ease-in;
+}
+
+.fadeOut {
+  animation: disappear 1 .5s linear;
+}
+
+.x {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 0 4px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #999;
+  &:after {
+    content: '×';
+  }
+  &:hover {
+    color: #000;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  color: #6C7173;
+}
+
+.message {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  color: #6C7173;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateX(150%);
+  }		
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }		
+  100% {
+    opacity: 0;
+  }
+}
