@@ -1,4 +1,3 @@
-import Input from '~com/input'
 import s from './time-picker.scss'
 import isTimeFormat from './is-time-format'
 import prefix0 from './prefix0'
@@ -14,17 +13,34 @@ const TimePicker = {
     },
     end: {
       type: String,
-      default: '22:30',
+      default: '22:00',
     },
     step: {
       type: Number,
       default: 15, // mins
+    },
+
+    open: {
+      type: Boolean,
+      default: false,
     }
   },
 
   data() {
     return {
-      value: ''
+      value: '',
+    }
+  },
+
+  watch: {
+    open(opened) {
+      const { $el } = this
+
+      if (opened) {
+        $el.focus()
+      } else {
+        $el.blur()
+      }
     }
   },
 
@@ -36,13 +52,16 @@ const TimePicker = {
   },
 
   methods: {
-    pickTime: delegate('li', function(ev) {
+    pickTime: delegate('li', function (ev) {
+      ev.stopPropagation()
+
       const { delegateTarget } = ev
       const time = (delegateTarget.getAttribute('data-time'))
       if (this.value === time) {
         return
       }
 
+      this.$el.blur()
       this.value = time
       this.$emit('change', {
         time
@@ -83,11 +102,19 @@ const TimePicker = {
       }
 
       return lis
+    },
+  },
+
+  mounted() {
+    const { open, $el } = this
+
+    if (open) {
+      $el.focus()
     }
   },
 
   render(h) {
-    const { renderTime, pickTime } = this
+    const { renderTime, pickTime, value } = this
     return (
       <div class={[s.timepicker]} tabIndex="-1">
         <span class={[s.input]}  >
