@@ -1,8 +1,13 @@
 .timebox {
+  display: none;
   width: 90px;
   height: 150px;
   overflow: auto;
   box-shadow: 0 2px 6px #ccc;
+  position: absolute;
+  left: 0;
+  top: 35px;
+  background: #fff;
   li {
     padding: 2px;
     padding-left: 8px;
