@@ -15,6 +15,16 @@ $height: 34px;
   min-height: 46px;
   border: 1px solid #b8bdbf;
   color: #6c7173;
+  & > {
+    & .invisibleInput,
+    .labelg,
+    .disabledLabelg {
+      display: inline;
+    }
+  }
+  .labelGroup {
+    display: inline;
+  }
   &:focus, &:active {
     outline: none;
     border-color: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
@@ -22,15 +32,10 @@ $height: 34px;
   }
 }
 
-.labelg {
-  display: inline;
-}
-
 .invisibleInput {
   border: none;
   outline: none;
   background-color: transparent;
-  display: inline;
   vertical-align: middle;
 }
 
@@ -103,7 +108,6 @@ $height: 34px;
 }
 
 .disabledLabelg {
-  display: inline;
   pointer-events: none;
 }
 
