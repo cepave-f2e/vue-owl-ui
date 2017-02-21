@@ -1,5 +1,6 @@
 $pd: 12px;
 $height: 34px;
+$labelBorderWidth: 1px;
 
 .selecter {
   width: 100%;
@@ -8,11 +9,11 @@ $height: 34px;
 }
 
 .searchField {
-  padding: 5px;
+  padding-bottom: (4px - $labelBorderWidth);
+  padding-left: $pd;
   width: 100%;
-  min-height: 46px;
+  min-height: $height;
   font-size: 14px;
-  min-height: 46px;
   border: 1px solid #b8bdbf;
   color: #6c7173;
   & > {
@@ -24,6 +25,8 @@ $height: 34px;
   }
   .labelGroup {
     display: inline;
+    margin-top: 4px;
+    margin-right: 4px;
   }
   &:focus, &:active {
     outline: none;

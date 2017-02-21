@@ -2,6 +2,9 @@
   background: $back-color;
   color: $text-color;
 }
+
+$labelBorderWidth: 1px;
+
 //typ
 .label {
   font-size: 12px;
@@ -14,7 +17,7 @@
   border: 1px solid transparent;
   position: relative;
   vertical-align: middle;
-  padding: 4px 8px;
+  padding: (4px - $labelBorderWidth) (8px - $labelBorderWidth);
   letter-spacing: .01em;
   cursor: pointer;
 }
@@ -119,7 +122,7 @@
 }
 
 .badge {
-  padding: 4px 10px;
+  padding: (4px - $labelBorderWidth) (10px - $labelBorderWidth);
   border-radius: 14px;
 }
 
@@ -191,7 +194,8 @@
 }
 
 .labelInGroup {
-  margin: 3px;
+  margin-top: (4px - $labelBorderWidth);
+  margin-right: (4px - $labelBorderWidth);
 }
 
 // focused default outline badge label
