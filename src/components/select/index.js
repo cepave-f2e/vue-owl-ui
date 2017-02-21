@@ -28,6 +28,16 @@ const Select = {
       type: String,
       default: ''
     },
+
+    nameKey: {
+      type: String,
+      default: 'title'
+    },
+
+    valueKey: {
+      type: String,
+      default: 'value',
+    }
   },
 
   data() {
@@ -61,7 +71,7 @@ const Select = {
 
     _handleOnChange: delegate('[data-role="select-option"]', function (ev) {
       const { delegateTarget } = ev
-      const { _getTitle, options, _selectedIdx } = this
+      const { options, _selectedIdx, renderOptions, nameKey, valueKey } = this
       const index = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
 
       if (index === _selectedIdx) {
@@ -69,25 +79,15 @@ const Select = {
       }
 
       this._selectedIdx = index
-      this.title = _getTitle({ option: options[index] })
-      this.value = options[index].value
+      this.title = options[index][nameKey]
+      this.value = options[index][valueKey || nameKey]
       this.opened = false
 
       this.$emit('change', {
         value: this.value,
         index
       })
-    }),
-
-    _getTitle({ option, index }) {
-      const { optionsRender } = this
-
-      return (
-        optionsRender
-          ? optionsRender({ option, index })
-          : option.title
-      )
-    }
+    })
   },
 
   computed: {
@@ -100,29 +100,26 @@ const Select = {
     },
 
     renderOptions() {
-      const { options, _getTitle } = this
+      const { options, optionsRender, nameKey, valueKey } = this
       const h = this.$createElement
-      let hasSelected = false
 
       const _options = options.map((option, index) => {
         if (option.selected) {
-          hasSelected = true
           this._selectedIdx = index
-          this.title = _getTitle({ option })
-          this.value = option.value
         }
 
         return (
           <div data-role="select-option" data-idx={index}>
-            { _getTitle({ option, index }) }
+            {optionsRender ? optionsRender({ option, index }) : option[nameKey]}
           </div>
         )
       })
 
-      if (!hasSelected) {
-        this.title = _getTitle({ option: options[0] })
-        this.value = options[0].value
+      if (options[this._selectedIdx]) {
+        this.title = options[this._selectedIdx][nameKey]
+        this.value = options[this._selectedIdx][valueKey || nameKey]
       }
+
       return _options
     }
   },
