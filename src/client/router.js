@@ -25,6 +25,7 @@ module.exports = new Router({
         { path: 'label', component: require('./views/label') },
         { path: 'dual-list', component: require('./views/dual-list') },
         { path: 'tab', component: require('./views/tab') },
+        { path: 'table', component: require('./views/table') },
         { path: 'page', component: require('./views/page') },
         { path: 'flex', component: require('./views/flex') },
       ]
