@@ -25,6 +25,11 @@ This is the recommended way to put words in Switch Button
 
 ##Usage
 
+get `<Switch />` value from `this.$refs.switchref.check`
+```jsx
+<Switch checked name="switch1" ref="switchref" typ="special" />
+```
+
 Use `onChange` as a listener to get data from `$emit('change')`
 ```jsx
 //Define a Function to handle onChange and get switch button data
