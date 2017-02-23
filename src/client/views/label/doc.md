@@ -33,14 +33,24 @@
       type: Array,
       required: true
     },
+    focused: {
+      type: Number,
+      default: -1
+    },
+    displayKey: {
+      type: String,
+      required: true
+    },
     /* typ, status, badge, and x same as 'Label'*/
   }
 }
 ```
 
 ## Options data structure for `<Label.Group>`
-The `options` of props must be an `Array Object`.
+The `options` of props must be an `Array Object`.  
+Give `displayKey` to determine what should be display in a single list
 
+Suggested format:
 ```json
 [
   { value: 'winnie', title: 'Winnie The Pooh' },
@@ -105,7 +115,7 @@ methods: {
 
 render(h) {
   return (
-    <Label.Group x={true} options={this.options} badge={true} typ="outline" onChange={this.getLabelGroupData} />
+    <Label.Group displayKey="value" x badge options={this.options} typ="outline" onChange={this.getLabelGroupData} />
   )
 }
 ```
