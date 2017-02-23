@@ -66,7 +66,7 @@
         margin-top: -11px;
       }
     }
-    &[data-sort="1"] {
+    &[data-sort="0"] {
       &:after {
         display: none;
       }
@@ -75,7 +75,7 @@
         border-bottom-color: #666;
       }
     }
-    &[data-sort="0"] {
+    &[data-sort="1"] {
       &:before {
         display: none;
       }
@@ -88,6 +88,7 @@
 }
 
 .gbody {
+  position: relative;
   overflow: auto;
   [data-role="col"] {
     justify-content: center;
@@ -108,4 +109,13 @@
       }
     }
   }
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(#fff, .8);
 }

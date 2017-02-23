@@ -1,5 +1,6 @@
 import delegate from 'delegate-to'
 import s from './grid.scss'
+import Loading from '../loading'
 
 const unit = (u)=> {
   u = String(u)
@@ -15,16 +16,30 @@ const Grid = {
   props: {
     heads: {
       type: Array,
-      default:() => [],
+      required: true,
+      default: () => [
+        {
+          name: 'Head',
+          key: '',
+          sort: -1,
+          sortKey: '',
+          width: '20%'
+        }
+      ],
     },
 
     rows: {
       type: Array,
-      default:() => [],
+      default: () => [],
     },
 
     rowsRender: {
       type: Function
+    },
+
+    loading: {
+      type: Boolean,
+      default: false,
     }
   },
 
@@ -66,18 +81,40 @@ const Grid = {
       const { heads } = this
 
       return heads.map(head => unit(head.width))
-    },
+    }
   },
 
   methods: {
+    renderRows({ row }) {
+      const h = this.$createElement
+      const { heads } = this
+
+      return heads.map((head, idx)=> {
+        return (
+          <div data-role="col">
+            {row[head.key]}
+          </div>
+        )
+      })
+    },
+
     sorting: delegate('[data-sort]', function (ev) {
-      const { idx } = ev.delegateTarget.dataset
+      const { delegateTarget } = ev
+      const idx = delegateTarget.getAttribute('data-idx')
       const { drows, heads } = this
-      const sort = +heads[idx].sort
+      const { sort, key, sortKey } = heads[idx]
 
       if (sort !== -1) {
-        drows.reverse()
-        heads[idx].sort = (sort === 1 ? 0 : 1)
+        heads[idx].sort = (1 - sort)
+
+        if (this._events.sort) {
+          this.$emit('sort', {
+            sort: heads[idx].sort,
+            key
+          })
+        } else {
+          drows.reverse()
+        }
       } else {
         heads.forEach(head => {
           if (head.sort !== undefined) {
@@ -86,22 +123,29 @@ const Grid = {
         })
         heads[idx].sort = 1
 
-        drows.sort((a, b)=> {
-          a = a[idx].col
-          b = b[idx].col
+        if (this._events.sort) {
+          this.$emit('sort', {
+            sort: heads[idx].sort,
+            key
+          })
+        } else {
+          drows.sort((a, b)=> {
+            a = a[sortKey || key]
+            b = b[sortKey || key]
 
-          if (typeof a === 'number' && typeof b === 'number') {
-            return a - b
-          } else {
-            return a.localeCompare(b)
-          }
-        })
+            if (typeof a === 'number' && typeof b === 'number') {
+              return b - a
+            } else {
+              return b.localeCompare(a)
+            }
+          })
+        }
       }
     }),
   },
 
   render(h) {
-    const { sorting, heads, drows, rowsRender, _createID } = this
+    const { sorting, heads, drows, rowsRender, renderRows, _createID, loading } = this
 
     return (
       <div class={[s.gridFixed]} id={_createID}>
@@ -110,7 +154,7 @@ const Grid = {
             {heads.map((head, i)=> {
               return (
                 <div data-role="col" data-idx={i} data-sort={head.sort}>
-                  {head.render ? head.render(h, head) : head.col}
+                  { head.name }
                 </div>
               )
             })}
@@ -118,18 +162,19 @@ const Grid = {
         </div>
 
         <div class={[s.gbody]}>
+          {
+            loading
+              ? <div class={[s.loading]}>
+                  <Loading />
+                </div>
+              : null
+          }
           {drows.map((row, index)=> {
             return (
               <div data-role="row">
                 { rowsRender
-                  ? rowsRender(h, { row, index })
-                  : row.map((col, i)=> {
-                    return (
-                      <div data-role="col" data-idx={i}>
-                        {col.render ? col.render(h, col) : col.col}
-                      </div>
-                    )
-                  })
+                  ? rowsRender({ row, index })
+                  : renderRows({ row, index })
                 }
               </div>
             )
