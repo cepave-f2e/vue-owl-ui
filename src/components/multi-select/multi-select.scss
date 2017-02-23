@@ -1,0 +1,125 @@
+$pd: 12px;
+$height: 34px;
+
+.selecter {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.searchField {
+  padding: 5px;
+  width: 100%;
+  min-height: 46px;
+  font-size: 14px;
+  min-height: 46px;
+  border: 1px solid #b8bdbf;
+  color: #6c7173;
+  &:focus, &:active {
+    outline: none;
+    border-color: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05) inset;
+  }
+}
+
+.labelg {
+  display: inline;
+}
+
+.invisibleInput {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: inline;
+  vertical-align: middle;
+}
+
+.optionBox {
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.2);
+  border-top-style: none;
+  max-height: 280px;
+  overflow-y: scroll;
+  position: absolute;
+  box-shadow: 0 2px 6px #ccc;
+  top: auto;
+  .option {
+    position: relative;
+    padding: 6px $pd;
+    color: #a0a0a0;
+    white-space: nowrap;
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background: #b8bdbf; // $palette.primaryLight
+      color: #f2f6f7; // $palette.grayLightest
+    }
+  }
+  .normal {
+    position: relative;
+    padding: 6px $pd;
+    color: #a0a0a0;
+    white-space: nowrap;
+  }
+  .focused {
+    position: relative;
+    padding: 6px $pd;
+    color: #a0a0a0;
+    white-space: nowrap;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #b8bdbf; // $palette.primaryLight
+    }
+  }
+  .selected {
+    position: relative;
+    color: var(--OWL-UI-COLOR-PRIMARY);
+    &:after {
+      content: "\2713";
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+  }
+  .disablePointer {
+    pointer-events: none;
+  }
+}
+
+.selectOpen {
+  .optionBox {
+    display: block;
+  }
+}
+
+.disabled {
+  opacity: .5;
+  background-color: #dfe4e6; // $palette.grayLighter
+  cursor: no-drop;
+}
+
+.disabledLabelg {
+  display: inline;
+  pointer-events: none;
+}
+
+.loadingOption {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  padding: 6px 12px;
+}
+
+.loading {
+  position: absolute;
+  right: 0;
+  left: auto;
+}

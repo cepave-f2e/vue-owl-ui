@@ -54,6 +54,9 @@ const ComponentPage = {
                   <Link to="/components/select">Select</Link>
                 </dd>
                 <dd>
+                  <Link to="/components/multi-select">MultiSelect</Link>
+                </dd>
+                <dd>
                   <Link to="/components/checkbox">Checkbox</Link>
                 </dd>
                 <dd>

@@ -124,12 +124,12 @@
 }
 
 .x {
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 
 .iconx {
   margin-left: 4px;
+  vertical-align: -2px;
 }
 
 //color for x
@@ -191,10 +191,14 @@
 }
 
 .labelGroup {
-  display: flex;
-  vertical-align: center;
+  display: inline
 }
 
 .labelInGroup {
-  margin-right: 5px;
+  margin: 3px;
+}
+
+// focused default outline badge label
+.focused {
+  border: 1px solid #6C7173;
 }
