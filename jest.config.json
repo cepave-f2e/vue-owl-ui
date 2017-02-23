@@ -13,7 +13,7 @@
   "collectCoverageFrom": [
     "src/components/*/*.js"
   ],
-  "testPathDirs": [
+  "roots": [
     "src/"
   ]
 }
