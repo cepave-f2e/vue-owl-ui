@@ -1,52 +1,62 @@
 import Grid from '~com/grid'
+import Markdown from '../../components/markdown'
+import Switch from '~com/switch'
+import Flex from '~com/flex'
 
 const GridPage = {
   name: 'GridPage',
   data() {
+    const h = this.$createElement
+
     return {
       gridData: {
         heads: [
           {
-            col: 'item 1',
+            name: <b>Name</b>,
+            key: 'name',
             sort: -1,
-            width: '40%',
-            render(h, head) {
-              return (
-                <b>{head.col}</b>
-              )
-            }
+            width: '30%'
           },
           {
-            width: '60%',
-            col: 'item 2'
+            key: 'email',
+            width: '50%',
+            name: 'Email'
+          },
+          {
+            key: 'id',
+            width: '20%',
+            name: '#ID',
+            sort: -1,
           }
         ],
-        rowsRender(h, { row, index }) {
-          return [
-            <Grid.Col>{row[0].col}</Grid.Col>,
-            <Grid.Col>{row[1].col}</Grid.Col>,
-          ]
-        },
 
         rows: [
-          [
-            {
-              col: 11111111
-            },
-            {
-              col: 222222222
-            }
-          ],
-          [
-            {
-              col: 4444
-            },
-            {
-              col: 33333
-            }
-          ]
-        ]
+          {
+            name: 'Rocky',
+            email: 'rwu@cepave.com',
+            id: 2,
+          },
+          {
+            name: 'Timmy',
+            email: 'timmy@cepave.com',
+            id: 1,
+          },
+          {
+            name: 'Kelly',
+            email: 'kelly@cepave.com',
+            id: 3,
+          },
+        ],
+
+        loading: false,
       }
+
+    }
+  },
+
+  methods: {
+    toggleLoading({ data }) {
+      this.gridData.loading = data
     }
   },
 
@@ -58,7 +68,15 @@ const GridPage = {
 
     return (
       <div>
-        { $slots.default }
+        <Markdown src={require('./doc.md')} />
+        <Flex style={{ marginBottom: '20px' }}>
+          <Flex.Col>
+            <Switch onChange={this.toggleLoading} />
+          </Flex.Col>
+          <Flex.Col mid style={{ height: 'auto' }}>
+            Toggle Loading
+          </Flex.Col>
+        </Flex>
         <Grid {...{ props }} />
       </div>
     )
