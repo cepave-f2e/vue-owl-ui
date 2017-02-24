@@ -19,6 +19,10 @@ props: {
   open: {
     type: Boolean,
     default: false,
+  },
+  defaultValue: {
+    type: String,
+    default: Date().match(/\d\d:\d\d/)[0], // Current time of client
   }
 },
 ```
@@ -27,7 +31,7 @@ props: {
 
 ### change(data)
 
-#### data.time 
+#### data.value 
 Gets selected time.
 
 ## Example
