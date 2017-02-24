@@ -11,7 +11,8 @@
     "./test/setup.js"
   ],
   "collectCoverageFrom": [
-    "src/components/*/*.js"
+    "!src/components/legacy/**",
+    "src/components/*/**.js"
   ],
   "roots": [
     "src/"
