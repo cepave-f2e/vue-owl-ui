@@ -9,7 +9,9 @@ const TimePickerDoc = {
   },
   data() {
     return {
-      outs: {}
+      outs: {
+
+      }
     }
   },
 
@@ -25,9 +27,9 @@ const TimePickerDoc = {
       <div>
         <Markdown src={require('./doc.md')} />
         <pre>
-          <code>data: { JSON.stringify(outs, null, 2) }</code>
+          <code>{ JSON.stringify(outs) }</code>
         </pre>
-        <TimePicker onChange={onChange} />
+        <TimePicker onChange={onChange} ref="time1" />
       </div>
     )
   }

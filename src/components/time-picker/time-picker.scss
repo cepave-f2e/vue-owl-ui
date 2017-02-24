@@ -20,17 +20,21 @@
 
 .clock {
   position: absolute;
-  right: 5px;
+  left: 5px;
   top: 50%;
   transform: translateY(-50%);
   fill: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+}
+
+.input {
+  line-height: 1;
 }
 
 .timepicker {
   outline: 1px solid #ccc;
   display: flex;
   align-items: center;
-  padding-left: 8px;
+  padding-left: 28px;
   width: 90px;
   height: 34px;
   position: relative;

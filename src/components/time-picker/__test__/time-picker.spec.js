@@ -45,7 +45,7 @@ describe('Time Picker', () => {
     })
 
     vm.$on('change', (data)=> {
-      expect(data).toEqual({ time: '08:30' })
+      expect(data).toEqual({ value: '08:30' })
       done()
     })
 

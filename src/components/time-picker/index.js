@@ -23,16 +23,25 @@ const TimePicker = {
     open: {
       type: Boolean,
       default: false,
+    },
+
+    defaultValue: {
+      type: String,
+      default: Date().match(/\d\d:\d\d/)[0], // Current time of client
     }
   },
 
   data() {
     return {
-      value: '',
+      value: this.defaultValue,
     }
   },
 
   watch: {
+    defaultValue(time) {
+      this.value = time
+    },
+
     open(opened) {
       const { $el } = this
 
@@ -56,15 +65,15 @@ const TimePicker = {
       ev.stopPropagation()
 
       const { delegateTarget } = ev
-      const time = (delegateTarget.getAttribute('data-time'))
-      if (this.value === time) {
+      const value = (delegateTarget.getAttribute('data-time'))
+      if (this.value === value) {
         return
       }
 
       this.$el.blur()
-      this.value = time
+      this.value = value
       this.$emit('change', {
-        time
+        value
       })
     })
   },
@@ -117,9 +126,9 @@ const TimePicker = {
     const { renderTime, pickTime, value } = this
     return (
       <div class={[s.timepicker]} tabIndex="-1">
-        <span class={[s.input]}  >
+        <div class={[s.input]}  >
           {value} <Icon typ="clock" class={[s.clock]} />
-        </span>
+        </div>
         <ul class={[s.timebox]} onClick={pickTime}>
           { renderTime }
         </ul>
