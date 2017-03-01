@@ -1,5 +1,5 @@
 import s from './date-picker.scss'
-import Flex from '~com/flex'
+import Flex from '../flex'
 import lng from './lng'
 import getDay from './get-day'
 import delegate from 'delegate-to'
@@ -13,27 +13,12 @@ const DatePickerCal = {
       default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1]
     },
 
-    format: {
-      type: String,
-      default: 'yyyy/mm/dd',
-    },
-
     min: {
       type: Date,
     },
 
     max: {
       type: Date,
-    },
-
-    fullMonth: {
-      type: Boolean,
-      default: false,
-    },
-
-    fullDay: {
-      type: Boolean,
-      default: false,
     },
 
     firstDayOfWeek: {
@@ -43,7 +28,7 @@ const DatePickerCal = {
 
     colorfulWeekend: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
 
@@ -70,17 +55,20 @@ const DatePickerCal = {
     pick: delegate(`.${s.date}`, function(ev) {
       const { delegateTarget } = ev
       const isToday = delegateTarget.classList.contains(s.today)
-
       if (isToday) {
         return
       }
 
+      const { year, month } = this
       const date = delegateTarget.getAttribute('data-date')
+      const day = delegateTarget.getAttribute('data-day')
 
       this.$emit('pick', {
-        date,
-        year: this.year,
-        month: this.month
+        date: +date,
+        day: +day,
+        year,
+        month,
+        Date: new Date(year, (month - 1), date)
       })
     }),
 
@@ -148,17 +136,24 @@ const DatePickerCal = {
       const now = new Date
 
       let start = 0
-      return [...Array(6)].map((n, index) => {
+      let day = firstDayOfWeek - 1
+      return [...Array(6)].map((n, rowIdx) => {
         return (
           <tr>
-            {[...Array(7)].map((n, i) => {
+            {[...Array(7)].map((n, dayIdx) => {
               let date
-              if (index === 0) {
+              day += 1
+              if (rowIdx === 0) {
                 const range = firstDay || 7
-                date = firstDayOfWeek !== firstDay && (range - firstDayOfWeek) > i ? null : start += 1
+
+                date = (firstDayOfWeek !== firstDay && (range - firstDayOfWeek) > dayIdx)
+                  ? null
+                  : start += 1
               } else {
                 start += 1
-                date = start > lastDate ? null : start
+                date = (start > lastDate)
+                  ? null
+                  : start
               }
 
               const isToday = date === now.getDate() &&
@@ -170,12 +165,12 @@ const DatePickerCal = {
               const classes = {
                 [s.today]: isToday,
                 [s.dateNull]: date === null,
-                [s.dateIgnore]: (min && DD<= min) || (max && DD >= max)
+                [s.dateIgnore]: (min && DD <= min) || (max && DD >= max)
               }
 
               return (
                 <td>
-                  <span class={[s.date, classes]} data-date={date}>
+                  <span class={[s.date, classes]} data-date={date} data-day={day % 7}>
                     { date }
                   </span>
                 </td>
@@ -184,14 +179,22 @@ const DatePickerCal = {
           </tr>
         )
       })
+    },
+
+    css() {
+      const { colorfulWeekend } = this
+
+      return {
+        [s.colorfulWeekend]: colorfulWeekend
+      }
     }
   },
 
   render(h) {
-    const { prev, next, pick, year, month, days, calendar, min, max } = this
+    const { prev, next, pick, year, month, days, calendar, min, max, css } = this
 
     return (
-      <div class={[s.calBox]}>
+      <div class={[s.calBox, css]}>
         <Flex split class={[s.calTop]}>
           <Flex.Col>
             { year }
@@ -200,12 +203,12 @@ const DatePickerCal = {
             </strong>
           </Flex.Col>
           <Flex.Col>
-            <span ignore={year <= min.getFullYear() && month <= min.getMonth() + 1}
+            <span ignore={min && year <= min.getFullYear() && month <= min.getMonth() + 1}
                   class={[s.calPrev]}
                   onClick={prev}>
               {'<'}
             </span>
-            <span ignore={year >= max.getFullYear() && month >= max.getMonth() + 1}
+            <span ignore={max && year >= max.getFullYear() && month >= max.getMonth() + 1}
                   class={[s.calNext]}
                   onClick={next}>
               {'>'}
