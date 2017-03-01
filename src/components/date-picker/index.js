@@ -47,6 +47,13 @@ const DatePicker = {
   },
 
   watch: {
+    yearMonth(newYearMonth) {
+      const [year, month] = newYearMonth
+
+      this.year = year
+      this.month = month
+    },
+
     open(open) {
       const { $el } = this
       if (open) {
