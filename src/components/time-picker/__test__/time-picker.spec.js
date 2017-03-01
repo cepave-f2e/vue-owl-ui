@@ -56,4 +56,15 @@ describe('Time Picker', () => {
     // pick same time again
     $time0830.trigger('click')
   })
+
+  it('Dynamic set `defaultValue`', async()=> {
+    const vm = mount(TimePicker, {
+      defaultValue: '08:00'
+    })
+    expect(vm.value).toBe('08:00')
+    vm.defaultValue = '09:00'
+    await vm.$nextTick()
+
+    expect(vm.value).toBe('09:00')
+  })
 })
