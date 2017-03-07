@@ -132,3 +132,79 @@ it('test <Label.Group> dynamic update', async() => {
   ])
   expect(vm.focusedLabel).toBe(1)
 })
+
+test('test <Label.Group /> new tag feature', async() => {
+  let vm
+  await new Promise((done) => {
+    vm = shallow({
+      data() {
+        return {
+          test: [
+            { value: 'piglet', id: 1 },
+            { value: 'tigger', id: 2 }
+          ]
+        }
+      },
+      render(h) {
+        return (
+          <Label.Group  displayKey="value" 
+                        x={true} 
+                        badge={true} 
+                        options={this.test} 
+                        newTag={true}
+          />
+        )
+      }
+    })
+    expect(vm.newTag).toBe(true)
+    $(vm.$children[2].$el).trigger('click')
+    vm.$nextTick(done)
+  })
+
+  const key13 = new window.KeyboardEvent('keydown', { keyCode: 13, which: 13 })
+
+  await new Promise((done) => {
+    $(vm.$children[2].$slots.default[1].elm).val('cepave')
+    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.labelData).toEqual([
+    { value: 'piglet', id: 1 },
+    { value: 'tigger', id: 2 },
+    { value: 'cepave' },
+  ])
+
+  //input duplicate tags
+  await new Promise((done) => {
+    $(vm.$children[2].$slots.default[1].elm).val('tigger')
+    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
+    vm.$nextTick(done)
+  })
+
+  expect(vm.labelData).toEqual([
+    { value: 'piglet', id: 1 },
+    { value: 'tigger', id: 2 },
+    { value: 'cepave' },
+  ])
+
+  //input empty string
+  await new Promise((done) => {
+    $(vm.$children[2].$slots.default[1].elm).val('')
+    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
+    vm.$nextTick(done)
+  })
+  
+  expect(vm.labelData).toEqual([
+    { value: 'piglet', id: 1 },
+    { value: 'tigger', id: 2 },
+    { value: 'cepave' },
+  ])
+
+  await new Promise((done) => {
+    vm.$children[2].$slots.default[1].elm.blur()
+    vm.$nextTick(done)
+  })
+
+  expect(vm.showInput).toBe(false)
+})
