@@ -7,9 +7,9 @@ const LabelPage = {
   data() {
     return {
       testData: [
-        { value: 'winnie', id: 1 },
-        { value: 'piglet', id: 2 },
-        { value: 'tigger', id: 3 },
+        { value: 'Winnie The Pooh' },
+        { value: 'Piglet' },
+        { value: 'Tigger' }
       ]
     }
   },
@@ -95,6 +95,7 @@ const LabelPage = {
                         typ="outline" 
                         onChange={this.handleLabelGroup} 
                         focused={1}
+                        newTag={true}
           />
         </div>
         <pre>
