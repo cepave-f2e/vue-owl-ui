@@ -53,6 +53,7 @@ const Label = {
 }
 Label.Group = {
   name: 'LabelGroup',
+
   props: {
     options: {
       type: Array,
@@ -82,13 +83,28 @@ Label.Group = {
       type: Boolean,
       default: false
     },
+    newTag: {
+      type: Boolean,
+      default: false
+    },
+    newTagMsg: {
+      type: String,
+      default: '+ New Tag'
+    },
+    preventDuplicate: {
+      type: Boolean,
+      default: true
+    }
   },
+
   data() {
     return {
       labelData: this.options,
-      focusedLabel: this.focused
+      focusedLabel: this.focused,
+      showInput: false
     }
   },
+
   watch: {
     options(newVal) {
       this.labelData = newVal
@@ -97,6 +113,7 @@ Label.Group = {
       this.focusedLabel = newVal
     }
   },
+
   computed: {
     renderLabels() {
       const { labelData, x, displayKey } = this
@@ -126,35 +143,109 @@ Label.Group = {
       })
       return _labels
     },
+
     hasFocusedStyle() {
       const { typ, status } = this
       return (status === 'default' && typ === 'outline') ? true : false
+    },
+
+    newTagInputStyle() {
+      const { showInput } = this
+      const styles = {
+        [s.label]: true,
+        [s.labelInGroup]: true,
+        [s.newTag]: true,
+        [s.showInput]: showInput
+      }
+      return styles
     }
   },
+
   methods: {
     _handleClickLabel: delegate('[data-role="labelg"]', function(e) {
       const { delegateTarget } = e
       const clickedLabel = delegateTarget.getAttribute('data-val')
-      //newly given id
-      const clickedId = delegateTarget.getAttribute('data-id')
-      if (this.x) { //if labelGroup are all closable
+      const clickedId = delegateTarget.getAttribute('data-id')//newly given id, starts with 0
+      if (this.x) { //if labelGroup all closable
         const removedLabel = this.labelData[clickedId]
+
         this.labelData = this.labelData.reduce((preVal, newVal, idx) => {
           if (idx !== +clickedId) {
             preVal.push(newVal)
           }
           return preVal
         }, [])
+
         this.$emit('change', this.labelData)
         this.$emit('remove', removedLabel)
       }
-    })
+    }),
+
+    handleNewTagClick(e) {
+      this.showInput = true
+      this.$nextTick(() => {
+        this.$refs.addNewTag.focus()
+      })
+    },
+
+    handleNewTagInputBlur(e) {
+      this.showInput = false
+    },
+
+    handleInputKeyDown(e) {
+      const { displayKey, preventDuplicate } = this
+
+      if (e.keyCode === 13) { 
+        if (!this.$refs.addNewTag.value) {
+          return
+        }
+
+        if (preventDuplicate) {
+          let duplicate = false
+          this.labelData.forEach((data, idx) => {
+            if (data[displayKey] === this.$refs.addNewTag.value) {
+              duplicate = true
+            }
+          })
+
+          if (duplicate) {
+            return
+          }
+        }
+
+        this.labelData.push({
+          [displayKey]: this.$refs.addNewTag.value,
+        })
+        this.$refs.addNewTag.value = ''
+        this.showInput = false
+        this.$emit('change', this.labelData)
+        this.$emit('create', this.$refs.addNewTag.value)
+      }
+    }
   },
+
   render(h) {
-    const { renderLabels, _handleClickLabel } = this
+    const { renderLabels, _handleClickLabel, newTagInputStyle, newTag, newTagMsg } = this
+    const props = {
+      typ: this.typ,
+      status: this.status,
+      badge: this.badge,
+    }
     return (
-      <div class={[s.labelGroup]} onClick={_handleClickLabel}>
+      <div onClick={_handleClickLabel}>
         {renderLabels}
+        {
+          (newTag)
+          ? <Label  { ...{ props } } class={newTagInputStyle} nativeOn-click={this.handleNewTagClick}>
+            <span>{newTagMsg}</span>
+            <input  class={s.newTagInput} 
+                    ref="addNewTag" 
+                    onBlur={this.handleNewTagInputBlur} 
+                    on-keydown={this.handleInputKeyDown}
+            />
+          </Label>
+          : ''
+        }
       </div>
     )
   }
