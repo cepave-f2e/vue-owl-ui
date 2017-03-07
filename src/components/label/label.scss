@@ -190,10 +190,6 @@
   fill: #f2f6f7;
 }
 
-.labelGroup {
-  display: inline
-}
-
 .labelInGroup {
   margin: 3px;
 }
@@ -202,3 +198,34 @@
 .focused {
   border: 1px solid #6C7173;
 }
+
+.newTag {
+  border: 1px dashed #3b3f40;
+  display: inline-block;
+}
+
+.newTagInput {
+  display: none;
+  width: 84px;
+  height: 28px;
+  border: 1px solid #b8bdbf;
+  color: #6c7173;
+  &:focus {
+    outline: none;
+    border-color: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05) inset;
+  }
+}
+
+.showInput {
+  border: none;
+  padding: 0;
+  span {
+    display: none;
+  }
+  .newTagInput {
+    display: inline-block;
+    padding: 5px;
+  }
+}
+
