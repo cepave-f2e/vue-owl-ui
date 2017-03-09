@@ -1,4 +1,5 @@
 import '@cepave/owl-icons'
+import s from './icon.scss'
 
 const Icon = {
   name: 'Icon',
@@ -35,11 +36,16 @@ const Icon = {
 
   render(h) {
     const { typ, cSize } = this
-
+    
     return (
-      <svg width={cSize.width} height={cSize.height} domProps-innerHTML={
-        `<use xlink:href="#owl-icons-${typ}"></use>`
+      <svg width={cSize.width} height={cSize.height} 
+        class={ 
+          s[(typ === 'arrow-left') || (typ === 'arrow-right') ? typ : '']
+        } 
+        domProps-innerHTML={
+         `<use xlink:href="#owl-icons-${(typ === 'arrow-left') || (typ === 'arrow-right') ? 'arrow-down' : typ}"></use>` 
       } />
+      
     )
   }
 }
