@@ -57,6 +57,9 @@ const ComponentPage = {
               <dl>
                 <dt> Form </dt>
                 <dd>
+                  <Link to="/components/complex-query">ComplexQuery</Link>
+                </dd>
+                <dd>
                   <Link to="/components/select">Select</Link>
                 </dd>
                 <dd>
