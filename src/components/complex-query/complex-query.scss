@@ -1,0 +1,214 @@
+.com {
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.input {
+  height: 34px;
+  outline: none;
+  padding-left: 8px;
+  border: none;
+  width: 100%;
+}
+
+.categories {
+  float: left;
+  color: #bbb;
+  li {
+    float: left;
+    margin-right: 8px;
+    padding-right: 8px;
+    position: relative;
+    cursor: pointer;
+    &:not(:last-child):after {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 60%;
+      background: #ccc;
+    }
+    &[data-on] {
+      cursor: default;
+      color: var(--OWL-UI-COLOR-PRIMARY);
+    }
+  }
+}
+
+.iconFilter {
+  float: left;
+  margin-right: 4px;
+  fill: #bbb;
+}
+
+.loading {
+  position: static;
+  width: 0;
+  height: 0;
+  margin-right: 40px;
+  display: inline-block;
+  transform: translate(0, 0);
+  float: left;
+}
+
+.focus {
+  border-color: var(--OWL-UI-COLOR-PRIMARY);
+  .items {
+    display: block;
+  }
+
+  &.isEdit {
+    .editItems {
+      display: block;
+    }
+  }
+}
+
+.items, .editItems {
+  background: #fff;
+  display: none;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 42px;
+  z-index: 8887;
+}
+
+.itemView {
+  max-height: 300px;
+  overflow-y: auto;
+  dd, dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  dt {
+    padding: 12px 0;
+    padding-right: 12px;
+  }
+
+  dt {
+    font-weight: 700;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  dl + dl {
+    dt {
+      border-top: 1px solid #ccc;
+    }
+  }
+}
+
+.itemViewCheckbox {
+  padding-left: 16px;
+  > svg {
+    margin-right: 20px;
+  }
+}
+
+.selectAll {
+  padding: 12px;
+  border-top: 1px solid #eee;
+
+  a {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+    color: var(--OWL-UI-COLOR-PRIMARY);
+  }
+}
+
+.isFold {
+  dd {
+    display: none;
+  }
+  dt {
+    border-bottom: none;
+  }
+  [is-fold="true"] {
+    transform: rotate(180deg)
+  }
+}
+
+.arrowRight {
+  display: none;
+  transform: rotate(90deg)
+}
+
+.itemHasChild {
+  .arrowRight {
+    display: block;
+  }
+  cursor: pointer;
+}
+
+.highlight {
+  background: #eec447;
+}
+
+.item {
+  display: inline-block;
+}
+
+.itemCheckbox {
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+}
+
+.itemdd, .editItemLi {
+  cursor: pointer;
+  &:hover {
+    background: #eee;
+  }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.editItemLi {
+  padding: 12px;
+  svg {
+    fill: #e6175c;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+}
+
+.selectedItems {
+  color: var(--OWL-UI-COLOR-PRIMARY);
+  padding-left: 8px;
+  cursor: pointer;
+}
+
+.editItems {
+  display: none;
+}
+
+.isEdit {
+  .items {
+    display: none;
+  }
+}
+
+.backTo {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.editRemoveAll {
+  color: var(--OWL-UI-COLOR-PRIMARY);
+  border-top: 1px solid #eee;
+  padding: 8px;
+  a {
+    cursor: pointer;
+  }
+}
