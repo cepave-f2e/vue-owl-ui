@@ -14,6 +14,14 @@ const IconPage = {
       <div>
         <Markdown src={require('./doc.md')} />
 
+        <div class={[s.icons]}>
+          <Icon typ="arrow-left" size={30}/>
+          <p>arrow-left</p>
+        </div>
+        <div class={[s.icons]}>
+          <Icon typ="arrow-right" size={30}/>
+          <p>arrow-right</p>
+        </div>
         { icons.map((typ)=> {
           typ = typ.replace(/^owl-icons-/, '')
           return (
