@@ -1,4 +1,10 @@
 import '@cepave/owl-icons'
+import s from './icon.scss'
+
+const direction = {
+  'arrow-left': 'arrow-down', 
+  'arrow-right': 'arrow-down'
+}
 
 const Icon = {
   name: 'Icon',
@@ -30,6 +36,10 @@ const Icon = {
       return {
         width, height
       }
+    }, 
+    rotate() {
+      const { typ } = this
+      return direction[typ] ? direction[typ] : typ
     }
   },
 
@@ -37,9 +47,11 @@ const Icon = {
     const { typ, cSize } = this
 
     return (
-      <svg width={cSize.width} height={cSize.height} domProps-innerHTML={
-        `<use xlink:href="#owl-icons-${typ}"></use>`
-      } />
+      <svg width={cSize.width} height={cSize.height} 
+        class={s[typ]} 
+        domProps-innerHTML={
+         `<use xlink:href="#owl-icons-${this.rotate}"></use>` 
+      } /> 
     )
   }
 }
