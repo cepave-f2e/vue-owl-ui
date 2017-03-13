@@ -97,7 +97,7 @@ const ComplexQuery = {
       this.highlightText = $refs.query.value
       this.$emit('query', {
         value: $refs.query.value,
-        catgory: cat
+        category: cat
       })
     },
 
@@ -164,7 +164,7 @@ const ComplexQuery = {
         this.$set(items[eq], 'isFold', !items[eq].isFold)
       }
     },
-    changeCatgory(eq) {
+    changeCategory(eq) {
       const { categories } = this
 
       return (ev) => {
@@ -245,7 +245,7 @@ const ComplexQuery = {
       }
     },
     renderCategories() {
-      const { categories, changeCatgory } = this
+      const { categories, changeCategory } = this
       const h = this.$createElement
 
       return (
@@ -255,7 +255,7 @@ const ComplexQuery = {
               this.cat = cat.value
             }
             return (
-              <li data-value={cat.value} data-on={cat.on} onClick={changeCatgory(index)}>
+              <li data-value={cat.value} data-on={cat.on} onClick={changeCategory(index)}>
                 {cat.name}
               </li>
             )

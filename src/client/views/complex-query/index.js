@@ -71,7 +71,7 @@ const ComplexQueryDoc = {
 
     return (
       <div>
-        <h1>ComplexSearch</h1>
+        <h1>ComplexQuery</h1>
         <h2>Examples</h2>
         <ComplexQuery categories={categories} items={items} onChange={this.onChange} />
         <pre>
