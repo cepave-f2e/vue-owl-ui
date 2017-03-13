@@ -52,7 +52,7 @@ text: {
 ### query(data)
 Triggerd  by `enter`
 - `data.value` Get input value.
-- `data.catgory` Get the catgory of query.
+- `data.category` Get the category of query.
 
 ### change(data)
 - `data.selectedItems` Get selected items in store.
