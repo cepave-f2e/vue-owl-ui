@@ -15,7 +15,7 @@ const DatePickerDoc = {
     }
   },
   render(h) {
-    const { $slots, outs, onPick } = this
+    const { outs, onPick } = this
     return (
       <div>
         <Markdown src={require('./doc.md')} />

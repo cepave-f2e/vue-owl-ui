@@ -21,7 +21,7 @@ const TimePickerDoc = {
     }
   },
   render(h) {
-    const { $slots, onChange, outs } = this
+    const { onChange, outs } = this
 
     return (
       <div>
