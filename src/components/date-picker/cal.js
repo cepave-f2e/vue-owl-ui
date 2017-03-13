@@ -9,7 +9,6 @@ const DatePickerCal = {
   props: {
     yearMonth: {
       type: Array,
-      require: true,
       default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1]
     },
 
