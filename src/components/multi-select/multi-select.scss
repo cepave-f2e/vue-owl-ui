@@ -80,8 +80,9 @@ $height: 34px;
     &:after {
       content: "\2713";
       position: absolute;
-      right: 10px;
-      top: 3px;
+      right: 16px;
+      top: 50%;
+      transform:translateY(-50%);
     }
   }
   .disablePointer {
