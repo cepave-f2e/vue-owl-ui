@@ -80,6 +80,12 @@ const ComponentPage = {
                 <dd>
                   <Link to="/components/input">Input</Link>
                 </dd>
+                <dd>
+                  <Link to="/components/date-picker">DatePicker</Link>
+                </dd>
+                <dd>
+                  <Link to="/components/time-picker">TimePicker</Link>
+                </dd>
               </dl>
             </div>
           </aside>

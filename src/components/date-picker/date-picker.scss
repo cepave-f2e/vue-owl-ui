@@ -1,0 +1,122 @@
+.cal {
+  fill: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.picker {
+  position: relative;
+  height: 34px;
+  outline: 1px solid #ccc;
+  width: 140px;
+  display: inline-block;
+  &:focus {
+    outline-color: var(--OWL-UI-COLOR-PRIMARY);
+    .calBox {
+      display: block;
+    }
+  }
+}
+
+.colorfulWeekend {
+  [data-day="6"] {
+    color: #00f;
+  }
+
+  [data-day="0"] {
+    color: #f00;
+  }
+}
+
+.calTable {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  td {
+    text-align: center;
+  }
+
+  th {
+    font-weight: 300;
+    width: 44px;
+    color: #888;
+  }
+}
+
+.calBox {
+  padding: 12px;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background: #fff;
+  width: 340px;
+  box-shadow: 0 2px 6px #ccc;
+  display: none;
+}
+
+.calTop {
+  padding: 0 8px;
+  font-size: 20px;
+  margin-bottom: 12px;
+  strong {
+    margin-left: 8px;
+    color: var(--OWL-UI-COLOR-PRIMARY)
+  }
+}
+
+.date {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  &:hover {
+    background: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
+  }
+}
+
+.dateNull {
+  visibility: hidden;
+}
+
+.dateIgnore {
+  opacity: .2;
+  cursor: no-drop;
+  &:hover {
+    background: none;
+  }
+}
+
+.today {
+  color: #fff;
+  background: var(--OWL-UI-COLOR-PRIMARY);
+}
+
+.calPrev, .calNext {
+  cursor: pointer;
+  padding: 0 4px;
+  color: #808080;
+  &:hover {
+    color: #000;
+  }
+  &[ignore] {
+    opacity: .2;
+    cursor: no-drop;
+  }
+}
+
+.calNext {
+  margin-left: 16px;
+}
+
+
+.value {
+  padding-left: 32px;
+  height: 34px;
+  line-height: 34px;
+}

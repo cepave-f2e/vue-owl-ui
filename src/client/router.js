@@ -31,6 +31,8 @@ module.exports = new Router({
         { path: 'flex', component: require('./views/flex') },
         { path: 'multi-select', component: require('./views/multi-select') },
         { path: 'complex-query', component: require('./views/complex-query') },
+        { path: 'date-picker', component: require('./views/date-picker') },
+        { path: 'time-picker', component: require('./views/time-picker') },
       ]
     },
     { path: '*', redirect: '/home' },
