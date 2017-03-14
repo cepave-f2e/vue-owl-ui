@@ -67,16 +67,27 @@ const MultiSelect = {
   },
 
   mounted() {
-    this.displayIdx = [...Array(this.options.length)].map((v, i) => {
-      return i
-    })
-    this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
-      preVal.push(this.options[curVal])
-      return preVal        
-    }, [])
+    if (this.options.length) {
+      this.displayIdx = [...Array(this.options.length)].map((v, i) => {
+        return i
+      })
+      this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
+        preVal.push(this.options[curVal])
+        return preVal        
+      }, [])
+    }
   },
 
   watch: {
+    options(newVal) {
+      this.displayIdx = [...Array(newVal.length)].map((v, i) => {
+        return i
+      })
+      this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
+        preVal.push(newVal[curVal])
+        return preVal        
+      }, [])
+    },
     selectedIdx(newVal) {
       this.labels = newVal.reduce((preVal, curVal, idx) => {
         preVal.push(this.options[curVal])
