@@ -95,10 +95,10 @@ const TimePicker = {
         </li>
       ]
 
-      while ((startHour * 60 + startMin) < (endHour * 60 + endMin)) {
+      while ((startHour * 60 + startMin) <= (endHour * 60 + endMin - step)) {
         startMin += step
         if (startMin >= 60) {
-          startMin = 0
+          startMin = startMin - 60
           startHour += 1
         }
 
