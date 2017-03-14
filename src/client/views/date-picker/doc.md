@@ -5,7 +5,6 @@
 ```js
 yearMonth: {
   type: Array,
-  require: true,
   default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1]
 },
 
