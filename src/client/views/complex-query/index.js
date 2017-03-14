@@ -75,9 +75,9 @@ const ComplexQueryDoc = {
         <h2>Examples</h2>
         <ComplexQuery categories={categories} items={items} onChange={this.onChange} />
         <pre>
-          <cdoe>
+          <code>
             data: {JSON.stringify(outs, null, 2)}
-          </cdoe>
+          </code>
         </pre>
         <Markdown src={require('./doc.md')} />
       </div>
