@@ -1,0 +1,103 @@
+@mixin color-fill($back-color,$svg-color) {
+  background-color: $back-color;
+  fill: $svg-color;
+}
+
+.message {
+  position: fixed;
+  z-index: 900000;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.04);
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.messageIcon {
+  position: absolute;
+  border-radius: 2px 0 0 2px;
+  padding: 10px;
+  left: 0;
+  top: 0;
+}
+
+.messageContent {
+  margin-left: 38px;
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  p {
+    margin: 0 34px 0 0;
+    white-space: nowrap;
+    color: #8391a5;
+    text-align: justify;
+    .customIcon {
+      margin-right: 8px;
+    }
+  }
+}
+
+.closeBtn {
+  top: 0;
+  right: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+.hasIcon {
+  margin-left: 0;
+}
+
+.slideDown {
+  animation: slideDown .3s ease-out forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    top: -100px;
+  }
+  50% {
+    opacity: .5;
+    top: 10px;
+  }
+  100% {
+    top: 20px;
+  }
+}
+
+.slideUp {
+  animation: slideUp .3s ease-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    top: 20px;
+  }
+  50% {
+    opacity: .5;
+    top: 10px;
+  }
+  100% {
+    opacity: 0;
+    top: -100px;
+  }
+}
+
+.primary {
+  @include color-fill(var(--OWL-UI-COLOR-PRIMARY),#fff);
+}
+
+.error {
+  @include color-fill(#e6175c,#fff);
+}
+
+.warning {
+  @include color-fill(#ffd919,#fff);
+}
+
+.success {
+  @include color-fill(#b9e617,#fff);
+}
