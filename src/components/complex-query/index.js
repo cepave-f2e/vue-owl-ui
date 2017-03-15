@@ -59,8 +59,11 @@ const ComplexQuery = {
   data() {
     const { categories, items } = this
 
+    let cat = categories.length && (categories.find(cat => cat.on) || categories[0])
+    cat = cat.value
+
     return {
-      cat: '',
+      cat,
       focus: false,
       selectedItems: {},
       storeSelectedItems: {},
@@ -171,9 +174,6 @@ const ComplexQuery = {
         categories.forEach((cat, i) => {
           if (i === eq) {
             this.cat = cat.value
-            this.$set(cat, 'on', true)
-          } else {
-            this.$set(cat, 'on', false)
           }
         })
       }
@@ -252,11 +252,8 @@ const ComplexQuery = {
       return (
         <ul class={[s.categories]}>
           {categories.map((cat, index) => {
-            if (cat.on) {
-              this.cat = cat.value
-            }
             return (
-              <li data-value={cat.value} data-on={cat.on} onClick={changeCategory(index)}>
+              <li data-value={cat.value} data-on={this.cat === cat.value} onClick={changeCategory(index)}>
                 {cat.name}
               </li>
             )
