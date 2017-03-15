@@ -50,7 +50,7 @@ describe('<ComplexQuery />', () => {
 
     vm.$on('query', (d) => {
       expect(d).toEqual({
-        value: '', category: ''
+        value: '', category: 'cat1'
       })
 
       done()

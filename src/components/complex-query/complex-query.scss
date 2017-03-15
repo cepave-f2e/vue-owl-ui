@@ -1,6 +1,7 @@
 .com {
   position: relative;
   border: 1px solid #ccc;
+  background: #fff;
 }
 
 .input {
@@ -14,6 +15,8 @@
 .categories {
   float: left;
   color: #bbb;
+  margin: 0;
+  padding: 0;
   li {
     float: left;
     margin-right: 8px;
@@ -54,8 +57,11 @@
 
 .focus {
   border-color: var(--OWL-UI-COLOR-PRIMARY);
-  .items {
-    display: block;
+
+  &.hasItems {
+    .items {
+      display: block;
+    }
   }
 
   &.isEdit {
