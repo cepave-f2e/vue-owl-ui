@@ -25,7 +25,7 @@ it('test <MultiSelect /> with props `options`, `selectedIdx`, `displayKey`, and 
   expect(vm.opened).toBe(false)
 })
 
-it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisabled` and `loading`', async() => {
+it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisabled`, `loading` and `options`', async() => {
   let vm
   const pokemon = [
     { value: 'Piglet', id: 23 },
@@ -40,6 +40,7 @@ it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisa
           open: false,
           disable: true,
           loading: true,
+          options: []
         }
       },
       mounted() {
@@ -48,12 +49,13 @@ it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisa
         this.disable = false
         this.loading = false
         this.$nextTick(done)
+        this.options = pokemon
       },
       render(h) {
         return (
           <MultiSelect displayKey="value" 
                        selectedIdx={this.selectedItems} 
-                       options={pokemon} 
+                       options={this.options} 
                        isOpened={this.open} 
                        isDisabled={this.disable}
                        loading={this.loading} />

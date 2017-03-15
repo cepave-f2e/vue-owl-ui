@@ -57,6 +57,9 @@ $height: 34px;
       background: #b8bdbf; // $palette.primaryLight
       color: #f2f6f7; // $palette.grayLightest
     }
+    &:hover {
+      background-color: #DFE4E6;
+    }
   }
   .normal {
     position: relative;
@@ -69,15 +72,7 @@ $height: 34px;
     padding: 6px $pd;
     color: #a0a0a0;
     white-space: nowrap;
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background: #b8bdbf; // $palette.primaryLight
-    }
+    background-color: #DFE4E6;
   }
   .selected {
     position: relative;
@@ -85,8 +80,9 @@ $height: 34px;
     &:after {
       content: "\2713";
       position: absolute;
-      right: 10px;
-      top: 3px;
+      right: 16px;
+      top: 50%;
+      transform:translateY(-50%);
     }
   }
   .disablePointer {
