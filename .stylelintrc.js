@@ -1,8 +1,6 @@
 module.exports = {
   rules: {
     'indentation': 2,
-
-    'color-hex-case': 'lower',
     'color-hex-length': 'short',
     'color-named': 'never',
     'color-no-invalid-hex': true,
@@ -13,7 +11,6 @@ module.exports = {
     'number-no-trailing-zeros': true,
 
     'length-zero-no-unit': true,
-    'time-no-imperceptible': true,
 
     'value-keyword-case': 'lower',
     'value-no-vendor-prefix': true,
@@ -29,7 +26,6 @@ module.exports = {
     'no-unknown-animations': true,
 
     'comment-no-empty': true,
-    'stylelint-disable-reason': 'always-before',
 
     /**
      * selector
