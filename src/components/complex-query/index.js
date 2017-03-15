@@ -238,10 +238,11 @@ const ComplexQuery = {
       return Object.keys(selectedItems).length
     },
     css() {
-      const { focus, isEdit } = this
+      const { focus, isEdit, items } = this
       return {
         [s.focus]: focus,
-        [s.isEdit]: isEdit
+        [s.isEdit]: isEdit,
+        [s.hasItems]: items.length
       }
     },
     renderCategories() {
