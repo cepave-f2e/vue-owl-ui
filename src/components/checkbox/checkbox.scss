@@ -1,14 +1,14 @@
-.cbGroup{
+.cbGroup {
   position: relative;
 }
-.cb{
+.cb {
   display: inline-block;
   cursor: pointer;
-  svg{
+  svg {
     vertical-align: middle;
   }
-  &:hover{
-    svg{
+  &:hover {
+    svg {
       fill: #ddd;
     }
   }

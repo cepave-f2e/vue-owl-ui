@@ -4,7 +4,7 @@
   "description": "OWL UI · Component Design System - Cepave F2E",
   "main": "./dist/owl-ui",
   "scripts": {
-    "lint": "eslint src && stylelint src/**/*.scss --syntax scss",
+    "lint": "eslint src; stylelint 'src/**/*.scss' --syntax scss",
     "test": "jest --coverage --config jest.config.json",
     "dev": "webpack-dev-server --hot --inline --config webpack/client --port 3032",
     "dev.ssr": "babel-node scripts/dev.ssr",

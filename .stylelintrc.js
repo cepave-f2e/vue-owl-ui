@@ -1,8 +1,6 @@
 module.exports = {
   rules: {
     'indentation': 2,
-
-    'color-hex-case': 'lower',
     'color-hex-length': 'short',
     'color-named': 'never',
     'color-no-invalid-hex': true,
@@ -13,7 +11,6 @@ module.exports = {
     'number-no-trailing-zeros': true,
 
     'length-zero-no-unit': true,
-    'time-no-imperceptible': true,
 
     'value-keyword-case': 'lower',
     'value-no-vendor-prefix': true,
@@ -22,14 +19,13 @@ module.exports = {
     'max-empty-lines': 2,
 
     'no-duplicate-selectors': true,
-    'no-descending-specificity': true,
+    // 'no-descending-specificity': true,
     // 'no-browser-hacks': true,
     'no-extra-semicolons': true,
     'no-eol-whitespace': true,
     'no-unknown-animations': true,
 
     'comment-no-empty': true,
-    'stylelint-disable-reason': 'always-before',
 
     /**
      * selector
@@ -42,7 +38,7 @@ module.exports = {
     'selector-combinator-space-before': 'always',
     'selector-combinator-space-after': 'always',
     'selector-descendant-combinator-no-non-space': true,
-    'selector-max-compound-selectors': 3,
+    'selector-max-compound-selectors': 4,
     'selector-no-id': true,
     'selector-no-vendor-prefix': true,
     'selector-pseudo-class-case': 'lower',
