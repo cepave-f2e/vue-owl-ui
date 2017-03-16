@@ -1,3 +1,8 @@
+%side-view-margin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .hover {
   position: absolute;
   top: 0;
@@ -42,37 +47,36 @@
   }
 }
 
-.side {
-  width: 180px;
-  dt {
-    font-size: 14px;
-  }
-  dd {
-    margin: 0;
-    font-size: 13px;
-    a {
-      padding: 8px 0;
-      text-indent: 12px;
-      display: block;
-      position: relative;
-      color: #590aaa;
-      &:hover, &:global(.router-link-active) {
-        &:after {
-          @extend .hover;
-        }
+dt {
+  font-size: 14px;
+}
+dd {
+  margin: 0;
+  font-size: 13px;
+  a {
+    padding: 8px 0;
+    text-indent: 12px;
+    display: block;
+    position: relative;
+    color: #590aaa;
+    &:hover, &:global(.router-link-active) {
+      &:after {
+        @extend .hover;
       }
     }
   }
+}
 
+.side {
+  width: 180px;
   border-right: 1px solid #eee;
+  @extend %side-view-margin;
 }
-.side, .view {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
 .view {
   flex: 1;
   padding-left: 40px;
   padding-bottom: 20px;
+  @extend %side-view-margin;
 }
 

@@ -19,7 +19,7 @@ module.exports = {
     'max-empty-lines': 2,
 
     'no-duplicate-selectors': true,
-    'no-descending-specificity': true,
+    // 'no-descending-specificity': true,
     // 'no-browser-hacks': true,
     'no-extra-semicolons': true,
     'no-eol-whitespace': true,
@@ -38,7 +38,7 @@ module.exports = {
     'selector-combinator-space-before': 'always',
     'selector-combinator-space-after': 'always',
     'selector-descendant-combinator-no-non-space': true,
-    'selector-max-compound-selectors': 3,
+    'selector-max-compound-selectors': 4,
     'selector-no-id': true,
     'selector-no-vendor-prefix': true,
     'selector-pseudo-class-case': 'lower',

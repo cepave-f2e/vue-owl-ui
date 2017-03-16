@@ -1,7 +1,7 @@
 
 @keyframes loadingpie {
   @each $num, $direction in (0%, top), (25%, right), (50%, bottom), (100%, left) {
-    #{$num}{
+    #{$num} {
       border-color: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
       border-#{$direction}-color: var(--OWL-UI-COLOR-PRIMARY);
     }
@@ -9,14 +9,14 @@
 }
 
 @keyframes loadingbar {
-  50%{
+  50% {
     border-left: 90px solid var(--OWL-UI-COLOR-PRIMARY-LIGHT);
     border-right: 0 solid var(--OWL-UI-COLOR-PRIMARY-LIGHT);
   }
 }
 
 
-.loadingpie, .loadingbar{
+.loadingpie, .loadingbar {
   display: none;
   position: absolute;
   top: 50%;
@@ -24,7 +24,7 @@
   transform: translate(-50%, -50%);
 }
 
-.loadingpie{
+.loadingpie {
   border: 20px solid var(--OWL-UI-COLOR-PRIMARY-LIGHT);
   border-top-color: var(--OWL-UI-COLOR-PRIMARY);
   box-shadow: 0 0 0 1px var(--OWL-UI-COLOR-PRIMARY-LIGHT);
@@ -32,7 +32,7 @@
   animation: loadingpie infinite .8s linear;
 }
 
-.loadingbar{
+.loadingbar {
   background: var(--OWL-UI-COLOR-PRIMARY-LIGHT);
   border-right: 90px solid var(--OWL-UI-COLOR-PRIMARY);
   border-left: 0 solid var(--OWL-UI-COLOR-PRIMARY);
