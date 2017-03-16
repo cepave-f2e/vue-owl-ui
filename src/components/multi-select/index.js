@@ -10,7 +10,7 @@ const MultiSelect = {
       required: true
     },
 
-    selectedIdx: {
+    selectedOpts: {
       type: Array,
       required: true
     },
@@ -63,6 +63,7 @@ const MultiSelect = {
       inputWidth: 1,
       focusedIdx: -1,
       focusedLabelIdx: -1,
+      selectedIdx: this.selectedOpts
     }
   },
 
@@ -77,6 +78,9 @@ const MultiSelect = {
   },
 
   watch: {
+    selectedOpts(newVal) {
+      this.selectedIdx = newVal
+    },
     options(newVal) {
       this.displayIdx = [...Array(newVal.length).keys()]
       this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {

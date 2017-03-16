@@ -28,7 +28,7 @@ const MultiSelectPage = {
 
   methods: {
     getMultiSelectData(data) {
-      this.output = Object.assign({}, data)
+      this.output = data
     }
   },
 
@@ -39,7 +39,7 @@ const MultiSelectPage = {
         <Markdown src={require('./doc.md')} />
         <div class={[s.demoGroup]}>
           <div class={[s.multiSelect]}>
-            <MultiSelect selectedIdx={this.selectedItems} 
+            <MultiSelect selectedOpts={this.selectedItems} 
                          options={this.options} 
                          onChange={this.getMultiSelectData}
                          displayKey="value" 
