@@ -1,7 +1,7 @@
 import MultiSelect from '../'
 
 
-it('test <MultiSelect /> with props `options`, `selectedIdx`, `displayKey`, and `isDisabled`', () => {
+it('test <MultiSelect /> with props `options`, `selectedOpts`, `displayKey`, and `isDisabled`', () => {
   const selectedItems = [0, 1]
   const pokemon = [
     { value: 'Piglet', id: 23 },
@@ -11,7 +11,7 @@ it('test <MultiSelect /> with props `options`, `selectedIdx`, `displayKey`, and 
   const vm = shallow({
     render(h) {
       return (
-        <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} isDisabled />
+        <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} isDisabled />
       )
     }
   })
@@ -25,7 +25,7 @@ it('test <MultiSelect /> with props `options`, `selectedIdx`, `displayKey`, and 
   expect(vm.opened).toBe(false)
 })
 
-it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisabled`, `loading` and `options`', async() => {
+it('test <MultiSelect /> dynamic change props `selectedOpts`, `isOpened`, `isDisabled`, `loading` and `options`', async() => {
   let vm
   const pokemon = [
     { value: 'Piglet', id: 23 },
@@ -54,7 +54,7 @@ it('test <MultiSelect /> dynamic change props `selectedIdx`, `isOpened`, `isDisa
       render(h) {
         return (
           <MultiSelect displayKey="value" 
-                       selectedIdx={this.selectedItems} 
+                       selectedOpts={this.selectedItems} 
                        options={this.options} 
                        isOpened={this.open} 
                        isDisabled={this.disable}
@@ -84,7 +84,7 @@ it('test <MultiSelect /> search feature', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
@@ -111,7 +111,7 @@ it('test <MultiSelect /> case insensitive search', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} caseInsensitive />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} caseInsensitive />
         )
       }
     })
@@ -138,7 +138,7 @@ it('test <MultiSelect /> select and unselect feature', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
@@ -161,7 +161,7 @@ it('test <MultiSelect /> mouse event', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
@@ -187,7 +187,7 @@ it('test <MultiSelect /> keyboard event', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
@@ -252,7 +252,7 @@ it('test <MultiSelect /> delete Label by clicking', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
@@ -275,7 +275,7 @@ it('test <MultiSelect /> delete Label by backspace', async() => {
     vm = shallow({
       render(h) {
         return (
-          <MultiSelect displayKey="value" selectedIdx={selectedItems} options={pokemon} />
+          <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
       }
     })
