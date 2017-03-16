@@ -8,7 +8,7 @@ props: {
     type: Array,
     required: true
   },
-  selectedIdx: {
+  selectedOpts: {
     type: Array,
     required: true
   },
@@ -36,7 +36,7 @@ props: {
 ```
 
 ## Usage
-The props `options` must be `Array Object` and `selectedIdx` must be an `Array of Numbers`  
+The props `options` must be `Array Object` and `selectedOpts` must be an `Array of Numbers`  
 Give `displayKey` to determine what should be display in the option list
 ```jsx
 const options = [
@@ -44,31 +44,21 @@ const options = [
   { value: 'caterpie', id: 26 },
   { value: 'pikachu', id: 24 }
 ]
-const selectedIdx = [0, 1]
-<MultiSelect selectedIdx={this.selectedItems} options={this.options} displayKey="value" />
+const selectedOpts = [0, 1]
+<MultiSelect selectedOpts={this.selectedItems} options={this.options} displayKey="value" />
 ```
-Use `onChange `as a listener to get data from `$emit('change')`
+1. Use `onChange `as a listener to get data from `$emit('change')`
+2. Use `caseInsensitive` props to determine whether the search feature is case insensitive
+3. Use `loading` to show loading status
+4. get `<MultiSelect />` data by `this.$refs.multiselect.selectedIdx`
 ```jsx
-<MultiSelect selectedIdx={this.selectedItems} 
+<MultiSelect selectedOpts={this.selectedItems} 
              options={this.options} 
              displayKey="value"
              onChange={this.getData} 
-/>
-```
-Use `caseInsensitive` props to determine whether the search feature is case insensitive
-```jsx
-<MultiSelect selectedIdx={this.selectedItems} 
-             options={this.options} 
-             displayKey="value"
              caseInsensitive 
-/>
-```
-Use `loading` to show loading status
-```jsx
-<MultiSelect selectedIdx={this.selectedItems} 
-             options={this.options} 
-             displayKey="value"
-             loading 
+             loading
+             ref="multiselect"
 />
 ```
 
