@@ -286,7 +286,7 @@ const ComplexQuery = {
                         data-itemidx={itemIdx}
                         name={'@@dt@@'}
                         class={[s.itemViewCheckbox]} >
-                        {item.name}
+                        {item.name} ({item.children.length})
                       </Checkbox>
                     </Flex.Col>
                     <Flex.Col>
