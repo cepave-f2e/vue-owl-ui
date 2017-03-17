@@ -45,6 +45,7 @@ $height: 34px;
   position: absolute;
   box-shadow: 0 2px 6px #ccc;
   top: auto;
+  z-index: 999;
   .option {
     position: relative;
     padding: 6px $pd;

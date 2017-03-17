@@ -320,12 +320,12 @@ const MultiSelect = {
   render(h) {
     const { css, close, toggleMenu, renderOptions, _handleMouseOver, handleMouseEnter, handleMouseMove,
             _handleOnChange, handleLabelRemove, handleInputKeyDown,
-            labels, inputWidth, disable } = this
+            labels, inputWidth, disable, displayKey } = this
     return (
       <div class={[s.selecter, css]}>
         <div class={[s.searchField]} onClick={toggleMenu}>
           <Label.Group x badge 
-                       displayKey="value"
+                       displayKey={displayKey}
                        typ="outline" 
                        options={labels} 
                        onRemove={handleLabelRemove} 
