@@ -1,0 +1,110 @@
+.selecter {
+  $pd: 12px;
+  $height: 34px;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #b8bdbf; //$palette.grayLight
+  cursor: pointer;
+  width: 200px;
+  .arrow {
+    $size: 12px;
+    $bcolor: 2px solid #b8bdbf; // $palette.grayLight
+
+    width: $size;
+    height: $size;
+    margin-top: -7px;
+    border-bottom: $bcolor;
+    border-left: $bcolor;
+    transition: all .2s;
+    transform: rotate(-45deg);
+  }
+  .optionBox {
+    min-width: 200px;
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.2);
+    left: -1px;
+    z-index: 999;
+    > div {
+      position: relative;
+      padding: 6px $pd;
+      color: #a0a0a0;
+      white-space: nowrap;
+      &:hover:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: #b8bdbf; // $palette.primaryLight
+      }
+      &:active {
+        background: #b8bdbf; // $palette.primaryLight
+        color: #f2f6f7; // $palette.grayLightest
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: $height * -1;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+      }
+    }
+  }
+  &.selectOpen {
+    .arrow {
+      transform: rotate(-225deg);
+      margin-top: 0;
+    }
+    .optionBox {
+      display: block;
+    }
+  }
+
+  &.disabled {
+    opacity: .5;
+    cursor: no-drop;
+    background-color: #dfe4e6; // $palette.grayLighter
+  }
+  &:focus {
+    outline: none;
+  }
+  .titleText {
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .selectTitle {
+    position: relative;
+    display: flex;
+    height: $height;
+    padding-left: $pd;
+    padding-right: $pd;
+
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .titleRight {
+    margin-left: 20px;
+    float: right;
+  }
+
+}
+
+$color: #fc0;
+@mixin fn ($c) {
+  color: $c;
+}
+
+
+.body {
+  @include fn(red);
+}

@@ -5,15 +5,6 @@ const Select = {
   name: 'Select',
 
   props: {
-    options: {
-      type: Array,
-      required: true,
-    },
-
-    optionsRender: {
-      type: Function,
-    },
-
     isOpened: {
       type: Boolean,
       default: false,
@@ -26,17 +17,7 @@ const Select = {
 
     name: {
       type: String,
-      default: '',
-    },
-
-    nameKey: {
-      type: String,
-      default: 'title',
-    },
-
-    valueKey: {
-      type: String,
-      default: 'value',
+      default: ''
     },
   },
 
@@ -54,6 +35,12 @@ const Select = {
     isOpened(newVal) {
       this.opened = newVal
     },
+
+    value(newVal) {
+      this.$emit('change', {
+        value: newVal
+      })
+    }
   },
 
   methods: {
@@ -68,26 +55,6 @@ const Select = {
 
       this.opened = !this.opened
     },
-
-    _handleOnChange: delegate('[data-role="select-option"]', function (ev) {
-      const { delegateTarget } = ev
-      const { options, _selectedIdx, renderOptions, nameKey, valueKey } = this
-      const index = Array.from(delegateTarget.parentNode.children).indexOf(delegateTarget)
-
-      if (index === _selectedIdx) {
-        return
-      }
-
-      this._selectedIdx = index
-      this.title = options[index][nameKey]
-      this.value = options[index][valueKey || nameKey]
-      this.opened = false
-
-      this.$emit('change', {
-        value: this.value,
-        index,
-      })
-    }),
   },
 
   computed: {
@@ -98,35 +65,32 @@ const Select = {
       style[s.disabled] = isDisabled
       return style
     },
+  },
 
-    renderOptions() {
-      const { options, optionsRender, nameKey, valueKey } = this
-
-      const _options = options.map((option, index) => {
-        if (option.selected) {
-          this._selectedIdx = index
-        }
-
-        return (
-          <div data-role="select-option" data-idx={index}>
-            {optionsRender ? optionsRender({ option, index }) : option[nameKey]}
-          </div>
-        )
-      })
-
-      if (options[this._selectedIdx]) {
-        this.title = options[this._selectedIdx][nameKey]
-        this.value = options[this._selectedIdx][valueKey || nameKey]
+  created() {
+    this.$on('selectOption', (child) => {
+      if (this.value === child.value) {
+        return
       }
 
-      return _options
-    },
+      this.opened = false
+      this.title = child.$slots.default
+      this.value = child.value
+    })
+  },
+
+  mounted() {
+    const { $children } = this
+    const checkedChild = $children.find((child) => child.checked) || $children[0]
+
+    this.title = checkedChild.$slots.default
+    this.value = checkedChild.value
   },
 
   render(h) {
     const {
-      close, name, _handleOnChange,
-      renderOptions, css, toggleMenu, value, title,
+      close, name, $slots,
+      css, toggleMenu, value, title,
     } = this
 
     return (
@@ -141,13 +105,45 @@ const Select = {
           </div>
         </div>
 
-        <div class={[s.optionBox, css]} on-click={_handleOnChange}>
-          {renderOptions}
+        <div class={[s.optionBox, css]}>
+          {$slots.default}
         </div>
         <input type="hidden" name={name} value={value} />
       </div>
     )
+  }
+}
+
+Select.Option = {
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+
+    checked: {
+      type: Boolean,
+      default: false,
+    }
   },
+
+  methods: {
+    handleClick() {
+      const { $parent } = this
+
+      $parent.$emit('selectOption', this)
+    }
+  },
+
+  render(h) {
+    const { $slots, handleClick } = this
+
+    return (
+      <div data-role="select-option" onClick={handleClick}>
+        { $slots.default }
+      </div>
+    )
+  }
 }
 
 module.exports = Select

@@ -4,18 +4,17 @@ import Markdown from '../../components/markdown'
 const SelectPage = {
   name: 'SelectPage',
   data() {
+    const h = this.$createElement
     return {
       outputs: {
         value: '3d',
         idx: 1,
       },
-      selectProps: {
-        options: [
-          { value: '1d', title: '1 day' },
-          { value: '3d', title: '3 days', selected: true },
-          { value: '5d', title: '5 days' },
-        ],
-      },
+      options: [
+        { value: '1d', title: <b>1 day</b> },
+        { value: '3d', title: '3 days', checked: true },
+        { value: '5d', title: '5 days' },
+      ],
     }
   },
 
@@ -26,7 +25,7 @@ const SelectPage = {
   },
 
   render(h) {
-    const { selectProps, outputs, selectOnChange } = this
+    const { outputs, options, selectOnChange } = this
     return (
       <div>
         <Markdown src={require('./doc.md')} />
@@ -35,7 +34,17 @@ const SelectPage = {
           {JSON.stringify(outputs)}
           </code>
         </pre>
-        <Select {...{ props: selectProps }} onChange={selectOnChange} />
+        <Select onChange={selectOnChange}>
+          {
+            options.map((opt) => {
+              return (
+                <Select.Option value={opt.value} checked={opt.checked}>
+                  { opt.title }
+                </Select.Option>
+              )
+            })
+          }
+        </Select>
 
       </div>
     )
