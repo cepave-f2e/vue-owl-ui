@@ -1,3 +1,9 @@
+%text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .com {
   position: relative;
   border: 1px solid #ccc;
@@ -173,14 +179,13 @@
 
 .item {
   width: 95%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   float: left;
+  @extend %text-ellipsis;
 }
 
 .editItemLi {
   padding: 12px;
+  @extend %text-ellipsis;
   svg {
     fill: #e6175c;
     width: 18px;
