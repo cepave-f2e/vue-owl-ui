@@ -56,3 +56,9 @@ Triggerd  by `enter`
 
 ### change(data)
 - `data.selectedItems` Get selected items in store.
+
+### focus
+Triggerd  by `focus` on input.
+
+### blur
+Triggerd  by `blur` on input.
