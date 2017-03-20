@@ -380,7 +380,9 @@ const ComplexQuery = {
             {
               loading ? <Loading size={10} class={[s.loading]} /> : null
             }
-            <Icon typ="filter" size={20} class={[s.iconFilter]} />
+            {
+              categories.length ? <Icon typ="filter" size={20} class={[s.iconFilter]} /> : null
+            }
             { renderCategories }
           </Flex.Col>
         </Flex>
