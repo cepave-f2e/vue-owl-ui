@@ -1,6 +1,6 @@
 {
   "name": "@cepave/owl-ui",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "OWL UI · Component Design System - Cepave F2E",
   "main": "./dist/owl-ui",
   "scripts": {
