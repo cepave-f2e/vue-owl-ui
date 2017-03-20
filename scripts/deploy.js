@@ -27,51 +27,70 @@ if (TRAVIS_MATRIX === 'test') {
 }
 
 if (TRAVIS_BRANCH === 'master') {
-  if (TRAVIS_MATRIX === 'build.ui') {
-    // Publish to NPM
-    exec(`echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > ~/.npmrc`)
-    exec(`npm publish ./npm --access=public`).code && exit(1)
+  const targetMatrix = {
+    'build.ui'() {
+      // Publish to NPM
+      exec(`echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > ~/.npmrc`)
+      exec(`npm publish ./npm --access=public`).code && exit(1)
 
-    // Add GH Tag
-    exec(`git tag ${tag}`)
-    exec(`git push ${tokenRepo} ${tag}`, {
-      silent: true,
-    })
-
-    axios({
-      url: `https://hooks.slack.com/services/${SLACK_TOKEN}`,
-      method: 'post',
-      data: {
-        username: 'Mike',
-        icon_emoji: ':mikesay:',
-        channel: '#notify-owl-ui',
-        text: `
-@channel
-
-:star: *owl-ui* \`${tag}\` 上版拉~
-:unicorn_face: https://github.com/cepave-f2e/vue-owl-ui/releases/tag/${tag}
-`,
-      },
-    })
-      .then((res)=> {
-        console.log(res.statusText)
+      // Add GH Tag
+      exec(`git tag ${tag}`)
+      exec(`git push ${tokenRepo} ${tag}`, {
+        silent: true,
       })
-      .catch((er)=> {
-        console.log(er.response.status)
+
+      exec('git tag --list', { silent: true }, async (er, tags) => {
+        if (er) {
+          throw er
+        }
+
+        tags = (tags.split('\n'))
+        const lastTag = tags[tags.length - 3]
+        await new Promise((done)=> {
+          setTimeout(done, 1000 * 10)
+        })
+
+        axios({
+          url: `https://hooks.slack.com/services/${SLACK_TOKEN}`,
+          method: 'post',
+          data: {
+            username: 'owl-ui',
+            icon_emoji: ':owl-ui:',
+            channel: '#notify-owl-ui',
+            text: `
+              <!channel>
+
+              \`${tag}\` is released.
+              <https://github.com/cepave-f2e/vue-owl-ui/releases/tag/${tag}|:spiral_note_pad: Release Note>
+              <https://github.com/cepave-f2e/vue-owl-ui/compare/${lastTag}...${tag}|:bug: Compare Changes>
+              <https://cepave-f2e.github.io/vue-owl-ui|:earth_asia: Live Demo>`.replace(/^\s*/mg, ''),
+          },
+        })
+        .then((res)=> {
+          console.log(res.statusText)
+        })
+        .catch((er)=> {
+          console.log(er.response.status)
+        })
       })
-  }
+    },
 
-  if (TRAVIS_MATRIX === 'build.pages') {
-    exec(`git config --global user.email "auto_deploy@circleci.com"`)
-    exec(`git config --global user.name "CircleCI"`)
+    'build.page'() {
+      exec(`git config --global user.email "auto_deploy@travis-ci.org"`)
+      exec(`git config --global user.name "TravisCI"`)
 
-    // Publish to gh-pages
-    cd('gh-pages')
-    exec('git init')
-    exec(`git remote add origin ${tokenRepo}`)
-    exec('git add .')
-    exec(`git checkout -b gh-pages`)
-    exec(`git commit -anm '${version}'`)
-    exec(`git push origin gh-pages -f`)
+      // Publish to gh-pages
+      cd('gh-pages')
+      exec('git init')
+      exec(`git remote add origin ${tokenRepo}`)
+      exec('git add .')
+      exec(`git checkout -b gh-pages`)
+      exec(`git commit -anm '${version}'`)
+      exec(`git push origin gh-pages -f`)
+    }
+  }[TRAVIS_MATRIX]
+
+  if (targetMatrix) {
+    targetMatrix()
   }
 }
