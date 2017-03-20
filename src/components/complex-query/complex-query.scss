@@ -193,11 +193,16 @@
 
 .editItems {
   display: none;
+  ul {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+  }
 }
 
 .isEdit {
   .items {
-    display: none;
+    display: none !important;
   }
 }
 
