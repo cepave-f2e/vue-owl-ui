@@ -1,8 +1,8 @@
 const { version, repository } = require('../package.json')
 require('shelljs/global')
-
+const axios = require('axios')
 const { TRAVIS_BRANCH, TRAVIS_MATRIX, TRAVIS_PULL_REQUEST_BRANCH,
-  GH_TOKEN, NPM_TOKEN } = process.env
+  GH_TOKEN, NPM_TOKEN, SLACK_TOKEN } = process.env
 
 const tokenRepo = repository.replace(/(github.com)/, `${GH_TOKEN}@$1`)
 const tag = `v${version}`
@@ -37,6 +37,28 @@ if (TRAVIS_BRANCH === 'master') {
     exec(`git push ${tokenRepo} ${tag}`, {
       silent: true,
     })
+
+    axios({
+      url: `https://hooks.slack.com/services/${SLACK_TOKEN}`,
+      method: 'post',
+      data: {
+        username: 'Mike',
+        icon_emoji: ':mikesay:',
+        channel: '#notify-owl-ui',
+        text: `
+@channel
+
+:star: *owl-ui* \`${tag}\` 上版拉~
+:unicorn_face: https://github.com/cepave-f2e/vue-owl-ui/releases/tag/${tag}
+`,
+      },
+    })
+      .then((res)=> {
+        console.log(res.statusText)
+      })
+      .catch((er)=> {
+        console.log(er.response.status)
+      })
   }
 
   if (TRAVIS_MATRIX === 'build.pages') {
@@ -52,5 +74,4 @@ if (TRAVIS_BRANCH === 'master') {
     exec(`git commit -anm '${version}'`)
     exec(`git push origin gh-pages -f`)
   }
-
 }
