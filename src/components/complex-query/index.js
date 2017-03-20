@@ -78,6 +78,10 @@ const ComplexQuery = {
       this.$emit('change', {
         selectedItems: this.storeSelectedItems
       })
+    },
+    focus(isFocused) {
+      const event = isFocused ? 'focus' : 'blur'
+      this.$emit(event)
     }
   },
   methods: {
