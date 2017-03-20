@@ -108,6 +108,7 @@
 .itemViewCheckbox {
   padding-left: 16px;
   > svg {
+    float: left;
     margin-right: 20px;
   }
 }
@@ -152,10 +153,6 @@
   background: #eec447;
 }
 
-.item {
-  display: inline-block;
-}
-
 .itemCheckbox {
   width: 100%;
   margin: 0;
@@ -172,6 +169,14 @@
     display: block;
     clear: both;
   }
+}
+
+.item {
+  width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
 }
 
 .editItemLi {
