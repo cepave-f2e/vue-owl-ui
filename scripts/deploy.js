@@ -1,4 +1,4 @@
-const { version, repository } = require('../package.json')
+const { version, repository, author } = require('../package.json')
 require('shelljs/global')
 const axios = require('axios')
 const { TRAVIS_BRANCH, TRAVIS_MATRIX, TRAVIS_PULL_REQUEST_BRANCH,
@@ -57,13 +57,25 @@ if (TRAVIS_BRANCH === 'master') {
             username: 'owl-ui',
             icon_emoji: ':owl-ui:',
             channel: '#notify-owl-ui',
-            text: `
-              <!channel>
-
-              \`${tag}\` is released.
-              <https://github.com/cepave-f2e/vue-owl-ui/releases/tag/${tag}|:spiral_note_pad: Release Note>
-              <https://github.com/cepave-f2e/vue-owl-ui/compare/${lastTag}...${tag}|:bug: Compare Changes>
-              <https://cepave-f2e.github.io/vue-owl-ui|:earth_asia: Live Demo>`.replace(/^\s*/mg, ''),
+            text:
+              `<!channel>\n\n <https://github.com/cepave-f2e/vue-owl-ui|cepave-f2e/vue-owl-ui> \`${tag}\` is released.\n`,
+            attachments: [
+              {
+                color: '#FF2E9C',
+                text: `<https://github.com/cepave-f2e/vue-owl-ui/releases/tag/${tag}|:spiral_note_pad: Release Note>`,
+              },
+              {
+                color: '#00EDFF',
+                text: `<https://github.com/cepave-f2e/vue-owl-ui/compare/${lastTag}...${tag}|:bug: Compare Change>`,
+              },
+              {
+                color: '#FFDA00',
+                text: `<https://cepave-f2e.github.io/vue-owl-ui|:earth_americas: Live Demo>`,
+              },
+              {
+                footer: '－ Made with :heart: by Cepave F2E Team',
+              },
+            ],
           },
         })
         .then((res)=> {
