@@ -61,3 +61,9 @@
   top: 7px;
   cursor: pointer;
 }
+.disabled {
+  border: none;
+  color: #6c7173;
+  background: #DFE4E6;
+  cursor: not-allowed;
+}

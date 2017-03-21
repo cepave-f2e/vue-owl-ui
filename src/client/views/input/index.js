@@ -47,6 +47,9 @@ const InputPage = {
         <div class={[s.pwdInputwrapper]}>
           <Input required={true} />
         </div>
+        <div class={[s.pwdInputwrapper]}>
+          <Input disabled={true} val="cepave" />
+        </div>
       </div>
     )
   }
