@@ -20,8 +20,7 @@
 
 
 ## OWL UI
-OWL UI is a **Component Design System** based on VueJS 2, used by Cepave to run in monitoring system of [OWL Light](https://github.com/cepave-f2e/owl-light).
-
+OWL UI is a **Component Design System** based on VueJS 2, used by Cepave to run in monitoring system of [OWL Light](https://github.com/cepave-f2e/owl-light). It created by [Cepave F2E Team](https://github.com/cepave-f2e) and made with ❤️.
 
 ## Install and Usage
 
