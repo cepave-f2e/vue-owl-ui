@@ -39,15 +39,15 @@ if (TRAVIS_BRANCH === 'master') {
         silent: true,
       })
 
-      exec('git tag --list', { silent: true }, async (er, tags) => {
+      exec('git tag --list | sort -V', async(er, tags) => {
         if (er) {
-          throw er
+          throw new Error(er)
         }
-
         tags = (tags.split('\n'))
         const lastTag = tags[tags.length - 3]
+
         await new Promise((done)=> {
-          setTimeout(done, 1000 * 10)
+          setTimeout(done, 1000 * 20)
         })
 
         axios({
@@ -87,18 +87,16 @@ if (TRAVIS_BRANCH === 'master') {
       })
     },
 
-    'build.page'() {
+    'build.pages'() {
       exec(`git config --global user.email "auto_deploy@travis-ci.org"`)
       exec(`git config --global user.name "TravisCI"`)
 
       // Publish to gh-pages
       cd('gh-pages')
       exec('git init')
-      exec(`git remote add origin ${tokenRepo}`)
       exec('git add .')
-      exec(`git checkout -b gh-pages`)
       exec(`git commit -anm '${version}'`)
-      exec(`git push origin gh-pages -f`)
+      exec(`git push ${tokenRepo} master:gh-pages -f`)
     }
   }[TRAVIS_MATRIX]
 
