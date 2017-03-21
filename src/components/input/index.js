@@ -38,6 +38,10 @@ const Input = {
     required: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -54,6 +58,18 @@ const Input = {
   watch: {
     val() {
       this.value = this.val
+    }
+  },
+
+  computed: {
+    styles() {
+      const { status, disabled } = this
+      const styles = [
+        s.input, s[status], {
+          [s.disabled]: disabled
+        }
+      ]
+      return styles
     }
   },
 
@@ -77,7 +93,7 @@ const Input = {
   },
 
   render(h) {
-    const { status, icon, name, placeholder, val, password, loading, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
+    const { styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -98,7 +114,7 @@ const Input = {
           ? <span class={[s.mustFill]}>*</span>
           : ''
         }
-        <input class={[s.input, s[status]]} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} />
+        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} disabled={disabled} />
       </div>
     )
   }
