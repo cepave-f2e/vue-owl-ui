@@ -8,6 +8,11 @@
   position: relative;
   border: 1px solid #ccc;
   background: #fff;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .input {
@@ -21,8 +26,6 @@
 .categories {
   float: left;
   color: #bbb;
-  margin: 0;
-  padding: 0;
   li {
     float: left;
     margin-right: 8px;
@@ -178,7 +181,7 @@
 }
 
 .item {
-  width: 93%;
+  width: 90%;
   float: left;
   @extend %text-ellipsis;
 }
