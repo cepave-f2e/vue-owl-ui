@@ -47,7 +47,7 @@ if (TRAVIS_BRANCH === 'master') {
         const lastTag = tags[tags.length - 3]
 
         await new Promise((done)=> {
-          setTimeout(done, 1000 * 20)
+          setTimeout(done, 1000 * 60 * 3)
         })
 
         axios({
