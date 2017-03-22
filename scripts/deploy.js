@@ -66,7 +66,7 @@ if (TRAVIS_BRANCH === 'master') {
               },
               {
                 color: '#00EDFF',
-                text: `<https://github.com/cepave-f2e/vue-owl-ui/compare/${lastTag}...${tag}|:bug: Compare Change>`,
+                text: `<https://github.com/cepave-f2e/vue-owl-ui/compare/${lastTag}...${tag}|:bug: Compare Changes>`,
               },
               {
                 color: '#FFDA00',
