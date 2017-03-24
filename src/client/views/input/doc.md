@@ -4,47 +4,56 @@
 
 ```js
 props: {
-  name: {
-    type: String,
-    default: 'input',
-  },
-  icon: {
-    type: Array,
-  },
-  status: {
-    type: String,
-    default: 'normal'
-  },
-  val: {
-    type: [String, Number],
-    default: ''
-  },
-  placeholder: {
-    type: String,
-    default: ''
-  },
-  loading:{
-    type: Boolean,
-    default: false,
-  },
-  password: {
-    type: Boolean,
-    default: false
-  },
-  x: {
-    type: Boolean,
-    default: false
-  },
-  required: {
-    type: Boolean,
-    default: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  }
+    name: {
+      type: String,
+      default: 'input',
+    },
+    icon: {
+      type: Array,
+    },
+    status: {
+      type: String,
+      default: 'normal'
+    },
+    val: {
+      type: [String, Number],
+      default: ''
+    },
+    defaultValue: {
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    },
+    loading:{
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: Boolean,
+      default: false
+    },
+    x: {
+      type: Boolean,
+      default: false
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
 }
 ```
+## Methods
+- `setValue([value])` for dynamic change value.
+
+## Events
+- `input` get value immediately after typing.
+
 
 ## Usage
 
