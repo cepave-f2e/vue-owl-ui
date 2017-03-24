@@ -56,8 +56,8 @@ const Input = {
   },
 
   watch: {
-    val() {
-      this.value = this.val
+    val(newVal) {
+      this.value = newVal
     }
   },
 
@@ -93,7 +93,7 @@ const Input = {
   },
 
   render(h) {
-    const { styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
+    const { styles, icon, name, placeholder, value, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -114,7 +114,7 @@ const Input = {
           ? <span class={[s.mustFill]}>*</span>
           : ''
         }
-        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} disabled={disabled} />
+        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} value={value} on-input={handleInput} disabled={disabled} />
       </div>
     )
   }
