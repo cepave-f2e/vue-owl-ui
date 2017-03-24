@@ -19,6 +19,9 @@ const Input = {
       type: [String, Number],
       default: ''
     },
+    defaultValue: {
+      default: ''
+    },
     placeholder: {
       type: String,
       default: ''
@@ -51,13 +54,13 @@ const Input = {
       pwdFill: '#b8bdbf',
       pwdInput: this.password ? 'password' : 'text',
       showX: false,
-      value: this.val,
+      value: this.defaultValue,
     }
   },
 
   watch: {
-    val() {
-      this.value = this.val
+    value(val) {
+      this.$emit('input', val)
     }
   },
 
@@ -74,6 +77,9 @@ const Input = {
   },
 
   methods: {
+    setValue(value) {
+      this.value = value
+    },
     handleIconClick(e) {
       const { icon, name } = this
       this.value = this.$refs[name].value = ''
@@ -93,7 +99,7 @@ const Input = {
   },
 
   render(h) {
-    const { styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
+    const { value, styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -114,7 +120,7 @@ const Input = {
           ? <span class={[s.mustFill]}>*</span>
           : ''
         }
-        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} value={val} on-input={handleInput} disabled={disabled} />
+        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} domPropsValue={value} on-input={handleInput} disabled={disabled} />
       </div>
     )
   }

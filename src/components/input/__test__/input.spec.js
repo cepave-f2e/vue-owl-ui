@@ -72,24 +72,13 @@ it('test <Input /> with a `x` icon', async() => {
 })
 
 it('test <Input /> props val dynamic update', async() => {
-  let vm
-  await new Promise((done) => {
-    vm = shallow({
-      data() {
-        return {
-          test: 'cepave'
-        }
-      },
-      mounted() {
-        this.test = 'owl'
-        this.$nextTick(done)
-      },
-      render(h) {
-        return (
-          <Input name="demo" ref="demo" val={this.test} />
-        )
-      }
-    })
+  const vm = mount(Input, {
+    defaultValue: 'owl'
   })
-  expect(vm.$refs.demo.value).toBe('owl')
+
+  expect('owl').toBe(vm.value)
+
+  vm.setValue('ui')
+
+  expect('ui').toBe(vm.value)
 })
