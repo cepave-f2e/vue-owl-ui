@@ -26,7 +26,7 @@
     "@cepave/owl-icons": "^1.1.1",
     "delegate-to": "^0.1.4",
     "lodash.escaperegexp": "^4.1.2",
-    "vue": "^2.2.4"
+    "vue": "^2.2.6"
   },
   "devDependencies": {
     "axios": "^0.15.3",
@@ -61,7 +61,7 @@
     "lodash.escape": "^4.0.1",
     "mark-it-down": "^0.3.0",
     "node-sass": "^4.5.1",
-    "normalize.css": "^5.0.0",
+    "normalize.css": "^6.0.0",
     "piping": "^1.0.0-rc.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.3",
@@ -70,8 +70,8 @@
     "stylelint": "^7.9.0",
     "url-loader": "^0.5.8",
     "vue-router": "^2.3.0",
-    "vue-server-renderer": "^2.2.4",
-    "webpack": "^2.3.1",
+    "vue-server-renderer": "^2.2.6",
+    "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
   "repository": "https://github.com/cepave-f2e/vue-owl-ui.git",
