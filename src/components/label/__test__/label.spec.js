@@ -147,7 +147,7 @@ test('test <Label.Group /> new tag feature', async() => {
       },
       render(h) {
         return (
-          <Label.Group  displayKey="value" 
+          <Label.Group displayKey="value" 
                         x={true} 
                         badge={true} 
                         options={this.test} 

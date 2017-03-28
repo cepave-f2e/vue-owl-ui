@@ -342,7 +342,7 @@ const MultiSelect = {
           >
           </input>
         </div>
-        <div  class={[s.optionBox]}
+        <div class={[s.optionBox]}
               onClick={_handleOnChange}
               on-mouseenter={handleMouseEnter}
               on-mouseleave={handleMouseEnter}

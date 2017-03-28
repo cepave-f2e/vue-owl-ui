@@ -88,7 +88,7 @@ const LabelPage = {
         </div>
         Label Group (Piglet is focused)
         <div class={[s.labelGroup]}>
-          <Label.Group  displayKey="value" 
+          <Label.Group displayKey="value" 
                         options={this.testData} 
                         x={true} 
                         badge={true} 

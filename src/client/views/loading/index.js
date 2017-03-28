@@ -17,7 +17,7 @@ const LoadingPage = {
         </div>
         <h2>typ="bar"</h2>
         <div class={[s.exampleWrapper]}>
-          <Loading typ="bar"  />
+          <Loading typ="bar" />
         </div>
       </div>
     )

@@ -230,9 +230,9 @@ Label.Group = {
         {renderLabels}
         {
           (newTag)
-          ? <Label  { ...{ props } } class={newTagInputStyle} nativeOn-click={this.handleNewTagClick}>
+          ? <Label { ...{ props } } class={newTagInputStyle} nativeOn-click={this.handleNewTagClick}>
             <span>{newTagMsg}</span>
-            <input  class={s.newTagInput} 
+            <input class={s.newTagInput} 
                     ref="addNewTag" 
                     onBlur={this.handleNewTagInputBlur} 
                     on-keydown={this.handleInputKeyDown}

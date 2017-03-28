@@ -139,7 +139,7 @@ const Page = {
   },
 
   render(h) {
-    const { jumpTo,  align, typeRender } = this
+    const { jumpTo, align, typeRender } = this
 
     return (
       <nav class={[s.page]} data-align={align} onClick={jumpTo}>

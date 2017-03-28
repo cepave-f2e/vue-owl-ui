@@ -190,7 +190,7 @@ it('test search feature with props `caseInsensitive`', () => {
   const vm = shallow({
     render(h) {
       return (
-        <DualList items={pokemonLeft} selectedItems={pokemonRight} displayKey="name" caseInsensitive  />
+        <DualList items={pokemonLeft} selectedItems={pokemonRight} displayKey="name" caseInsensitive />
       )
     },
   })

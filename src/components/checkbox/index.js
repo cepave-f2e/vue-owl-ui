@@ -46,7 +46,7 @@ const Checkbox = {
   },
 
   render(h) {
-    const { handleClick, check,  $slots } = this
+    const { handleClick, check, $slots } = this
 
     return (
       <div on-click={handleClick} class={[s.cb]}>

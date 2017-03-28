@@ -15,6 +15,7 @@ module.exports = {
     'comma-style': [2, 'last'],
     'comma-spacing': ['error', { 'before': false, 'after': true }],
     'spaced-comment': ['error', 'always'],
+    'no-multi-spaces': ['error'],
     'no-debugger': 1,
     'no-unused-vars': 0,
     'comma-dangle': [2, 'always-multiline'],
