@@ -147,10 +147,10 @@ test('test <Label.Group /> new tag feature', async() => {
       },
       render(h) {
         return (
-          <Label.Group displayKey="value" 
-                        x={true} 
-                        badge={true} 
-                        options={this.test} 
+          <Label.Group displayKey="value"
+                        x={true}
+                        badge={true}
+                        options={this.test}
                         newTag={true}
           />
         )
@@ -194,7 +194,7 @@ test('test <Label.Group /> new tag feature', async() => {
     vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
     vm.$nextTick(done)
   })
-  
+
   expect(vm.labelData).toEqual([
     { value: 'piglet', id: 1 },
     { value: 'tigger', id: 2 },

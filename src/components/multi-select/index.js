@@ -72,7 +72,7 @@ const MultiSelect = {
       this.displayIdx = [...Array(this.options.length).keys()]
       this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
         preVal.push(this.options[curVal])
-        return preVal        
+        return preVal
       }, [])
     }
   },
@@ -85,13 +85,13 @@ const MultiSelect = {
       this.displayIdx = [...Array(newVal.length).keys()]
       this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
         preVal.push(newVal[curVal])
-        return preVal        
+        return preVal
       }, [])
     },
     selectedIdx(newVal) {
       this.labels = newVal.reduce((preVal, curVal, idx) => {
         preVal.push(this.options[curVal])
-        return preVal        
+        return preVal
       }, [])
     },
     isOpened(newVal) {
@@ -306,7 +306,7 @@ const MultiSelect = {
 
       const currentTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${curDataIdx}"]`)
       const focusTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${targetDataIdx}"]`)
-      
+
       focusTarget.focus()
       this.$refs.searchField.focus()
 
@@ -324,12 +324,12 @@ const MultiSelect = {
     return (
       <div class={[s.selecter, css]}>
         <div class={[s.searchField]} onClick={toggleMenu}>
-          <Label.Group x badge 
+          <Label.Group x badge
                        displayKey={displayKey}
-                       typ="outline" 
-                       options={labels} 
-                       onRemove={handleLabelRemove} 
-                       class={(disable) ? [s.disabledLabelg] : [s.labelg]} 
+                       typ="outline"
+                       options={labels}
+                       onRemove={handleLabelRemove}
+                       class={(disable) ? [s.disabledLabelg] : [s.labelg]}
                        focused={this.focusedLabelIdx}
           />
           <input class={[s.invisibleInput]}
@@ -350,8 +350,8 @@ const MultiSelect = {
               on-mousemove={handleMouseMove}
         >
           {
-            (this.loadingPie) 
-            ? this.renderLoading 
+            (this.loadingPie)
+            ? this.renderLoading
             : ''
           }
           {renderOptions}

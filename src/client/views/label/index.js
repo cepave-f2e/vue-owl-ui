@@ -88,12 +88,12 @@ const LabelPage = {
         </div>
         Label Group (Piglet is focused)
         <div class={[s.labelGroup]}>
-          <Label.Group displayKey="value" 
-                        options={this.testData} 
-                        x={true} 
-                        badge={true} 
-                        typ="outline" 
-                        onChange={this.handleLabelGroup} 
+          <Label.Group displayKey="value"
+                        options={this.testData}
+                        x={true}
+                        badge={true}
+                        typ="outline"
+                        onChange={this.handleLabelGroup}
                         focused={1}
                         newTag={true}
           />

@@ -13,6 +13,8 @@ module.exports = {
   ],
   rules: {
     'comma-style': [2, 'last'],
+    'no-mixed-spaces-and-tabs': ['error'],
+    'no-trailing-spaces': ['error'],
     'comma-spacing': ['error', { 'before': false, 'after': true }],
     'spaced-comment': ['error', 'always'],
     'no-multi-spaces': ['error'],

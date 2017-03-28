@@ -132,12 +132,12 @@ Label.Group = {
           [s.labelInGroup]: true,
         }
         style[s.focused] = (this.focusedLabel > -1 && this.focusedLabel === idx && this.hasFocusedStyle) ? true : false
-        
+
         return (
-          <Label { ...{ props } } 
-                  data-role="labelg" 
-                  data-val={label[displayKey]} 
-                  data-id={idx} 
+          <Label { ...{ props } }
+                  data-role="labelg"
+                  data-val={label[displayKey]}
+                  data-id={idx}
                   class={style}
           >
             {label[displayKey]}
@@ -173,7 +173,7 @@ Label.Group = {
           }
           return preVal
         }, [])
-        
+
         this.$emit('remove', removedLabel)
       }
     }),
@@ -192,7 +192,7 @@ Label.Group = {
     handleInputKeyDown(e) {
       const { displayKey, preventDuplicate } = this
 
-      if (e.keyCode === 13) { 
+      if (e.keyCode === 13) {
         if (!this.$refs.addNewTag.value) {
           return
         }
@@ -232,9 +232,9 @@ Label.Group = {
           (newTag)
           ? <Label { ...{ props } } class={newTagInputStyle} nativeOn-click={this.handleNewTagClick}>
             <span>{newTagMsg}</span>
-            <input class={s.newTagInput} 
-                    ref="addNewTag" 
-                    onBlur={this.handleNewTagInputBlur} 
+            <input class={s.newTagInput}
+                    ref="addNewTag"
+                    onBlur={this.handleNewTagInputBlur}
                     on-keydown={this.handleInputKeyDown}
             />
           </Label>

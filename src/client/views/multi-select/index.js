@@ -39,10 +39,10 @@ const MultiSelectPage = {
         <Markdown src={require('./doc.md')} />
         <div class={[s.demoGroup]}>
           <div class={[s.multiSelect]}>
-            <MultiSelect selectedOpts={this.selectedItems} 
-                         options={this.options} 
+            <MultiSelect selectedOpts={this.selectedItems}
+                         options={this.options}
                          onChange={this.getMultiSelectData}
-                         displayKey="value" 
+                         displayKey="value"
                          caseInsensitive
                          loading
             />

@@ -53,10 +53,10 @@ it('test <MultiSelect /> dynamic change props `selectedOpts`, `isOpened`, `isDis
       },
       render(h) {
         return (
-          <MultiSelect displayKey="value" 
-                       selectedOpts={this.selectedItems} 
-                       options={this.options} 
-                       isOpened={this.open} 
+          <MultiSelect displayKey="value"
+                       selectedOpts={this.selectedItems}
+                       options={this.options}
+                       isOpened={this.open}
                        isDisabled={this.disable}
                        loading={this.loading} />
         )

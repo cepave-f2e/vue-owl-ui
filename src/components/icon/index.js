@@ -2,7 +2,7 @@ import '@cepave/owl-icons'
 import s from './icon.scss'
 
 const direction = {
-  'arrow-left': 'arrow-down', 
+  'arrow-left': 'arrow-down',
   'arrow-right': 'arrow-down',
 }
 
@@ -36,7 +36,7 @@ const Icon = {
       return {
         width, height,
       }
-    }, 
+    },
     rotate() {
       const { typ } = this
       return direction[typ] || typ
@@ -47,11 +47,11 @@ const Icon = {
     const { typ, cSize } = this
 
     return (
-      <svg width={cSize.width} height={cSize.height} 
-        class={s[typ]} 
+      <svg width={cSize.width} height={cSize.height}
+        class={s[typ]}
         domProps-innerHTML={
-         `<use xlink:href="#owl-icons-${this.rotate}"></use>` 
-      } /> 
+         `<use xlink:href="#owl-icons-${this.rotate}"></use>`
+      } />
     )
   },
 }
