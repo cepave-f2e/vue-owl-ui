@@ -21,7 +21,7 @@ const LoadingPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = LoadingPage

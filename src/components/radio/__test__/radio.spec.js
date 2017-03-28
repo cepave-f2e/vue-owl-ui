@@ -9,7 +9,7 @@ it('test <Radio> `on` and `name` props', () => {
           <Radio name="2">2 year</Radio>
         </Radio.Group>
       )
-    }
+    },
   })
   expect(vm.$children[0].name).toBe('1')
   expect(vm.$children[1].name).toBe('2')
@@ -26,7 +26,7 @@ it('test the behavior of switching between <Radio>', () => {
           <Radio name="2">2 year</Radio>
         </Radio.Group>
       )
-    }
+    },
   })
   $(vm.$children[1].$el).trigger('click')
   expect(vm.$children[0].active).toBe(false)
@@ -52,7 +52,7 @@ it('test <Radio> `on` dynamic updates', async() => {
             <Radio name="2" on={this.input2}>2 year</Radio>
           </Radio.Group>
         )
-      }
+      },
     })
   })
   expect(vm.$children[0].active).toBe(false)
@@ -71,7 +71,7 @@ it('test <Radio> `onChange` props', () => {
           <Radio name="2">2 year</Radio>
         </Radio.Group>
       )
-    }
+    },
   })
   $(vm.$children[0].$el).trigger('click')
 })
@@ -88,7 +88,7 @@ it('test <Radio.Group> `onChange` props', () => {
           <Radio name="2">2 year</Radio>
         </Radio.Group>
       )
-    }
+    },
   })
   $(vm.$children[0].$el).trigger('click')
 })

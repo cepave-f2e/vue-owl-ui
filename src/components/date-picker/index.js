@@ -8,7 +8,7 @@ const DatePicker = {
   props: {
     yearMonth: {
       type: Array,
-      default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1]
+      default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1],
     },
 
     format: {
@@ -36,7 +36,7 @@ const DatePicker = {
 
     open: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     defaultValue: {
@@ -63,7 +63,7 @@ const DatePicker = {
     },
     defaultValue(value) {
       this.value = value
-    }
+    },
   },
 
   data() {
@@ -73,7 +73,7 @@ const DatePicker = {
     return {
       year,
       month,
-      value: defaultValue || dateFormat(new Date(), this.format)
+      value: defaultValue || dateFormat(new Date(), this.format),
     }
   },
 
@@ -85,7 +85,7 @@ const DatePicker = {
       $el.blur()
       this.$emit('pick', {
         value: this.value,
-        ...d
+        ...d,
       })
     },
     onNext(d) {
@@ -93,7 +93,7 @@ const DatePicker = {
     },
     onPrev(d) {
       this.$emit('prev', d)
-    }
+    },
   },
 
   computed: {
@@ -101,7 +101,7 @@ const DatePicker = {
       const { colorfulWeekend } = this
 
       return {
-        [s.colorfulWeekend]: colorfulWeekend
+        [s.colorfulWeekend]: colorfulWeekend,
       }
     },
   },
@@ -128,7 +128,7 @@ const DatePicker = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = DatePicker

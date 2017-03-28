@@ -27,7 +27,7 @@ const IconPage = {
         }) }
       </div>
     )
-  }
+  },
 }
 
 module.exports = IconPage

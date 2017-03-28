@@ -4,6 +4,6 @@ module.exports = (year, month) => {
 
   return {
     lastDate: lastDate.getDate(),
-    firstDay: firstDate.getDay()
+    firstDay: firstDate.getDay(),
   }
 }

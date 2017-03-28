@@ -16,13 +16,13 @@ describe('DatePicker', () => {
 
   it('click `next`', (done)=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
 
     vm.$on('next', (d) => {
       expect(d).toEqual({
         year: 2017,
-        month: 6
+        month: 6,
       })
       done()
     })
@@ -34,13 +34,13 @@ describe('DatePicker', () => {
 
   it('click `prev`', (done)=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
 
     vm.$on('prev', (d) => {
       expect(d).toEqual({
         year: 2017,
-        month: 4
+        month: 4,
       })
       done()
     })
@@ -52,7 +52,7 @@ describe('DatePicker', () => {
 
   it('test `onPick`', (done)=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
     vm.$on('pick', (d) => {
       expect(d).toMatchObject({
@@ -94,7 +94,7 @@ describe('DatePicker', () => {
 
   it('dynamic change `yearMonth`', async()=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 3]
+      yearMonth: [2017, 3],
     })
 
     expect(vm.year).toBe(2017)
@@ -109,13 +109,13 @@ describe('DatePicker', () => {
 
   it('prev last year', async(done)=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 1]
+      yearMonth: [2017, 1],
     })
 
     vm.$on('prev', (d)=> {
       expect(d).toMatchObject({
         month: 12,
-        year: 2016
+        year: 2016,
       })
       done()
     })
@@ -125,13 +125,13 @@ describe('DatePicker', () => {
 
   it('next next yaear', ()=> {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 12]
+      yearMonth: [2017, 12],
     })
 
     vm.$on('next', (d)=> {
       expect(d).toMatchObject({
         month: 1,
-        year: 2018
+        year: 2018,
       })
       done()
     })

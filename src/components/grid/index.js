@@ -23,8 +23,8 @@ const Grid = {
           key: '',
           sort: -1,
           sortKey: '',
-          width: '20%'
-        }
+          width: '20%',
+        },
       ],
     },
 
@@ -34,13 +34,13 @@ const Grid = {
     },
 
     rowsRender: {
-      type: Function
+      type: Function,
     },
 
     loading: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 
   watch: {
@@ -51,7 +51,7 @@ const Grid = {
         }
       })
       this.drows = Array.from(newRows)
-    }
+    },
   },
 
   data() {
@@ -60,7 +60,7 @@ const Grid = {
     const { rows } = this
     return {
       updating: true,
-      drows: Array.from(rows)
+      drows: Array.from(rows),
     }
   },
 
@@ -81,7 +81,7 @@ const Grid = {
       const { heads } = this
 
       return heads.map(head => unit(head.width))
-    }
+    },
   },
 
   methods: {
@@ -110,7 +110,7 @@ const Grid = {
         if (this._events.sort) {
           this.$emit('sort', {
             sort: heads[idx].sort,
-            key
+            key,
           })
         } else {
           drows.reverse()
@@ -126,7 +126,7 @@ const Grid = {
         if (this._events.sort) {
           this.$emit('sort', {
             sort: heads[idx].sort,
-            key
+            key,
           })
         } else {
           drows.sort((a, b)=> {
@@ -182,7 +182,7 @@ const Grid = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 Grid.Col = {
@@ -190,8 +190,8 @@ Grid.Col = {
   props: {
     width: {
       type: [String, Number],
-      default: ''
-    }
+      default: '',
+    },
   },
 
   computed: {
@@ -199,9 +199,9 @@ Grid.Col = {
       const { width } = this
 
       return {
-        width: unit(width)
+        width: unit(width),
       }
-    }
+    },
   },
 
   render(h) {
@@ -212,7 +212,7 @@ Grid.Col = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Grid

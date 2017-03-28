@@ -15,12 +15,12 @@ const ComplexQuery = {
           name: 'cat1',
           value: 'cat1',
           on: true,
-        }
-      ]
+        },
+      ],
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     items: {
       type: Array,
@@ -33,10 +33,10 @@ const ComplexQuery = {
               name: '',
               value: 'uniq',
               checked: false,
-            }
-          ]
-        }
-      ]
+            },
+          ],
+        },
+      ],
     },
     loading: {
       type: Boolean,
@@ -52,8 +52,8 @@ const ComplexQuery = {
           selectedItems: 'selected items',
           removeAll: 'remove all',
         }
-      }
-    }
+      },
+    },
   },
 
   data() {
@@ -76,13 +76,13 @@ const ComplexQuery = {
   watch: {
     storeSelectedItems() {
       this.$emit('change', {
-        selectedItems: this.storeSelectedItems
+        selectedItems: this.storeSelectedItems,
       })
     },
     focus(isFocused) {
       const event = isFocused ? 'focus' : 'blur'
       this.$emit(event)
-    }
+    },
   },
   methods: {
     editRemoveAll(ev) {
@@ -106,7 +106,7 @@ const ComplexQuery = {
       this.highlightText = $refs.query.value
       this.$emit('query', {
         value: $refs.query.value,
-        category: cat
+        category: cat,
       })
     },
 
@@ -130,7 +130,7 @@ const ComplexQuery = {
             if (checked) {
               if (!this.storeSelectedItems[itemChild.value]) {
                 $set(this.storeSelectedItems, itemChild.value, {
-                  ...itemChild
+                  ...itemChild,
                 })
               }
             }
@@ -147,7 +147,7 @@ const ComplexQuery = {
           if (checked) {
             if (!this.storeSelectedItems[items[itemIdx].children[itemChildIdx].value]) {
               $set(this.storeSelectedItems, items[itemIdx].children[itemChildIdx].value, {
-                ...items[itemIdx].children[itemChildIdx]
+                ...items[itemIdx].children[itemChildIdx],
               })
             }
           }
@@ -201,7 +201,7 @@ const ComplexQuery = {
 
           if (!this.storeSelectedItems[child.value]) {
             this.$set(this.storeSelectedItems, child.value, {
-              ...child
+              ...child,
             })
           }
         })
@@ -228,7 +228,7 @@ const ComplexQuery = {
     editItems(ev) {
       const { storeSelectedItems } = this
       this.isEdit = true
-    }
+    },
   },
 
   computed: {
@@ -248,7 +248,7 @@ const ComplexQuery = {
       return {
         [s.focus]: focus,
         [s.isEdit]: isEdit,
-        [s.hasItems]: items.length
+        [s.hasItems]: items.length,
       }
     },
     renderCategories() {
@@ -276,7 +276,7 @@ const ComplexQuery = {
         <div class={[s.itemView]}>
           {items.map((item, itemIdx) => {
             const classes = {
-              [s.isFold]: item.isFold
+              [s.isFold]: item.isFold,
             }
 
             return (
@@ -355,7 +355,7 @@ const ComplexQuery = {
       }
 
       return sum
-    }
+    },
   },
   render(h) {
     const { renderCategories, categories, handleFocus, handleBlur, css, renderItems, sum,
@@ -413,7 +413,7 @@ const ComplexQuery = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = ComplexQuery

@@ -2,5 +2,5 @@ const isBrowser = typeof window !== 'undefined' && window.document && document.c
 const isNode = !isBrowser && typeof global !== 'undefined'
 
 module.exports = {
-  isBrowser, isNode
+  isBrowser, isNode,
 }

@@ -17,7 +17,7 @@ const ComplexQueryDoc = {
         {
           name: 'cat3',
           value: 'cat3',
-        }
+        },
       ],
 
       items: [
@@ -26,45 +26,45 @@ const ComplexQueryDoc = {
           children: [
             {
               name: 'cat1 - item1',
-              value: 'item1'
+              value: 'item1',
             },
             {
               name: 'cat1 - item2',
-              value: 'item2'
+              value: 'item2',
             },
             {
               name: 'cat1 - item3',
-              value: 'item3'
-            }
-          ]
+              value: 'item3',
+            },
+          ],
         },
         {
           name: 'cat2',
           children: [
             {
               name: 'cat2 - item1',
-              value: 'item1.1'
+              value: 'item1.1',
             },
             {
               name: 'cat2 - item2',
-              value: 'item2.1'
+              value: 'item2.1',
             },
             {
               name: 'cat2 - item3',
-              value: 'item3.1'
-            }
-          ]
-        }
+              value: 'item3.1',
+            },
+          ],
+        },
       ],
 
-      outs: {}
+      outs: {},
     }
   },
 
   methods: {
     onChange({ selectedItems }) {
       this.outs = selectedItems
-    }
+    },
   },
   render(h) {
     const { $slots, categories, items, outs } = this
@@ -82,6 +82,6 @@ const ComplexQueryDoc = {
         <Markdown src={require('./doc.md')} />
       </div>
     )
-  }
+  },
 }
 module.exports = ComplexQueryDoc

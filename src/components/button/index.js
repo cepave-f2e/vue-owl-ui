@@ -6,12 +6,12 @@ const Button = {
   props: {
     status: {
       type: String,
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
@@ -25,7 +25,7 @@ const Button = {
         style.push(s.disabled)
       }
       return style
-    }
+    },
   },
 
   render(h) {
@@ -36,7 +36,7 @@ const Button = {
         {$slots.default}
       </button>
     )
-  }
+  },
 }
 
 Button.Group = {
@@ -44,13 +44,13 @@ Button.Group = {
   props: {
     options: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       buttonOptions: this.options,
-      selectedIdx: this.options.find((option) => option.selected === true)
+      selectedIdx: this.options.find((option) => option.selected === true),
     }
   },
   computed: {
@@ -67,7 +67,7 @@ Button.Group = {
         )
       })
       return _buttonOptions
-    }
+    },
   },
   methods: {
     _handleClickButton: delegate('[data-role="button"]', function(e) {
@@ -79,11 +79,11 @@ Button.Group = {
       }
       this.$emit('change', {
         value: this.buttonOptions[idx].value,
-        idx
+        idx,
       })
       this.buttonOptions.forEach((buttonOption) => this.$set(buttonOption, 'selected', false))
       this.$set(this.buttonOptions[idx], 'selected', true)
-    })
+    }),
   },
   render(h) {
     const { renderButtons, _handleClickButton } = this
@@ -92,7 +92,7 @@ Button.Group = {
         {renderButtons}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Button

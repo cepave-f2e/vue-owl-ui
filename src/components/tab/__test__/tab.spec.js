@@ -15,7 +15,7 @@ it('test <Tab> with props `name` and without props `isSelected`', () => {
           </Tab.Content>
         </Tab>
       )
-    }
+    },
   })
   expect(vm.$children[0].name).toBe('1')
   expect(vm.$children[1].name).toBe('2')
@@ -48,21 +48,21 @@ it('test <Tab> with props `isSelected` and click on <Tab.Head> to switch <Tab.Co
             </Tab.Content>
           </Tab>
         )
-      }
+      },
     })
     expect(vm.$children[0].selected).toBe('0')
     expect(vm.$children[1].selected).toBe('1')
-    //click on Tab.Head "2"
+    // click on Tab.Head "2"
     $(vm.$children[1].$el).trigger('click')
     expect(vm.$children[0].selected).toBe('0')
     expect(vm.$children[1].selected).toBe('1')
-    //click on Tab.Head "1"
+    // click on Tab.Head "1"
     $(vm.$children[0].$el).trigger('click')
     vm.$nextTick(done)
   })
   expect(tabData).toEqual({
     idx: 0,
-    name: '1'
+    name: '1',
   })
   expect(vm.$children[0].selected).toBe('1')
   expect(vm.$children[1].selected).toBe('0')

@@ -8,6 +8,6 @@ const LegacyDoc = {
         <Markdown src={require('./doc.md')} />
       </div>
     )
-  }
+  },
 }
 module.exports = LegacyDoc

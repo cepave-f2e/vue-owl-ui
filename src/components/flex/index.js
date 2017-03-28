@@ -29,7 +29,7 @@ const Flex = {
         [s.flexMid]: this.mid,
         [s.flexSplit]: this.split,
       }
-    }
+    },
   },
   render(h) {
     const { $slots, classes } = this
@@ -38,7 +38,7 @@ const Flex = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 Flex.Col = {
@@ -84,7 +84,7 @@ Flex.Col = {
       return {
         [s.flexMid]: this.mid,
       }
-    }
+    },
   },
 
   render(h) {
@@ -94,7 +94,7 @@ Flex.Col = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 module.exports = Flex

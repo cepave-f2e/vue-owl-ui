@@ -14,7 +14,7 @@ it(`Test LightBox children's \`data-role\``, () => {
           </LightBox.View>
         </LightBox>
       )
-    }
+    },
   })
 
   const [open, view] = vm.$children
@@ -43,7 +43,7 @@ it('Test LightBox triggers `Open` and `Close`', async() => {
             </LightBox.View>
           </LightBox>
         )
-      }
+      },
     })
   })
 
@@ -73,7 +73,7 @@ it('Test LightBox `width` prop', () => {
           </LightBox.View>
         </LightBox>
       )
-    }
+    },
   })
 
   const _viewPort = $(vm.$el).find(`.${s.view}`)[0]
@@ -102,7 +102,7 @@ it('Test LightBox `closeOnClickMask`', async() => {
             </LightBox.View>
           </LightBox>
         )
-      }
+      },
     })
   })
 
@@ -139,7 +139,7 @@ it('Test LightBox `closeOnESC`', async() => {
             </LightBox.View>
           </LightBox>
         )
-      }
+      },
     })
   })
 

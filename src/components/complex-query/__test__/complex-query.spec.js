@@ -3,7 +3,7 @@ import ComplexQuery from '../'
 describe('<ComplexQuery />', () => {
   it('render component', ()=> {
     const vm = mount(ComplexQuery, {
-      categories: []
+      categories: [],
     })
 
     expect(vm).toBeTruthy()
@@ -14,8 +14,8 @@ describe('<ComplexQuery />', () => {
       categories: [
         {
           name: 'cat1',
-          value: 'cat1'
-        }
+          value: 'cat1',
+        },
       ],
       loading: true,
       items: [
@@ -24,11 +24,11 @@ describe('<ComplexQuery />', () => {
           children: [
             {
               name: 'cat1-item1',
-              value: 'cat1-item1'
-            }
-          ]
-        }
-      ]
+              value: 'cat1-item1',
+            },
+          ],
+        },
+      ],
     })
 
     vm.$on('change', ({ selectedItems }) => {
@@ -45,12 +45,12 @@ describe('<ComplexQuery />', () => {
         { name: 'cat1', value: 'cat1' },
         { name: 'cat2', value: 'cat2' },
       ],
-      items: []
+      items: [],
     })
 
     vm.$on('query', (d) => {
       expect(d).toEqual({
-        value: '', category: 'cat1'
+        value: '', category: 'cat1',
       })
 
       done()
@@ -65,12 +65,12 @@ describe('<ComplexQuery />', () => {
         { name: 'cat1', value: 'cat1' },
         { name: 'cat2', value: 'cat2' },
       ],
-      items: []
+      items: [],
     })
 
     vm.$on('query', (d) => {
       expect(d).toEqual({
-        value: '', category: 'cat2'
+        value: '', category: 'cat2',
       })
 
       done()
@@ -94,9 +94,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     vm.selectAll()
@@ -124,9 +124,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
     const $el = $(vm.$el)
     vm.selectAll()
@@ -152,9 +152,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { name: 'cat1 - item1' },
             { name: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     const keyEnter = new window.KeyboardEvent('keyup', { keyCode: 13, which: 13 })
@@ -186,9 +186,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     $(vm.$el).find('.itemView dt .itemViewCheckbox').trigger('click')
@@ -229,9 +229,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
     const $el = $(vm.$el)
     expect($el.find('.itemView dl').hasClass('isFold')).toBe(false)

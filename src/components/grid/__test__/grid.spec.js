@@ -6,7 +6,7 @@ const gridData = {
       name: 'Name',
       key: 'name',
       sort: -1,
-      width: '50%'
+      width: '50%',
     },
     {
       name: 'HP',
@@ -23,7 +23,7 @@ const gridData = {
     },
     {
       name: 'B',
-      hp: 8787
+      hp: 8787,
     },
   ],
 }
@@ -31,7 +31,7 @@ const gridData = {
 describe('Grid', () => {
   it('Normal gird render, should have 2 columns', ()=> {
     const vm = mount(Grid, {
-      ...gridData
+      ...gridData,
     })
 
     expect($(vm.$el).find('.ghead [data-role=col]').length).toBe(2)
@@ -39,7 +39,7 @@ describe('Grid', () => {
 
   it('Test sort HP<number>', async()=> {
     const vm = mount(Grid, {
-      ...gridData
+      ...gridData,
     })
     const $el = $(vm.$el)
 
@@ -63,7 +63,7 @@ describe('Grid', () => {
 
   it('Test sort Name<string>', async()=> {
     const vm = mount(Grid, {
-      ...gridData
+      ...gridData,
     })
     const $el = $(vm.$el)
     const findFirstRowName = ()=> {
@@ -106,7 +106,7 @@ describe('Grid', () => {
 
     vm.rows = [
       ...vm.rows,
-      ...vm.rows
+      ...vm.rows,
     ]
     await vm.$nextTick()
     expect($(vm.$el).find('.gbody [data-role=row]').length).toBe(4)

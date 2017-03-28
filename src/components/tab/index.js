@@ -7,11 +7,11 @@ const Tab = {
     return {
       tabs: {},
       selectedIdx: 0,
-      selectedName: ''
+      selectedName: '',
     }
   },
 
-  mounted() {//find selected
+  mounted() {// find selected
     const { $slots } = this
     let selectedChild = $slots.tabHead.find((slot) => slot.child.isSelected)
     if (!selectedChild) {
@@ -32,7 +32,7 @@ const Tab = {
       $slots.tabContent[selectedIdx].child.isSelected = true
       this.$emit('change', {
         name: selectedName,
-        idx: selectedIdx
+        idx: selectedIdx,
       })
     },
     clickTab: delegate('[data-role="tab-head"]', function(e) {
@@ -48,7 +48,7 @@ const Tab = {
       this.$slots.tabHead.forEach((slot) => slot.child.selected = '0')
       this.$slots.tabHead[idx].child.selected = '1'
       this.switchContent()
-    })
+    }),
   },
 
   render(h) {
@@ -63,7 +63,7 @@ const Tab = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 Tab.Head = {
@@ -71,17 +71,17 @@ Tab.Head = {
   props: {
     isSelected: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
       type: String,
       default: '',
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      selected: (this.isSelected) ? '1' : '0'
+      selected: (this.isSelected) ? '1' : '0',
     }
   },
 
@@ -92,7 +92,7 @@ Tab.Head = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 Tab.Content = {
@@ -101,12 +101,12 @@ Tab.Content = {
     name: {
       type: String,
       default: '',
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      isSelected: false
+      isSelected: false,
     }
   },
 
@@ -118,7 +118,7 @@ Tab.Content = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 module.exports = Tab

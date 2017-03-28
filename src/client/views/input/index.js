@@ -6,7 +6,7 @@ const InputPage = {
   name: 'InputPage',
   data() {
     return {
-      outputs: ''
+      outputs: '',
     }
   },
   mounted() {
@@ -18,7 +18,7 @@ const InputPage = {
     },
     handleClickOnX(data) {
       this.outputs = this.$refs.inputRef.value
-    }
+    },
   },
   render(h) {
     return (
@@ -52,7 +52,7 @@ const InputPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = InputPage

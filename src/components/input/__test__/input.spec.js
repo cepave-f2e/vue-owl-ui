@@ -6,13 +6,13 @@ it('test <Input /> default props', () => {
       return (
         <Input name="demo" icon={['grid-4', '#e6175c']} status="normal" placeholder="demo" required={true} />
       )
-    }
+    },
   })
   expect(vm.name).toBe('demo')
   expect(vm.icon).toEqual(['grid-4', '#e6175c'])
   expect(vm.status).toBe('normal')
   expect(vm.placeholder).toBe('demo')
-  //clicking on the icon should not empty vm.value
+  // clicking on the icon should not empty vm.value
   $(vm.$children[1].$el).trigger('click')
 })
 
@@ -22,7 +22,7 @@ it('test <Input /> get data from calling `value`', () => {
       return (
           <Input name="demo" loading={true} status="normal" ref="demo" />
       )
-    }
+    },
   })
   $(vm.$refs.demo).val('cepave')
   vm.handleInput()
@@ -35,15 +35,15 @@ it('test <Input /> of password mode', () => {
       return (
         <Input password={true} />
       )
-    }
+    },
   })
   expect(vm.pwdFill).toBe('#b8bdbf')
   expect(vm.pwdInput).toBe('password')
-  //click on the icon - `eye`
+  // click on the icon - `eye`
   $(vm.$children[1].$el).trigger('click')
   expect(vm.pwdFill).toBe('#8962d9')
   expect(vm.pwdInput).toBe('text')
-  //click on the icon - `eye` again
+  // click on the icon - `eye` again
   $(vm.$children[1].$el).trigger('click')
   expect(vm.pwdFill).toBe('#b8bdbf')
   expect(vm.pwdInput).toBe('password')
@@ -57,7 +57,7 @@ it('test <Input /> with a `x` icon', async() => {
         return (
           <Input name="demo" ref="demo" x={true} />
         )
-      }
+      },
     })
 
     $(vm.$refs.demo).val('cepave')
@@ -66,14 +66,14 @@ it('test <Input /> with a `x` icon', async() => {
     expect(vm.showX).toBe(true)
     vm.$nextTick(done)
   })
-  //click on the icon - `x`
+  // click on the icon - `x`
   $(vm.$children[1].$el).trigger('click')
   expect(vm.value).toBe('')
 })
 
 it('test <Input /> props val dynamic update', async() => {
   const vm = mount(Input, {
-    defaultValue: 'owl'
+    defaultValue: 'owl',
   })
 
   expect('owl').toBe(vm.value)

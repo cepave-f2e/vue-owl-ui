@@ -19,7 +19,7 @@ const Markdown = {
 
     this.md = new MarkItDown({
       hasHeadHash: false,
-      ...opts
+      ...opts,
     })
   },
 
@@ -58,7 +58,7 @@ const Markdown = {
         <textarea ref="textarea" hidden>{src}</textarea>
       </div>
     )
-  }
+  },
 }
 
 module.exports = Markdown

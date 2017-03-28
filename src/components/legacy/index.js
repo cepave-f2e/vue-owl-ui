@@ -1,5 +1,5 @@
 const Legacy = {
-  Grid: require('./grid')
+  Grid: require('./grid'),
 }
 
 module.exports = Legacy

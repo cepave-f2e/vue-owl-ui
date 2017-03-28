@@ -5,7 +5,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-    }
+    },
   },
   plugins: [
     'import',
@@ -13,10 +13,11 @@ module.exports = {
   ],
   rules: {
     'comma-style': [2, 'last'],
-    'comma-spacing': ['error', {'before': false, 'after': true}],
+    'comma-spacing': ['error', { 'before': false, 'after': true }],
+    'spaced-comment': ['error', 'always'],
     'no-debugger': 1,
     'no-unused-vars': 0,
-    // 'comma-dangle': [2, 'always-multiline'],
+    'comma-dangle': [2, 'always-multiline'],
     'no-const-assign': 1,
     'no-var': 1,
     'indent': ['error', 2],
@@ -34,7 +35,7 @@ module.exports = {
     'prefer-rest-params': 2,
     'padded-blocks': ['error', 'never'],
     'eqeqeq': ['error', 'always'],
-    'brace-style': ['error', '1tbs', { allowSingleLine: false } ],
+    'brace-style': ['error', '1tbs', { allowSingleLine: false }],
     'no-loop-func': ['error'],
     'dot-notation': ['error'],
     'keyword-spacing': ['error', { before: true, after: true }],
@@ -45,6 +46,6 @@ module.exports = {
     'semi': ['error', 'never'],
 
     // jsx
-    'react/jsx-space-before-closing': ['warn', 'always']
-  }
+    'react/jsx-space-before-closing': ['warn', 'always'],
+  },
 }

@@ -5,13 +5,13 @@ const TabPage = {
   name: 'TabPage',
   data() {
     return {
-      tabData: { idx: 1, name: '2' }
+      tabData: { idx: 1, name: '2' },
     }
   },
   methods: {
     getTabData(data) {
       this.tabData = data
-    }
+    },
   },
 
   render(h) {
@@ -39,7 +39,7 @@ const TabPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = TabPage

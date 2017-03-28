@@ -3,19 +3,19 @@ import Page from '../'
 it('Test `totalPages`', () => {
   let vm
   vm = mount(Page, {
-    limit: 10, total: 100
+    limit: 10, total: 100,
   })
   expect(vm.totalPages).toBe(10)
 
   vm = mount(Page, {
-    limit: 10, total: 101
+    limit: 10, total: 101,
   })
   expect(vm.totalPages).toBe(11)
 })
 
 it('Test switch to `next` and `prev`', () => {
   const vm = mount(Page, {
-    limit: 10, total: 100
+    limit: 10, total: 100,
   })
   expect(vm.page).toBe(1)
 
@@ -29,7 +29,7 @@ it('Test switch to `next` and `prev`', () => {
 
 it('Test click same page', () => {
   const vm = mount(Page, {
-    limit: 10, total: 100
+    limit: 10, total: 100,
   })
   expect(vm.page).toBe(1)
 
@@ -42,7 +42,7 @@ it('Test click same page', () => {
 
 it('Test to last page', () => {
   const vm = mount(Page, {
-    limit: 10, total: 100, toPage: 10
+    limit: 10, total: 100, toPage: 10,
   })
   expect(vm.page).toBe(10)
 })

@@ -25,7 +25,7 @@ describe('Time Picker', () => {
 
   it('Dynamic close time picker', (done)=> {
     const vm = mount(TimePicker, {
-      open: true
+      open: true,
     })
 
     expect(document.activeElement).toBe(vm.$el)
@@ -59,7 +59,7 @@ describe('Time Picker', () => {
 
   it('Dynamic set `defaultValue`', async()=> {
     const vm = mount(TimePicker, {
-      defaultValue: '08:00'
+      defaultValue: '08:00',
     })
     expect(vm.value).toBe('08:00')
     vm.defaultValue = '09:00'

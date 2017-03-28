@@ -15,15 +15,15 @@ const LegacyGridDoc = {
           {
             col: 'HP',
             width: '50%',
-          }
+          },
         ],
         rows: [
           [
             { col: 'Pikachu' },
             { col: 13 },
-          ]
-        ]
-      }
+          ],
+        ],
+      },
     }
   },
   render(h) {
@@ -36,6 +36,6 @@ const LegacyGridDoc = {
         <Legacy.Grid {...{ props: gridProps }} />
       </div>
     )
-  }
+  },
 }
 module.exports = LegacyGridDoc

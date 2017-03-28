@@ -28,7 +28,7 @@ const TimePicker = {
     defaultValue: {
       type: String,
       default: Date().match(/\d\d:\d\d/)[0], // Current time of client
-    }
+    },
   },
 
   data() {
@@ -50,7 +50,7 @@ const TimePicker = {
       } else {
         $el.blur()
       }
-    }
+    },
   },
 
   created() {
@@ -73,9 +73,9 @@ const TimePicker = {
       this.$el.blur()
       this.value = value
       this.$emit('change', {
-        value
+        value,
       })
-    })
+    }),
   },
 
   computed: {
@@ -92,7 +92,7 @@ const TimePicker = {
       const lis = [
         <li data-time={start}>
           <code>{start}</code>
-        </li>
+        </li>,
       ]
 
       while ((startHour * 60 + startMin) <= (endHour * 60 + endMin - step)) {
@@ -106,7 +106,7 @@ const TimePicker = {
         lis.push(
           <li data-time={time}>
             <code>{time}</code>
-          </li>
+          </li>,
         )
       }
 
@@ -126,7 +126,7 @@ const TimePicker = {
     const { renderTime, pickTime, value } = this
     return (
       <div class={[s.timepicker]} tabIndex="-1">
-        <div class={[s.input]}  >
+        <div class={[s.input]}>
           {value} <Icon typ="clock" class={[s.clock]} />
         </div>
         <ul class={[s.timebox]} onClick={pickTime}>
@@ -134,7 +134,7 @@ const TimePicker = {
         </ul>
       </div>
     )
-  }
+  },
 }
 
 module.exports = TimePicker

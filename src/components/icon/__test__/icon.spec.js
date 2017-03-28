@@ -6,7 +6,7 @@ it('set `typ` and `size` props', ()=> {
       return (
         <Icon typ="xyz" size={100} />
       )
-    }
+    },
   })
 
   expect(vm.typ).toBe('xyz')
@@ -20,7 +20,7 @@ it('set `size` as string', ()=> {
       return (
         <Icon typ="xyz" size={'100x10'} />
       )
-    }
+    },
   })
 
   expect(vm.$el.getAttribute('width')).toBe('100')

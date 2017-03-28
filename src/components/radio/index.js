@@ -6,13 +6,13 @@ const Radio = {
   props: {
     on: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     name: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data() {
@@ -29,11 +29,11 @@ const Radio = {
       this.active = true
 
       const data = {
-        [name]: this.active
+        [name]: this.active,
       }
       this.$emit('change', data)
       $parent.$emit('handleSingleRadioChange', data)
-    }
+    },
   },
 
   watch: {
@@ -42,7 +42,7 @@ const Radio = {
       $parent.$children.forEach((child) => child.active = false)
       this.active = newVal
       $parent.$emit('handleSingleRadioChange', { [name]: newVal })
-    }
+    },
   },
 
   render(h) {
@@ -57,7 +57,7 @@ const Radio = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 Radio.Group = {
@@ -107,7 +107,7 @@ Radio.Group = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Radio

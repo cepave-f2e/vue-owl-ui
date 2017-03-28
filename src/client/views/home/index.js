@@ -86,7 +86,7 @@ const Home = {
         </section>
       </div>
     )
-  }
+  },
 }
 
 module.exports = Home

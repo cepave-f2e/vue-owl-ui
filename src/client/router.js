@@ -33,7 +33,7 @@ module.exports = new Router({
         { path: 'complex-query', component: require('./views/complex-query') },
         { path: 'date-picker', component: require('./views/date-picker') },
         { path: 'time-picker', component: require('./views/time-picker') },
-      ]
+      ],
     },
     { path: '*', redirect: '/home' },
   ],

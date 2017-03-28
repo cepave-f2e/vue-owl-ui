@@ -47,7 +47,7 @@ const Header = {
         </div>
       </header>
     )
-  }
+  },
 }
 
 module.exports = Header

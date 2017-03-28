@@ -6,7 +6,7 @@ it('test default <Label>', () => {
       return (
         <Label>Default</Label>
       )
-    }
+    },
   })
   expect(vm.style[0]).toContain('label')
 })
@@ -17,7 +17,7 @@ it('test <Label> with props `typ` and `status`', () => {
       return (
         <Label typ="outline" status="primary">Primary</Label>
       )
-    }
+    },
   })
   expect(vm.style[0]).toContain('label')
   expect(vm.style[1]).toContain('outline')
@@ -30,7 +30,7 @@ it('test <Label> with props `badge`', () => {
       return (
         <Label badge={true} typ="outline" status="primary">Primary</Label>
       )
-    }
+    },
   })
   expect(vm.style[0]).toContain('label')
   expect(vm.style[1]).toContain('outline')
@@ -44,7 +44,7 @@ it('test <Label> with props `x`', () => {
       return (
         <Label badge x status="primary">Primary</Label>
       )
-    }
+    },
   })
   expect(vm.style[4]).toContain('x')
   expect(vm.style[5]).toContain('primarylabelx')
@@ -58,24 +58,24 @@ it('test clicking on <Label> with props `x`', async() => {
         return (
           <Label badge x status="primary">Primary</Label>
         )
-      }
+      },
     })
     $(vm.$children[0].$el).trigger('click')
     vm.$nextTick(done)
   })
-  //expect to destroy vm.$el here, but it still exists
+  // expect to destroy vm.$el here, but it still exists
 })
 
 it('test <Label.Group> when clicking on <Label>', async() => {
   let vm
   const handleLabelGroup = (data) => {
     expect(data).toEqual([
-      { value: 'tigger', id: 2 }
+      { value: 'tigger', id: 2 },
     ])
   }
   const handleRemove = (data) => {
     expect(data).toEqual([
-      { value: 'piglet', id: 1 }
+      { value: 'piglet', id: 1 },
     ])
   }
   await new Promise((done) => {
@@ -84,17 +84,17 @@ it('test <Label.Group> when clicking on <Label>', async() => {
         return {
           test: [
             { value: 'piglet', id: 1 },
-            { value: 'tigger', id: 2 }
-          ]
+            { value: 'tigger', id: 2 },
+          ],
         }
       },
       render(h) {
         return (
           <Label.Group displayKey="value" x={true} badge={true} options={this.test} onChange={handleLabelGroup} onRemove={handleRemove} />
         )
-      }
+      },
     })
-    //click on piglet
+    // click on piglet
     $(vm.$children[0].$children[0].$el).trigger('click')
     vm.$nextTick(done)
   })
@@ -108,14 +108,14 @@ it('test <Label.Group> dynamic update', async() => {
         return {
           test: [
             { value: 'piglet', id: 1 },
-            { value: 'tigger', id: 2 }
+            { value: 'tigger', id: 2 },
           ],
-          focusedId: 0
+          focusedId: 0,
         }
       },
       mounted() {
         this.test = [
-          { value: 'tigger', id: 2 }
+          { value: 'tigger', id: 2 },
         ],
         this.focusedId = 1
         this.$nextTick(done)
@@ -124,11 +124,11 @@ it('test <Label.Group> dynamic update', async() => {
         return (
           <Label.Group displayKey="value" x={true} badge={true} options={this.test} focused={this.focusedId} />
         )
-      }
+      },
     })
   })
   expect(vm.labelData).toEqual([
-    { value: 'tigger', id: 2 }
+    { value: 'tigger', id: 2 },
   ])
   expect(vm.focusedLabel).toBe(1)
 })
@@ -141,8 +141,8 @@ test('test <Label.Group /> new tag feature', async() => {
         return {
           test: [
             { value: 'piglet', id: 1 },
-            { value: 'tigger', id: 2 }
-          ]
+            { value: 'tigger', id: 2 },
+          ],
         }
       },
       render(h) {
@@ -154,7 +154,7 @@ test('test <Label.Group /> new tag feature', async() => {
                         newTag={true}
           />
         )
-      }
+      },
     })
     expect(vm.newTag).toBe(true)
     $(vm.$children[2].$el).trigger('click')
@@ -175,7 +175,7 @@ test('test <Label.Group /> new tag feature', async() => {
     { value: 'cepave' },
   ])
 
-  //input duplicate tags
+  // input duplicate tags
   await new Promise((done) => {
     $(vm.$children[2].$slots.default[1].elm).val('tigger')
     vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
@@ -188,7 +188,7 @@ test('test <Label.Group /> new tag feature', async() => {
     { value: 'cepave' },
   ])
 
-  //input empty string
+  // input empty string
   await new Promise((done) => {
     $(vm.$children[2].$slots.default[1].elm).val('')
     vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)

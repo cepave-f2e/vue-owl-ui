@@ -5,7 +5,7 @@ const Link = {
     return (
       <router-link exact {...data} >{ children }</router-link>
     )
-  }
+  },
 }
 
 module.exports = Link

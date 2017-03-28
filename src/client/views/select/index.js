@@ -11,7 +11,7 @@ const SelectPage = {
       },
       selectProps: {
         options: [
-          { value: '1d', title: '1 day', },
+          { value: '1d', title: '1 day' },
           { value: '3d', title: '3 days', selected: true },
           { value: '5d', title: '5 days' },
         ],
@@ -22,7 +22,7 @@ const SelectPage = {
   methods: {
     selectOnChange(d) {
       this.outputs = d
-    }
+    },
   },
 
   render(h) {
@@ -39,7 +39,7 @@ const SelectPage = {
 
       </div>
     )
-  }
+  },
 }
 
 module.exports = SelectPage

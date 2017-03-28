@@ -6,7 +6,7 @@ it('set `status`, `content` and  `icon` props', () => {
       return (
         <Button status="primary">cepave</Button>
       )
-    }
+    },
   })
 
   expect(vm.style[0]).toContain('button')
@@ -19,7 +19,7 @@ it('set `disabled` props', () => {
       return (
         <Button disabled={true}>cepave</Button>
       )
-    }
+    },
   })
 
   expect(vm.style[0]).toContain('button')
@@ -30,7 +30,7 @@ it('test <Button.Group> with props `options`', () => {
   const options = [
     { value: 'winnie', title: 'Winnie The Pooh' },
     { value: 'piglet', title: 'Piglet' },
-    { value: 'tigger', title: 'Tigger', selected: true }
+    { value: 'tigger', title: 'Tigger', selected: true },
   ]
   const getButtonGroupData = (data) => {}
   const vm = shallow({
@@ -38,12 +38,12 @@ it('test <Button.Group> with props `options`', () => {
       return (
         <Button.Group options={options} onChange={getButtonGroupData} />
       )
-    }
+    },
   })
   expect(vm.buttonOptions).toEqual([
     { value: 'winnie', title: 'Winnie The Pooh' },
     { value: 'piglet', title: 'Piglet' },
-    { value: 'tigger', title: 'Tigger', selected: true }
+    { value: 'tigger', title: 'Tigger', selected: true },
   ])
   expect(vm.selectedIdx).toBe(2)
 })
@@ -53,7 +53,7 @@ it('click on <Button.Group> to switch chosen option', async() => {
   const options = [
     { value: 'winnie', title: 'Winnie The Pooh' },
     { value: 'piglet', title: 'Piglet' },
-    { value: 'tigger', title: 'Tigger', selected: true }
+    { value: 'tigger', title: 'Tigger', selected: true },
   ]
   const getButtonGroupData = (data) => {}
   await new Promise((done) => {
@@ -62,14 +62,14 @@ it('click on <Button.Group> to switch chosen option', async() => {
         return (
           <Button.Group options={options} onChange={getButtonGroupData} />
         )
-      }
+      },
     })
     $(vm.$children[2].$el).trigger('click')
     expect(vm.selectedIdx).toBe(2)
     expect(vm.buttonOptions).toEqual([
       { value: 'winnie', title: 'Winnie The Pooh' },
       { value: 'piglet', title: 'Piglet' },
-      { value: 'tigger', title: 'Tigger', selected: true }
+      { value: 'tigger', title: 'Tigger', selected: true },
     ])
     $(vm.$children[0].$el).trigger('click')
     vm.$nextTick(done)
@@ -78,6 +78,6 @@ it('click on <Button.Group> to switch chosen option', async() => {
   expect(vm.buttonOptions).toEqual([
     { value: 'winnie', title: 'Winnie The Pooh', selected: true },
     { value: 'piglet', title: 'Piglet', selected: false },
-    { value: 'tigger', title: 'Tigger', selected: false }
+    { value: 'tigger', title: 'Tigger', selected: false },
   ])
 })

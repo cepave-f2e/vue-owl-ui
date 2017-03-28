@@ -9,14 +9,14 @@ const LabelPage = {
       testData: [
         { value: 'Winnie The Pooh' },
         { value: 'Piglet' },
-        { value: 'Tigger' }
-      ]
+        { value: 'Tigger' },
+      ],
     }
   },
   methods: {
     handleLabelGroup(data) {
       this.testData = data
-    }
+    },
   },
   render(h) {
     const { $slots } = this
@@ -105,7 +105,7 @@ const LabelPage = {
         </pre>
       </div>
     )
-  }
+  },
 }
 
 module.exports = LabelPage

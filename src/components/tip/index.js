@@ -22,13 +22,13 @@ const Tip = {
 
     event: {
       type: String,
-      default: 'mouseenter'
+      default: 'mouseenter',
     },
 
     delay: {
       type: Number,
-      default: 50
-    }
+      default: 50,
+    },
   },
 
   mounted() {
@@ -87,8 +87,8 @@ Tip.Context = {
   props: {
     width: {
       type: [String, Number],
-      default: 'auto'
-    }
+      default: 'auto',
+    },
   },
 
   computed: {
@@ -96,9 +96,9 @@ Tip.Context = {
       const { width } = this
 
       return {
-        width: `${width}px`
+        width: `${width}px`,
       }
-    }
+    },
   },
 
   render(h) {
@@ -108,7 +108,7 @@ Tip.Context = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Tip

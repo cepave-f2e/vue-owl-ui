@@ -7,20 +7,20 @@ const Label = {
   props: {
     typ: {
       type: String,
-      default: 'label'//label, outline, tag
+      default: 'label', //label, outline, tag
     },
     status: {
       type: String,
-      default: 'default'//default, primary, success, error, warning, inverted
+      default: 'default', //default, primary, success, error, warning, inverted
     },
     badge: {
       type: Boolean,
-      default: false
+      default: false,
     },
     x: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     style() {
@@ -34,7 +34,7 @@ const Label = {
         style.push(s[`${status}${typ}x`])
       }
       return style
-    }
+    },
   },
 
   render(h) {
@@ -49,7 +49,7 @@ const Label = {
         }
       </span>
     )
-  }
+  },
 }
 Label.Group = {
   name: 'LabelGroup',
@@ -57,51 +57,51 @@ Label.Group = {
   props: {
     options: {
       type: Array,
-      required: true
+      required: true,
     },
     focused: {
       type: Number,
-      default: -1
+      default: -1,
     },
     displayKey: {
       type: String,
-      required: true
+      required: true,
     },
     typ: {
       type: String,
-      default: 'label'//label, outline, tag
+      default: 'label', //label, outline, tag
     },
     status: {
       type: String,
-      default: 'default'//default, primary, success, error, warning, inverted
+      default: 'default', //default, primary, success, error, warning, inverted
     },
     badge: {
       type: Boolean,
-      default: false
+      default: false,
     },
     x: {
       type: Boolean,
-      default: false
+      default: false,
     },
     newTag: {
       type: Boolean,
-      default: false
+      default: false,
     },
     newTagMsg: {
       type: String,
-      default: '+ New Tag'
+      default: '+ New Tag',
     },
     preventDuplicate: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
   data() {
     return {
       labelData: this.options,
       focusedLabel: this.focused,
-      showInput: false
+      showInput: false,
     }
   },
 
@@ -114,7 +114,7 @@ Label.Group = {
     },
     labelData(newVal) {
       this.$emit('change', this.labelData)
-    }
+    },
   },
 
   computed: {
@@ -125,11 +125,11 @@ Label.Group = {
         typ: this.typ,
         status: this.status,
         badge: this.badge,
-        x: this.x
+        x: this.x,
       }
       const _labels = this.labelData.map((label, idx) => {
         const style = {
-          [s.labelInGroup]: true
+          [s.labelInGroup]: true,
         }
         style[s.focused] = (this.focusedLabel > -1 && this.focusedLabel === idx && this.hasFocusedStyle) ? true : false
         
@@ -156,15 +156,15 @@ Label.Group = {
       const { showInput } = this
       const styles = [s.label, s.newTag, s.labelInGroup, { [s.showInput]: showInput }]
       return styles
-    }
+    },
   },
 
   methods: {
     _handleClickLabel: delegate('[data-role="labelg"]', function(e) {
       const { delegateTarget } = e
       const clickedLabel = delegateTarget.getAttribute('data-val')
-      const clickedId = delegateTarget.getAttribute('data-id')//newly given id, starts with 0
-      if (this.x) { //if labelGroup all closable
+      const clickedId = delegateTarget.getAttribute('data-id')// newly given id, starts with 0
+      if (this.x) { // if labelGroup all closable
         const removedLabel = this.labelData[clickedId]
 
         this.labelData = this.labelData.reduce((preVal, newVal, idx) => {
@@ -215,7 +215,7 @@ Label.Group = {
 
         this.$emit('create', this.$refs.addNewTag.value)
       }
-    }
+    },
   },
 
   render(h) {
@@ -242,7 +242,7 @@ Label.Group = {
         }
       </div>
     )
-  }
+  },
 }
 
 module.exports = Label

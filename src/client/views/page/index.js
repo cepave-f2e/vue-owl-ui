@@ -12,7 +12,7 @@ const PageDoc = {
         <Page total={500} limit={20} typ="number" align="left" />
       </div>
     )
-  }
+  },
 }
 
 module.exports = PageDoc

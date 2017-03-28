@@ -6,12 +6,12 @@ const Checkbox = {
   props: {
     checked: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data() {
@@ -27,7 +27,7 @@ const Checkbox = {
       this.check = !this.check
 
       const data = {
-        [name]: this.check
+        [name]: this.check,
       }
 
       this.$emit('change', data)
@@ -57,7 +57,7 @@ const Checkbox = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 Checkbox.Group = {
@@ -97,16 +97,16 @@ Checkbox.Group = {
       const checked = datum.filter(d => d !== 'all' && checkedDatum[d]).length
 
       return {
-        total, checked
+        total, checked,
       }
-    }
+    },
   },
 
   methods: {
     handleChange(checked) {
       const checkedDatum = {
         ...this.checkedDatum,
-        ...checked
+        ...checked,
       }
 
       const { $children, counts } = this
@@ -135,6 +135,6 @@ Checkbox.Group = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 module.exports = Checkbox

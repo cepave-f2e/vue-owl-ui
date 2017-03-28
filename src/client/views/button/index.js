@@ -10,18 +10,18 @@ const ButtonPage = {
       options: [
         { value: 'winnie', title: 'Winnie The Pooh' },
         { value: 'piglet', title: 'Piglet' },
-        { value: 'tigger', title: 'Tigger', selected: true }
+        { value: 'tigger', title: 'Tigger', selected: true },
       ],
       buttonGroupData: {
         value: 'tigger',
-        idx: 2
-      }
+        idx: 2,
+      },
     }
   },
   methods: {
     getButtonGroupData(data) {
       this.buttonGroupData = data
-    }
+    },
   },
 
   render(h) {
@@ -56,7 +56,7 @@ const ButtonPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = ButtonPage
