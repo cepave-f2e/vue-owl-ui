@@ -11,7 +11,7 @@ const Tab = {
     }
   },
 
-  mounted() {// find selected
+  mounted() { // find selected
     const { $slots } = this
     let selectedChild = $slots.tabHead.find((slot) => slot.child.isSelected)
     if (!selectedChild) {
