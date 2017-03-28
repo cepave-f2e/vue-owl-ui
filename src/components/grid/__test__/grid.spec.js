@@ -37,7 +37,7 @@ describe('Grid', () => {
     expect($(vm.$el).find('.ghead [data-role=col]').length).toBe(2)
   })
 
-  it('Test sort HP<number>', async() => {
+  it('Test sort HP<number>', async () => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -61,7 +61,7 @@ describe('Grid', () => {
     expect(findFirstRowHP()).toBe('87')
   })
 
-  it('Test sort Name<string>', async() => {
+  it('Test sort Name<string>', async () => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -81,7 +81,7 @@ describe('Grid', () => {
     expect(findFirstRowName()).toBe('A')
   })
 
-  it('`rowsRender`', async() => {
+  it('`rowsRender`', async () => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -99,7 +99,7 @@ describe('Grid', () => {
     expect($(vm.$el).find('.gbody b').length).toBe(2)
   })
 
-  it('Dynamic update rows', async() => {
+  it('Dynamic update rows', async () => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -111,6 +111,7 @@ describe('Grid', () => {
     await vm.$nextTick()
     expect($(vm.$el).find('.gbody [data-role=row]').length).toBe(4)
 
+    vm.resetSort()
     vm.heads.forEach((head) => {
       expect(head.sort).toBe(-1)
     })
@@ -120,11 +121,11 @@ describe('Grid', () => {
     const vm = mount(Grid, {
       ...gridData,
     })
-    .$on('sort', ({ sort, key }) => {
-      expect(sort).toBe(1 || 0)
-      expect(key).toBe('hp')
-      done()
-    })
+      .$on('sort', ({ sort, key }) => {
+        expect(sort).toBe(1 || 0)
+        expect(key).toBe('hp')
+        done()
+      })
 
     const $el = $(vm.$el)
     const $hpHead = $el.find('.ghead [data-role=row] [data-role=col]').eq(1)
@@ -135,9 +136,7 @@ describe('Grid', () => {
   })
 
   it('render for empty data', () => {
-    const vm = mount(Grid, {
-
-    })
+    const vm = mount(Grid, {})
     expect($(vm.$el).find('.ghead [data-role=col]').text()).toBe('Head')
     expect($(vm.$el).find('.ghead [data-role=col]').length).toBe(1)
   })

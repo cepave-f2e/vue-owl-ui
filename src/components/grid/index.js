@@ -45,11 +45,6 @@ const Grid = {
 
   watch: {
     rows(newRows) {
-      this.heads.forEach(head => {
-        if (head.sort !== undefined) {
-          head.sort = -1
-        }
-      })
       this.drows = Array.from(newRows)
     },
   },
@@ -85,6 +80,14 @@ const Grid = {
   },
 
   methods: {
+    resetSort() {
+      this.heads.forEach(head => {
+        if (head.sort !== undefined) {
+          head.sort = -1
+        }
+      })
+    },
+
     renderRows({ row }) {
       const h = this.$createElement
       const { heads } = this
@@ -165,8 +168,8 @@ const Grid = {
           {
             loading
               ? <div class={[s.loading]}>
-                  <Loading />
-                </div>
+              <Loading />
+            </div>
               : null
           }
           {drows.map((row, index) => {
