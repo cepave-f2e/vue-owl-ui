@@ -38,7 +38,7 @@ const Tip = {
     _context.style.display = 'block'
     _context.setAttribute('id', 'tipContext2')
 
-    $el.addEventListener(event, (ev)=> {
+    $el.addEventListener(event, (ev) => {
       _body.appendChild(_context)
       const { currentTarget } = ev
       const { left, top } = offset(currentTarget)
@@ -66,7 +66,7 @@ const Tip = {
       }, delay)
     }, false)
 
-    $el.addEventListener('mouseleave', (ev)=> {
+    $el.addEventListener('mouseleave', (ev) => {
       _context.style.opacity = 0
       _body.removeChild(_context)
     }, false)

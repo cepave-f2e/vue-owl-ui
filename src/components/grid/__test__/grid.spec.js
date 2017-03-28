@@ -29,7 +29,7 @@ const gridData = {
 }
 
 describe('Grid', () => {
-  it('Normal gird render, should have 2 columns', ()=> {
+  it('Normal gird render, should have 2 columns', () => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -37,13 +37,13 @@ describe('Grid', () => {
     expect($(vm.$el).find('.ghead [data-role=col]').length).toBe(2)
   })
 
-  it('Test sort HP<number>', async()=> {
+  it('Test sort HP<number>', async() => {
     const vm = mount(Grid, {
       ...gridData,
     })
     const $el = $(vm.$el)
 
-    const findFirstRowHP = ()=> {
+    const findFirstRowHP = () => {
       return $el.find('.gbody [data-role=row]').eq(0).find('[data-role=col]').eq(1).text()
     }
     const $hpHead = $el.find('.ghead [data-role=row] [data-role=col]').eq(1)
@@ -61,12 +61,12 @@ describe('Grid', () => {
     expect(findFirstRowHP()).toBe('87')
   })
 
-  it('Test sort Name<string>', async()=> {
+  it('Test sort Name<string>', async() => {
     const vm = mount(Grid, {
       ...gridData,
     })
     const $el = $(vm.$el)
-    const findFirstRowName = ()=> {
+    const findFirstRowName = () => {
       return $el.find('.gbody [data-role=row]').eq(0).find('[data-role=col]').eq(0).text()
     }
     const $nameHead = $el.find('.ghead [data-role=row] [data-role=col]').eq(0)
@@ -99,7 +99,7 @@ describe('Grid', () => {
     expect($(vm.$el).find('.gbody b').length).toBe(2)
   })
 
-  it('Dynamic update rows', async()=> {
+  it('Dynamic update rows', async() => {
     const vm = mount(Grid, {
       ...gridData,
     })
@@ -116,11 +116,11 @@ describe('Grid', () => {
     })
   })
 
-  it('onsort event', (done)=> {
+  it('onsort event', (done) => {
     const vm = mount(Grid, {
       ...gridData,
     })
-    .$on('sort', ({ sort, key })=> {
+    .$on('sort', ({ sort, key }) => {
       expect(sort).toBe(1 || 0)
       expect(key).toBe('hp')
       done()
@@ -134,7 +134,7 @@ describe('Grid', () => {
     $hpHead.trigger('click')
   })
 
-  it('render for empty data', ()=> {
+  it('render for empty data', () => {
     const vm = mount(Grid, {
 
     })

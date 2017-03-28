@@ -2,7 +2,7 @@ import Icon from '~com/icon'
 import Markdown from '../../components/markdown'
 import s from './icon.scss'
 
-let icons = require('@cepave/owl-icons').match(/symbol id="([^"]*)/g).map((id)=> {
+let icons = require('@cepave/owl-icons').match(/symbol id="([^"]*)/g).map((id) => {
   return id.match(/symbol id="([^"]*)/)[1]
 })
 
@@ -16,7 +16,7 @@ const IconPage = {
       <div>
         <Markdown src={require('./doc.md')} />
 
-        { icons.map((typ)=> {
+        { icons.map((typ) => {
           typ = typ.replace(/^owl-icons-/, '')
           return (
             <div class={[s.icons]}>

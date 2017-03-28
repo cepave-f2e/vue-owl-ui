@@ -78,7 +78,7 @@ Checkbox.Group = {
   computed: {
     checkedDatum() {
       const { $children } = this
-      return $children.reduce((data, child)=> {
+      return $children.reduce((data, child) => {
         const { name, check } = child
 
         if (name === 'all') {
@@ -115,7 +115,7 @@ Checkbox.Group = {
       if (this.$all) {
         if (isClickedAll) {
           this.$all.check = checked.all
-          $children.forEach((c)=> {
+          $children.forEach((c) => {
             checkedDatum[c.name] = checked.all
             c.check = checked.all
           })

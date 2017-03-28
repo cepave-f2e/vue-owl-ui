@@ -9,23 +9,23 @@ const server = experss()
 const port = process.env.PORT || 3031
 
 server
-  .get('*', async(req, res)=> {
+  .get('*', async(req, res) => {
     const { url } = req
     const context = { url }
 
     ssr()
-      .then((renderer)=> {
-        renderer.renderToString(context, (err, appHTML)=> {
+      .then((renderer) => {
+        renderer.renderToString(context, (err, appHTML) => {
           if (err) {
             console.log({ err })
           }
           res.end(renderHTML({ appHTML }))
         })
       })
-      .catch((err)=> {
+      .catch((err) => {
         throw err
       })
   })
-  .listen(port, ()=> {
+  .listen(port, () => {
     console.log(`🌍  Server is listening on ${c.cyan(port)}`)
   })

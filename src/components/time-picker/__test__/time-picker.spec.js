@@ -1,7 +1,7 @@
 import TimePicker from '../'
 
 describe('Time Picker', () => {
-  it('loop time counts', ()=> {
+  it('loop time counts', () => {
     const vm = mount(TimePicker, {
       start: '08:00',
       end: '08:30',
@@ -10,7 +10,7 @@ describe('Time Picker', () => {
     expect($(vm.$el).find('li').length).toBe(3)
   })
 
-  it('Dynamic open time picker', (done)=> {
+  it('Dynamic open time picker', (done) => {
     const vm = mount(TimePicker, {
     })
 
@@ -23,7 +23,7 @@ describe('Time Picker', () => {
     })
   })
 
-  it('Dynamic close time picker', (done)=> {
+  it('Dynamic close time picker', (done) => {
     const vm = mount(TimePicker, {
       open: true,
     })
@@ -37,14 +37,14 @@ describe('Time Picker', () => {
     })
   })
 
-  it('Pick a time and `onChange` emit', (done)=> {
+  it('Pick a time and `onChange` emit', (done) => {
     const vm = mount(TimePicker, {
       start: '08:00',
       end: '08:30',
       step: 15,
     })
 
-    vm.$on('change', (data)=> {
+    vm.$on('change', (data) => {
       expect(data).toEqual({ value: '08:30' })
       done()
     })
@@ -57,7 +57,7 @@ describe('Time Picker', () => {
     $time0830.trigger('click')
   })
 
-  it('Dynamic set `defaultValue`', async()=> {
+  it('Dynamic set `defaultValue`', async() => {
     const vm = mount(TimePicker, {
       defaultValue: '08:00',
     })

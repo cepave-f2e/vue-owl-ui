@@ -113,7 +113,7 @@ const ComplexQuery = {
     handleSelect({ itemIdx, itemChildIdx }) {
       const { items, $set, $delete } = this
 
-      return (d)=> {
+      return (d) => {
         const [name] = Object.keys(d)
         const checked = d[name]
 
@@ -121,7 +121,7 @@ const ComplexQuery = {
           items[itemIdx].checkedCounts = checked ? items[itemIdx].children.length : 0
           $set(items[itemIdx], 'checked', checked)
 
-          items[itemIdx].children.forEach((itemChild)=> {
+          items[itemIdx].children.forEach((itemChild) => {
             $set(itemChild, 'checked', checked)
 
             this[checked ? '$set' : '$delete'](this.selectedItems, itemChild.value, true)
@@ -192,10 +192,10 @@ const ComplexQuery = {
         return
       }
 
-      items.forEach((item)=> {
+      items.forEach((item) => {
         $set(item, 'checked', true)
         item.checkedCounts = item.children.length
-        item.children.forEach((child)=> {
+        item.children.forEach((child) => {
           $set(child, 'checked', true)
           $set(this.selectedItems, child.name, true)
 
@@ -214,10 +214,10 @@ const ComplexQuery = {
         return
       }
 
-      items.forEach((item)=> {
+      items.forEach((item) => {
         $set(item, 'checked', false)
         item.checkedCounts = 0
-        item.children.forEach((child)=> {
+        item.children.forEach((child) => {
           $set(child, 'checked', false)
         })
       })
@@ -284,12 +284,8 @@ const ComplexQuery = {
                 <dt onClick={handleFold(itemIdx)}>
                   <Flex split>
                     <Flex.Col>
-                      <Checkbox
-                        checked={item.checked}
-                        onChange={handleSelect({ itemIdx })}
-                        data-itemidx={itemIdx}
-                        name={'@@dt@@'}
-                        class={[s.itemViewCheckbox]} >
+                      <Checkbox checked={item.checked} onChange={handleSelect({ itemIdx })} data-itemidx={itemIdx}
+                                name={'@@dt@@'} class={[s.itemViewCheckbox]}>
                         {item.name} ({item.children.length})
                       </Checkbox>
                     </Flex.Col>
@@ -310,10 +306,8 @@ const ComplexQuery = {
 
                   return (
                     <dd class={[s.itemdd]}>
-                      <Checkbox
-                        checked={itemChild.checked}
-                        onChange={handleSelect({ itemIdx, itemChildIdx })}
-                        name={itemChild.value} class={[s.itemViewCheckbox, s.itemCheckbox]}>
+                      <Checkbox checked={itemChild.checked} onChange={handleSelect({ itemIdx, itemChildIdx })}
+                                name={itemChild.value} class={[s.itemViewCheckbox, s.itemCheckbox]}>
                         <div class={[s.item]} domPropsInnerHTML={name} />
                       </Checkbox>
                     </dd>
@@ -358,27 +352,28 @@ const ComplexQuery = {
     },
   },
   render(h) {
-    const { renderCategories, categories, handleFocus, handleBlur, css, renderItems, sum,
+    const {
+      renderCategories, categories, handleFocus, handleBlur, css, renderItems, sum,
       selectAll, clearAll, totalCounts, text, onQuery, storeSUM, editItems, renderEditItems,
-      editRemoveAll, lockBlur, loading, placeholder } = this
+      editRemoveAll, lockBlur, loading, placeholder,
+    } = this
 
     return (
-      <div class={[s.com, css]} onMouseup={() => this.$refs.query.focus()}
-        onMouseenter={() => this.lockBlur = true}
-        onMouseleave={() => this.lockBlur = false}>
+      <div class={[s.com, css]} onMouseup={() => this.$refs.query.focus()} onMouseenter={() => this.lockBlur = true}
+           onMouseleave={() => this.lockBlur = false}>
         <Flex split mid>
           {
             storeSUM
               ? (
-                <Flex.Col>
-                  <a onClick={editItems} class={[s.selectedItems]}>{text.selectedItems} ({storeSUM})</a>
-                </Flex.Col>
-              )
-            : <div />
+              <Flex.Col>
+                <a onClick={editItems} class={[s.selectedItems]}>{text.selectedItems} ({storeSUM})</a>
+              </Flex.Col>
+            )
+              : <div />
           }
           <Flex.Col size="auto">
-            <input type="text" ref="query" placeholder={placeholder}
-              class={[s.input]} onBlur={handleBlur} onFocus={handleFocus} onKeyup={onQuery} />
+            <input type="text" ref="query" placeholder={placeholder} class={[s.input]} onBlur={handleBlur}
+                   onFocus={handleFocus} onKeyup={onQuery} />
           </Flex.Col>
           <Flex.Col>
             {
@@ -402,8 +397,8 @@ const ComplexQuery = {
           </Flex>
         </div>
 
-      <div class={[s.editItems]}>
-          <div class={[s.backTo]} onClick={(ev)=>this.isEdit = false}>
+        <div class={[s.editItems]}>
+          <div class={[s.backTo]} onClick={(ev) => this.isEdit = false}>
             <Icon typ="fold" />
           </div>
           {renderEditItems}

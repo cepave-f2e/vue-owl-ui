@@ -9,7 +9,7 @@ describe('Test Date Format', () => {
     expect(dateFormat(D, 'dd/mm/yyyy')).toBe('02/03/2017')
   })
 
-  it('test format `yy/m/d`', ()=> {
+  it('test format `yy/m/d`', () => {
     expect(dateFormat(D, 'yy/m/d')).toBe('17/3/2')
   })
 })
