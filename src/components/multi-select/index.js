@@ -219,7 +219,7 @@ const MultiSelect = {
       this.optionsHovered = true
       this.disablePointer = true
 
-      if (e.keyCode === 38) {// arrowUp
+      if (e.keyCode === 38) { // arrowUp
         this.focusAdjacentOption(this.focusedIdx, 'pre')
       } else if (e.keyCode === 40) { // arrowDown
         this.focusAdjacentOption(this.focusedIdx, 'next')
@@ -238,7 +238,7 @@ const MultiSelect = {
 
         if (this.focusedLabelIdx === -1) { // empty input and focus on last label
           this.focusedLabelIdx = selectedArrLen - 1
-        } else if (this.focusedLabelIdx > -1) {// delete the focused label
+        } else if (this.focusedLabelIdx > -1) { // delete the focused label
           this.selectedIdx.pop()
           this.focusedLabelIdx = -1
         }
