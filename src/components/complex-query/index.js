@@ -15,12 +15,12 @@ const ComplexQuery = {
           name: 'cat1',
           value: 'cat1',
           on: true,
-        }
-      ]
+        },
+      ],
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     items: {
       type: Array,
@@ -33,10 +33,10 @@ const ComplexQuery = {
               name: '',
               value: 'uniq',
               checked: false,
-            }
-          ]
-        }
-      ]
+            },
+          ],
+        },
+      ],
     },
     loading: {
       type: Boolean,
@@ -52,8 +52,8 @@ const ComplexQuery = {
           selectedItems: 'selected items',
           removeAll: 'remove all',
         }
-      }
-    }
+      },
+    },
   },
 
   data() {
@@ -76,13 +76,13 @@ const ComplexQuery = {
   watch: {
     storeSelectedItems() {
       this.$emit('change', {
-        selectedItems: this.storeSelectedItems
+        selectedItems: this.storeSelectedItems,
       })
     },
     focus(isFocused) {
       const event = isFocused ? 'focus' : 'blur'
       this.$emit(event)
-    }
+    },
   },
   methods: {
     editRemoveAll(ev) {
@@ -106,14 +106,14 @@ const ComplexQuery = {
       this.highlightText = $refs.query.value
       this.$emit('query', {
         value: $refs.query.value,
-        category: cat
+        category: cat,
       })
     },
 
     handleSelect({ itemIdx, itemChildIdx }) {
       const { items, $set, $delete } = this
 
-      return (d)=> {
+      return (d) => {
         const [name] = Object.keys(d)
         const checked = d[name]
 
@@ -121,7 +121,7 @@ const ComplexQuery = {
           items[itemIdx].checkedCounts = checked ? items[itemIdx].children.length : 0
           $set(items[itemIdx], 'checked', checked)
 
-          items[itemIdx].children.forEach((itemChild)=> {
+          items[itemIdx].children.forEach((itemChild) => {
             $set(itemChild, 'checked', checked)
 
             this[checked ? '$set' : '$delete'](this.selectedItems, itemChild.value, true)
@@ -130,7 +130,7 @@ const ComplexQuery = {
             if (checked) {
               if (!this.storeSelectedItems[itemChild.value]) {
                 $set(this.storeSelectedItems, itemChild.value, {
-                  ...itemChild
+                  ...itemChild,
                 })
               }
             }
@@ -147,7 +147,7 @@ const ComplexQuery = {
           if (checked) {
             if (!this.storeSelectedItems[items[itemIdx].children[itemChildIdx].value]) {
               $set(this.storeSelectedItems, items[itemIdx].children[itemChildIdx].value, {
-                ...items[itemIdx].children[itemChildIdx]
+                ...items[itemIdx].children[itemChildIdx],
               })
             }
           }
@@ -192,16 +192,16 @@ const ComplexQuery = {
         return
       }
 
-      items.forEach((item)=> {
+      items.forEach((item) => {
         $set(item, 'checked', true)
         item.checkedCounts = item.children.length
-        item.children.forEach((child)=> {
+        item.children.forEach((child) => {
           $set(child, 'checked', true)
           $set(this.selectedItems, child.name, true)
 
           if (!this.storeSelectedItems[child.value]) {
             this.$set(this.storeSelectedItems, child.value, {
-              ...child
+              ...child,
             })
           }
         })
@@ -214,10 +214,10 @@ const ComplexQuery = {
         return
       }
 
-      items.forEach((item)=> {
+      items.forEach((item) => {
         $set(item, 'checked', false)
         item.checkedCounts = 0
-        item.children.forEach((child)=> {
+        item.children.forEach((child) => {
           $set(child, 'checked', false)
         })
       })
@@ -228,7 +228,7 @@ const ComplexQuery = {
     editItems(ev) {
       const { storeSelectedItems } = this
       this.isEdit = true
-    }
+    },
   },
 
   computed: {
@@ -248,7 +248,7 @@ const ComplexQuery = {
       return {
         [s.focus]: focus,
         [s.isEdit]: isEdit,
-        [s.hasItems]: items.length
+        [s.hasItems]: items.length,
       }
     },
     renderCategories() {
@@ -276,7 +276,7 @@ const ComplexQuery = {
         <div class={[s.itemView]}>
           {items.map((item, itemIdx) => {
             const classes = {
-              [s.isFold]: item.isFold
+              [s.isFold]: item.isFold,
             }
 
             return (
@@ -284,12 +284,8 @@ const ComplexQuery = {
                 <dt onClick={handleFold(itemIdx)}>
                   <Flex split>
                     <Flex.Col>
-                      <Checkbox
-                        checked={item.checked}
-                        onChange={handleSelect({ itemIdx })}
-                        data-itemidx={itemIdx}
-                        name={'@@dt@@'}
-                        class={[s.itemViewCheckbox]} >
+                      <Checkbox checked={item.checked} onChange={handleSelect({ itemIdx })} data-itemidx={itemIdx}
+                                name={'@@dt@@'} class={[s.itemViewCheckbox]}>
                         {item.name} ({item.children.length})
                       </Checkbox>
                     </Flex.Col>
@@ -310,10 +306,8 @@ const ComplexQuery = {
 
                   return (
                     <dd class={[s.itemdd]}>
-                      <Checkbox
-                        checked={itemChild.checked}
-                        onChange={handleSelect({ itemIdx, itemChildIdx })}
-                        name={itemChild.value} class={[s.itemViewCheckbox, s.itemCheckbox]}>
+                      <Checkbox checked={itemChild.checked} onChange={handleSelect({ itemIdx, itemChildIdx })}
+                                name={itemChild.value} class={[s.itemViewCheckbox, s.itemCheckbox]}>
                         <div class={[s.item]} domPropsInnerHTML={name} />
                       </Checkbox>
                     </dd>
@@ -355,30 +349,31 @@ const ComplexQuery = {
       }
 
       return sum
-    }
+    },
   },
   render(h) {
-    const { renderCategories, categories, handleFocus, handleBlur, css, renderItems, sum,
+    const {
+      renderCategories, categories, handleFocus, handleBlur, css, renderItems, sum,
       selectAll, clearAll, totalCounts, text, onQuery, storeSUM, editItems, renderEditItems,
-      editRemoveAll, lockBlur, loading, placeholder } = this
+      editRemoveAll, lockBlur, loading, placeholder,
+    } = this
 
     return (
-      <div class={[s.com, css]} onMouseup={() => this.$refs.query.focus()}
-        onMouseenter={() => this.lockBlur = true}
-        onMouseleave={() => this.lockBlur = false}>
+      <div class={[s.com, css]} onMouseup={() => this.$refs.query.focus()} onMouseenter={() => this.lockBlur = true}
+           onMouseleave={() => this.lockBlur = false}>
         <Flex split mid>
           {
             storeSUM
               ? (
-                <Flex.Col>
-                  <a onClick={editItems} class={[s.selectedItems]}>{text.selectedItems} ({storeSUM})</a>
-                </Flex.Col>
-              )
-            : <div />
+              <Flex.Col>
+                <a onClick={editItems} class={[s.selectedItems]}>{text.selectedItems} ({storeSUM})</a>
+              </Flex.Col>
+            )
+              : <div />
           }
           <Flex.Col size="auto">
-            <input type="text" ref="query" placeholder={placeholder}
-              class={[s.input]} onBlur={handleBlur} onFocus={handleFocus} onKeyup={onQuery} />
+            <input type="text" ref="query" placeholder={placeholder} class={[s.input]} onBlur={handleBlur}
+                   onFocus={handleFocus} onKeyup={onQuery} />
           </Flex.Col>
           <Flex.Col>
             {
@@ -402,8 +397,8 @@ const ComplexQuery = {
           </Flex>
         </div>
 
-      <div class={[s.editItems]}>
-          <div class={[s.backTo]} onClick={(ev)=>this.isEdit = false}>
+        <div class={[s.editItems]}>
+          <div class={[s.backTo]} onClick={(ev) => this.isEdit = false}>
             <Icon typ="fold" />
           </div>
           {renderEditItems}
@@ -413,7 +408,7 @@ const ComplexQuery = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = ComplexQuery

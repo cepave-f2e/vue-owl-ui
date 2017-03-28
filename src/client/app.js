@@ -32,5 +32,5 @@ module.exports = new Vue({
         <Footer />
       </div>
     )
-  }
+  },
 })

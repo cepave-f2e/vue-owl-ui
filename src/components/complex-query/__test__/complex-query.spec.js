@@ -1,21 +1,21 @@
 import ComplexQuery from '../'
 
 describe('<ComplexQuery />', () => {
-  it('render component', ()=> {
+  it('render component', () => {
     const vm = mount(ComplexQuery, {
-      categories: []
+      categories: [],
     })
 
     expect(vm).toBeTruthy()
   })
 
-  it('Checkd one item', (done)=> {
+  it('Checkd one item', (done) => {
     const vm = mount(ComplexQuery, {
       categories: [
         {
           name: 'cat1',
-          value: 'cat1'
-        }
+          value: 'cat1',
+        },
       ],
       loading: true,
       items: [
@@ -24,11 +24,11 @@ describe('<ComplexQuery />', () => {
           children: [
             {
               name: 'cat1-item1',
-              value: 'cat1-item1'
-            }
-          ]
-        }
-      ]
+              value: 'cat1-item1',
+            },
+          ],
+        },
+      ],
     })
 
     vm.$on('change', ({ selectedItems }) => {
@@ -39,18 +39,18 @@ describe('<ComplexQuery />', () => {
     $(vm.$el).find('.itemCheckbox').trigger('click')
   })
 
-  it('Switch category: no category', async(done)=> {
+  it('Switch category: no category', async(done) => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
         { name: 'cat2', value: 'cat2' },
       ],
-      items: []
+      items: [],
     })
 
     vm.$on('query', (d) => {
       expect(d).toEqual({
-        value: '', category: 'cat1'
+        value: '', category: 'cat1',
       })
 
       done()
@@ -65,12 +65,12 @@ describe('<ComplexQuery />', () => {
         { name: 'cat1', value: 'cat1' },
         { name: 'cat2', value: 'cat2' },
       ],
-      items: []
+      items: [],
     })
 
     vm.$on('query', (d) => {
       expect(d).toEqual({
-        value: '', category: 'cat2'
+        value: '', category: 'cat2',
       })
 
       done()
@@ -82,7 +82,7 @@ describe('<ComplexQuery />', () => {
     vm.$refs.query.dispatchEvent(keyEnter)
   })
 
-  it('select/clear all', async()=> {
+  it('select/clear all', async() => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
@@ -94,9 +94,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     vm.selectAll()
@@ -104,7 +104,7 @@ describe('<ComplexQuery />', () => {
 
     vm.clearAll()
     expect(Object.keys(vm.storeSelectedItems).length).toBe(2)
-    vm.items[0].children.forEach((child)=> {
+    vm.items[0].children.forEach((child) => {
       expect(child.checked).toBe(false)
     })
 
@@ -112,7 +112,7 @@ describe('<ComplexQuery />', () => {
     expect(vm.storeSelectedItems).toEqual({})
   })
 
-  it('go to edit mode', async()=> {
+  it('go to edit mode', async() => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
@@ -124,9 +124,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
     const $el = $(vm.$el)
     vm.selectAll()
@@ -140,7 +140,7 @@ describe('<ComplexQuery />', () => {
     expect(Object.keys(vm.storeSelectedItems).length).toBe(1)
   })
 
-  it('highlight text', async()=> {
+  it('highlight text', async() => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
@@ -152,9 +152,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { name: 'cat1 - item1' },
             { name: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     const keyEnter = new window.KeyboardEvent('keyup', { keyCode: 13, which: 13 })
@@ -164,7 +164,7 @@ describe('<ComplexQuery />', () => {
     expect($(vm.$el).find('.itemView .highlight').length).toBe(1)
   })
 
-  it('test `focus` and `blur`', async()=> {
+  it('test `focus` and `blur`', async() => {
     const vm = mount(ComplexQuery, {})
 
     vm.handleFocus()
@@ -174,7 +174,7 @@ describe('<ComplexQuery />', () => {
     expect(vm.focus).toBe(false)
   })
 
-  it('hancleSelect item', async()=> {
+  it('hancleSelect item', async() => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
@@ -186,19 +186,19 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
 
     $(vm.$el).find('.itemView dt .itemViewCheckbox').trigger('click')
 
-    vm.items[0].children.forEach((child)=> {
+    vm.items[0].children.forEach((child) => {
       expect(child.checked).toBe(true)
     })
   })
 
-  it('`lockBlur`', async()=> {
+  it('`lockBlur`', async() => {
     const vm = mount(ComplexQuery, {})
 
     $(vm.$el).trigger('mouseenter')
@@ -208,7 +208,7 @@ describe('<ComplexQuery />', () => {
     expect(vm.lockBlur).toBe(false)
   })
 
-  it('from edit back to normal', async()=> {
+  it('from edit back to normal', async() => {
     const vm = mount(ComplexQuery, {})
     vm.isEdit = true
 
@@ -217,7 +217,7 @@ describe('<ComplexQuery />', () => {
     expect(vm.isEdit).toBe(false)
   })
 
-  it('test handle fold', async()=> {
+  it('test handle fold', async() => {
     const vm = mount(ComplexQuery, {
       categories: [
         { name: 'cat1', value: 'cat1' },
@@ -229,9 +229,9 @@ describe('<ComplexQuery />', () => {
           children: [
             { value: 'cat1 - item1' },
             { value: 'cat1 - item2' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     })
     const $el = $(vm.$el)
     expect($el.find('.itemView dl').hasClass('isFold')).toBe(false)

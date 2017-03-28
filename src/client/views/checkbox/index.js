@@ -5,13 +5,13 @@ const CheckboxPage = {
   name: 'CheckboxPage',
   data() {
     return {
-      checkedDatum: { 1: true, 2: true, all: true }
+      checkedDatum: { 1: true, 2: true, all: true },
     }
   },
   methods: {
     getCheckedDatum(data) {
       this.checkedDatum = data
-    }
+    },
   },
   render(h) {
     const { getCheckedDatum, checkedDatum } = this
@@ -33,7 +33,7 @@ const CheckboxPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = CheckboxPage

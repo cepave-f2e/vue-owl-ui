@@ -1,7 +1,7 @@
 import delegate from 'delegate-to'
 import s from './grid.scss'
 
-const unit = (u)=> {
+const unit = (u) => {
   u = String(u)
   if (!u.includes('%')) {
     u = `${u}px`
@@ -24,8 +24,8 @@ const Grid = {
     },
 
     rowsRender: {
-      type: Function
-    }
+      type: Function,
+    },
   },
 
   watch: {
@@ -36,7 +36,7 @@ const Grid = {
         }
       })
       this.drows = Array.from(newRows)
-    }
+    },
   },
 
   data() {
@@ -45,14 +45,14 @@ const Grid = {
     const { rows } = this
     return {
       updating: true,
-      drows: Array.from(rows)
+      drows: Array.from(rows),
     }
   },
 
   mounted() {
     const { widths, $el, _createID } = this
     const style = document.createElement('style')
-    style.textContent = widths.map((width, i)=> {
+    style.textContent = widths.map((width, i) => {
       return `#${_createID} [data-role="row"] [data-role="col"]:nth-of-type(${i + 1}) {
           width: ${width}
       }`
@@ -86,7 +86,7 @@ const Grid = {
         })
         heads[idx].sort = 1
 
-        drows.sort((a, b)=> {
+        drows.sort((a, b) => {
           a = a[idx].col
           b = b[idx].col
 
@@ -107,7 +107,7 @@ const Grid = {
       <div class={[s.gridFixed]} id={_createID}>
         <div class={[s.ghead]} on-click={sorting}>
           <div data-role="row">
-            {heads.map((head, i)=> {
+            {heads.map((head, i) => {
               return (
                 <div data-role="col" data-idx={i} data-sort={head.sort}>
                   {head.render ? head.render(h, head) : head.col}
@@ -118,12 +118,12 @@ const Grid = {
         </div>
 
         <div class={[s.gbody]}>
-          {drows.map((row, index)=> {
+          {drows.map((row, index) => {
             return (
               <div data-role="row">
                 { rowsRender
                   ? rowsRender(h, { row, index })
-                  : row.map((col, i)=> {
+                  : row.map((col, i) => {
                     return (
                       <div data-role="col" data-idx={i}>
                         {col.render ? col.render(h, col) : col.col}
@@ -137,7 +137,7 @@ const Grid = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 Grid.Col = {
@@ -145,8 +145,8 @@ Grid.Col = {
   props: {
     width: {
       type: [String, Number],
-      default: ''
-    }
+      default: '',
+    },
   },
 
   computed: {
@@ -154,9 +154,9 @@ Grid.Col = {
       const { width } = this
 
       return {
-        width: unit(width)
+        width: unit(width),
       }
-    }
+    },
   },
 
   render(h) {
@@ -167,7 +167,7 @@ Grid.Col = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Grid

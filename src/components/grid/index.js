@@ -2,7 +2,7 @@ import delegate from 'delegate-to'
 import s from './grid.scss'
 import Loading from '../loading'
 
-const unit = (u)=> {
+const unit = (u) => {
   u = String(u)
   if (!u.includes('%')) {
     u = `${u}px`
@@ -23,8 +23,8 @@ const Grid = {
           key: '',
           sort: -1,
           sortKey: '',
-          width: '20%'
-        }
+          width: '20%',
+        },
       ],
     },
 
@@ -34,13 +34,13 @@ const Grid = {
     },
 
     rowsRender: {
-      type: Function
+      type: Function,
     },
 
     loading: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 
   watch: {
@@ -51,7 +51,7 @@ const Grid = {
         }
       })
       this.drows = Array.from(newRows)
-    }
+    },
   },
 
   data() {
@@ -60,14 +60,14 @@ const Grid = {
     const { rows } = this
     return {
       updating: true,
-      drows: Array.from(rows)
+      drows: Array.from(rows),
     }
   },
 
   mounted() {
     const { widths, $el, _createID } = this
     const style = document.createElement('style')
-    style.textContent = widths.map((width, i)=> {
+    style.textContent = widths.map((width, i) => {
       return `#${_createID} [data-role="row"] [data-role="col"]:nth-of-type(${i + 1}) {
           width: ${width}
       }`
@@ -81,7 +81,7 @@ const Grid = {
       const { heads } = this
 
       return heads.map(head => unit(head.width))
-    }
+    },
   },
 
   methods: {
@@ -89,7 +89,7 @@ const Grid = {
       const h = this.$createElement
       const { heads } = this
 
-      return heads.map((head, idx)=> {
+      return heads.map((head, idx) => {
         return (
           <div data-role="col">
             {row[head.key]}
@@ -110,7 +110,7 @@ const Grid = {
         if (this._events.sort) {
           this.$emit('sort', {
             sort: heads[idx].sort,
-            key
+            key,
           })
         } else {
           drows.reverse()
@@ -126,10 +126,10 @@ const Grid = {
         if (this._events.sort) {
           this.$emit('sort', {
             sort: heads[idx].sort,
-            key
+            key,
           })
         } else {
-          drows.sort((a, b)=> {
+          drows.sort((a, b) => {
             a = a[sortKey || key]
             b = b[sortKey || key]
 
@@ -151,7 +151,7 @@ const Grid = {
       <div class={[s.gridFixed]} id={_createID}>
         <div class={[s.ghead]} on-click={sorting}>
           <div data-role="row">
-            {heads.map((head, i)=> {
+            {heads.map((head, i) => {
               return (
                 <div data-role="col" data-idx={i} data-sort={head.sort}>
                   { head.name }
@@ -169,7 +169,7 @@ const Grid = {
                 </div>
               : null
           }
-          {drows.map((row, index)=> {
+          {drows.map((row, index) => {
             return (
               <div data-role="row">
                 { rowsRender
@@ -182,7 +182,7 @@ const Grid = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 Grid.Col = {
@@ -190,8 +190,8 @@ Grid.Col = {
   props: {
     width: {
       type: [String, Number],
-      default: ''
-    }
+      default: '',
+    },
   },
 
   computed: {
@@ -199,9 +199,9 @@ Grid.Col = {
       const { width } = this
 
       return {
-        width: unit(width)
+        width: unit(width),
       }
-    }
+    },
   },
 
   render(h) {
@@ -212,7 +212,7 @@ Grid.Col = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 module.exports = Grid

@@ -19,7 +19,7 @@ const LightBox = {
     },
     closeOnESC: {
       type: Boolean,
-      default: false
+      default: false,
     },
     closeOnClickMask: {
       type: Boolean,
@@ -28,7 +28,7 @@ const LightBox = {
     bgColor: {
       type: String,
       default: 'rgba(255, 255, 255, .8)',
-    }
+    },
   },
 
   data() {
@@ -50,7 +50,7 @@ const LightBox = {
         lbDiv.innerHTML = ''
         document.body.style.overflow = 'visible'
       }
-    }
+    },
   },
 
   methods: {
@@ -70,13 +70,13 @@ const LightBox = {
 
       this.opened = false
       this.$emit('close')
-    }
+    },
   },
 
   computed: {
     view() {
       return this.$children.find(vm => vm.$el.getAttribute('data-role') === 'lb-view')
-    }
+    },
   },
 
   render(h) {
@@ -86,7 +86,7 @@ const LightBox = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 LightBox.Close = {
@@ -94,8 +94,8 @@ LightBox.Close = {
   props: {
     event: {
       type: String,
-      default: 'click'
-    }
+      default: 'click',
+    },
   },
 
   render(h) {
@@ -103,15 +103,15 @@ LightBox.Close = {
 
     const opts = {
       on: {
-        [event]: $parent.$parent.close
-      }
+        [event]: $parent.$parent.close,
+      },
     }
     return (
       <div {...opts} data-role="lb-close" class={[s.close]}>
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 LightBox.Open = {
@@ -119,23 +119,23 @@ LightBox.Open = {
   props: {
     event: {
       type: String,
-      default: 'click'
-    }
+      default: 'click',
+    },
   },
 
   render(h) {
     const { $slots, event } = this
     const opts = {
       on: {
-        [event]: this.$parent.open
-      }
+        [event]: this.$parent.open,
+      },
     }
     return (
       <div {...opts} data-role="lb-open" class={[s.open]}>
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 LightBox.View = {
@@ -159,14 +159,14 @@ LightBox.View = {
 
       return {
         backgroundColor: bgColor,
-        display: opened ? 'block' : 'none'
+        display: opened ? 'block' : 'none',
       }
-    }
+    },
   },
 
   render(h) {
     const { $slots, viewStyle, style } = this
-    const { closeOnESC, closeOnClickMask, close, } = this.$parent
+    const { closeOnESC, closeOnClickMask, close } = this.$parent
 
     const on = {}
 
@@ -192,7 +192,7 @@ LightBox.View = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = LightBox

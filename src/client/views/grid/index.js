@@ -15,19 +15,19 @@ const GridPage = {
             name: <b>Name</b>,
             key: 'name',
             sort: -1,
-            width: '30%'
+            width: '30%',
           },
           {
             key: 'email',
             width: '50%',
-            name: 'Email'
+            name: 'Email',
           },
           {
             key: 'id',
             width: '20%',
             name: '#ID',
             sort: -1,
-          }
+          },
         ],
 
         rows: [
@@ -49,7 +49,7 @@ const GridPage = {
         ],
 
         loading: false,
-      }
+      },
 
     }
   },
@@ -57,13 +57,13 @@ const GridPage = {
   methods: {
     toggleLoading({ data }) {
       this.gridData.loading = data
-    }
+    },
   },
 
   render(h) {
     const { $slots, gridData } = this
     const props = {
-      ...gridData
+      ...gridData,
     }
 
     return (
@@ -80,7 +80,7 @@ const GridPage = {
         <Grid {...{ props }} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = GridPage

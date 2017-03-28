@@ -2,27 +2,27 @@ import DatePicker from '..'
 import prefix0 from '../../time-picker/prefix0'
 
 describe('DatePicker', () => {
-  it('Default render', ()=> {
+  it('Default render', () => {
     const vm = mount(DatePicker, {})
 
     expect(vm).toBeTruthy()
   })
 
-  it('test if has `colorfulWeekend`', ()=> {
+  it('test if has `colorfulWeekend`', () => {
     const vm = mount(DatePicker, { colorfulWeekend: true })
 
     expect($(vm.$el).find('.colorfulWeekend').length).toBe(1)
   })
 
-  it('click `next`', (done)=> {
+  it('click `next`', (done) => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
 
     vm.$on('next', (d) => {
       expect(d).toEqual({
         year: 2017,
-        month: 6
+        month: 6,
       })
       done()
     })
@@ -32,15 +32,15 @@ describe('DatePicker', () => {
     $el.find('.calNext').trigger('click')
   })
 
-  it('click `prev`', (done)=> {
+  it('click `prev`', (done) => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
 
     vm.$on('prev', (d) => {
       expect(d).toEqual({
         year: 2017,
-        month: 4
+        month: 4,
       })
       done()
     })
@@ -50,9 +50,9 @@ describe('DatePicker', () => {
     $el.find('.calPrev').trigger('click')
   })
 
-  it('test `onPick`', (done)=> {
+  it('test `onPick`', (done) => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 5]
+      yearMonth: [2017, 5],
     })
     vm.$on('pick', (d) => {
       expect(d).toMatchObject({
@@ -80,7 +80,7 @@ describe('DatePicker', () => {
     expect(vm.value).toBe('2017/03/06')
   })
 
-  it('dynamic change `open`', async()=> {
+  it('dynamic change `open`', async() => {
     const vm = mount(DatePicker, {})
     expect(vm.open).toBe(false)
     vm.open = true
@@ -92,9 +92,9 @@ describe('DatePicker', () => {
     expect(vm.open).toBe(false)
   })
 
-  it('dynamic change `yearMonth`', async()=> {
+  it('dynamic change `yearMonth`', async() => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 3]
+      yearMonth: [2017, 3],
     })
 
     expect(vm.year).toBe(2017)
@@ -107,15 +107,15 @@ describe('DatePicker', () => {
     expect(vm.month).toBe(10)
   })
 
-  it('prev last year', async(done)=> {
+  it('prev last year', async(done) => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 1]
+      yearMonth: [2017, 1],
     })
 
-    vm.$on('prev', (d)=> {
+    vm.$on('prev', (d) => {
       expect(d).toMatchObject({
         month: 12,
-        year: 2016
+        year: 2016,
       })
       done()
     })
@@ -123,15 +123,15 @@ describe('DatePicker', () => {
     $(vm.$el).find('.calPrev').trigger('click')
   })
 
-  it('next next yaear', ()=> {
+  it('next next yaear', () => {
     const vm = mount(DatePicker, {
-      yearMonth: [2017, 12]
+      yearMonth: [2017, 12],
     })
 
-    vm.$on('next', (d)=> {
+    vm.$on('next', (d) => {
       expect(d).toMatchObject({
         month: 1,
-        year: 2018
+        year: 2018,
       })
       done()
     })
@@ -139,7 +139,7 @@ describe('DatePicker', () => {
     $(vm.$el).find('.calNext').trigger('click')
   })
 
-  it('`min and `max` date', async()=> {
+  it('`min and `max` date', async() => {
     const vm = mount(DatePicker, {
       yearMonth: [2017, 3],
       max: new Date(2017, 2, 20),
@@ -164,7 +164,7 @@ describe('DatePicker', () => {
     expect(vm.month).toBe(3)
   })
 
-  it('pick `Today` should do anything', async()=> {
+  it('pick `Today` should do anything', async() => {
     const vm = mount(DatePicker, {})
     const D = new Date()
     const today = D.getDate()

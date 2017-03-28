@@ -9,7 +9,7 @@ it('set <Checkbox> `checked`, and `name` props', () => {
           <Checkbox name="2" checked={false}>Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
   expect(vm.$children[0].name).toBe('1')
@@ -28,7 +28,7 @@ it('test <Checkbox.Group> with a Checkbox named `all` and `checked` being true',
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
   expect(vm.$children[0].check).toBe(true)
@@ -46,7 +46,7 @@ it('test Checkbox named `all` and `checked` being true, and then being clicked',
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
   $(vm.$children[0].$el).trigger('click')
@@ -65,7 +65,7 @@ it('test Checkbox named `all` and `checked` being false, and then being clicked'
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
   $(vm.$children[0].$el).trigger('click')
@@ -84,16 +84,16 @@ it('test Checkbox `non-all` elements affect the `all` element', () => {
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
-  //First Element is clicked
+  // First Element is clicked
   $(vm.$children[1].$el).trigger('click')
   expect(vm.$children[0].check).toBe(false)
   expect(vm.$children[1].check).toBe(false)
   expect(vm.$children[2].check).toBe(true)
 
-  //First Element is clicked again
+  // First Element is clicked again
   $(vm.$children[1].$el).trigger('click')
   expect(vm.$children[0].check).toBe(true)
   expect(vm.$children[1].check).toBe(true)
@@ -105,7 +105,7 @@ it('test Checkbox `checked` dynamic updates', async() => {
   await new Promise((done) => {
     vm = shallow({
       data: {
-        input: false
+        input: false,
       },
       mounted() {
         this.input = true
@@ -118,7 +118,7 @@ it('test Checkbox `checked` dynamic updates', async() => {
             <Checkbox name="2">Second Element</Checkbox>
           </Checkbox.Group>
         )
-      }
+      },
     })
   })
   expect(vm.$children[0].check).toBe(true)
@@ -136,10 +136,10 @@ it('test <Checkbox> `onChange` props', () => {
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
-  //First Element is clicked
+  // First Element is clicked
   $(vm.$children[0].$el).trigger('click')
 })
 
@@ -156,9 +156,9 @@ it('test <Checkbox.Group> `onChange` props', () => {
           <Checkbox name="2">Second Element</Checkbox>
         </Checkbox.Group>
       )
-    }
+    },
   })
 
-  //First Element is clicked
+  // First Element is clicked
   $(vm.$children[1].$el).trigger('click')
 })

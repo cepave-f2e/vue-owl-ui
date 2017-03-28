@@ -9,30 +9,30 @@ const DualList = {
       type: Array,
       default: () => {
         return []
-      }
+      },
     },
     selectedItems: {
       type: Array,
       default: () => {
         return []
-      }
+      },
     },
     displayKey: {
       type: String,
-      required: true
+      required: true,
     },
     caseInsensitive: {
       type: Boolean,
-      default: false
+      default: false,
     },
     apiMode: {
       type: Boolean,
-      default: false
+      default: false,
     },
     leftLoading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -41,7 +41,7 @@ const DualList = {
       highlightLeft: '',
       highlightRight: '',
       leftList: {},
-      rightList: {}
+      rightList: {},
     }
   },
   mounted() {
@@ -76,7 +76,7 @@ const DualList = {
       }, {})
       this.listToRemove = { ...selectedItems }
       this.rightList = { ...selectedItems }
-    }
+    },
   },
   methods: {
     handleChange(list) {
@@ -165,7 +165,7 @@ const DualList = {
         }, {})
         this.highlightRight = this.$refs.searchListToRemove.value
       }
-    }
+    },
   },
   render(h) {
     const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading, displayKey } = this
@@ -197,7 +197,7 @@ const DualList = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 const List = {
@@ -217,8 +217,8 @@ const List = {
     },
     icon: {
       type: Array,
-      default: ['circle-add', '#b9e617']
-    }
+      default: ['circle-add', '#b9e617'],
+    },
   },
 
   computed: {
@@ -232,7 +232,7 @@ const List = {
         })
       }
       return highlightText
-    }
+    },
   },
 
   methods: {
@@ -255,7 +255,7 @@ const List = {
         <Icon class={[s.icon]} typ={icon[0]} size={18} fill={icon[1]} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = DualList

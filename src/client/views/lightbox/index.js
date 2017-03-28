@@ -48,7 +48,7 @@ const LightBoxPage = {
         </LightBox>
       </div>
     )
-  }
+  },
 }
 
 module.exports = LightBoxPage

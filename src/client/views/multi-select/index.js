@@ -17,7 +17,7 @@ const MultiSelectPage = {
         { value: 'raticate', id: 18 },
         { value: 'fearow', id: 17 },
         { value: 'psyduck', id: 16 },
-        { value:'duduo', id: 1 }
+        { value:'duduo', id: 1 },
       ],
       output: [
         { value: 'vulpix', id: 23 },
@@ -29,7 +29,7 @@ const MultiSelectPage = {
   methods: {
     getMultiSelectData(data) {
       this.output = data
-    }
+    },
   },
 
   render(h) {
@@ -39,10 +39,10 @@ const MultiSelectPage = {
         <Markdown src={require('./doc.md')} />
         <div class={[s.demoGroup]}>
           <div class={[s.multiSelect]}>
-            <MultiSelect selectedOpts={this.selectedItems} 
-                         options={this.options} 
+            <MultiSelect selectedOpts={this.selectedItems}
+                         options={this.options}
                          onChange={this.getMultiSelectData}
-                         displayKey="value" 
+                         displayKey="value"
                          caseInsensitive
                          loading
             />
@@ -57,7 +57,7 @@ const MultiSelectPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = MultiSelectPage

@@ -13,7 +13,7 @@ it('test <MultiSelect /> with props `options`, `selectedOpts`, `displayKey`, and
       return (
         <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} isDisabled />
       )
-    }
+    },
   })
   expect(vm.displayIdx).toEqual([0, 1, 2])
   expect(vm.labels).toEqual([
@@ -40,7 +40,7 @@ it('test <MultiSelect /> dynamic change props `selectedOpts`, `isOpened`, `isDis
           open: false,
           disable: true,
           loading: true,
-          options: []
+          options: [],
         }
       },
       mounted() {
@@ -53,19 +53,19 @@ it('test <MultiSelect /> dynamic change props `selectedOpts`, `isOpened`, `isDis
       },
       render(h) {
         return (
-          <MultiSelect displayKey="value" 
-                       selectedOpts={this.selectedItems} 
-                       options={this.options} 
-                       isOpened={this.open} 
+          <MultiSelect displayKey="value"
+                       selectedOpts={this.selectedItems}
+                       options={this.options}
+                       isOpened={this.open}
                        isDisabled={this.disable}
                        loading={this.loading} />
         )
-      }
+      },
     })
   })
   expect(vm.displayIdx).toEqual([0, 1, 2])
   expect(vm.labels).toEqual([
-    { value: 'pikachu', id: 24 }
+    { value: 'pikachu', id: 24 },
   ])
   expect(vm.opened).toBe(true)
   expect(vm.disable).toBe(false)
@@ -86,13 +86,13 @@ it('test <MultiSelect /> search feature', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
-    //toggleMenu
+    // toggleMenu
     $(vm.$el.children[0]).trigger('click')
-    //input
+    // input
     $(vm.$el.children[0].children[1]).val('ca')
-    //trigger keydown ENTER
+    // trigger keydown ENTER
     vm.handleInput()
     vm.$nextTick(done)
   })
@@ -113,13 +113,13 @@ it('test <MultiSelect /> case insensitive search', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} caseInsensitive />
         )
-      }
+      },
     })
-    //toggleMenu
+    // toggleMenu
     $(vm.$el.children[0]).trigger('click')
-    //input
+    // input
     $(vm.$el.children[0].children[1]).val('ra')
-    //trigger keydown ENTER
+    // trigger keydown ENTER
     vm.handleInput()
     vm.$nextTick(done)
   })
@@ -140,7 +140,7 @@ it('test <MultiSelect /> select and unselect feature', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
     vm.$nextTick(done)
   })
@@ -163,7 +163,7 @@ it('test <MultiSelect /> mouse event', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
     vm.$nextTick(done)
   })
@@ -189,7 +189,7 @@ it('test <MultiSelect /> keyboard event', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
     vm.$nextTick(done)
   })
@@ -214,7 +214,7 @@ it('test <MultiSelect /> keyboard event', async() => {
   expect(vm.optionsHovered).toBe(false)
   expect(vm.focusedIdx).toBe(1)
 
-  await new Promise((done) => { //unselect
+  await new Promise((done) => { // unselect
     vm.$el.children[0].children[1].dispatchEvent(key13)
     vm.$nextTick(done)
   })
@@ -229,7 +229,7 @@ it('test <MultiSelect /> keyboard event', async() => {
   expect(vm.optionsHovered).toBe(false)
   expect(vm.focusedIdx).toBe(0)
 
-  await new Promise((done) => { //select
+  await new Promise((done) => { // select
     vm.$el.children[0].children[1].dispatchEvent(key13)
     vm.$nextTick(done)
   })
@@ -254,7 +254,7 @@ it('test <MultiSelect /> delete Label by clicking', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
     vm.$nextTick(done)
   })
@@ -277,7 +277,7 @@ it('test <MultiSelect /> delete Label by backspace', async() => {
         return (
           <MultiSelect displayKey="value" selectedOpts={selectedItems} options={pokemon} />
         )
-      }
+      },
     })
     vm.$nextTick(done)
   })

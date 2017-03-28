@@ -22,25 +22,25 @@ const Page = {
 
     align: {
       type: String,
-      default: 'center' // `left`, `center` or `right`
+      default: 'center', // `left`, `center` or `right`
     },
 
     toPage: {
       type: Number,
       default: 1,
-    }
+    },
   },
 
   data() {
     return {
-      page: this.toPage
+      page: this.toPage,
     }
   },
 
   watch: {
     toPage(p) {
       this.page = p
-    }
+    },
   },
 
   methods: {
@@ -65,7 +65,7 @@ const Page = {
       this.$emit('page', {
         page: this.page,
       })
-    })
+    }),
   },
 
   computed: {
@@ -96,7 +96,7 @@ const Page = {
 
       for (let i = start; i <= end; i++) {
         const css = {
-          [s.on]: (i === page)
+          [s.on]: (i === page),
         }
         pagesVNodes.push(
           <li data-page={i} class={[css]} data-role="page" />
@@ -135,18 +135,18 @@ const Page = {
           </ol>
       }
       return VNode
-    }
+    },
   },
 
   render(h) {
-    const { jumpTo,  align, typeRender } = this
+    const { jumpTo, align, typeRender } = this
 
     return (
       <nav class={[s.page]} data-align={align} onClick={jumpTo}>
         { typeRender }
       </nav>
     )
-  }
+  },
 }
 
 module.exports = Page

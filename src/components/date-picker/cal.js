@@ -9,7 +9,7 @@ const DatePickerCal = {
   props: {
     yearMonth: {
       type: Array,
-      default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1]
+      default: () => [(new Date).getFullYear(), (new Date).getMonth() + 1],
     },
 
     min: {
@@ -47,7 +47,7 @@ const DatePickerCal = {
 
       this.year = year
       this.month = month
-    }
+    },
   },
 
   methods: {
@@ -67,7 +67,7 @@ const DatePickerCal = {
         day: +day,
         year,
         month,
-        Date: new Date(year, (month - 1), date)
+        Date: new Date(year, (month - 1), date),
       })
     }),
 
@@ -87,7 +87,7 @@ const DatePickerCal = {
 
       this.$emit('prev', {
         year: this.year,
-        month: this.month
+        month: this.month,
       })
     },
     next(ev) {
@@ -107,9 +107,9 @@ const DatePickerCal = {
 
       this.$emit('next', {
         year: this.year,
-        month: this.month
+        month: this.month,
       })
-    }
+    },
   },
 
   computed: {
@@ -164,7 +164,7 @@ const DatePickerCal = {
               const classes = {
                 [s.today]: isToday,
                 [s.dateNull]: date === null,
-                [s.dateIgnore]: (min && DD <= min) || (max && DD >= max)
+                [s.dateIgnore]: (min && DD <= min) || (max && DD >= max),
               }
 
               return (
@@ -184,9 +184,9 @@ const DatePickerCal = {
       const { colorfulWeekend } = this
 
       return {
-        [s.colorfulWeekend]: colorfulWeekend
+        [s.colorfulWeekend]: colorfulWeekend,
       }
-    }
+    },
   },
 
   render(h) {
@@ -226,7 +226,7 @@ const DatePickerCal = {
         </table>
       </div>
     )
-  }
+  },
 }
 
 module.exports = DatePickerCal

@@ -3,7 +3,7 @@ const Logo = {
   props: {
     size: {
       type: [Number, String],
-      default: 20
+      default: 20,
     },
   },
 
@@ -19,9 +19,9 @@ const Logo = {
       }
 
       return {
-        width, height
+        width, height,
       }
-    }
+    },
   },
 
   render(h) {
@@ -52,7 +52,7 @@ const Logo = {
         </g>
       </svg>
     )
-  }
+  },
 }
 
 module.exports = Logo

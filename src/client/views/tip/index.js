@@ -44,7 +44,7 @@ const TipPage = {
         </Tip>
       </div>
     )
-  }
+  },
 }
 
 module.exports = TipPage

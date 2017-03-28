@@ -9,14 +9,14 @@ const LabelPage = {
       testData: [
         { value: 'Winnie The Pooh' },
         { value: 'Piglet' },
-        { value: 'Tigger' }
-      ]
+        { value: 'Tigger' },
+      ],
     }
   },
   methods: {
     handleLabelGroup(data) {
       this.testData = data
-    }
+    },
   },
   render(h) {
     const { $slots } = this
@@ -88,12 +88,12 @@ const LabelPage = {
         </div>
         Label Group (Piglet is focused)
         <div class={[s.labelGroup]}>
-          <Label.Group  displayKey="value" 
-                        options={this.testData} 
-                        x={true} 
-                        badge={true} 
-                        typ="outline" 
-                        onChange={this.handleLabelGroup} 
+          <Label.Group displayKey="value"
+                        options={this.testData}
+                        x={true}
+                        badge={true}
+                        typ="outline"
+                        onChange={this.handleLabelGroup}
                         focused={1}
                         newTag={true}
           />
@@ -105,7 +105,7 @@ const LabelPage = {
         </pre>
       </div>
     )
-  }
+  },
 }
 
 module.exports = LabelPage

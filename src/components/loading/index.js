@@ -10,8 +10,8 @@ module.exports = {
     },
     show: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
   computed: {
@@ -21,7 +21,7 @@ module.exports = {
       const { typ, show } = this
 
       const style = {
-        display: show ? 'block' : 'none'
+        display: show ? 'block' : 'none',
       }
 
       switch (typ) {
@@ -38,7 +38,7 @@ module.exports = {
       }
 
       return style
-    }
+    },
   },
 
   render(h) {
@@ -47,5 +47,5 @@ module.exports = {
     return (
       <div class={s[type]} style={style} />
     )
-  }
+  },
 }

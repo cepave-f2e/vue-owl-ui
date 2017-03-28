@@ -11,7 +11,7 @@ it('test Tip default porps', () => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
   expect(vm.pos).toBe('down')
   expect(vm.event).toBe('mouseenter')
@@ -28,12 +28,12 @@ it('test mouse hover event', async() => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
 
-  //when mouse enters
+  // when mouse enters
   $(vm.$el).trigger('mouseenter')
-  //tipContext should show up
+  // tipContext should show up
   const tipContext2 = document.querySelector('#tipContext2')
   expect(getComputedStyle(tipContext2)._values.display).toBe('block')
   await new Promise((done) => {
@@ -42,9 +42,9 @@ it('test mouse hover event', async() => {
     }, 50)
   })
   expect(getComputedStyle(tipContext2)._values.opacity).toBe('1')
-  //when mouse leaves
+  // when mouse leaves
   $(vm.$el).trigger('mouseleave')
-  //tipContext should disappear
+  // tipContext should disappear
   expect(document.querySelector('#tipContext2')).toBe(null)
 })
 
@@ -59,7 +59,7 @@ it('test Tip props set `pos`=right', () => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
   expect(vm.pos).toBe('right')
 
@@ -77,7 +77,7 @@ it('test Tip props set `pos`=left', () => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
   expect(vm.pos).toBe('left')
 
@@ -95,7 +95,7 @@ it('test Tip props set `pos`=up', () => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
   expect(vm.pos).toBe('up')
 
@@ -113,7 +113,7 @@ it('test Tip props set `pos`=down', () => {
           </Tip.Context>
         </Tip>
       )
-    }
+    },
   })
   expect(vm.pos).toBe('down')
 

@@ -7,17 +7,17 @@ const MultiSelect = {
   props: {
     options: {
       type: Array,
-      required: true
+      required: true,
     },
 
     selectedOpts: {
       type: Array,
-      required: true
+      required: true,
     },
 
     displayKey: {
       type: String,
-      required: true
+      required: true,
     },
 
     isOpened: {
@@ -27,12 +27,12 @@ const MultiSelect = {
 
     isDisabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     caseInsensitive: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     // apiMode: {
@@ -42,13 +42,13 @@ const MultiSelect = {
 
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     loadingMsg: {
       type: String,
-      default: 'loading...'
-    }
+      default: 'loading...',
+    },
   },
 
   data() {
@@ -63,7 +63,7 @@ const MultiSelect = {
       inputWidth: 1,
       focusedIdx: -1,
       focusedLabelIdx: -1,
-      selectedIdx: this.selectedOpts
+      selectedIdx: this.selectedOpts,
     }
   },
 
@@ -72,7 +72,7 @@ const MultiSelect = {
       this.displayIdx = [...Array(this.options.length).keys()]
       this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
         preVal.push(this.options[curVal])
-        return preVal        
+        return preVal
       }, [])
     }
   },
@@ -85,13 +85,13 @@ const MultiSelect = {
       this.displayIdx = [...Array(newVal.length).keys()]
       this.labels = this.selectedIdx.reduce((preVal, curVal, idx) => {
         preVal.push(newVal[curVal])
-        return preVal        
+        return preVal
       }, [])
     },
     selectedIdx(newVal) {
       this.labels = newVal.reduce((preVal, curVal, idx) => {
         preVal.push(this.options[curVal])
-        return preVal        
+        return preVal
       }, [])
     },
     isOpened(newVal) {
@@ -102,7 +102,7 @@ const MultiSelect = {
     },
     loading(newVal) {
       this.loadingPie = newVal
-    }
+    },
   },
 
   computed: {
@@ -118,7 +118,7 @@ const MultiSelect = {
           [s.option]: true,
           [s.selected]: (isSelected >= 0),
           [s.focused]: (idx === this.focusedIdx),
-          [s.disablePointer]: disablePointer
+          [s.disablePointer]: disablePointer,
         }
 
         if (toDisplay >= 0) {
@@ -145,7 +145,7 @@ const MultiSelect = {
       const { opened, disable } = this
       const style = {
         [s.selectOpen]: opened,
-        [s.disabled]: disable
+        [s.disabled]: disable,
       }
       return style
     },
@@ -219,26 +219,26 @@ const MultiSelect = {
       this.optionsHovered = true
       this.disablePointer = true
 
-      if (e.keyCode === 38) {//arrowUp
+      if (e.keyCode === 38) {// arrowUp
         this.focusAdjacentOption(this.focusedIdx, 'pre')
-      } else if (e.keyCode === 40) { //arrowDown
+      } else if (e.keyCode === 40) { // arrowDown
         this.focusAdjacentOption(this.focusedIdx, 'next')
-      } else if (e.keyCode === 13) { //ENTER
+      } else if (e.keyCode === 13) { // ENTER
         const { selectedIdx } = this
         const idx = selectedIdx.indexOf(this.focusedIdx)
-        if (idx >= 0) { //unselect
+        if (idx >= 0) { // unselect
           this.selectedIdx.splice(idx, 1)
           this.outputResult()
-        } else { //select
+        } else { // select
           this.selectedIdx.push(this.focusedIdx)
           this.outputResult()
         }
-      } else if (e.keyCode === 8 && this.$refs.searchField.value.length <= 0) { //backspace delete
+      } else if (e.keyCode === 8 && this.$refs.searchField.value.length <= 0) { // backspace delete
         const selectedArrLen = this.selectedIdx.length
 
-        if (this.focusedLabelIdx === -1) { //empty input and focus on last label
+        if (this.focusedLabelIdx === -1) { // empty input and focus on last label
           this.focusedLabelIdx = selectedArrLen - 1
-        } else if (this.focusedLabelIdx > -1) {//delete the focused label
+        } else if (this.focusedLabelIdx > -1) {// delete the focused label
           this.selectedIdx.pop()
           this.focusedLabelIdx = -1
         }
@@ -251,10 +251,10 @@ const MultiSelect = {
       const { selectedIdx } = this
       const changedId = delegateTarget.getAttribute('data-idx')
       const idx = selectedIdx.indexOf(+changedId)
-      if (idx >= 0) { //unselect
+      if (idx >= 0) { // unselect
         this.selectedIdx.splice(idx, 1)
         this.outputResult()
-      } else { //select
+      } else { // select
         this.selectedIdx.push(+changedId)
         this.outputResult()
       }
@@ -276,7 +276,7 @@ const MultiSelect = {
       this.disablePointer = false
     },
 
-    handleLabelRemove(data) { //unselect
+    handleLabelRemove(data) { // unselect
       const idxToRemove = this.options.indexOf(data)
       const idx = this.selectedIdx.indexOf(idxToRemove)
       this.selectedIdx.splice(idx, 1)
@@ -290,7 +290,7 @@ const MultiSelect = {
       const idxOfCurDataIdx = this.displayIdx.indexOf(curDataIdx)
       const displayArrLength = this.displayIdx.length
 
-      if (curDataIdx === -1) { //current not focus on optionBox
+      if (curDataIdx === -1) { // current not focus on optionBox
         curDataIdx = displayIdx[0]
         targetDataIdx = displayIdx[0]
       } else {
@@ -306,7 +306,7 @@ const MultiSelect = {
 
       const currentTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${curDataIdx}"]`)
       const focusTarget = this.$el.querySelector(`[data-role="select-option"][data-idx="${targetDataIdx}"]`)
-      
+
       focusTarget.focus()
       this.$refs.searchField.focus()
 
@@ -324,12 +324,12 @@ const MultiSelect = {
     return (
       <div class={[s.selecter, css]}>
         <div class={[s.searchField]} onClick={toggleMenu}>
-          <Label.Group x badge 
+          <Label.Group x badge
                        displayKey={displayKey}
-                       typ="outline" 
-                       options={labels} 
-                       onRemove={handleLabelRemove} 
-                       class={(disable) ? [s.disabledLabelg] : [s.labelg]} 
+                       typ="outline"
+                       options={labels}
+                       onRemove={handleLabelRemove}
+                       class={(disable) ? [s.disabledLabelg] : [s.labelg]}
                        focused={this.focusedLabelIdx}
           />
           <input class={[s.invisibleInput]}
@@ -342,7 +342,7 @@ const MultiSelect = {
           >
           </input>
         </div>
-        <div  class={[s.optionBox]}
+        <div class={[s.optionBox]}
               onClick={_handleOnChange}
               on-mouseenter={handleMouseEnter}
               on-mouseleave={handleMouseEnter}
@@ -350,15 +350,15 @@ const MultiSelect = {
               on-mousemove={handleMouseMove}
         >
           {
-            (this.loadingPie) 
-            ? this.renderLoading 
+            (this.loadingPie)
+            ? this.renderLoading
             : ''
           }
           {renderOptions}
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = MultiSelect

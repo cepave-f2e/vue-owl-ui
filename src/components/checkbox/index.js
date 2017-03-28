@@ -6,12 +6,12 @@ const Checkbox = {
   props: {
     checked: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data() {
@@ -27,7 +27,7 @@ const Checkbox = {
       this.check = !this.check
 
       const data = {
-        [name]: this.check
+        [name]: this.check,
       }
 
       this.$emit('change', data)
@@ -46,7 +46,7 @@ const Checkbox = {
   },
 
   render(h) {
-    const { handleClick, check,  $slots } = this
+    const { handleClick, check, $slots } = this
 
     return (
       <div on-click={handleClick} class={[s.cb]}>
@@ -57,7 +57,7 @@ const Checkbox = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 
 Checkbox.Group = {
@@ -78,7 +78,7 @@ Checkbox.Group = {
   computed: {
     checkedDatum() {
       const { $children } = this
-      return $children.reduce((data, child)=> {
+      return $children.reduce((data, child) => {
         const { name, check } = child
 
         if (name === 'all') {
@@ -97,16 +97,16 @@ Checkbox.Group = {
       const checked = datum.filter(d => d !== 'all' && checkedDatum[d]).length
 
       return {
-        total, checked
+        total, checked,
       }
-    }
+    },
   },
 
   methods: {
     handleChange(checked) {
       const checkedDatum = {
         ...this.checkedDatum,
-        ...checked
+        ...checked,
       }
 
       const { $children, counts } = this
@@ -115,7 +115,7 @@ Checkbox.Group = {
       if (this.$all) {
         if (isClickedAll) {
           this.$all.check = checked.all
-          $children.forEach((c)=> {
+          $children.forEach((c) => {
             checkedDatum[c.name] = checked.all
             c.check = checked.all
           })
@@ -135,6 +135,6 @@ Checkbox.Group = {
         {$slots.default}
       </div>
     )
-  }
+  },
 }
 module.exports = Checkbox

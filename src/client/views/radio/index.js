@@ -5,13 +5,13 @@ const RadioPage = {
   name: 'RadioPage',
   data() {
     return {
-      radioDatum: { piglet: false, tigger: false, winnieThePooh: true }
+      radioDatum: { piglet: false, tigger: false, winnieThePooh: true },
     }
   },
   methods: {
     getRadioData(data) {
       this.radioDatum = data
-    }
+    },
   },
   render(h) {
     const { getRadioData, radioDatum } = this
@@ -31,7 +31,7 @@ const RadioPage = {
         </Radio.Group>
       </div>
     )
-  }
+  },
 }
 
 module.exports = RadioPage

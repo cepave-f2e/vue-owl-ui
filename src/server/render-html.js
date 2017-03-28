@@ -1,4 +1,4 @@
-module.exports = ({ appHTML, initState = {} })=> {
+module.exports = ({ appHTML, initState = {} }) => {
   return `<!doctype html>
 <meta charset="UTF-8" />
 <link rel="icon" href="//light.owl.fastweb.com.cn/statics/icon/favicon.png" />

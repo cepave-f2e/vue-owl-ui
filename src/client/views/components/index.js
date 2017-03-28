@@ -95,7 +95,7 @@ const ComponentPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = ComponentPage

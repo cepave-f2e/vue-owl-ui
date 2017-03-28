@@ -11,14 +11,14 @@ const TimePickerDoc = {
     return {
       outs: {
 
-      }
+      },
     }
   },
 
   methods: {
     onChange(data) {
       this.outs = data
-    }
+    },
   },
   render(h) {
     const { onChange, outs } = this
@@ -32,7 +32,7 @@ const TimePickerDoc = {
         <TimePicker onChange={onChange} ref="time1" />
       </div>
     )
-  }
+  },
 }
 
 module.exports = TimePickerDoc

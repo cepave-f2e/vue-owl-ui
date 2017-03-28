@@ -10,12 +10,12 @@ if (isProd) {
   appServerData = fs.readFileSync(appServerPath)
 }
 
-const ssr = ()=> {
+const ssr = () => {
   return new Promise((resolve, reject) => {
     if (appServerData) {
       resolve(createBundleRenderer(appServerData))
     } else {
-      fs.readFile(appServerPath, (err, data)=> {
+      fs.readFile(appServerPath, (err, data) => {
         if (err) reject(err)
         resolve(createBundleRenderer(data))
       })

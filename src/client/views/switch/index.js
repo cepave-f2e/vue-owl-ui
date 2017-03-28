@@ -7,7 +7,7 @@ const SwitchPage = {
   data () {
     return {
       switch1Data: { demo1: true },
-      switch2Data: { demo2: true }
+      switch2Data: { demo2: true },
     }
   },
   methods: {
@@ -16,7 +16,7 @@ const SwitchPage = {
     },
     getSwitch2Data(data) {
       this.switch2Data = data
-    }
+    },
   },
 
   render(h) {
@@ -48,7 +48,7 @@ const SwitchPage = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 module.exports = SwitchPage

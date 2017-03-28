@@ -13,18 +13,18 @@ const Input = {
     },
     status: {
       type: String,
-      default: 'normal'
+      default: 'normal',
     },
     val: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     defaultValue: {
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     loading:{
       type: Boolean,
@@ -32,20 +32,20 @@ const Input = {
     },
     password: {
       type: Boolean,
-      default: false
+      default: false,
     },
     x: {
       type: Boolean,
-      default: false
+      default: false,
     },
     required: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
@@ -61,7 +61,7 @@ const Input = {
   watch: {
     value(val) {
       this.$emit('input', val)
-    }
+    },
   },
 
   computed: {
@@ -69,11 +69,11 @@ const Input = {
       const { status, disabled } = this
       const styles = [
         s.input, s[status], {
-          [s.disabled]: disabled
-        }
+          [s.disabled]: disabled,
+        },
       ]
       return styles
-    }
+    },
   },
 
   methods: {
@@ -95,7 +95,7 @@ const Input = {
       this.pwdStatus = !this.pwdStatus
       this.pwdFill = (this.pwdStatus) ? '#b8bdbf' : '#8962d9'
       this.pwdInput = (this.pwdStatus) ? 'password' : 'text'
-    }
+    },
   },
 
   render(h) {
@@ -123,7 +123,7 @@ const Input = {
         <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} domPropsValue={value} on-input={handleInput} disabled={disabled} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = Input

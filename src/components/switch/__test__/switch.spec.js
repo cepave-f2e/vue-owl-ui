@@ -7,7 +7,7 @@ it('default status should be checked', () => {
       return (
         <Switch checked={true} />
       )
-    }
+    },
   })
   expect(vm.check).toBe(true)
   $(vm.$el).trigger('click')
@@ -22,7 +22,7 @@ it('test props `name`, status, and output data after one clicking', () => {
       return (
         <Switch name="test" checked={true} onChange={switchChange} />
       )
-    }
+    },
   })
   $(vm.$el).trigger('click')
   expect(vm.check).toBe(false)
@@ -33,7 +33,7 @@ it('`check` should be changed after dynamic updates', async() => {
   await new Promise((done) => {
     vm = shallow({
       data: {
-        input : true
+        input : true,
       },
       mounted() {
         this.input = false
@@ -43,7 +43,7 @@ it('`check` should be changed after dynamic updates', async() => {
         return (
           <Switch checked={this.input} />
         )
-      }
+      },
     })
   })
   expect(vm.check).toBe(false)
@@ -59,10 +59,10 @@ it('test props `typ` and add words in switch button', () => {
           <Switch.Close>關</Switch.Close>
         </Switch>
       )
-    }
+    },
   })
   expect(vm.style).toEqual({
     checkbox: [s.specialSwitchButton],
-    div: [s.specialSwitch]
+    div: [s.specialSwitch],
   })
 })

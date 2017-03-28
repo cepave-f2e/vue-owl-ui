@@ -10,7 +10,7 @@ module.exports = new Router({
     { path: '/home', component: require('./views/home') },
     { path: '/components', component: require('./views/components'),
       children: [
-        { path: 'legacy',  component: require('./views/legacy') },
+        { path: 'legacy', component: require('./views/legacy') },
         { path: 'legacy/grid', component: require('./views/legacy/grid') },
         { path: '', component: require('./views/components-home') },
         { path: 'loading', component: require('./views/loading') },
@@ -33,7 +33,7 @@ module.exports = new Router({
         { path: 'complex-query', component: require('./views/complex-query') },
         { path: 'date-picker', component: require('./views/date-picker') },
         { path: 'time-picker', component: require('./views/time-picker') },
-      ]
+      ],
     },
     { path: '*', redirect: '/home' },
   ],

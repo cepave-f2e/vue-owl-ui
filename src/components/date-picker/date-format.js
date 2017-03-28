@@ -1,7 +1,7 @@
 import prefix0 from '../time-picker/prefix0'
 
 module.exports = (Date = new Date(), fmt = '') => {
-  return fmt.replace(/(y|m|d)+/ig, (m)=> {
+  return fmt.replace(/(y|m|d)+/ig, (m) => {
     m = m.toLocaleLowerCase()
 
     if (m.startsWith('y')) {

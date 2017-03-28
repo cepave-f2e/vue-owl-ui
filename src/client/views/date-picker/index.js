@@ -6,13 +6,13 @@ const DatePickerDoc = {
   name: 'DatePickerDoc',
   data() {
     return {
-      outs: {}
+      outs: {},
     }
   },
   methods: {
     onPick(d) {
       this.outs = d
-    }
+    },
   },
   render(h) {
     const { outs, onPick } = this
@@ -27,7 +27,7 @@ const DatePickerDoc = {
         <DatePicker onPick={onPick} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = DatePickerDoc

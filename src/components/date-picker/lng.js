@@ -22,5 +22,5 @@ module.exports = {
     4: 'Thursday',
     5: 'Friday',
     6: 'Saturday',
-  }
+  },
 }

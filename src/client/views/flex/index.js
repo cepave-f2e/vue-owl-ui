@@ -76,7 +76,7 @@ const FlexPage = {
         </Flex>
       </div>
     )
-  }
+  },
 }
 
 module.exports = FlexPage

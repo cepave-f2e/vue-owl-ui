@@ -5,33 +5,33 @@ const Switch = {
   props: {
     checked: {
       type: Boolean,
-      default: false
+      default: false,
     },
     name: {
       type: String,
-      default: 'data'
+      default: 'data',
     },
     typ: {
       type: String,
-      default: 'default'//or 'special'
-    }
+      default: 'default', //or 'special'
+    },
   },
   data () {
     return {
-      check: this.checked
+      check: this.checked,
     }
   },
   watch: {
     checked() {
       this.check = this.checked
-    }
+    },
   },
   methods: {
     handleClick () {
       const { name } = this
       this.check = !this.check
       const data = {
-        [name]: this.check
+        [name]: this.check,
       }
       this.$emit('change', data)
     },
@@ -41,10 +41,10 @@ const Switch = {
       const { typ } = this
       const style = {
         checkbox: [s[`${typ}SwitchButton`]],
-        div: [s[`${typ}Switch`]]
+        div: [s[`${typ}Switch`]],
       }
       return style
-    }
+    },
   },
   render(h) {
     const { handleClick, check, $slots, style } = this
@@ -57,7 +57,7 @@ const Switch = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 Switch.Open = {
@@ -67,7 +67,7 @@ Switch.Open = {
     return (
       <span class={[s.labelOpen]}>{$slots.default}</span>
     )
-  }
+  },
 }
 
 Switch.Close = {
@@ -77,6 +77,6 @@ Switch.Close = {
     return (
       <span class={[s.labelClose]}>{$slots.default}</span>
     )
-  }
+  },
 }
 module.exports = Switch

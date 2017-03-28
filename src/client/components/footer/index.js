@@ -29,7 +29,7 @@ const Footer = {
         </div>
       </footer>
     )
-  }
+  },
 }
 
 module.exports = Footer

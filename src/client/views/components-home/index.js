@@ -22,7 +22,7 @@ const CompnentHomePage = {
         <Markdown src={require('./doc.md')} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = CompnentHomePage
