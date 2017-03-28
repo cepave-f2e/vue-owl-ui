@@ -46,7 +46,7 @@ Defined the `width` of each column. Clould be `px` or `%` if omit unit it'll be 
 ### rowsRender 
 Custom rows renderer.
 
-```js
+```jsx
 rowsRender({ row, index }) {
   return [
     <Grid.col><b>{row.name}</b></Grid.col>,
@@ -54,6 +54,11 @@ rowsRender({ row, index }) {
   ]
 }
 ```
+
+## Methods
+
+### resetSort()
+Reset head's sort status to default.
 
 ## Event
 
