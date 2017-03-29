@@ -34,12 +34,14 @@ const Tip = {
   mounted() {
     const { event, $el, pos, $children, delay } = this
     const _body = document.body
-    const _context = $children[0].$el.cloneNode(true)
-    _context.style.display = 'block'
-    _context.setAttribute('id', 'tipContext2')
 
+    let _context
     $el.addEventListener(event, (ev) => {
+      _context = $children[0].$el.cloneNode(true)
+      _context.style.display = 'block'
+      _context.setAttribute('id', 'tipContext2')
       _body.appendChild(_context)
+
       const { currentTarget } = ev
       const { left, top } = offset(currentTarget)
       const oWidth = currentTarget.offsetWidth
@@ -67,6 +69,10 @@ const Tip = {
     }, false)
 
     $el.addEventListener('mouseleave', (ev) => {
+      if (!_context) {
+        return
+      }
+
       _context.style.opacity = 0
       _body.removeChild(_context)
     }, false)
