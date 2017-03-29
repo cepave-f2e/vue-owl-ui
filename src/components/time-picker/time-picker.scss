@@ -8,6 +8,7 @@
   left: 0;
   top: 35px;
   background: #fff;
+  z-index: 2;
   li {
     padding: 2px;
     padding-left: 8px;
@@ -38,7 +39,7 @@
   width: 90px;
   height: 34px;
   position: relative;
-  z-index: 8887;
+  z-index: 1;
   &:focus {
     outline-color: var(--OWL-UI-COLOR-PRIMARY);
     .timebox {
