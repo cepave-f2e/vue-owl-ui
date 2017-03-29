@@ -38,7 +38,7 @@
   width: 90px;
   height: 34px;
   position: relative;
-
+  z-index: 8887;
   &:focus {
     outline-color: var(--OWL-UI-COLOR-PRIMARY);
     .timebox {
