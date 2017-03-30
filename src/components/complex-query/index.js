@@ -253,7 +253,6 @@ const ComplexQuery = {
     },
     renderCategories() {
       const { categories, changeCategory } = this
-      const h = this.$createElement
 
       return (
         <ul class={[s.categories]}>
@@ -270,7 +269,6 @@ const ComplexQuery = {
 
     renderItems() {
       const { items, handleFold, handleSelect, $refs, highlightText } = this
-      const h = this.$createElement
 
       return (
         <div class={[s.itemView]}>
@@ -322,7 +320,6 @@ const ComplexQuery = {
 
     renderEditItems() {
       const { storeSelectedItems, editItemRemove } = this
-      const h = this.$createElement
 
       return (
         <ul>

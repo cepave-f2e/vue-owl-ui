@@ -114,7 +114,6 @@ const DatePickerCal = {
 
   computed: {
     days() {
-      const h = this.$createElement
       const { firstDayOfWeek } = this
       const days = Object.keys(lng.days)
 
@@ -129,7 +128,6 @@ const DatePickerCal = {
       /**
        * very heavy logic here!! Be careful to modify.
        */
-      const h = this.$createElement
       const { year, month, firstDayOfWeek, min, max } = this
       const { firstDay, lastDate } = getDay(year, month)
       const now = new Date

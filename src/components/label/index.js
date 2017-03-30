@@ -120,7 +120,7 @@ Label.Group = {
   computed: {
     renderLabels() {
       const { labelData, x, displayKey } = this
-      const h = this.$createElement
+
       const props = {
         typ: this.typ,
         status: this.status,

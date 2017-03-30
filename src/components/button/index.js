@@ -56,7 +56,7 @@ Button.Group = {
   computed: {
     renderButtons() {
       const { buttonOptions } = this
-      const h = this.$createElement
+
       const _buttonOptions = buttonOptions.map((option, i) => {
         const dataSelected = (option.selected) ? '1' : '0'
         if (option.selected) {

@@ -6,8 +6,6 @@ import Flex from '~com/flex'
 const GridPage = {
   name: 'GridPage',
   data() {
-    const h = this.$createElement
-
     return {
       gridData: {
         heads: [

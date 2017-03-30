@@ -89,7 +89,6 @@ const Grid = {
     },
 
     renderRows({ row }) {
-      const h = this.$createElement
       const { heads } = this
 
       return heads.map((head, idx) => {

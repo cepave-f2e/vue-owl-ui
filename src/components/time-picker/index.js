@@ -80,7 +80,6 @@ const TimePicker = {
 
   computed: {
     renderTime() {
-      const h = this.$createElement
       const { start, end, step } = this
       let [startHour, startMin] = start.split(':')
       let [endHour, endMin] = end.split(':')
