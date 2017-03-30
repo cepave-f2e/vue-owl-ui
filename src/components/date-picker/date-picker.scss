@@ -15,7 +15,7 @@
   width: 340px;
   box-shadow: 0 2px 6px #ccc;
   display: none;
-  z-index: 2;
+  z-index: 1;
 }
 
 .picker {
@@ -24,7 +24,6 @@
   outline: 1px solid #ccc;
   width: 140px;
   display: inline-block;
-  z-index: 1;
   &:focus {
     outline-color: var(--OWL-UI-COLOR-PRIMARY);
     .calBox {

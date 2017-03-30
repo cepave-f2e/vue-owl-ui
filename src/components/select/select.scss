@@ -7,7 +7,6 @@
   border: 1px solid #b8bdbf; //$palette.grayLight
   cursor: pointer;
   width: 200px;
-  z-index: 1;
   .arrow {
     $size: 12px;
     $bcolor: 2px solid #b8bdbf; // $palette.grayLight
@@ -27,7 +26,7 @@
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.2);
     left: -1px;
-    z-index: 2;
+    z-index: 1;
     > div {
       position: relative;
       padding: 6px $pd;
