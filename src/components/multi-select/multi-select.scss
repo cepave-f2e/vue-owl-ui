@@ -5,6 +5,7 @@ $height: 34px;
   width: 100%;
   cursor: pointer;
   position: relative;
+  z-index: 1;
 }
 
 .searchField {
@@ -45,7 +46,7 @@ $height: 34px;
   position: absolute;
   box-shadow: 0 2px 6px #ccc;
   top: auto;
-  z-index: 999;
+  z-index: 2;
   .option {
     position: relative;
     padding: 6px $pd;
