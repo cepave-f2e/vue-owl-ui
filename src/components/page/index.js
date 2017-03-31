@@ -86,7 +86,7 @@ const Page = {
 
     pageLists() {
       const { page, $createElement, totalPages, pageData } = this
-      const pagesVNodes = [], h = $createElement
+      const pagesVNodes = []
 
       const start = Math.max(1, page - pageData.mid)
       const end = Math.min(page + pageData.mid, totalPages)
@@ -112,7 +112,7 @@ const Page = {
 
     typeRender() {
       const { typ, page, pageLists, totalPages, $createElement } = this
-      const h = $createElement
+
       let VNode =
         <ol>
           <li data-page="prev" class={[s.prev]} hidden={page <= 1} />

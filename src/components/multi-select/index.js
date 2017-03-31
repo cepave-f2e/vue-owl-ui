@@ -108,7 +108,6 @@ const MultiSelect = {
   computed: {
     renderOptions() {
       const { options, displayIdx, selectedIdx, displayKey, disablePointer } = this
-      const h = this.$createElement
 
       const _options = options.reduce((preVal, newVal, idx) => {
         const toDisplay = displayIdx.indexOf(idx)
@@ -136,7 +135,6 @@ const MultiSelect = {
 
     renderLoading() {
       const { style, loadingMsg } = this
-      const h = this.$createElement
       const _loadingOption = <div class={[s.loadingOption]}><Loading typ="pie" size={10} class={[s.loading]} />{loadingMsg}</div>
       return _loadingOption
     },

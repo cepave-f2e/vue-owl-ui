@@ -4,7 +4,6 @@ import Legacy from '~com/legacy'
 const LegacyGridDoc = {
   name: 'LegacyGridDoc',
   data() {
-    const h = this.$createElement
     return {
       gridProps: {
         heads: [
