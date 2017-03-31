@@ -101,7 +101,6 @@ const Select = {
 
     renderOptions() {
       const { options, optionsRender, nameKey, valueKey } = this
-      const h = this.$createElement
 
       const _options = options.map((option, index) => {
         if (option.selected) {

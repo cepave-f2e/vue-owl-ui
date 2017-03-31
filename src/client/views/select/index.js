@@ -4,7 +4,6 @@ import Markdown from '../../components/markdown'
 const SelectPage = {
   name: 'SelectPage',
   data() {
-    const h = this.$createElement
     return {
       outputs: {
         value: '3d',
