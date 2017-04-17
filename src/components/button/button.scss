@@ -1,5 +1,3 @@
-@import "../global.scss";
-
 @mixin button-fill($text-color, $back-color) {
   color: $text-color;
   background-color: $back-color;
