@@ -3,12 +3,12 @@ import s from '../select.scss'
 
 it('Test Select component default `options` props', () => {
   const options = [
-    { value: '1d', title: '1 day', },
-    { value: '3d', title: '3 days', },
-    { value: '5d', title: '5 days', },
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days' },
+    { value: '5d', title: '5 days' },
   ]
   const vm = mount(Select, {
-    options
+    options,
   })
 
   expect(vm.value).toBe('1d')
@@ -16,12 +16,12 @@ it('Test Select component default `options` props', () => {
 
 it('Test Select component if set `selected` in options', () => {
   const options = [
-    { value: '1d', title: '1 day', },
+    { value: '1d', title: '1 day' },
     { value: '3d', title: '3 days', selected: true },
-    { value: '5d', title: '5 days', },
+    { value: '5d', title: '5 days' },
   ]
   const vm = mount(Select, {
-    options
+    options,
   })
 
   expect(vm.value).toBe('3d')
@@ -29,8 +29,8 @@ it('Test Select component if set `selected` in options', () => {
 
 it('Test Select component dynamic update `options`', (done) => {
   const options = [
-    { value: '1d', title: '1 day', },
-    { value: '3d', title: '3 days', },
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days' },
   ]
   const vm = mount(Select, { options })
 
@@ -61,7 +61,7 @@ it('Test `optionsRender` props', () => {
           <b>{option.title}</b>
         )} />
       )
-    }
+    },
   })
 
   expect($(vm.$el).find(`.${s.optionBox} b`).length).toBe(1)
@@ -123,7 +123,7 @@ it('Test dynamic `isOpened` props', (done) => {
 
   const vm = mount(Select, {
     isOpened: false,
-    options
+    options,
   })
 
   vm.isOpened = true
@@ -136,11 +136,11 @@ it('Test dynamic `isOpened` props', (done) => {
 
 it('Test trigger `onChange`', () => {
   const options = [
-    { value: '1d', title: '1 day', },
-    { value: '3d', title: '3 days', },
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days' },
   ]
   const vm = mount(Select, {
-    options
+    options,
   })
   const $el = $(vm.$el)
   expect(vm.value).toBe('1d')
@@ -150,12 +150,12 @@ it('Test trigger `onChange`', () => {
 
 it('Test trigger `onChange `if click same as last selected index', () => {
   const options = [
-    { value: '1d', title: '1 day', },
-    { value: '3d', title: '3 days', },
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days' },
   ]
 
   const vm = mount(Select, {
-    options
+    options,
   })
 
   expect(vm.value).toBe('1d')
@@ -165,8 +165,8 @@ it('Test trigger `onChange `if click same as last selected index', () => {
 
 it('Test `onChange` props', async() => {
   const options = [
-    { value: '1d', title: '1 day', },
-    { value: '3d', title: '3 days', },
+    { value: '1d', title: '1 day' },
+    { value: '3d', title: '3 days' },
   ]
 
   const d = await new Promise((done) => {

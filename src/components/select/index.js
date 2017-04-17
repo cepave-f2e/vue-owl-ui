@@ -1,15 +1,9 @@
-import delegate from 'delegate-to'
 import s from './select.scss'
 
 const Select = {
   name: 'Select',
 
   props: {
-    isOpened: {
-      type: Boolean,
-      default: false,
-    },
-
     isDisabled: {
       type: Boolean,
       default: false,
@@ -17,7 +11,7 @@ const Select = {
 
     name: {
       type: String,
-      default: ''
+      default: '',
     },
   },
 
@@ -25,27 +19,27 @@ const Select = {
     this._selectedIdx = 0
 
     return {
-      opened: this.isOpened,
+      opened: false,
       value: '',
       title: [],
     }
   },
 
   watch: {
-    isOpened(newVal) {
-      this.opened = newVal
-    },
-
     value(newVal) {
       this.$emit('change', {
-        value: newVal
+        value: newVal,
       })
-    }
+    },
   },
 
   methods: {
     close() {
       this.opened = false
+    },
+
+    open() {
+      this.opened = true
     },
 
     toggleMenu() {
@@ -55,13 +49,17 @@ const Select = {
 
       this.opened = !this.opened
     },
+
+    setValue() {
+
+    },
   },
 
   computed: {
     css() {
-      const { opened, isDisabled } = this
+      const { isOpened, isDisabled } = this
       const style = {}
-      style[s.selectOpen] = opened
+      style[s.selectOpen] = isOpened
       style[s.disabled] = isDisabled
       return style
     },
@@ -111,7 +109,7 @@ const Select = {
         <input type="hidden" name={name} value={value} />
       </div>
     )
-  }
+  },
 }
 
 Select.Option = {
@@ -124,7 +122,7 @@ Select.Option = {
     checked: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 
   methods: {
@@ -132,7 +130,7 @@ Select.Option = {
       const { $parent } = this
 
       $parent.$emit('selectOption', this)
-    }
+    },
   },
 
   render(h) {
@@ -143,7 +141,7 @@ Select.Option = {
         { $slots.default }
       </div>
     )
-  }
+  },
 }
 
 module.exports = Select

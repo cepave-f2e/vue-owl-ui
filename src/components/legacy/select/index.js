@@ -11,7 +11,7 @@ const Select = {
     },
 
     optionsRender: {
-      type: Function
+      type: Function,
     },
 
     isOpened: {
@@ -26,18 +26,18 @@ const Select = {
 
     name: {
       type: String,
-      default: ''
+      default: '',
     },
 
     nameKey: {
       type: String,
-      default: 'title'
+      default: 'title',
     },
 
     valueKey: {
       type: String,
       default: 'value',
-    }
+    },
   },
 
   data() {
@@ -85,9 +85,9 @@ const Select = {
 
       this.$emit('change', {
         value: this.value,
-        index
+        index,
       })
-    })
+    }),
   },
 
   computed: {
@@ -120,7 +120,7 @@ const Select = {
       }
 
       return _options
-    }
+    },
   },
 
   render(h) {
@@ -147,7 +147,7 @@ const Select = {
         <input type="hidden" name={name} value={value} />
       </div>
     )
-  }
+  },
 }
 
 module.exports = Select
