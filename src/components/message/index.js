@@ -100,7 +100,7 @@ const MessageComponent = {
       <div class={[s.message, s[animation]]} onMouseenter={clearTimer} onMouseleave={startTimer}>
         {
           !iconClass &&
-          <Icon typ={iconImg[type]} size={40} class={[s.messageIcon, s[type]]} />
+          <Icon typ={iconImg[type]} size={20} class={[s.messageIcon, s[type]]} />
         }
         <div class={ [s.messageContent, { [s.hasIcon]: iconClass }] }>
           <p>
