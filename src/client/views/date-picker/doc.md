@@ -48,11 +48,22 @@ defaultValue: {
 ### prev(data)
 
 ### pick(data) 
-- `data.value` Get value of input.
-- `data.year` Get the year.
-- `data.month` Get the month.
-- `data.date` Get the date of month.
-- `data.day` Get the day of week.
-- `data.Date` Get Date instance.
+`data.value` 
+Get value of input.
+
+`data.year` 
+Get the year.
+
+`data.month` 
+Get the month.
+
+`data.date` 
+Get the date of month.
+
+`data.day` 
+Get the day of week.
+
+`data.Date` 
+Get Date instance.
 
 ## Demo

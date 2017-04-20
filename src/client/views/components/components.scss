@@ -59,6 +59,9 @@ dd {
     display: block;
     position: relative;
     color: #590aaa;
+    &:after {
+      content: '';
+    }
     &:hover, &:global(.router-link-active) {
       &:after {
         @extend .hover;

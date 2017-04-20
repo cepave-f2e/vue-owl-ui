@@ -1,5 +1,3 @@
-//@import "owl-ui-style/dist/owl-ui-style.css";
-
 .page {
   display: flex;
   &[data-align="center"] {
@@ -43,6 +41,7 @@
 
     &.on, &:hover {
       &:before {
+        content: '';
         position: absolute;
         height: 2px;
         bottom: 2px;

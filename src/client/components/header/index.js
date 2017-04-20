@@ -21,7 +21,7 @@ const Header = {
               </h1>
             </div>
 
-            <ul>
+            <ul class={[s.link]}>
               <li>
                 <Link to="/">
                   Docs
