@@ -52,6 +52,9 @@ const ComponentPage = {
                 <dd>
                   <Link to="/components/grid">Grid</Link>
                 </dd>
+                <dd>
+                  <Link to="/components/message">Message</Link>
+                </dd>
               </dl>
 
               <dl>
