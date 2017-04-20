@@ -49,8 +49,8 @@
 .outline {
   background: none;
   font-weight: 400;
-  color: rgba(0,0,0,.2);
-  border: 1px solid rgba(0,0,0,.2);
+  color: rgba(0, 0, 0, .2);
+  border: 1px solid rgba(0, 0, 0, .2);
   &:focus, &:hover {
     @include button-fill(rgba(0, 0, 0, .6), #eee);
     box-shadow: none;
