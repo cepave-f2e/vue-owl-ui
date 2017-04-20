@@ -71,5 +71,12 @@ module.exports = {
     * @url: http://stylelint.io/user-guide/rules/#block
     */
     'block-opening-brace-space-before': 'always',
+
+    /**
+    * function
+    * @url: https://stylelint.io/user-guide/rules/#function
+    */
+    'function-comma-space-after': 'always',
+    'function-comma-space-before': 'never',
   }
 }
