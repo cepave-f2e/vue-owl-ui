@@ -34,6 +34,7 @@
 - The sequence of `<Tab.Head>` and `<Tab.Content>` should be placed in order, eg. `1`,`2`,...or `Alarms`, `Alarm History`  
 - Must add attribute `slot="tabHead"` in `<Tab.Head>` and `slot="tabContent"` in `<Tab.Content>`
 - Use `onChange` as a listener to get data from `$emit('change')`
+
 ```jsx
 const getTabData = (data) => {
   console.log(data)
