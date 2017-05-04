@@ -278,6 +278,7 @@ const ComplexQuery = {
             }
 
             return (
+              !!item.children.length &&
               <dl class={classes}>
                 <dt onClick={handleFold(itemIdx)}>
                   <Flex split>
