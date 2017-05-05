@@ -34,6 +34,7 @@ const TimePicker = {
   data() {
     return {
       value: this.defaultValue,
+      focused: false,
     }
   },
 
@@ -61,6 +62,16 @@ const TimePicker = {
   },
 
   methods: {
+    onFocus() {
+      this.focused = true
+      this.$emit('focus')
+    },
+
+    onBlur() {
+      this.focused = false
+      this.$emit('blur')
+    },
+
     pickTime: delegate('li', function (ev) {
       ev.stopPropagation()
 
@@ -72,8 +83,12 @@ const TimePicker = {
 
       this.$el.blur()
       this.value = value
+      const [h, m] = value.split(':')
+
       this.$emit('change', {
         value,
+        h: +h,
+        m: +m
       })
     }),
   },
@@ -122,9 +137,11 @@ const TimePicker = {
   },
 
   render(h) {
-    const { renderTime, pickTime, value } = this
+    const { renderTime, pickTime, value, onFocus, onBlur } = this
     return (
-      <div class={[s.timepicker]} tabIndex="-1">
+      <div class={[s.timepicker]} tabIndex="-1"
+        onFocus={onFocus}
+        onBlur={onBlur}>
         <div class={[s.input]}>
           {value} <Icon typ="clock" class={[s.clock]} />
         </div>
