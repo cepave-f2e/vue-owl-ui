@@ -40,6 +40,15 @@ defaultValue: {
   type: String,
   default: <Today>
 },
+
+hasTime: {
+  type: Boolean,
+  default: false,
+},
+
+timeProps: {
+  type: Object, // same as TimePicker's props
+},
 ```
 
 ## Events
@@ -60,10 +69,22 @@ Get the month.
 `data.date` 
 Get the date of month.
 
-`data.day` 
+`data.day`
 Get the day of week.
 
-`data.Date` 
+`data.Date`
 Get Date instance.
+
+`data.ts`
+ Get timestamp of unix.
+ 
+`date.hour`
+Get hours, if no TimePicker is `0`.
+
+`data.minute`
+Get minutes, if no TimePicker is `0`.
+
+`data.time`
+Get time value, if no TimePicker is `''`. 
 
 ## Demo
