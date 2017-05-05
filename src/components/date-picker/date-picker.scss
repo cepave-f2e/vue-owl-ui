@@ -12,10 +12,16 @@
   top: 35px;
   left: 0;
   background: #fff;
-  width: 340px;
+  width: 380px;
   box-shadow: 0 2px 6px #ccc;
   display: none;
   z-index: 1;
+}
+
+.focused {
+  .calBox {
+    display: block;
+  }
 }
 
 .picker {
@@ -26,9 +32,9 @@
   display: inline-block;
   &:focus {
     outline-color: var(--OWL-UI-COLOR-PRIMARY);
-    .calBox {
-      display: block;
-    }
+  }
+  &.hasTime {
+    width: 160px;
   }
 }
 
@@ -59,7 +65,7 @@
 
 .calTop {
   padding: 0 8px;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 12px;
   strong {
     margin-left: 8px;

@@ -43,6 +43,15 @@ const DatePicker = {
       type: String,
       default: '',
     },
+
+    hasTime: {
+      type: Boolean,
+      default: false,
+    },
+
+    timeProps: {
+      type: Object,
+    },
   },
 
   watch: {
@@ -69,24 +78,36 @@ const DatePicker = {
   data() {
     const [year, month] = this.yearMonth
 
-    const { defaultValue, format } = this
+    const { defaultValue, format, hasTime } = this
+    let value = defaultValue || dateFormat(new Date(), this.format)
+
+    if (hasTime) {
+      value = `${value} ${Date().match(/\d\d:\d\d/)[0]}`
+    }
     return {
       year,
       month,
-      value: defaultValue || dateFormat(new Date(), this.format),
+      value,
+      focused: false,
     }
   },
 
   methods: {
     handlePick(d) {
-      const { format, $el } = this
-      this.value = dateFormat(d.Date, format)
+      const { format, $el, hasTime } = this
+      let value = dateFormat(d.Date, format)
+
+      if (hasTime) {
+        value = `${value} ${d.time}`
+      }
 
       $el.blur()
       this.$emit('pick', {
-        value: this.value,
+        value,
         ...d,
       })
+
+      this.value = value
     },
     onNext(d) {
       this.$emit('next', d)
@@ -94,24 +115,58 @@ const DatePicker = {
     onPrev(d) {
       this.$emit('prev', d)
     },
+
+    onBlur() {
+      if (this.lockBlur) {
+        return
+      }
+
+      this.focused = false
+    },
+
+    onFocus() {
+      this.focused = true
+    },
+
+    onTime(stat) {
+      this.lockBlur = (stat === 'in')
+    },
+
+    onTimeChange(d) {
+      this.$el.focus()
+
+      this.value = this.value.replace(/\d\d:\d\d/, d.time)
+
+      this.$emit('pick', {
+        value: this.value,
+        ...d,
+      })
+    },
+
+    onTimeBlur() {
+      this.focused = false
+    },
   },
 
   computed: {
     classes() {
-      const { colorfulWeekend } = this
+      const { colorfulWeekend, focused, hasTime } = this
 
       return {
         [s.colorfulWeekend]: colorfulWeekend,
+        [s.focused]: focused,
+        [s.hasTime]: hasTime,
       }
     },
   },
 
   render(h) {
     const { classes, yearMonth, min, max, firstDayOfWeek, colorfulWeekend, value,
-    handlePick, onNext, onPrev } = this
+    handlePick, onNext, onPrev, onBlur, onFocus, onTime, onTimeChange, onTimeBlur,
+    timeProps, hasTime } = this
 
     return (
-      <div class={[s.picker, classes]} tabIndex="-1">
+      <div class={[s.picker, classes]} tabIndex="-1" onBlur={onBlur} onFocus={onFocus}>
         <div class={[s.input]}>
           <Icon typ="date" class={[s.cal]} />
           <span class={[s.value]}>
@@ -120,11 +175,16 @@ const DatePicker = {
         </div>
         <div>
           <Cal yearMonth={yearMonth} min={min} max={max}
-            firstDayOfWeek={firstDayOfWeek}
-            onPick={handlePick}
-            onNext={onNext}
-            onPrev= {onPrev}
-            colorfulWeekend={colorfulWeekend} />
+               firstDayOfWeek={firstDayOfWeek}
+               onPick={handlePick}
+               onNext={onNext}
+               onPrev={onPrev}
+               onTime={onTime}
+               onTimeChange={onTimeChange}
+               onTimeBlur={onTimeBlur}
+               hasTime={hasTime}
+               timeProps={timeProps}
+               colorfulWeekend={colorfulWeekend} />
         </div>
       </div>
     )
