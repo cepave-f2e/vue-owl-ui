@@ -46,7 +46,7 @@ const DatePicker = {
 
     hasTime: {
       type: Boolean,
-      default: true,
+      default: false,
     },
 
     timeProps: {
@@ -132,10 +132,15 @@ const DatePicker = {
       this.lockBlur = (stat === 'in')
     },
 
-    onTimeChange({ value }) {
+    onTimeChange(d) {
       this.$el.focus()
 
-      this.value = this.value.replace(/\d\d:\d\d/, value)
+      this.value = this.value.replace(/\d\d:\d\d/, d.time)
+
+      this.$emit('pick', {
+        value: this.value,
+        ...d,
+      })
     },
 
     onTimeBlur() {

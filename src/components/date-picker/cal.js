@@ -80,7 +80,7 @@ const DatePickerCal = {
 
       const D = new Date(year, (month - 1), date, h, m)
 
-      this.$emit('pick', {
+      this.pickerDate = {
         date: +date,
         day: +day,
         year,
@@ -90,7 +90,8 @@ const DatePickerCal = {
         hour: +h,
         minute: +m,
         time,
-      })
+      }
+      this.$emit('pick', this.pickerDate)
     }),
 
     prev(ev) {
@@ -142,12 +143,35 @@ const DatePickerCal = {
     },
 
     onTimeChange(d) {
-      this.$emit('timeChange', d)
+      if (this.pickerDate) {
+        this.$emit('timeChange', {
+          ...this.pickerDate,
+          time: d.value,
+        })
+      } else {
+        const { year, month } = this
+        const { h, m } = d
+        const date = new Date().getDate()
+
+        const D = new Date(year, (month - 1), date, h, m)
+
+        this.$emit('timeChange', {
+          year,
+          month,
+          date,
+          day: D.getDay(),
+          Date: D,
+          ts: +D / 1000,
+          hour: h,
+          minute: m,
+          time: d.value,
+        })
+      }
     },
 
     onTimeBlur() {
       this.$emit('timeBlur')
-    }
+    },
   },
 
   computed: {
