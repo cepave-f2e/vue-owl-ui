@@ -88,7 +88,7 @@ const TimePicker = {
       this.$emit('change', {
         value,
         h: +h,
-        m: +m
+        m: +m,
       })
     }),
   },

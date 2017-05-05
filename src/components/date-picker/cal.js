@@ -36,8 +36,8 @@ const DatePickerCal = {
     },
 
     timeProps: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   data() {

@@ -51,7 +51,7 @@ const DatePicker = {
 
     timeProps: {
       type: Object,
-    }
+    },
   },
 
   watch: {
@@ -145,7 +145,7 @@ const DatePicker = {
 
     onTimeBlur() {
       this.focused = false
-    }
+    },
   },
 
   computed: {
