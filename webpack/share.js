@@ -5,7 +5,7 @@ module.exports = {
       test: /\.scss$/,
       use: [
         'style-loader',
-        'css-loader?modules&localIdentName=[local]--[hash:base64:5]&sourceMap',
+        'css-loader?modules&localIdentName=[name]_[local]&sourceMap',
         'sass-loader?sourceMap'
       ]
     }
