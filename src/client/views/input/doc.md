@@ -15,10 +15,6 @@ props: {
       type: String,
       default: 'normal'
     },
-    val: {
-      type: [String, Number],
-      default: ''
-    },
     defaultValue: {
       default: ''
     },

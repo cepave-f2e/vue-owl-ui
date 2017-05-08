@@ -15,10 +15,6 @@ const Input = {
       type: String,
       default: 'normal',
     },
-    val: {
-      type: [String, Number],
-      default: '',
-    },
     defaultValue: {
       default: '',
     },
@@ -99,7 +95,7 @@ const Input = {
   },
 
   render(h) {
-    const { value, styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
+    const { value, styles, icon, name, placeholder, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
 
     return (
       <div class={[s.inputWrapper]}>
