@@ -10,13 +10,10 @@ const InputPage = {
     }
   },
   mounted() {
-    this.$on('handleClickOnX', this.handleClickOnX)
+    this.$refs.disabledInput.setValue('cepave')
   },
   methods: {
-    handleSubmit(e) {
-      this.outputs = this.$refs.inputRef.value
-    },
-    handleClickOnX(data) {
+    handleInput(data) {
       this.outputs = this.$refs.inputRef.value
     },
   },
@@ -25,8 +22,13 @@ const InputPage = {
       <div>
         <Markdown src={require('./doc.md')} />
         <div class={[s.wrapper]}>
-          <Input name="demo" icon={['search', '#919799']} status="normal" placeholder="type some words.." ref="inputRef" />
-          <div on-click={this.handleSubmit} class={[s.submit]}>Submit</div>
+          <Input name="demo"
+                 icon={['search', '#919799']}
+                 status="normal"
+                 placeholder="type some words.."
+                 ref="inputRef"
+                 onInput={this.handleInput}
+          />
           <div class={[s.demo]}>demo : { this.outputs }</div>
         </div>
         <div class={[s.pwdInputwrapper]}>
@@ -39,7 +41,7 @@ const InputPage = {
           <Input x={true} />
         </div>
         <div class={[s.pwdInputwrapper]}>
-          <Input val="cepave" status="success" />
+          <Input status="success" />
         </div>
         <div class={[s.pwdInputwrapper]}>
           <Input status="error" />
@@ -48,7 +50,7 @@ const InputPage = {
           <Input required={true} />
         </div>
         <div class={[s.pwdInputwrapper]}>
-          <Input disabled={true} val="cepave" />
+          <Input disabled={true} ref="disabledInput" />
         </div>
         <div class={[s.pwdInputwrapper]}>
           <Input pattern="\d+([a-zA-Z])?" />
