@@ -11,6 +11,9 @@
   &::placeholder {
     color: #b8bdbf;
   }
+  &:invalid {
+    @extend .error
+  }
 }
 .mustFill {
   position: absolute;

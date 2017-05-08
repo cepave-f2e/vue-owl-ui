@@ -15,10 +15,6 @@ const Input = {
       type: String,
       default: 'normal',
     },
-    val: {
-      type: [String, Number],
-      default: '',
-    },
     defaultValue: {
       default: '',
     },
@@ -45,6 +41,9 @@ const Input = {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    pattern: {
+      type: String,
     },
   },
 
@@ -99,7 +98,10 @@ const Input = {
   },
 
   render(h) {
-    const { value, styles, icon, name, placeholder, val, password, loading, disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, handleInput, handleIconClick } = this
+    const { value, styles, icon, name, placeholder, password, loading,
+      disabled, handlePwdStyle, pwdFill, pwdInput, showX, required, pattern,
+      handleInput, handleIconClick,
+    } = this
 
     return (
       <div class={[s.inputWrapper]}>
@@ -120,7 +122,14 @@ const Input = {
           ? <span class={[s.mustFill]}>*</span>
           : ''
         }
-        <input class={styles} type={pwdInput} ref={name} placeholder={placeholder} domPropsValue={value} on-input={handleInput} disabled={disabled} />
+        <input class={styles}
+               type={pwdInput}
+               ref={name}
+               placeholder={placeholder}
+               domPropsValue={value}
+               on-input={handleInput}
+               disabled={disabled}
+               pattern={pattern} />
       </div>
     )
   },
