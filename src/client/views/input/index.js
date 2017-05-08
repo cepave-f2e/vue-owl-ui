@@ -50,6 +50,9 @@ const InputPage = {
         <div class={[s.pwdInputwrapper]}>
           <Input disabled={true} val="cepave" />
         </div>
+        <div class={[s.pwdInputwrapper]}>
+          <Input pattern="\d+([a-zA-Z])?" />
+        </div>
       </div>
     )
   },
