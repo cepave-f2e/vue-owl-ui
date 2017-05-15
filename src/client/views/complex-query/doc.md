@@ -62,3 +62,6 @@ Triggerd  by `focus` on input.
 
 ### blur
 Triggerd  by `blur` on input.
+
+### clickCategory
+Triggerd  by `click` a category.
