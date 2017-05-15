@@ -173,13 +173,18 @@ const ComplexQuery = {
         this.$set(items[eq], 'isFold', !items[eq].isFold)
       }
     },
+
     changeCategory(eq) {
-      const { categories } = this
+      const { categories, $refs } = this
 
       return (ev) => {
         categories.forEach((cat, i) => {
           if (i === eq) {
             this.cat = cat.value
+            this.$emit('clickCategory', {
+              value: $refs.query.value,
+              category: cat.value,
+            })
           }
         })
       }
@@ -391,7 +396,7 @@ const ComplexQuery = {
               <a onClick={clearAll}>{text.clearAll}</a>
               <a onClick={selectAll}>{text.selectAll}</a>
             </Flex.Col>
-            <Flex.Col>{text.selected}: {sum} / {totalCounts}</Flex.Col>
+            <Flex.Col>{text.selected}: {sum}</Flex.Col>
           </Flex>
         </div>
 
