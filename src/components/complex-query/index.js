@@ -396,7 +396,7 @@ const ComplexQuery = {
               <a onClick={clearAll}>{text.clearAll}</a>
               <a onClick={selectAll}>{text.selectAll}</a>
             </Flex.Col>
-            <Flex.Col>{text.selected}: {sum} / {totalCounts}</Flex.Col>
+            <Flex.Col>{text.selected}: {sum}</Flex.Col>
           </Flex>
         </div>
 
