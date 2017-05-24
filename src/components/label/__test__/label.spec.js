@@ -117,7 +117,7 @@ it('test <Label.Group> dynamic update', async() => {
         this.test = [
           { value: 'tigger', id: 2 },
         ],
-        this.focusedId = 1
+          this.focusedId = 1
         this.$nextTick(done)
       },
       render(h) {
@@ -148,10 +148,10 @@ test('test <Label.Group /> new tag feature', async() => {
       render(h) {
         return (
           <Label.Group displayKey="value"
-                        x={true}
-                        badge={true}
-                        options={this.test}
-                        newTag={true}
+                       x={true}
+                       badge={true}
+                       options={this.test}
+                       newTag={true}
           />
         )
       },
@@ -161,27 +161,26 @@ test('test <Label.Group /> new tag feature', async() => {
     vm.$nextTick(done)
   })
 
+  const $newTagInput = $(vm.$el).find('.newTagInput')
   const key13 = new window.KeyboardEvent('keydown', { keyCode: 13, which: 13 })
 
-  await new Promise((done) => {
-    $(vm.$children[2].$slots.default[1].elm).val('cepave')
-    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
-    vm.$nextTick(done)
-  })
+  function triggerKey13(val = '') {
+    return new Promise((done) => {
+      $newTagInput.val(val)
+      $newTagInput[0].dispatchEvent(key13)
 
+      vm.$nextTick(done)
+    })
+  }
+
+  await triggerKey13('cepave')
   expect(vm.labelData).toEqual([
     { value: 'piglet', id: 1 },
     { value: 'tigger', id: 2 },
     { value: 'cepave' },
   ])
 
-  // input duplicate tags
-  await new Promise((done) => {
-    $(vm.$children[2].$slots.default[1].elm).val('tigger')
-    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
-    vm.$nextTick(done)
-  })
-
+  await triggerKey13('tigger')
   expect(vm.labelData).toEqual([
     { value: 'piglet', id: 1 },
     { value: 'tigger', id: 2 },
@@ -189,12 +188,7 @@ test('test <Label.Group /> new tag feature', async() => {
   ])
 
   // input empty string
-  await new Promise((done) => {
-    $(vm.$children[2].$slots.default[1].elm).val('')
-    vm.$children[2].$slots.default[1].elm.dispatchEvent(key13)
-    vm.$nextTick(done)
-  })
-
+  await triggerKey13('')
   expect(vm.labelData).toEqual([
     { value: 'piglet', id: 1 },
     { value: 'tigger', id: 2 },
@@ -202,7 +196,7 @@ test('test <Label.Group /> new tag feature', async() => {
   ])
 
   await new Promise((done) => {
-    vm.$children[2].$slots.default[1].elm.blur()
+    $newTagInput.trigger('blur')
     vm.$nextTick(done)
   })
 
