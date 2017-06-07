@@ -81,3 +81,40 @@ it('click on <Button.Group> to switch chosen option', async() => {
     { value: 'tigger', title: 'Tigger', selected: false },
   ])
 })
+
+it('test dynamic set <Button.Group /> options', async() => {
+  const options = [
+    { value: 'winnie', title: 'Winnie The Pooh' },
+    { value: 'piglet', title: 'Piglet' },
+    { value: 'tigger', title: 'Tigger', selected: true },
+  ]
+  const vm = shallow({
+    render(h) {
+      return (
+        <Button.Group options={options} ref="test" />
+      )
+    },
+  })
+
+  await new Promise((done) => {
+    vm.setSelectedOption('piglet')
+    vm.$nextTick(done)
+  })
+
+  expect(vm.buttonOptions).toEqual([
+    { value: 'winnie', title: 'Winnie The Pooh' },
+    { value: 'piglet', title: 'Piglet', selected: true },
+    { value: 'tigger', title: 'Tigger', selected: false },
+  ])
+
+  await new Promise((done) => {
+    vm.setOptions([
+      { value: 'piglet', title: 'Piglet', selected: true },
+    ])
+    vm.$nextTick(done)
+  })
+
+  expect(vm.buttonOptions).toEqual([
+    { value: 'piglet', title: 'Piglet', selected: true },
+  ])
+})

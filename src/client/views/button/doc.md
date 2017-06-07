@@ -60,7 +60,12 @@ Use `nativeOn-click={this.handleClick}` to bind click event
 <Button nativeOn-click={this.handleClick}>Click me</Button>
 ```
 ### Button Group  
-Use `onChange` as a listener to get data from `$emit('change')`
+
+#### Methods
+- `setOptions([newOptions])` for dynamic change options  
+- `setSelectedOption(index)` for dynamic change the selected options
+
+- Use `onChange` as a listener to get data from `$emit('change')`
 ```jsx
 data() {
  return {

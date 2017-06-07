@@ -84,6 +84,17 @@ Button.Group = {
       this.buttonOptions.forEach((buttonOption) => this.$set(buttonOption, 'selected', false))
       this.$set(this.buttonOptions[idx], 'selected', true)
     }),
+    setOptions(newOpts) {
+      this.buttonOptions = newOpts
+      this.selectedIdx = newOpts.find((option) => option.selected)
+    },
+    setSelectedOption(value) {
+      const selectedOptIdx = this.buttonOptions.findIndex((buttonOption) => {
+        return buttonOption.value === value
+      })
+      this.$set(this.buttonOptions[this.selectedIdx], 'selected', false)
+      this.$set(this.buttonOptions[selectedOptIdx], 'selected', true)
+    },
   },
   render(h) {
     const { renderButtons, _handleClickButton } = this
