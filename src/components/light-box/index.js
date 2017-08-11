@@ -29,6 +29,14 @@ const LightBox = {
       type: String,
       default: 'rgba(255, 255, 255, .8)',
     },
+    closeHook: {
+      type: [Boolean, Function],
+      default: false,
+    },
+    openHook: {
+      type: [Boolean, Function],
+      default: false,
+    },
   },
 
   data() {
@@ -47,9 +55,15 @@ const LightBox = {
         this.$nextTick(() => {
           view.$el.focus()
         })
+        if (this.openHook && typeof (this.openHook) === 'function') {
+          this.openHook()
+        }
       } else {
         this.libDiv.innerHTML = ''
         document.body.style.overflow = 'visible'
+        if (this.closeHook && typeof (this.closeHook) === 'function') {
+          this.closeHook()
+        }
       }
     },
   },
