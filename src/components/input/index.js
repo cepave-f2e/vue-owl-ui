@@ -45,6 +45,10 @@ const Input = {
     pattern: {
       type: String,
     },
+    val: {
+      type: [String, Number],
+      default: '',
+    },
   },
 
   data() {
@@ -53,13 +57,16 @@ const Input = {
       pwdFill: '#b8bdbf',
       pwdInput: this.password ? 'password' : 'text',
       showX: false,
-      value: this.defaultValue,
+      value: this.defaultValue || this.val,
     }
   },
 
   watch: {
     value(val) {
       this.$emit('input', val)
+    },
+    val(data) {
+      this.value = data
     },
   },
 
