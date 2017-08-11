@@ -33,6 +33,10 @@ const DualList = {
       type: Boolean,
       default: false,
     },
+    rightLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -168,7 +172,7 @@ const DualList = {
     },
   },
   render(h) {
-    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading, displayKey } = this
+    const { handleSelectAll, handleUnselectAll, handleSearchListLeft, handleSearchListRight, highlightLeft, highlightRight, leftLoading, displayKey, rightLoading } = this
     return (
       <div class={[s.dualWrapper]}>
         <div class={[s.dual]}>
@@ -186,7 +190,7 @@ const DualList = {
           <Icon nativeOn-click={handleUnselectAll} class={[s.doubleLeft]} typ="double-left" size={20} fill="#b8bdbf" />
         </div>
         <div class={[s.dual]}>
-          <Input nativeOn-keypress={handleSearchListRight} name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} />
+          <Input nativeOn-keypress={handleSearchListRight} name="right" class={[s.input]} ref="searchListToRemove" icon={['search', '#919799']} x={true} loading={rightLoading} />
           <div class={[s.lists]}>
             {
               Object.keys(this.listToRemove).map((label) => {
