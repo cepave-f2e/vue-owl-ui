@@ -3,7 +3,7 @@ import s from './lightbox.scss'
 
 let lbDiv
 const lbDivID = 'owl-ui-lb'
-if (isBrowser && !document.querySelector(`#${lbDivID}`)) {
+if (isBrowser && !document.getElementById(`${lbDivID}`)) {
   lbDiv = document.createElement('div')
   lbDiv.id = lbDivID
 
@@ -34,6 +34,7 @@ const LightBox = {
   data() {
     return {
       opened: false,
+      libDiv: document.getElementById(`${lbDivID}`),
     }
   },
 
@@ -41,13 +42,13 @@ const LightBox = {
     opened(bool) {
       if (bool) {
         const { view } = this
-        lbDiv.appendChild(view.$el)
+        this.libDiv.appendChild(view.$el)
         document.body.style.overflow = 'hidden'
         this.$nextTick(() => {
           view.$el.focus()
         })
       } else {
-        lbDiv.innerHTML = ''
+        this.libDiv.innerHTML = ''
         document.body.style.overflow = 'visible'
       }
     },
@@ -75,7 +76,7 @@ const LightBox = {
 
   computed: {
     view() {
-      return this.$children.find(vm => vm.$el.getAttribute('data-role') === 'lb-view')
+      return this.$children.find((vm) => vm.$el.getAttribute('data-role') === 'lb-view')
     },
   },
 
@@ -186,7 +187,7 @@ LightBox.View = {
 
     return (
       <div data-role="lb-view" class={[s.lb]} tabindex="-1" style={style} {...{ on }}>
-        <div class={[s.view]} on-click={ev => ev.stopPropagation()} style={viewStyle}>
+        <div class={[s.view]} on-click={(ev) => ev.stopPropagation()} style={viewStyle}>
           <span class={[s.x]} on-click={close} />
           {$slots.default}
         </div>
