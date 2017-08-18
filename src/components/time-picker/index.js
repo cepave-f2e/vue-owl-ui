@@ -85,7 +85,7 @@ const TimePicker = {
       let value = ''
       const dataTimeText = delegateTarget.getAttribute('data-time')
       if (dataTimeText === 'now') {
-        value = moment().format('hh:mm')
+        value = moment().format('H:mm')
       } else {
         value = dataTimeText
       }
