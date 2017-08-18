@@ -3,6 +3,7 @@ import isTimeFormat from './is-time-format'
 import prefix0 from './prefix0'
 import delegate from 'delegate-to'
 import Icon from '../icon'
+import moment from 'moment/moment'
 
 const TimePicker = {
   name: 'TimePicker',
@@ -28,6 +29,11 @@ const TimePicker = {
     defaultValue: {
       type: String,
       default: Date().match(/\d\d:\d\d/)[0], // Current time of client
+    },
+
+    incluedNow: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -76,8 +82,14 @@ const TimePicker = {
       ev.stopPropagation()
 
       const { delegateTarget } = ev
-      const value = (delegateTarget.getAttribute('data-time'))
-      if (this.value === value) {
+      let value = ''
+      const dataTimeText = delegateTarget.getAttribute('data-time')
+      if (dataTimeText === 'now') {
+        value = moment().format('H:mm')
+      } else {
+        value = dataTimeText
+      }
+      if (this.value === value && dataTimeText !== 'now') {
         return
       }
 
@@ -103,12 +115,19 @@ const TimePicker = {
       endHour = +endHour
       endMin = +endMin
 
-      const lis = [
+      const lis = []
+      if (this.incluedNow) {
+        lis.push(
+          <li data-time={'now'}>
+            <code>now</code>
+          </li>,
+        )
+      }
+      lis.push(
         <li data-time={start}>
           <code>{start}</code>
         </li>,
-      ]
-
+      )
       while ((startHour * 60 + startMin) <= (endHour * 60 + endMin - step)) {
         startMin += step
         if (startMin >= 60) {
