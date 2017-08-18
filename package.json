@@ -60,6 +60,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.escape": "^4.0.1",
     "mark-it-down": "^0.3.0",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "normalize.css": "^7.0.0",
     "piping": "^1.0.0-rc.3",
